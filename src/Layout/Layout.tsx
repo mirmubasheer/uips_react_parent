@@ -3,6 +3,7 @@ import Header from './Header';
 import { Box } from '@mui/material';
 import './Layout.css';
 import { useEffect } from 'react';
+import ScrollToTopButton from './ScrollToTopButton';
 
 const Layout = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const Layout = () => {
     <Box className="layout-container">
       <Box>
         <Header />
+        <ScrollToTopButton />
       </Box>
       <Box className="content-container">
         <Outlet />

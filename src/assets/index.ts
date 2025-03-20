@@ -27,7 +27,7 @@ import client17 from './images/clientlogos/c17.png';
 import client18 from './images/clientlogos/c18.png';
 import client19 from './images/clientlogos/c19.png';
 
-
+import About01 from './images/aboutus/Aboutus1.jpg'
 
 
 export const herosectionimages = {
@@ -65,3 +65,6 @@ export const clientlogos = [
     client19,
   ];
   
+export const AboutSectionImages = {
+    About01
+}

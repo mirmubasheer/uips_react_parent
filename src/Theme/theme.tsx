@@ -32,13 +32,13 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Gilroy, Poppins, sans-serif', 
+    fontFamily: 'Kanit, Poppins, sans-serif',  
     button: {
       textTransform: "none",
       fontSize: "12px",  // Decreased from 14px
     },
     h1: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "28px",  // Decreased from 32px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -55,7 +55,7 @@ export const theme = createTheme({
       },
     },
     h2: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "24px",  // Decreased from 28px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -72,7 +72,7 @@ export const theme = createTheme({
       },
     },
     h3: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "20px",  // Decreased from 24px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -89,7 +89,7 @@ export const theme = createTheme({
       },
     },
     h4: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "16px",  // Decreased from 20px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -106,7 +106,7 @@ export const theme = createTheme({
       },
     },
     h5: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "14px",  // Decreased from 16px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -123,7 +123,7 @@ export const theme = createTheme({
       },
     },
     h6: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "12px",  // Decreased from 14px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -140,7 +140,7 @@ export const theme = createTheme({
       },
     },
     subtitle1: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "16px",  // Decreased from 18px
       color: "#000000",
       opacity: "85%",
@@ -158,7 +158,7 @@ export const theme = createTheme({
       },
     },
     subtitle2: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "14px",  // Decreased from 16px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -175,7 +175,7 @@ export const theme = createTheme({
       },
     },
     body1: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "12px",  // Decreased from 14px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -192,7 +192,7 @@ export const theme = createTheme({
       },
     },
     body2: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "10px",  // Decreased from 12px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -209,7 +209,7 @@ export const theme = createTheme({
       },
     },
     caption: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "8px",   // Decreased from 10px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -226,7 +226,7 @@ export const theme = createTheme({
       },
     },
     overline: {
-      fontFamily: 'Gilroy, Poppins, sans-serif',
+      fontFamily: 'Kanit, Poppins, sans-serif', 
       fontSize: "6px",   // Decreased from 8px
       color: "#000000",
       "@media (min-width:600px)": {
@@ -262,7 +262,7 @@ export const theme = createTheme({
             border: "1px solid #30779d",
           },
           textTransform: "capitalize",
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           fontSize: "16px",
           borderRadius: "8px",
           height: "44px",
@@ -285,7 +285,7 @@ export const theme = createTheme({
             },
           },
           textTransform: "capitalize",
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           fontSize: "16px",
           borderRadius: "8px",
           height: "44px",
@@ -300,13 +300,13 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           '& fieldset': {
             borderRadius: '10px',
           },
           '& input::placeholder': {
             fontSize: '16px',
-            fontFamily: 'Gilroy, Poppins, sans-serif',
+            fontFamily: 'Kanit, Poppins, sans-serif', 
           },
           '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
             display: 'none',
@@ -317,7 +317,7 @@ export const theme = createTheme({
     MuiSelect: {
       styleOverrides: {
         outlined: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           color: "#000000",
         },
       },
@@ -325,7 +325,7 @@ export const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           color: "#000000",
           opacity: "70%",
           fontSize: "20px",
@@ -340,7 +340,7 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         input: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           fontSize: "18px",
           lineHeight: "27px",
           color: "#000000",
@@ -360,7 +360,7 @@ export const theme = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           color: "#000000",
           fontSize: "16px",
         },
@@ -392,7 +392,7 @@ export const theme = createTheme({
     MuiFormLabel: {
       styleOverrides: {
         root: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           color: "#000000",
           fontSize: "18px",
         },
@@ -401,7 +401,7 @@ export const theme = createTheme({
     MuiFormControlLabel: {
       styleOverrides: {
         label: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           fontSize: "18px",
           color: "#000000",
         },
@@ -410,10 +410,10 @@ export const theme = createTheme({
     MuiAutocomplete: {
       styleOverrides: {
         root: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
         },
         option: {
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
           fontSize: "18px",
         },
       },
@@ -422,7 +422,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: "#000000", // Ensure default color is black
-          fontFamily: 'Gilroy, Poppins, sans-serif',
+          fontFamily: 'Kanit, Poppins, sans-serif', 
         },
       },
     },

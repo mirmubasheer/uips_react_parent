@@ -170,6 +170,8 @@
 
 // export default CircleModal;
 
+
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
@@ -201,15 +203,18 @@ const CircleModal: React.FC = () => {
         ease: "power2.out",
       }
     );
+    const enableRotation = false; // Set this to true if you want to enable rotation
 
-    // Group Rotation of the Entire Circle
-    tl.to(".sectors-group", {
-      rotation: 360,
-      transformOrigin: "50% 50%",
-      duration: 100,
-      repeat: -1,
-      ease: "linear",
-    });
+    if (enableRotation) {
+      tl.to(".sectors-group", {
+        rotation: 360,
+        transformOrigin: "50% 50%",
+        duration: 100,
+        repeat: -1,
+        ease: "linear",
+      });
+    }
+    
 
     return () => tl.kill();
   }, []);
