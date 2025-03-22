@@ -27,7 +27,16 @@ import client17 from './images/clientlogos/c17.png';
 import client18 from './images/clientlogos/c18.png';
 import client19 from './images/clientlogos/c19.png';
 
-import About01 from './images/aboutus/Aboutus1.jpg'
+import About01 from './images/aboutus/Aboutus1.jpg';
+import About02 from './images/aboutus/about1.jpg';
+import About03 from './images/aboutus/about2.jpg';
+import About04 from './images/aboutus/about3.jpg';
+
+
+
+import banner from './images/banner/1 (1).jpg'
+import banner1 from './images/banner/1 (3).jpg'
+
 
 
 export const herosectionimages = {
@@ -66,5 +75,14 @@ export const clientlogos = [
   ];
   
 export const AboutSectionImages = {
-    About01
+    About01,
+    About02,
+    About03,
+    About04
+}
+
+
+export const AboutBackground = {
+    banner,
+    banner1
 }

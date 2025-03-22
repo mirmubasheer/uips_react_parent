@@ -155,6 +155,10 @@
 // };
 
 // export default AboutUs;
+
+
+
+
 import React, { useRef, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
@@ -169,6 +173,13 @@ type SectionType = {
   title: string;
   image: keyof typeof AboutSectionImages;
   content: string[];
+};
+
+const generateBackgroundColor = (index: number, total: number) => {
+  const hue = 231; // Blue shade
+  const saturation = 60;
+  const lightness = 20 + (index / total) * 50; // Increase lightness gradually
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 };
 
 const AboutUs: React.FC = () => {
@@ -190,8 +201,22 @@ const AboutUs: React.FC = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${totalWidth}`, // Dynamic scroll length
-          scrub: 1, // Allows smooth control
+          end: () => `+=${totalWidth}`,
+          scrub: 1.2,
+          pin: true,
+          anticipatePin: 1,
+          snap: {
+            snapTo: (progress) => {
+              const snapPoints = sections.map((_, i) => i / (sections.length - 1));
+              const closestSnap = snapPoints.reduce((prev, curr) =>
+                Math.abs(curr - progress) < Math.abs(prev - progress) ? curr : prev
+              );
+              return closestSnap;
+            },
+            duration: 0.6,
+            delay: 0.1,
+            ease: "power3.out",
+          },
         },
       });
 
@@ -205,10 +230,9 @@ const AboutUs: React.FC = () => {
     <Box
       ref={containerRef}
       sx={{
-        width: "100vw",
         height: "100vh",
-        overflowY: "scroll", // Allow normal vertical scrolling
-        scrollSnapType: "y mandatory", // Optional smooth effect
+        width: "100vw",
+        overflow: "hidden",
       }}
     >
       <Box
@@ -218,48 +242,64 @@ const AboutUs: React.FC = () => {
           flexDirection: "row",
           width: `${sections.length * 100}vw`,
           height: "100vh",
+          scrollSnapType: "x mandatory",
+          overflowX: "auto",
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         }}
       >
         {sections.map((section, index) => (
           <Box
             key={index}
-            className="panel"
             sx={{
               flex: "0 0 100vw",
               height: "100vh",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: index % 2 === 0 ? "#f3f4f6" : "#d1d5db",
+              backgroundColor: generateBackgroundColor(index, sections.length),
+              scrollSnapAlign: "start",
+              padding: "0", // Add some spacing on sides
             }}
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
               style={{
-                width: "80%",
-                maxWidth: "600px",
-                textAlign: "center",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
+                maxWidth: "1000px",
               }}
             >
+              {/* Left Side: Content */}
+              <Box sx={{ flex: 1, pr: 4 }}>
+                <Typography variant="h3" sx={{ fontWeight: "bold", color: "#fff" }}>
+                  {section.title}
+                </Typography>
+                {section.content.map((paragraph, idx) => (
+                  <Typography key={idx} variant="body1" sx={{ mt: 2, color: "#fff" }}>
+                    {paragraph}
+                  </Typography>
+                ))}
+              </Box>
+
+              {/* Right Side: Image */}
               <Box
                 sx={{
-                  width: "100%",
-                  height: "350px",
+                  flex: 1,
+                  maxWidth: "400px",
+                  height: "300px",
                   backgroundImage: `url(${AboutSectionImages[section.image]})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
-                  borderRadius: "20px",
+                  borderRadius: "15px",
                 }}
               />
-              <Typography variant="h3" sx={{ fontWeight: "bold", mt: 3 }}>
-                {section.title}
-              </Typography>
-              {section.content.map((paragraph, idx) => (
-                <Typography key={idx} variant="body1" sx={{ mt: 2 }}>
-                  {paragraph}
-                </Typography>
-              ))}
             </motion.div>
           </Box>
         ))}

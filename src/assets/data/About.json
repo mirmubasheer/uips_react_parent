@@ -1,26 +1,23 @@
 [
     {
-      "title": "About Usss",
-      "image": "About01", 
+      "title": "About Us",
+      "image": "About02", 
       "content": [
-        "We are a leading industrial company based in Saudi Arabia, offering innovative solutions for the construction and manufacturing sectors.",
-        "With decades of experience, we pride ourselves on our commitment to quality, sustainability, and efficiency."
+        "Utilities & Industrial Power Services (UIPS) is a 100% Saudi owned company based in Al-Khobar, Saudi Arabia. The company was established in June 2003 to cater Industrial & Building sector."
       ]
     },
     {
-      "title": "Our Mission",
-      "image": "About01", 
+      "title": "About The Company",
+      "image": "About03", 
       "content": [
-        "Our mission is to provide cutting-edge technology to enhance the industrial landscape.",
-        "We are dedicated to delivering excellence in every project we undertake."
+        "The company is a Saudi based Engineering, Procurement and Installation Contracting Company with specialized local know-how managed by a high qualified and experienced team of engineers."
       ]
     },
     {
-      "title": "Our Values",
-      "image": "About1", 
+      "title": "Our Goal",
+      "image": "About04", 
       "content": [
-        "We believe in quality, sustainability, and continuous innovation.",
-        "Our values drive us to be the best in the industry."
+        "UIPS goal and focus is on Customer satisfaction by providing Quality and Efficient Solutions & Services. We implement and maintain ARAMCO, SABIC, SEC and International quality standards"
       ]
     }
   ]
