@@ -1,0 +1,248 @@
+{
+    "divisions": [
+      {
+        "name": "Maintenance Division",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Equipment Overhaul",
+            "slug": "equipment-overhaul",
+            "clientName": "Client A",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Preventive Maintenance",
+            "slug": "preventive-maintenance",
+            "clientName": "Client B",
+            "location": "Khobar",
+            "image": "p1"
+          }
+          ,
+          {
+            "id": 3,
+            "name": "Maintenance",
+            "slug": "maintenance",
+            "clientName": "Client B",
+            "location": "Khobar",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "IT Division",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Network Upgrade",
+            "slug": "network-upgrade",
+            "clientName": "Client A",
+            "location": "Jubail",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Cybersecurity Audit",
+            "slug": "cybersecurity-audit",
+            "clientName": "Client D",
+            "location": "Riyadh",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Substation Construction",
+        "projects": [
+          {
+            "id": 1,
+            "name": "New Substation Build",
+            "slug": "new-substation-build",
+            "clientName": "Client E",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Transformer Installation",
+            "slug": "transformer-installation",
+            "clientName": "Client F",
+            "location": "Khobar",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Upgrade Projects",
+        "projects": [
+          {
+            "id": 1,
+            "name": "System Modernization",
+            "slug": "system-modernization",
+            "clientName": "Client G",
+            "location": "Jubail",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Infrastructure Upgrade",
+            "slug": "infrastructure-upgrade",
+            "clientName": "Client H",
+            "location": "Dammam",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Plant Construction",
+        "projects": [
+          {
+            "id": 1,
+            "name": "New Plant Facility",
+            "slug": "new-plant-facility",
+            "clientName": "Client I",
+            "location": "Riyadh",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Expansion Project",
+            "slug": "expansion-project",
+            "clientName": "Client J",
+            "location": "Dharhan",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Power House",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Generator Installation",
+            "slug": "generator-installation",
+            "clientName": "Client K",
+            "location": "Jubail",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Power Grid Enhancement",
+            "slug": "power-grid-enhancement",
+            "clientName": "Client L",
+            "location": "Katif",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Shutdowns",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Annual Plant Shutdown",
+            "slug": "annual-plant-shutdown",
+            "clientName": "Client M",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Emergency Shutdown",
+            "slug": "emergency-shutdown",
+            "clientName": "Client N",
+            "location": "Khobar",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Sale Gas Division",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Gas Pipeline Expansion",
+            "slug": "gas-pipeline-expansion",
+            "clientName": "Client O",
+            "location": "Jubail",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Gas Storage Upgrade",
+            "slug": "gas-storage-upgrade",
+            "clientName": "Client P",
+            "location": "Dammam",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "UG Cabling",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Underground Cable Laying",
+            "slug": "underground-cable-laying",
+            "clientName": "Client Q",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Cable Maintenance",
+            "slug": "cable-maintenance",
+            "clientName": "Client R",
+            "location": "Dharhan",
+            "image": "p1"
+          }
+        ]
+      },
+      {
+        "name": "Port Division",
+        "projects": [
+          {
+            "id": 1,
+            "name": "Port Expansion",
+            "slug": "port-expansion",
+            "clientName": "Client S",
+            "location": "Katif",
+            "image": "p1"
+          },
+          {
+            "id": 2,
+            "name": "Docking Facility Upgrade",
+            "slug": "docking-facility-upgrade",
+            "clientName": "Client T",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 3,
+            "name": "Docking Facility Upgrade",
+            "slug": "docking-facility-upgrade",
+            "clientName": "Client T",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 4,
+            "name": "Docking Facility Upgrade",
+            "slug": "docking-facility-upgrade",
+            "clientName": "Client T",
+            "location": "Dammam",
+            "image": "p1"
+          },
+          {
+            "id": 5,
+            "name": "Docking Facility Upgrade",
+            "slug": "docking-facility-upgrade",
+            "clientName": "Client T",
+            "location": "Dammam",
+            "image": "p1"
+          }
+        ]
+      }
+    ]
+  }
+  

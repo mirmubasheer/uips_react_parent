@@ -1,9 +1,10 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from './Header';
 import { Box } from '@mui/material';
 import './Layout.css';
 import { useEffect } from 'react';
 import ScrollToTopButton from './ScrollToTopButton';
+import Footer from '../Pages/Footer/Footer';
+import Header from './Header';
 
 const Layout = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const Layout = () => {
       <Box className="content-container">
         <Outlet />
       </Box>
+      <Footer />
     </Box>
   );
 };

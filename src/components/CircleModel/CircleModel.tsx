@@ -170,41 +170,41 @@
 
 // export default CircleModal;
 
-
-
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
 import SECTORS from "../../assets/data/slices";
 
-const outerRadius = 180;
-const innerRadius = 70;
-const centerX = 200;
-const centerY = 220;
-const sectorAngle = 31; // Adjusted to fit with the gapAngle
-const gapAngle = 5;
+// Adjusted constants from latest version
+const outerRadius = 290;
+const innerRadius = 120;
+const centerX = 300;
+const centerY = 300;
+const sectorAngle = 33;
+const gapAngle = 3;
 
-const CircleModal: React.FC = () => {
+const visibleSectors = SECTORS.slice(0, 10);
+
+const CircleModel: React.FC = () => {
   const sectorRefs = useRef<(SVGGElement | null)[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // Initial Fade-in Animation
     tl.fromTo(
       sectorRefs.current,
       { opacity: 0, scale: 0.9 },
       {
-        opacity: 0.8,
+        opacity: 0.9,
         scale: 1,
         duration: 1.5,
         stagger: 0.2,
         ease: "power2.out",
       }
     );
-    const enableRotation = false; // Set this to true if you want to enable rotation
 
+    const enableRotation = false;
     if (enableRotation) {
       tl.to(".sectors-group", {
         rotation: 360,
@@ -214,17 +214,62 @@ const CircleModal: React.FC = () => {
         ease: "linear",
       });
     }
-    
 
-    return () => tl.kill();
+    const autoHover = () => {
+      const totalSectors = visibleSectors.length;
+      const hoverDuration = 0.3;
+      const cycleDuration = 2;
+      const delayBetweenCycles = 5 - cycleDuration;
+
+      const hoverTimeline = gsap.timeline({ repeat: -1 });
+      sectorRefs.current.forEach((sector, index) => {
+        if (sector) {
+          hoverTimeline
+            .to(sector.querySelector("path"), {
+              scale: 1.08,
+              fill: "rgba(29, 78, 216, 0.9)", // Darker blue on hover
+              duration: hoverDuration,
+              ease: "power2.out",
+              transformOrigin: "50% 50%",
+            }, index * (cycleDuration / totalSectors))
+            .to(sector.querySelectorAll("text tspan"), {
+              fill: "#E0E7FF",
+              duration: hoverDuration,
+              ease: "power2.out",
+            }, index * (cycleDuration / totalSectors))
+            .to(sector.querySelector("path"), {
+              scale: 1,
+              fill: "rgba(23, 37, 84, 0.9)", // Darker base blue
+              duration: hoverDuration,
+              ease: "power2.inOut",
+              transformOrigin: "50% 50%",
+            }, index * (cycleDuration / totalSectors) + hoverDuration)
+            .to(sector.querySelectorAll("text tspan"), {
+              fill: "#D1D5DB",
+              duration: hoverDuration,
+              ease: "power2.inOut",
+            }, index * (cycleDuration / totalSectors) + hoverDuration);
+        }
+      });
+
+      hoverTimeline.to({}, { duration: delayBetweenCycles });
+    };
+
+    autoHover();
+
+    return () => {
+      tl.kill();
+      gsap.globalTimeline.clear();
+    };
   }, []);
 
   const handleSectorClick = (index: number, link: string) => {
-    gsap.to(sectorRefs.current[index], {
+    gsap.to(sectorRefs.current[index]?.querySelector("path"), {
       scale: 1.1,
       opacity: 1,
       duration: 0.3,
       ease: "elastic.out(1, 0.3)",
+      transformOrigin: "50% 50%",
     });
 
     setTimeout(() => navigate(link), 300);
@@ -233,10 +278,16 @@ const CircleModal: React.FC = () => {
   const handleMouseEnter = (index: number) => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
-        scale: 1.09, // Slight zoom on the path only
+        scale: 1.08,
+        fill: "rgba(29, 78, 216, 0.9)", // Darker blue on hover
         duration: 0.3,
         ease: "power2.out",
-        transformOrigin: "50% 50%", // Ensures scaling doesn’t misalign
+        transformOrigin: "50% 50%",
+      });
+      gsap.to(sectorRefs.current[index]?.querySelectorAll("text tspan"), {
+        fill: "#E0E7FF",
+        duration: 0.3,
+        ease: "power2.out",
       });
     }
   };
@@ -244,10 +295,16 @@ const CircleModal: React.FC = () => {
   const handleMouseLeave = (index: number) => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
-        scale: 1, // Restore original scale
+        scale: 1,
+        fill: "rgba(23, 37, 84, 0.9)", // Darker base blue
         duration: 0.3,
         ease: "power2.inOut",
         transformOrigin: "50% 50%",
+      });
+      gsap.to(sectorRefs.current[index]?.querySelectorAll("text tspan"), {
+        fill: "#D1D5DB",
+        duration: 0.3,
+        ease: "power2.inOut",
       });
     }
   };
@@ -255,16 +312,38 @@ const CircleModal: React.FC = () => {
   return (
     <div
       className="circle-modal"
-      style={{ position: "relative", width: "100%", textAlign: "center", paddingTop: "80px" }}
+      style={{
+        position: "relative",
+        width: "100%",
+        textAlign: "center",
+        paddingTop: "5px",
+        marginTop: "-50px",
+        marginLeft: "-80px",
+      }}
     >
-      <svg width="100%" height="auto" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
-        <circle cx={centerX} cy={centerY} r={innerRadius - 10} fill="#000" />
-        <text x={centerX} y={centerY + 5} textAnchor="middle" fill="white" fontSize="20px" fontWeight="bold">
+      <svg width="100%" height="600px" viewBox="0 0 610 610" preserveAspectRatio="xMidYMid meet">
+        <circle
+          cx={centerX}
+          cy={centerY}
+          r={innerRadius - 15}
+          fill="#1E1B4B" // Darker blue for inner circle
+          stroke="rgba(29, 78, 216, 0.3)" // Darker blue stroke
+          strokeWidth="2"
+        />
+        <text
+          x={centerX}
+          y={centerY + 8}
+          textAnchor="middle"
+          fill="#93C5FD" // Slightly lighter blue for contrast
+          fontSize="32px"
+          fontWeight="bold"
+          style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)" }}
+        >
           UIPS
         </text>
 
         <g className="sectors-group">
-          {SECTORS.map((sector, index) => {
+          {visibleSectors.map((sector, index) => {
             const start = index * (sectorAngle + gapAngle);
             const end = start + sectorAngle;
 
@@ -280,12 +359,12 @@ const CircleModal: React.FC = () => {
 
             const textX =
               centerX +
-              (innerRadius + (outerRadius - innerRadius) / 2) *
-                Math.cos(((start + end) / 2) * Math.PI / 180);
+              (innerRadius + (outerRadius - innerRadius) * 0.6) *
+              Math.cos(((start + end) / 2) * Math.PI / 180);
             const textY =
               centerY +
-              (innerRadius + (outerRadius - innerRadius) / 2) *
-                Math.sin(((start + end) / 2) * Math.PI / 180);
+              (innerRadius + (outerRadius - innerRadius) * 0.6) *
+              Math.sin(((start + end) / 2) * Math.PI / 180);
 
             return (
               <g
@@ -302,21 +381,22 @@ const CircleModal: React.FC = () => {
                       A ${outerRadius},${outerRadius} 0 0,1 ${x2},${y2} 
                       L ${xInner2},${yInner2} 
                       A ${innerRadius},${innerRadius} 0 0,0 ${xInner1},${yInner1} Z`}
-                  fill="rgba(173, 216, 230, 0.5)" // Light blue transparent
-                  stroke="#000"
-                  strokeWidth="1.5"
+                  fill="rgba(23, 37, 84, 1.2)" // Darker blue for sectors
+                  stroke="#1E1B4B" // Darker blue stroke
+                  strokeWidth="2"
                 />
 
                 <text
                   x={textX}
-                  y={textY}
+                  y={textY - 5}
                   textAnchor="middle"
-                  fill="white"
-                  fontSize="12px"
-                  fontWeight="bold"
+                  fill="#D1D5DB"
+                  fontSize="20px"
+                  fontWeight="regular"
                   dominantBaseline="middle"
                 >
-                  {sector.label}
+                  <tspan x={textX} dy="-6">{sector.label.split(" ")[0]}</tspan>
+                  <tspan x={textX} dy="20">{sector.label.split(" ").slice(1).join(" ")}</tspan>
                 </text>
               </g>
             );
@@ -327,4 +407,4 @@ const CircleModal: React.FC = () => {
   );
 };
 
-export default CircleModal;
+export default CircleModel;

@@ -31,11 +31,36 @@ import About01 from './images/aboutus/Aboutus1.jpg';
 import About02 from './images/aboutus/about1.jpg';
 import About03 from './images/aboutus/about2.jpg';
 import About04 from './images/aboutus/about3.jpg';
+import AboutB from './images/aboutus/aboutban.jpg';
+import ab00 from './images/aboutus/ab2003.jpg';
+import ab01 from './images/aboutus/ab01.jpg';
+import ab02 from './images/aboutus/ab02.jpg';
+
+
 
 
 
 import banner from './images/banner/1 (1).jpg'
 import banner1 from './images/banner/1 (3).jpg'
+
+import civil from './images/division/civil.jpg';
+import it from './images/division/IT.jpg';
+import mechanical from './images/division/mechanical.jpg';
+import power from './images/division/power.jpg';
+import plant from './images/division/plant.jpg';
+import electrical from './images/division/electrical.jpg';
+
+
+
+import testimonial01 from './images/testimonial/testimonial.jpg';
+import testimonial02 from './images/testimonial/testimonial1.jpg';
+
+
+import fbanner1 from './images/footer/footer_banner.png'
+
+import p1 from './images/projects/p1.jpg'
+
+import bannerp from './images/projects/industrial.jpg';
 
 
 
@@ -78,11 +103,45 @@ export const AboutSectionImages = {
     About01,
     About02,
     About03,
-    About04
+    About04,
+    AboutB,
+    ab00,
+    ab01,
+    ab02
 }
 
 
 export const AboutBackground = {
     banner,
     banner1
+}
+
+export const Alldivisions = {
+    civil,
+    it,
+    electrical,
+    power,
+    plant,
+    mechanical
+}
+
+
+export const  testimonialpics = {
+    testimonial01,
+    testimonial02
+}
+
+
+export const footersbanner = {
+    fbanner1
+}
+
+
+export const allp = {
+    p1
+}
+
+
+export const projectbanner = {
+    bannerp
 }

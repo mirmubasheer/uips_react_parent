@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";  // Add the Link import for navigation
 
 // Tab labels
 const tabLabels = [
-  { label: 'Home', route: '/home' },
+  { label: 'Home', route: '/' },
   { label: 'Projects', route: '/projects' },
   { label: 'About', route: '/about' },
-  { label: 'Blog', route: '/blog' },
+  { label: 'Gallery', route: '/gallery' },
   { label: 'Contact', route: '/contact' },
 ];
 
@@ -57,7 +57,7 @@ const Header = () => {
         position="fixed"
         elevation={0}
         sx={{
-          background: isScrolled ? "rgba(255, 255, 255, 0.9)" : "transparent",
+          background: isScrolled ? "white" : "transparent",
           backdropFilter: isScrolled ? "none" : "blur(10px)",
           transition: "all 0.3s ease-in-out",
           boxShadow: "none",
@@ -344,4 +344,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header 

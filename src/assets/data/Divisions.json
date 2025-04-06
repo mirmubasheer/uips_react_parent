@@ -1,0 +1,33 @@
+[
+    {
+      "title": "Electrical Division",
+      "description": "UIPS is one of the Leading Electrical Contractor in Saudi Arabia which serves the Industrial, Commercial and Utility sector in the field of Power Generation, Transmission and Distribution.",
+      "image": "electrical"
+    },
+    {
+      "title": "IT & Security Division",
+      "description": "UIPS had launched a separate IT division that caters to the needs of its clients, specializing in Fiber Optic & Networking solutions. Our expertise has the skills and experience to handle any size.",
+      "image": "it"
+    },
+    {
+      "title": "Civil Division",
+      "description": "UIPS is involved in Construction of Industrial Buildings, Plants, Commercial & Residential Complex which include Site Development, Infrastructure and Utilities.",
+      "image": "civil"
+    },
+    {
+      "title": "Power Solutions",
+      "description": "Design, Construction, Testing & Commissioning of Power House using Generators & Turbines from 1 MW to 50 MW along with all protection & control gears.",
+      "image": "power"
+    },
+    {
+      "title": "Plant Shutdown",
+      "description": "UIPS is specialized in ARAMCO, SABIC, SEC and other basic industrial plant shutdowns in Electrical, Instrumentation and Mechanical divisions.",
+      "image": "plant"
+    },
+    {
+      "title": "Mechanical Division",
+      "description": "Supply, Installation, Testing and Commissioning of Motors / Pumps and Other Equipment’s, Process / Utility Piping Works, Steel Structure Works and Industrial HVAC Works.",
+      "image": "mechanical"
+    }
+  ]
+  
