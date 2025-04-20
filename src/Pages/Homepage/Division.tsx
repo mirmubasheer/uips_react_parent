@@ -131,7 +131,6 @@
 // export default DivisionPage;
 
 
-
 import React, { useEffect, useRef, memo, useState, useDeferredValue } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, Grid, Box, Skeleton } from '@mui/material';
@@ -178,8 +177,8 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '5rem',
-  fontWeight: 600,
+  fontSize: '2.5rem !important',
+  fontWeight: 400,
   letterSpacing: '0.8px',
   textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   color: '#A5B4FC',
@@ -189,6 +188,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
+// Preload first few images
 const preloadImages = (images: string[], count: number) => {
   images.slice(0, count).forEach((src) => {
     const link = document.createElement('link');
@@ -199,8 +199,9 @@ const preloadImages = (images: string[], count: number) => {
   });
 };
 
+// Skeleton Loader for Cards
 const CardSkeleton = () => (
-  <Grid item xs={12} sm={6} md={4} component="div">
+  <Grid item xs={12} sm={6} md={4}>
     <StyledCard>
       <Skeleton variant="rectangular" height={200} sx={{ bgcolor: '#2D3E66' }} />
       <StyledCardContent>
@@ -211,6 +212,7 @@ const CardSkeleton = () => (
   </Grid>
 );
 
+// Memoized Card Component
 const DivisionCard: React.FC<{
   division: Division;
   index: number;
@@ -241,7 +243,7 @@ const DivisionCard: React.FC<{
     }, [inView, shouldReduceMotion]);
 
     return (
-      <Grid item xs={12} sm={6} md={4} component="div" ref={ref}>
+      <Grid item xs={12} sm={6} md={4} ref={ref}>
         <StyledCard
           ref={cardRef}
           onClick={() => handleCardClick(division.title)}
@@ -268,7 +270,6 @@ const DivisionCard: React.FC<{
           <StyledCardContent>
             <Typography
               variant="h5"
-              component="h5"
               sx={{
                 fontWeight: 600,
                 color: '#A3BFFA',
@@ -281,7 +282,6 @@ const DivisionCard: React.FC<{
             </Typography>
             <Typography
               variant="body2"
-              component="p"
               sx={{
                 color: '#CBD5E1',
                 opacity: 0.9,
@@ -308,10 +308,12 @@ const DivisionCard: React.FC<{
 
 const DivisionPage: React.FC = () => {
   const navigate = useNavigate();
+  const shouldReduceMotion = useReducedMotion();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const deferredDivisions = useDeferredValue(divisions);
 
+  // Preload first 3 images and handle data loading
   useEffect(() => {
     try {
       const imageKeys = divisions.slice(0, 3).map((division) => Alldivisions[division.image]);
@@ -349,7 +351,6 @@ const DivisionPage: React.FC = () => {
       {error ? (
         <Typography
           variant="h6"
-          component="h6"
           align="center"
           sx={{ color: '#E0E7FF', mt: 4, opacity: 0.8 }}
         >
