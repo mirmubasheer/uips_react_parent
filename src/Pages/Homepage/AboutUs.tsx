@@ -1,173 +1,10 @@
-// import React, { useRef, useEffect } from "react";
-// import { Box, Typography, Grid } from "@mui/material";
-// import { motion } from "framer-motion";
-// import gsap from "gsap";
-// import { AboutSectionImages } from "../../assets";
-
-// const AboutUs: React.FC = () => {
-//   const imageRef = useRef<HTMLDivElement | null>(null); // Reference for image container
-//   const shineRef = useRef<HTMLDivElement | null>(null); // Reference for the shine effect
-
-//   // GSAP Shine Effect on Hover
-//   useEffect(() => {
-//     // Ensure both references are available
-//     if (imageRef.current && shineRef.current) {
-//       const shineEffect = gsap.timeline({ paused: true });
-
-//       shineEffect.fromTo(
-//         shineRef.current,
-//         { left: "-100%" }, // Start position (outside of container)
-//         {
-//           left: "100%", // End position (move to the right)
-//           duration: 0.6,
-//           ease: "power2.out",
-//         }
-//       );
-
-//       // Trigger the animation when hovering over the image
-//       const handleMouseEnter = () => {
-//         shineEffect.restart(); // Restart the animation every time the mouse enters
-//       };
-
-//       // Reverse the animation when the mouse leaves
-//       const handleMouseLeave = () => {
-//         shineEffect.reverse(); // Reverse the animation when the mouse leaves
-//       };
-
-//       // Attach events to image container
-//       const imageElement = imageRef.current;
-//       imageElement.addEventListener("mouseenter", handleMouseEnter);
-//       imageElement.addEventListener("mouseleave", handleMouseLeave);
-
-//       // Cleanup on component unmount
-//       return () => {
-//         imageElement.removeEventListener("mouseenter", handleMouseEnter);
-//         imageElement.removeEventListener("mouseleave", handleMouseLeave);
-//       };
-//     }
-//   }, []);
-
-//   return (
-//     <Box
-//       sx={{
-//         padding: "100px 0",
-//         backgroundColor: "#f3f4f6",
-//         px: { xs: 2, sm: 4, md: 6, lg: 8 },
-//       }}
-//     >
-//       <Grid container spacing={4} justifyContent="center">
-//         {/* Left Column: Content */}
-//         <Grid item xs={12} md={6}>
-//           <Box sx={{ textAlign: "left", padding: "20px", position: "relative" }}>
-//             <Typography
-//               variant="h3"
-//               sx={{
-//                 fontWeight: "bold",
-//                 color: "#25358d",
-//                 marginBottom: "20px",
-//                 fontSize: "2.5rem",
-//                 letterSpacing: "1px",
-//               }}
-//             >
-//               About Us
-//             </Typography>
-//             <Typography
-//               variant="body1"
-//               sx={{
-//                 color: "#1a2467",
-//                 lineHeight: "1.8",
-//                 fontSize: "1.1rem",
-//                 marginBottom: "20px",
-//               }}
-//             >
-//               We are a leading industrial company based in Saudi Arabia, offering
-//               innovative solutions for the construction and manufacturing sectors. Our
-//               mission is to provide cutting-edge technology to enhance the industrial
-//               landscape.
-//             </Typography>
-//             <Typography
-//               variant="body1"
-//               sx={{
-//                 color: "#1a2467",
-//                 lineHeight: "1.8",
-//                 fontSize: "1.1rem",
-//                 marginBottom: "20px",
-//               }}
-//             >
-//               With decades of experience, we pride ourselves on our commitment to
-//               quality, sustainability, and efficiency. Our team of experts works tirelessly
-//               to deliver excellence in every project we undertake.
-//             </Typography>
-//           </Box>
-//         </Grid>
-
-//         {/* Right Column: Image with GSAP Shine Effect */}
-//         <Grid item xs={12} md={6} display="flex" justifyContent="center" alignItems="center">
-//           <motion.div
-//             whileHover={{ scale: 1.05 }}
-//             transition={{ duration: 0.3 }}
-//             style={{
-//               position: "relative",
-//               overflow: "hidden",
-//               borderRadius: "20px 20px 20px 20px",
-//               width: "100%",
-//               maxWidth: "450px",
-//               boxShadow: "0 4px 8px rgba(0, 0, 0, 1.0)", // Add box shadow here
-//             }}
-            
-//             ref={imageRef} // Reference to image container
-//           >
-//             <Box
-//               sx={{
-//                 width: "100%",
-//                 height: "350px", // Set height for the image container
-//                 backgroundImage: `url(${AboutSectionImages.About01})`,
-//                 backgroundSize: "cover",
-//                 backgroundPosition: "center",
-//                 borderRadius: "20px 0 20px 20px",
-//                 position: "relative",
-//                 transition: "transform 0.3s ease",
-//               }}
-//             >
-//               {/* Shine Layer */}
-//               <Box
-//                 ref={shineRef}
-//                 sx={{
-//                   content: '""',
-//                   position: "absolute",
-//                   top: 0,
-//                   left: "-100%", // Start from outside of the container
-//                   width: "100%",
-//                   height: "100%",
-//                   background:
-//                     "linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%)",
-//                   transform: "translateX(-100%)",
-//                   transition: "transform 0.6s ease",
-//                 }}
-//                 className="shine"
-//               />
-//             </Box>
-//           </motion.div>
-//         </Grid>
-//       </Grid>
-//     </Box>
-//   );
-// };
-
-// export default AboutUs;
-
-
-
-// AboutUs.tsx
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, memo } from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import data from "../../assets/data/About.json"; // Import JSON data
-import { AboutSectionImages } from "../../assets/"; // Import images
-
-gsap.registerPlugin(ScrollTrigger);
+import { useInView } from "react-intersection-observer";
+import { useReducedMotion } from "framer-motion";
+import aboutData from "../../assets/data/about";
+import { AboutSectionImages } from "../../assets";
 
 type SectionType = {
   title: string;
@@ -176,175 +13,187 @@ type SectionType = {
 };
 
 const generateBackgroundColor = (index: number, total: number) => {
-  // Dark blue shade gradient: from deep navy to lighter navy
-  const baseHue = 220; // Blue hue
-  const saturation = 70; // Strong saturation for richness
-  const lightnessStart = 15; // Dark base
-  const lightnessEnd = 35; // Lighter end
+  const baseHue = 220;
+  const saturation = 70;
+  const lightnessStart = 15;
+  const lightnessEnd = 35;
   const lightness = lightnessStart + (index / (total - 1)) * (lightnessEnd - lightnessStart);
   return `linear-gradient(135deg, hsl(${baseHue}, ${saturation}%, ${lightnessStart}%) 0%, hsl(${baseHue}, ${saturation}%, ${lightness}%) 100%)`;
 };
 
+// Preload first image
+const preloadImages = (images: string[], count: number) => {
+  images.slice(0, count).forEach((src) => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = src;
+    document.head.appendChild(link);
+  });
+};
+
+const AboutSection: React.FC<{ section: SectionType; index: number; total: number }> = memo(
+  ({ section, index, total }) => {
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+    const shouldReduceMotion = useReducedMotion();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+    return (
+      <Box
+        ref={ref}
+        sx={{
+          minHeight: "100vh",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: generateBackgroundColor(index, total),
+          padding: { xs: "20px", md: "40px" },
+          scrollSnapAlign: "start",
+          opacity: inView ? 1 : 0,
+          transition: shouldReduceMotion ? "none" : "opacity 0.5s ease",
+        }}
+      >
+        {inView && (
+          <motion.div
+            whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+              maxWidth: "1000px",
+              textAlign: isMobile ? "center" : "left",
+            }}
+          >
+            <Box sx={{ flex: 1, pr: isMobile ? 0 : 4, mb: isMobile ? 3 : 0 }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: "bold",
+                  color: "#A5B4FC",
+                  fontSize: { xs: "24px", md: "32px" },
+                  textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
+                }}
+              >
+                {section.title}
+              </Typography>
+              {section.content.map((paragraph, idx) => (
+                <Typography
+                  key={idx}
+                  variant="body1"
+                  sx={{
+                    mt: 2,
+                    color: "#D1D5DB",
+                    fontSize: { xs: "14px", md: "20px" },
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {paragraph}
+                </Typography>
+              ))}
+            </Box>
+            <Box
+              sx={{
+                flex: 1,
+                width: isMobile ? "100%" : "400px",
+                height: isMobile ? "250px" : "300px",
+                display: "flex",
+                justifyContent: "center",
+                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              <img
+                src={AboutSectionImages[section.image]}
+                alt={section.title}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "15px",
+                  filter: "brightness(0.9) contrast(1.1)",
+                }}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </Box>
+          </motion.div>
+        )}
+      </Box>
+    );
+  },
+  (prevProps, nextProps) =>
+    prevProps.section.title === nextProps.section.title &&
+    prevProps.index === nextProps.index &&
+    prevProps.total === nextProps.total
+);
+
 const AboutUs: React.FC = () => {
   const [sections, setSections] = useState<SectionType[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Check for mobile screen
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
-    setSections(data);
+    setSections(aboutData);
+    // Preload first image
+    const imageKeys = aboutData.length > 0 ? [AboutSectionImages[aboutData[0].image]] : [];
+    preloadImages(imageKeys, 1);
+    return () => {
+      const links = document.querySelectorAll('link[rel="preload"][as="image"]');
+      links.forEach((link) => link.remove());
+    };
   }, []);
-
-  useEffect(() => {
-    if (!isMobile && containerRef.current && scrollContainerRef.current && sections.length > 1) {
-      const totalWidth = sections.length * window.innerWidth;
-
-      gsap.to(scrollContainerRef.current, {
-        x: () => -totalWidth + window.innerWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: () => `+=${totalWidth}`,
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-          snap: {
-            snapTo: (progress) => {
-              const snapPoints = sections.map((_, i) => i / (sections.length - 1));
-              return snapPoints.reduce((prev, curr) =>
-                Math.abs(curr - progress) < Math.abs(prev - progress) ? curr : prev
-              );
-            },
-            duration: 0.6,
-            delay: 0.1,
-            ease: "power3.out",
-          },
-        },
-      });
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
-    }
-  }, [sections, isMobile]);
 
   return (
     <Box
       ref={containerRef}
       sx={{
-        height: "100vh",
-        width: "100vw",
-        overflow: "hidden",
-        background: '#0F172A', // Dark slate base for the container
+        minHeight: "100vh",
+        width: "100%",
+        background: "#0F172A",
+        display: "flex",
+        flexDirection: "column",
+        scrollSnapType: isMobile ? "y mandatory" : "y proximity",
+        overflowY: "auto",
+        overflowX: "hidden",
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        position: "relative",
+        zIndex: 3, // Match HomePage zIndex
       }}
     >
-      <Box
-        ref={scrollContainerRef}
-        sx={{
-          display: "flex",
-          flexDirection: isMobile ? "column" : "row",
-          width: isMobile ? "100%" : `${sections.length * 100}vw`,
-          height: "100vh",
-          scrollSnapType: isMobile ? "y mandatory" : "x mandatory",
-          overflowX: isMobile ? "visible" : "auto",
-          overflowY: isMobile ? "auto" : "hidden",
-          scrollbarWidth: "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-        }}
-      >
-        {sections.map((section, index) => (
-          <Box
-            key={index}
-            sx={{
-              flex: isMobile ? "0 0 auto" : "0 0 100vw",
-              height: isMobile ? "auto" : "100vh",
-              minHeight: isMobile ? "100vh" : "auto",
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              justifyContent: "center",
-              alignItems: "center",
-              background: generateBackgroundColor(index, sections.length), // Dynamic dark blue gradient
-              scrollSnapAlign: isMobile ? "start" : "center",
-              padding: isMobile ? "20px" : "0",
-              borderRight: !isMobile && index < sections.length - 1 ? '1px solid rgba(59, 130, 246, 0.2)' : 'none', // Subtle divider
-            }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                display: "flex",
-                flexDirection: isMobile ? "column" : "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                maxWidth: "1000px",
-                textAlign: isMobile ? "center" : "left",
-              }}
-            >
-              {/* Left Side: Content */}
-              <Box sx={{ flex: 1, pr: isMobile ? 0 : 4, mb: isMobile ? 3 : 0 }}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: "bold",
-                    color: '#A5B4FC', // Soft indigo for titles
-                    fontSize: isMobile ? "24px" : "32px",
-                    textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)', // Subtle shadow
-                  }}
-                >
-                  {section.title}
-                </Typography>
-                {section.content.map((paragraph, idx) => (
-                  <Typography
-                    key={idx}
-                    variant="body1"
-                    sx={{
-                      mt: 2,
-                      color: '#D1D5DB', // Light gray for content
-                      fontSize: isMobile ? "14px" : "16px",
-                      lineHeight: 1.6,
-                    }}
-                  >
-                    {paragraph}
-                  </Typography>
-                ))}
-              </Box>
-
-              {/* Right Side: Image (Responsive for Mobile) */}
-              <Box
-                sx={{
-                  flex: 1,
-                  width: isMobile ? "100%" : "400px",
-                  height: isMobile ? "250px" : "300px",
-                  display: "flex",
-                  justifyContent: "center",
-                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)', // Subtle image shadow
-                }}
-              >
-                <img
-                  src={AboutSectionImages[section.image]}
-                  alt={section.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    borderRadius: "15px",
-                    filter: 'brightness(0.9) contrast(1.1)', // Enhance image slightly
-                  }}
-                />
-              </Box>
-            </motion.div>
-          </Box>
-        ))}
-      </Box>
+      {sections.length > 0 ? (
+        sections.map((section, index) => (
+          <AboutSection
+            key={section.title}
+            section={section}
+            index={index}
+            total={sections.length}
+          />
+        ))
+      ) : (
+        <Box
+          sx={{
+            minHeight: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#0F172A",
+          }}
+        >
+          <Typography variant="h6" sx={{ color: "#D1D5DB" }}>
+            No sections available
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
 
-export default AboutUs;
+export default memo(AboutUs);

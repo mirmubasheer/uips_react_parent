@@ -169,7 +169,6 @@
 // };
 
 // export default CircleModal;
-
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";

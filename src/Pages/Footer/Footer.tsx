@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, Container, Grid, Link } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import footerBanner from "../../assets/images/footer/banner.jpg";
+import footerBanner from "../../assets/images/footer/banner.webp";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";

@@ -1,47 +1,73 @@
 import { useState, useEffect } from "react";
-import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, Button, Divider, ListItemText, ListItemButton, Box, useMediaQuery, useTheme, Stack } from "@mui/material";
-import { Menu } from "lucide-react";
+import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, Button, Divider, ListItemText, ListItemButton, Box, useMediaQuery, useTheme, Stack, Menu, MenuItem, Collapse } from "@mui/material";
+import { Menu as MenuIcon } from "lucide-react";
 import { uipslogo } from "../assets";
-import TopHeader from "../components/TopHeader/TopHeader"; // Import the TopHeader component
+import TopHeader from "../components/TopHeader/TopHeader";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from "react-router-dom";  // Add the Link import for navigation
+import { Link } from "react-router-dom";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 // Tab labels
 const tabLabels = [
-  { label: 'Home', route: '/' },
-  { label: 'Projects', route: '/projects' },
-  { label: 'About', route: '/about' },
-  { label: 'Gallery', route: '/gallery' },
-  { label: 'Contact', route: '/contact' },
+  { label: "Home", route: "/" },
+  { label: "Major Division" },
+  { label: "About", route: "/about" },
+  { label: "Gallery", route: "/gallery" },
+  { label: "Careers", route: "/career" },
+  { label: "Contact", route: "/contact" },
+];
+
+// Dropdown menu items for Major Division with updated slugs
+const divisionItems = [
+  { label: "Civil Division", route: "/civil" },
+  { label: "Plant Shutdowns/Turnarounds", route: "/shutdowns" },
+  { label: "Instrumentation", route: "/instrumentation" },
+  { label: "Power", route: "/power" },
+  { label: "Electrical Division", route: "/electrical" },
+  { label: "IT Division", route: "/it" },
+  { label: "Mechanical Division", route: "/mechanical" },
 ];
 
 const Header = () => {
-  const [open, setOpen] = useState(false);  // For mobile view drawer
   const [isScrolled, setIsScrolled] = useState(false);
   const [isTopHeaderVisible, setIsTopHeaderVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  const [detailsDrawerOpen, setDetailsDrawerOpen] = useState(false);  // For desktop view drawer
-  const theme = useTheme();
+  const [detailsDrawerOpen, setDetailsDrawerOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Check if the view is mobile or desktop
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  // Toggle Drawer for details (desktop only)
   const handleDetailsDrawerToggle = () => {
     setDetailsDrawerOpen(!detailsDrawerOpen);
   };
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
+    if (!drawerOpen) setMobileMenuOpen(false);
   };
 
-  // Handle scroll event
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      setIsTopHeaderVisible(window.scrollY <= 50); // Hide TopHeader when scrolled down
+      setIsTopHeaderVisible(window.scrollY <= 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -50,9 +76,6 @@ const Header = () => {
 
   return (
     <Box>
-      {/* Add TopHeader component here */}
-      {/* {isTopHeaderVisible && <TopHeader />} */}
-
       <AppBar
         position="fixed"
         elevation={0}
@@ -61,149 +84,231 @@ const Header = () => {
           backdropFilter: isScrolled ? "none" : "blur(10px)",
           transition: "all 0.3s ease-in-out",
           boxShadow: "none",
-          marginTop: isTopHeaderVisible ? "0px" : "0", // Adjust for the visibility of TopHeader
+          marginTop: isTopHeaderVisible ? "0px" : "0",
+          width: '100%',
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Toolbar sx={{ 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center",
+          px: { xs: 1, sm: 2, md: 3 },
+          maxWidth: '1300px',
+          width: '100%',
+          mx: 'auto',
+        }}>
+          {/* Logo on the left with no gap */}
           <Box
             component="img"
             src={uipslogo.logo01}
             alt="UIP Logo"
             sx={{
-              height: 50,
+              height: { xs: 40, md: 50 },
               width: "auto",
               filter: isScrolled ? "invert(0)" : "invert(2)",
               transition: "filter 0.3s ease",
+              flexShrink: 0,
+              ml: { xs: 0, md: 0 }, // Remove left margin
             }}
           />
-   <List sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-      {tabLabels.map((tab, index) => (
-        <ListItem key={index} component={Link} to={tab.route} sx={{ padding: 0 }}>
-          <ListItemButton
-            sx={{
-              color: isScrolled ? "#000" : "#fff", // Default color is white, black when scrolled
-              fontWeight: 300,
-              transition: "color 0.3s ease",
-              "&:hover": { color: "#00bcd4" },
-            }}
-          >
-       <Typography
-            variant="body1"
-            sx={{
-              fontWeight: 400, // Less font weight
-              fontSize: "18px", // Reduced font size
-              color: isScrolled ? "#000" : "#fff", // Default white, black when scrolled
-              transition: "color 0.3s ease",
-              fontFamily: "'Kanit', sans-serif", // Ensuring 'Kanit' is used
-            }}
-          >
-            {tab.label}
-          </Typography>
+          
+          {/* Navigation List centered with more spacing */}
+          <List sx={{ 
+            display: { xs: "none", md: "flex" }, 
+            gap: { md: 3, lg: 4 }, // Increased gap for more spacing between tabs
+            flexGrow: 1,
+            justifyContent: 'center',
+            mx: { md: 2, lg: 3 },
+            overflow: 'hidden',
+          }}>
+            {tabLabels.map((tab, index) => (
+              <ListItem 
+                key={index} 
+                sx={{ 
+                  padding: 0, 
+                  width: 'auto', 
+                  flexShrink: 0,
+                }}
+              >
+                {tab.label === 'Major Division' ? (
+                  <Box
+                    onMouseEnter={handleMenuOpen}
+                    onMouseLeave={handleMenuClose}
+                  >
+                    <ListItemButton
+                      sx={{
+                        color: isScrolled ? "#000" : "#fff",
+                        fontWeight: 300,
+                        transition: "color 0.3s ease",
+                        "&:hover": { color: "#00bcd4" },
+                        display: 'flex',
+                        alignItems: 'center',
+                        px: { md: 0.5, lg: 0.75 },
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: 400,
+                          fontSize: { md: "14px", lg: "16px" },
+                          color: isScrolled ? "#000" : "#fff",
+                          transition: "color 0.3s ease",
+                          fontFamily: "'Kanit', sans-serif",
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {tab.label}
+                      </Typography>
+                      <ArrowDropDownIcon sx={{ 
+                        color: isScrolled ? "#000" : "#fff",
+                        fontSize: { md: "18px", lg: "20px" },
+                      }} />
+                    </ListItemButton>
+                    <Menu
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={handleMenuClose}
+                      MenuListProps={{
+                        onMouseLeave: handleMenuClose, // Close when leaving dropdown
+                      }}
+                      PaperProps={{
+                        sx: {
+                          backgroundColor: '#fff',
+                          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                          minWidth: 180,
+                        },
+                      }}
+                    >
+                      {divisionItems.map((item, idx) => (
+                        <MenuItem
+                          key={idx}
+                          component={Link}
+                          to={item.route}
+                          onClick={handleMenuClose}
+                          sx={{
+                            color: '#1C276C',
+                            fontSize: "13px",
+                            fontFamily: "'Kanit', sans-serif",
+                            '&:hover': {
+                              backgroundColor: '#f5f5f5',
+                              color: '#00bcd4',
+                            },
+                          }}
+                        >
+                          {item.label}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <ListItemButton
+                    component={Link}
+                    to={tab.route}
+                    sx={{
+                      color: isScrolled ? "#000" : "#fff",
+                      fontWeight: 300,
+                      transition: "color 0.3s ease",
+                      "&:hover": { color: "#00bcd4" },
+                      px: { md: 0.5, lg: 0.75 },
+                    }}
+                  >
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontWeight: 400,
+                        fontSize: { md: "14px", lg: "16px" },
+                        color: isScrolled ? "#000" : "#fff",
+                        transition: "color 0.3s ease",
+                        fontFamily: "'Kanit', sans-serif",
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {tab.label}
+                    </Typography>
+                  </ListItemButton>
+                )}
+              </ListItem>
+            ))}
+          </List>
 
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+          {/* Right side: Download Brochure Button and Menu Icon */}
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: { md: 1, lg: 1.5 },
+            flexShrink: 0,
+          }}>
+            {!isMobile && (
+              <Button
+                variant="contained"
+                sx={{
+                  display: { xs: "none", md: "block" },
+                  background: "linear-gradient(90deg, #25358d, #1a2467)",
+                  borderRadius: "15px",
+                  boxShadow: "0px 3px 10px rgba(37, 53, 141, 0.5)",
+                  px: { md: 1, lg: 1.5 },
+                  py: { md: 0.3, lg: 0.4 },
+                  fontSize: { md: "0.7rem", lg: "0.8rem" },
+                  fontWeight: "bold",
+                  "&:hover": {
+                    background: "linear-gradient(90deg, #0088cc, #00bcd4)",
+                    boxShadow: "0px 5px 12px rgba(37, 53, 141, 0.7)",
+                  },
+                  whiteSpace: 'nowrap',
+                  minWidth: { md: '110px', lg: '130px' },
+                }}
+              >
+                DOWNLOAD BROCHURE
+              </Button>
+            )}
 
-          {/* Quote Button */}
-          {!isMobile && (
-           <Button
-           variant="contained"
-           sx={{
-             display: { xs: "none", md: "block" },
-             background: "linear-gradient(90deg, #25358d, #1a2467)",
-             borderRadius: "15px", // Reduced from 20px to 15px
-             boxShadow: "0px 3px 10px rgba(37, 53, 141, 0.5)", // Slightly lighter shadow
-             px: 2, // Reduced horizontal padding (was 3)
-             py: 0.5, // Reduced vertical padding (was 1)
-             fontSize: "0.85rem", // Slightly smaller text
-             fontWeight: "bold",
-             "&:hover": {
-               background: "linear-gradient(90deg, #0088cc, #00bcd4)",
-               boxShadow: "0px 5px 12px rgba(37, 53, 141, 0.7)",
-             },
-           }}
-         >
-           DOWNLOAD BROCHURE
-         </Button>
-         
-          )}
-
-          {/* Toggle Button for both mobile (main tabs) and desktop (details) */}
-          <IconButton
-            edge="start"
-            aria-label="menu"
-            onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
-            sx={{
-              color: '#000000',
-              '&:hover': {
-                color: '#1C276C',
-                transition: 'all 0.3s ease',
-              },
-            }}
-          >
-            <div
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                cursor: 'pointer',
+            <IconButton
+              edge="end"
+              aria-label="menu"
+              onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
+              sx={{
+                color: '#000000',
+                '&:hover': {
+                  color: '#1C276C',
+                  transition: 'all 0.3s ease',
+                },
               }}
             >
-              {/* Top Line */}
               <div
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
                 style={{
-                  width: '30px',
-                  height: '2px',
-                  backgroundColor: isScrolled ? '#000000' : '#FFFFFF',
-                  margin: '3px 0',
-                  transition: 'width 0.3s ease-in-out',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  cursor: 'pointer',
                 }}
-              />
-              
-              {/* Middle Line (expands on hover) */}
-              <div
-                style={{
-                  width: isHovered ? '30px' : '20px',
-                  height: '2px',
-                  backgroundColor: isScrolled ? '#000000' : '#FFFFFF',
-                  margin: '3px 0',
-                  transition: 'width 0.3s ease-in-out',
-                }}
-              />
-              
-              {/* Bottom Line */}
-              <div
-                style={{
-                  width: '30px',
-                  height: '2px',
-                  backgroundColor: isScrolled ? '#000000' : '#FFFFFF',
-                  margin: '3px 0',
-                  transition: 'width 0.3s ease-in-out',
-                }}
-              />
-            </div>
-          </IconButton>
+              >
+                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+                <div style={{ width: isHovered ? '25px' : '18px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+              </div>
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
 
-          {/* Desktop Details Drawer */}
-          <Drawer
-            anchor="right"
-            open={detailsDrawerOpen}
-            onClose={handleDetailsDrawerToggle}
-            sx={{
-              display: { xs: 'none', md: 'block' },
-              '& .MuiDrawer-paper': {
-                width: 320,
-                backgroundColor: (theme) => theme.palette.background.default,
-                border: 'none',
-                boxSizing: 'border-box',
-              },
-            }}
-          >
-            <Box sx={{ width: 270, p: 2, display: 'flex', flexDirection: 'column', height: '100%', overflow: "hidden" }}>
+      <Drawer
+        anchor="right"
+        open={detailsDrawerOpen}
+        onClose={handleDetailsDrawerToggle}
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          '& .MuiDrawer-paper': {
+            width: { md: 300, lg: 320 },
+            backgroundColor: (theme) => theme.palette.background.default,
+            border: 'none',
+            boxSizing: 'border-box',
+          },
+        }}
+      >
+      <Box sx={{ width: 270, p: 2, display: 'flex', flexDirection: 'column', height: '100%', overflow: "hidden" }}>
               {/* Logo and Close Button */}
               <Box
                 sx={{
@@ -290,58 +395,89 @@ const Header = () => {
                 ></iframe>
               </Box>
             </Box>
-          </Drawer>
+      </Drawer>
 
-          {/* Mobile Drawer */}
-          <Drawer
-            anchor="left"
-            open={drawerOpen}
-            onClose={handleDrawerToggle}
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={handleDrawerToggle}
+      >
+        <Box
+          sx={{
+            width: 250,
+            padding: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'left',
+            background: '#fff',
+            height: '100%',
+          }}
+        >
+          <List>
+            {tabLabels.map((tab, index) => (
+              <Box key={index}>
+                {tab.label === 'Major Division' ? (
+                  <>
+                    <ListItemButton 
+                      onClick={handleMobileMenuToggle}
+                      sx={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between',
+                        color: '#1C276C',
+                      }}
+                    >
+                      <ListItemText primary={tab.label} />
+                      {mobileMenuOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                    </ListItemButton>
+                    <Collapse in={mobileMenuOpen} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding>
+                        {divisionItems.map((item, idx) => (
+                          <ListItemButton 
+                            key={idx}
+                            component={Link}
+                            to={item.route}
+                            onClick={handleDrawerToggle}
+                            sx={{ pl: 4, color: '#1C276C' }}
+                          >
+                            <ListItemText primary={item.label} />
+                          </ListItemButton>
+                        ))}
+                      </List>
+                    </Collapse>
+                  </>
+                ) : (
+                  <ListItemButton 
+                    component={Link}
+                    to={tab.route}
+                    onClick={handleDrawerToggle}
+                    sx={{ color: '#1C276C' }}
+                  >
+                    <ListItemText primary={tab.label} />
+                  </ListItemButton>
+                )}
+              </Box>
+            ))}
+          </List>
+          <Divider />
+          <Button
+            variant="contained"
+            sx={{
+              marginTop: '20px',
+              background: "linear-gradient(90deg, #25358d, #1a2467)",
+              borderRadius: "20px",
+              boxShadow: "0px 4px 12px rgba(37, 53, 141, 0.6)",
+              "&:hover": {
+                background: "linear-gradient(90deg, #0088cc, #00bcd4)",
+              },
+            }}
+            onClick={() => window.open('/brochure.pdf', '_blank')}
           >
-            <Box
-              sx={{
-                width: 250,
-                padding: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'left',
-                background: '#fff',
-                height: '100%',
-              }}
-            >
-              <List>
-                {tabLabels.map((tab, index) => (
-                  <ListItem key={index} onClick={handleDrawerToggle}>
-                    <Link to={tab.route} style={{ textDecoration: 'none', color: '#1C276C' }}>
-                      <ListItemButton>{tab.label}</ListItemButton>
-                    </Link>
-                  </ListItem>
-                ))}
-              </List>
-
-              <Divider />
-
-              <Button
-                variant="contained"
-                sx={{
-                  marginTop: '20px',
-                  background: "linear-gradient(90deg, #25358d, #1a2467)",
-                  borderRadius: "20px",
-                  boxShadow: "0px 4px 12px rgba(37, 53, 141, 0.6)",
-                  "&:hover": {
-                    background: "linear-gradient(90deg, #0088cc, #00bcd4)",
-                  },
-                }}
-                onClick={() => window.open('/brochure.pdf', '_blank')}
-              >
-                DOWNLOAD BROCHURE
-              </Button>
-            </Box>
-          </Drawer>
-        </Toolbar>
-      </AppBar>
+            DOWNLOAD BROCHURE
+          </Button>
+        </Box>
+      </Drawer>
     </Box>
   );
 };
 
-export default Header 
+export default Header;

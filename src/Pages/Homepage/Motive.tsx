@@ -12,17 +12,17 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 const motivesData = [
   {
     title: 'Mission',
-    description: 'Our mission is to develop a beautiful planet and give the best to human beings.',
+    description: 'Our mission is to develop a beautiful planet and give the best to human beings. We have built a worldwide rappo with the leading companies in same field and has further enhanced our business by developing contacts in worldwide.',
     icon: <CheckCircleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
   },
   {
     title: 'Our Beliefs',
-    description: 'Achieve and maintain a leadership position in each of our fields of expertise.',
+    description: 'Achieve and maintain a leadership position in each of our fields of expertise. We believe patience is the key of success and nothing can failure if you work hard definitely success will be the aspiration. Respect for individuals people are our greatest assets',
     icon: <VpnKeyIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
   },
   {
     title: 'Commitments',
-    description: 'We conduct business with respect and care for the environment in which we operate.',
+    description: 'We conduct business with respect and care for the environment in which we operate. We are committed to providing high-quality products and services that meet stakeholders’ expectations while ensuring that our operations are safe and reliable.',
     icon: <ChatBubbleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
   },
 ];
