@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useReducedMotion } from "framer-motion";
-import aboutData from "../../assets/data/about";
+import aboutData from "../../assets/data/About";
 import { AboutSectionImages } from "../../assets";
 
 type SectionType = {
