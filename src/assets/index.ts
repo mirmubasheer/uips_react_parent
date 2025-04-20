@@ -17,24 +17,33 @@ import client2 from './images/clientlogos/2.webp';
 import client3 from './images/clientlogos/3.webp';
 import client4 from './images/clientlogos/4.webp';
 import client5 from './images/clientlogos/5.webp';
+import client19 from './images/clientlogos/19.webp';
 import client6 from './images/clientlogos/6.webp';
 import client7 from './images/clientlogos/7.webp';
+import client20 from './images/clientlogos/worley.webp';
 import client8 from './images/clientlogos/8.webp';
 import client9 from './images/clientlogos/9.webp';
+import client22 from './images/clientlogos/imi.webp';
 import client10 from './images/clientlogos/10.webp';
 import client11 from './images/clientlogos/11.webp';
 import client12 from './images/clientlogos/12.webp';
 import client13 from './images/clientlogos/13.webp';
 import client14 from './images/clientlogos/14.webp';
+import client21 from './images/clientlogos/l&t.webp';
+
+import client23 from './images/clientlogos/sdc.webp';
 import client16 from './images/clientlogos/16.webp';
 import client17 from './images/clientlogos/17.webp';
 import client18 from './images/clientlogos/18.webp';
-import client19 from './images/clientlogos/19.webp';
-import client20 from './images/clientlogos/worley.webp';
-import client21 from './images/clientlogos/l&t.webp';
-import client22 from './images/clientlogos/imi.webp';
-import client23 from './images/clientlogos/sdc.webp';
 import client24 from './images/clientlogos/eaton.webp';
+
+// import client10 from './images/clientlogos/20.webp';
+// import client11 from './images/clientlogos/21.webp';
+// import client12 from './images/clientlogos/22.webp';
+// import client13 from './images/clientlogos/23.webp';
+// import client14 from './images/clientlogos/24.webp';
+
+// import client20 from './images/clientlogos/11.webp';
 
 // About section images
 import About01 from './images/aboutus/Aboutus1.webp';
@@ -430,7 +439,7 @@ interface ProjectImages {
   [key: string]: string[];
 }
 
-interface ClientLogos extends Array<string> {}
+type ClientLogos = Array<string>
 
 // Hero section images
 export const herosectionimages: ImageObject = {
@@ -446,8 +455,7 @@ export const uipslogo: ImageObject = {
   logo01,
 };
 
-// Client logos
-export const clientlogos: ClientLogos = [
+export const clientlogos = [
   client1,
   client2,
   client3,
@@ -455,22 +463,25 @@ export const clientlogos: ClientLogos = [
   client5,
   client6,
   client7,
+  client10,
   client8,
   client9,
-  client10,
+  client20,
   client11,
+  client19,
   client12,
   client13,
   client14,
-  client16,
-  client17,
-  client18,
-  client19,
-  client20,
   client21,
   client22,
   client23,
+
+  // client15,
+  client16,
+  client17,
+  client18,
   client24,
+
 ];
 
 // About section images

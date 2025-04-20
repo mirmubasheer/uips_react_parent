@@ -1032,32 +1032,306 @@
 
 
 
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { Box, Grid, Container, Typography } from "@mui/material";
-import { gsap } from "gsap";
-import ProjectCardComponent from "./Components/ProjectCard";
-import ListViewComponent from "./Components/ListViewComponent";
-import PaginationControls from "../../components/Pagination/PaginationControls";
-import FilterComponent from "./Components/FilterComponent";
-import DetailedDivision from "./Components/DetailedDivision";
+// import React, { useState, useEffect, useRef } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { Box, Grid, Container, Typography } from "@mui/material";
+// import { gsap } from "gsap";
+// import ProjectCardComponent from "./Components/ProjectCard";
+// import ListViewComponent from "./Components/ListViewComponent";
+// import PaginationControls from "../../components/Pagination/PaginationControls";
+// import FilterComponent from "./Components/FilterComponent";
+// import DetailedDivision from "./Components/DetailedDivision";
 
-// Types
-interface Project {
-  id: number;
-  slug: string;
-  projectname: string;
-  client: string;
-  location: string;
-  status: string;
-  images: any[]; // Changed from string[] to any[] to accept image modules
-  description: string;
-  monthyear: string;
-  duration: string;
-  povalue: string;
-  totalmanhour: string;
-  division: string;
-}
+// // Types
+// interface Project {
+//   id: number;
+//   slug: string;
+//   projectname: string;
+//   client: string;
+//   location: string;
+//   status: string;
+//   images: any[]; // Changed from string[] to any[] to accept image modules
+//   description: string;
+//   monthyear: string;
+//   duration: string;
+//   povalue: string;
+//   totalmanhour: string;
+//   division: string;
+// }
+
+// interface Division {
+//   name: string;
+//   description: string;
+//   clients: string[];
+//   img: string;
+//   projects: Project[];
+// }
+
+// interface ProjectFindAllProps {
+//   division?: string;
+// }
+
+// // Map route slugs to division names
+// const divisionMap: Record<string, string> = {
+//   civil: "Civil",
+//   shutdowns: "Shutdowns",
+//   instrumentation: "Instrumentation",
+//   power: "Power",
+//   electrical: "Electrical",
+//   it: "IT",
+//   mechanical: "Mechanical",
+// };
+
+// const ITEMS_PER_PAGE = 8;
+
+// const ProjectFindAll: React.FC<ProjectFindAllProps> = ({ division }) => {
+//   const navigate = useNavigate();
+//   const [filterStatus, setFilterStatus] = useState<"ALL" | "COMPLETED" | "ONGOING">("ALL");
+//   const [page, setPage] = useState(1);
+//   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+//   const [divisionData, setDivisionData] = useState<Division | null>(null);
+//   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+//   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+//   // Normalize division for lookup
+//   const normalizedDivision = division?.toLowerCase();
+//   const divisionName = normalizedDivision
+//     ? divisionMap[normalizedDivision] || "Projects"
+//     : "Projects";
+
+//   // Load division data
+//   useEffect(() => {
+//     const loadDivisionData = async () => {
+//       if (!normalizedDivision) {
+//         setDivisionData(null);
+//         return;
+//       }
+
+//       try {
+//         const module = await import(`../../assets/data/${normalizedDivision}.ts`);
+//         setDivisionData(module.default as Division);
+//       } catch (error) {
+//         console.error("Failed to load division data:", error);
+//         setDivisionData(null);
+//       }
+//     };
+
+//     loadDivisionData();
+//   }, [normalizedDivision]);
+
+//   // Filter projects when divisionData or filterStatus changes
+//   useEffect(() => {
+//     if (!divisionData) {
+//       setFilteredProjects([]);
+//       return;
+//     }
+
+//     const statusFiltered = divisionData.projects.filter((project) => {
+//       if (filterStatus === "ALL") return true;
+//       return project.status.toUpperCase().startsWith(filterStatus);
+//     });
+
+//     setFilteredProjects(statusFiltered);
+//     setPage(1); // Reset page when filters change
+//   }, [divisionData, filterStatus]);
+
+//   const paginatedProjects = filteredProjects.slice(
+//     (page - 1) * ITEMS_PER_PAGE,
+//     page * ITEMS_PER_PAGE
+//   );
+
+//   const pageCount = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+
+//   useEffect(() => {
+//     cardRefs.current = cardRefs.current.slice(0, paginatedProjects.length);
+//   }, [paginatedProjects]);
+
+//   useEffect(() => {
+//     if (viewMode === "grid") {
+//       cardRefs.current.forEach((el, index) => {
+//         if (el) {
+//           gsap.fromTo(
+//             el,
+//             { opacity: 0, y: 50 },
+//             {
+//               opacity: 1,
+//               y: 0,
+//               duration: 0.5,
+//               delay: index * 0.1,
+//               ease: "power2.out",
+//             }
+//           );
+//         }
+//       });
+//     }
+//   }, [paginatedProjects, viewMode]);
+
+//   const handleCardClick = (id: number) => {
+//     if (!Number.isFinite(id)) {
+//       console.error("Invalid project ID:", id);
+//       return;
+//     }
+//     // Include division slug in the URL
+//     navigate(`/${normalizedDivision}/project/${id}`, {
+//       state: { fromDivision: normalizedDivision },
+//     });
+//   };
+
+//   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+//     setPage(value);
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+//   };
+
+//   const handleFilterChange = (newFilteredProjects: Project[]) => {
+//     const statusFiltered = newFilteredProjects.filter((project) => {
+//       if (filterStatus === "ALL") return true;
+//       return project.status.toUpperCase().startsWith(filterStatus);
+//     });
+//     setFilteredProjects(statusFiltered);
+//     setPage(1);
+//   };
+
+//   const handleViewModeChange = (newViewMode: "grid" | "list" | null) => {
+//     if (newViewMode) {
+//       setViewMode(newViewMode);
+//       setPage(1);
+//     }
+//   };
+
+//   return (
+//     <Box
+//       sx={{
+//         background: "linear-gradient(to bottom, #0F1A33, #1E2A44)",
+//         minHeight: "100vh",
+//         py: { xs: 2, sm: 3, md: 4 },
+//       }}
+//     >
+//       <Container maxWidth="xl">
+//         {divisionData ? (
+//           <DetailedDivision division={divisionData} />
+//         ) : (
+//           <Typography
+//             variant="h6"
+//             sx={{
+//               color: "#f1f5f9",
+//               fontFamily: "'Kanit', sans-serif",
+//               textAlign: "center",
+//               my: 4,
+//             }}
+//           >
+//             Division not found
+//           </Typography>
+//         )}
+
+//         <FilterComponent
+//           projects={divisionData?.projects || []}
+//           onFilterChange={handleFilterChange}
+//           filterStatus={filterStatus}
+//           setFilterStatus={setFilterStatus}
+//           viewMode={viewMode}
+//           onViewModeChange={handleViewModeChange}
+//         />
+
+//         {filteredProjects.length === 0 ? (
+//           <Box
+//             sx={{
+//               display: "flex",
+//               justifyContent: "center",
+//               alignItems: "center",
+//               minHeight: "200px",
+//               mt: { xs: 2, sm: 3, md: 4 },
+//             }}
+//           >
+//             <Typography
+//               variant="h6"
+//               sx={{
+//                 color: "#f1f5f9",
+//                 fontFamily: "'Kanit', sans-serif",
+//                 fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
+//                 textAlign: "center",
+//               }}
+//             >
+//               No projects to display
+//             </Typography>
+//           </Box>
+//         ) : (
+//           <>
+//             {viewMode === "grid" ? (
+//               <Grid
+//                 container
+//                 spacing={{ xs: 2, sm: 3, md: 4 }}
+//                 justifyContent="center"
+//                 alignItems="stretch"
+//               >
+//                 {paginatedProjects.map((project, index) => (
+//                   <Grid
+//                     item
+//                     key={project.id}
+//                     xs={12}
+//                     sm={6}
+//                     md={4}
+//                     lg={3}
+//                   >
+//                     <Box
+//                       width="100%"
+//                       height="100%"
+//                       ref={(el) => (cardRefs.current[index] = el)}
+//                       sx={{
+//                         display: "flex",
+//                         flexDirection: "column",
+//                       }}
+//                     >
+//                       <ProjectCardComponent
+//                         project={project}
+//                         onClick={() => handleCardClick(project.id)}
+//                         cardRef={{ current: cardRefs.current[index] }}
+//                       />
+//                     </Box>
+//                   </Grid>
+//                 ))}
+//               </Grid>
+//             ) : (
+//               <ListViewComponent
+//                 projects={paginatedProjects}
+//                 onClick={handleCardClick}
+//               />
+//             )}
+
+//             {pageCount > 1 && (
+//               <Box
+//                 mt={{ xs: 2, sm: 3, md: 4 }}
+//                 display="flex"
+//                 justifyContent="center"
+//                 sx={{
+//                   px: { xs: 1, sm: 0 },
+//                 }}
+//               >
+//                 <PaginationControls
+//                   page={page}
+//                   count={pageCount}
+//                   onChange={handlePageChange}
+//                 />
+//               </Box>
+//             )}
+//           </>
+//         )}
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default ProjectFindAll;
+
+
+
+import React, { useEffect, useState, useRef } from 'react';
+import { Box, Container, Grid, Pagination } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import FilterComponent from './Components/FilterComponent';
+import ListViewComponent from './Components/ListViewComponent';
+import ProjectCardComponent from './Components/ProjectCard'; // Corrected path
+import DetailedDivision from './Components/DetailedDivision'; // Added import
+import { Project } from '../../types/projet'; // Fixed typo (projet → project)
 
 interface Division {
   name: string;
@@ -1067,257 +1341,137 @@ interface Division {
   projects: Project[];
 }
 
-interface ProjectFindAllProps {
+interface ProjectsFindAllProps {
   division?: string;
 }
 
-// Map route slugs to division names
-const divisionMap: Record<string, string> = {
-  civil: "Civil",
-  shutdowns: "Shutdowns",
-  instrumentation: "Instrumentation",
-  power: "Power",
-  electrical: "Electrical",
-  it: "IT",
-  mechanical: "Mechanical",
-};
-
-const ITEMS_PER_PAGE = 8;
-
-const ProjectFindAll: React.FC<ProjectFindAllProps> = ({ division }) => {
+const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
   const navigate = useNavigate();
-  const [filterStatus, setFilterStatus] = useState<"ALL" | "COMPLETED" | "ONGOING">("ALL");
-  const [page, setPage] = useState(1);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [divisionData, setDivisionData] = useState<Division | null>(null);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  const [paginatedProjects, setPaginatedProjects] = useState<Project[]>([]);
+  const [filterStatus, setFilterStatus] = useState<'ALL' | 'COMPLETED' | 'ONGOING'>('ALL');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [page, setPage] = useState(1);
+  const projectsPerPage = 6;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Normalize division for lookup
-  const normalizedDivision = division?.toLowerCase();
-  const divisionName = normalizedDivision
-    ? divisionMap[normalizedDivision] || "Projects"
-    : "Projects";
-
-  // Load division data
   useEffect(() => {
-    const loadDivisionData = async () => {
-      if (!normalizedDivision) {
-        setDivisionData(null);
-        return;
-      }
-
+    const loadData = async () => {
       try {
-        const module = await import(`../../assets/data/${normalizedDivision}.ts`);
-        setDivisionData(module.default as Division);
+        const module = await import(`../../assets/data/${division || 'all'}.ts`);
+        const data = module.default as Division;
+        const projects = data.projects.map((proj: any) => ({
+          id: proj.id,
+          slug: proj.slug,
+          projectname: proj.projectname,
+          client: proj.client,
+          location: proj.location,
+          status: proj.status,
+          image: proj.image || proj.images?.[0] || '',
+          images: proj.images || [],
+          description: proj.description || '',
+          monthyear: proj.monthyear || '',
+          duration: proj.duration || '',
+          povalue: proj.povalue || '',
+          totalmanhour: proj.totalmanhour || '',
+          division: proj.division || division || 'all',
+        }));
+        setDivisionData({
+          name: data.name || division || 'All',
+          description: data.description || 'No description available.',
+          clients: data.clients || [],
+          img: data.img || 'default-division.jpg',
+          projects,
+        });
+        setFilteredProjects(projects);
+        updatePaginatedProjects(projects, page);
       } catch (error) {
-        console.error("Failed to load division data:", error);
-        setDivisionData(null);
+        console.error(`Failed to load data for ${division}:`, error);
       }
     };
+    loadData();
+  }, [division]);
 
-    loadDivisionData();
-  }, [normalizedDivision]);
-
-  // Filter projects when divisionData or filterStatus changes
-  useEffect(() => {
-    if (!divisionData) {
-      setFilteredProjects([]);
-      return;
-    }
-
-    const statusFiltered = divisionData.projects.filter((project) => {
-      if (filterStatus === "ALL") return true;
-      return project.status.toUpperCase().startsWith(filterStatus);
-    });
-
-    setFilteredProjects(statusFiltered);
-    setPage(1); // Reset page when filters change
-  }, [divisionData, filterStatus]);
-
-  const paginatedProjects = filteredProjects.slice(
-    (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE
-  );
-
-  const pageCount = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
-
-  useEffect(() => {
-    cardRefs.current = cardRefs.current.slice(0, paginatedProjects.length);
-  }, [paginatedProjects]);
-
-  useEffect(() => {
-    if (viewMode === "grid") {
-      cardRefs.current.forEach((el, index) => {
-        if (el) {
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              delay: index * 0.1,
-              ease: "power2.out",
-            }
-          );
-        }
-      });
-    }
-  }, [paginatedProjects, viewMode]);
-
-  const handleCardClick = (id: number) => {
-    if (!Number.isFinite(id)) {
-      console.error("Invalid project ID:", id);
-      return;
-    }
-    // Include division slug in the URL
-    navigate(`/${normalizedDivision}/project/${id}`, {
-      state: { fromDivision: normalizedDivision },
-    });
-  };
-
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const updatePaginatedProjects = (projects: Project[], currentPage: number) => {
+    const startIndex = (currentPage - 1) * projectsPerPage;
+    const endIndex = startIndex + projectsPerPage;
+    setPaginatedProjects(projects.slice(startIndex, endIndex));
   };
 
   const handleFilterChange = (newFilteredProjects: Project[]) => {
-    const statusFiltered = newFilteredProjects.filter((project) => {
-      if (filterStatus === "ALL") return true;
-      return project.status.toUpperCase().startsWith(filterStatus);
-    });
-    setFilteredProjects(statusFiltered);
+    setFilteredProjects(newFilteredProjects);
     setPage(1);
+    updatePaginatedProjects(newFilteredProjects, 1);
   };
 
-  const handleViewModeChange = (newViewMode: "grid" | "list" | null) => {
+  const handleViewModeChange = (newViewMode: 'grid' | 'list' | null) => {
     if (newViewMode) {
       setViewMode(newViewMode);
-      setPage(1);
     }
   };
 
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    updatePaginatedProjects(filteredProjects, value);
+  };
+
+  const handleProjectClick = (id: number) => {
+    const project = filteredProjects.find((p) => p.id === id);
+    if (project) {
+      navigate(division ? `/${division}/project/${id}` : `/project/${id}`, {
+        state: { fromDivision: division },
+      });
+    }
+  };
+
+  if (!divisionData) {
+    return <Box>Loading...</Box>;
+  }
+
   return (
-    <Box
-      sx={{
-        background: "linear-gradient(to bottom, #0F1A33, #1E2A44)",
-        minHeight: "100vh",
-        py: { xs: 2, sm: 3, md: 4 },
-      }}
-    >
-      <Container maxWidth="xl">
-        {divisionData ? (
-          <DetailedDivision division={divisionData} />
-        ) : (
-          <Typography
-            variant="h6"
-            sx={{
-              color: "#f1f5f9",
-              fontFamily: "'Kanit', sans-serif",
-              textAlign: "center",
-              my: 4,
-            }}
-          >
-            Division not found
-          </Typography>
-        )}
-
-        <FilterComponent
-          projects={divisionData?.projects || []}
-          onFilterChange={handleFilterChange}
-          filterStatus={filterStatus}
-          setFilterStatus={setFilterStatus}
-          viewMode={viewMode}
-          onViewModeChange={handleViewModeChange}
-        />
-
-        {filteredProjects.length === 0 ? (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              minHeight: "200px",
-              mt: { xs: 2, sm: 3, md: 4 },
-            }}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                color: "#f1f5f9",
-                fontFamily: "'Kanit', sans-serif",
-                fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-                textAlign: "center",
-              }}
-            >
-              No projects to display
-            </Typography>
-          </Box>
-        ) : (
-          <>
-            {viewMode === "grid" ? (
-              <Grid
-                container
-                spacing={{ xs: 2, sm: 3, md: 4 }}
-                justifyContent="center"
-                alignItems="stretch"
-              >
-                {paginatedProjects.map((project, index) => (
-                  <Grid
-                    item
-                    key={project.id}
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
-                  >
-                    <Box
-                      width="100%"
-                      height="100%"
-                      ref={(el) => (cardRefs.current[index] = el)}
-                      sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <ProjectCardComponent
-                        project={project}
-                        onClick={() => handleCardClick(project.id)}
-                        cardRef={{ current: cardRefs.current[index] }}
-                      />
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            ) : (
-              <ListViewComponent
-                projects={paginatedProjects}
-                onClick={handleCardClick}
-              />
-            )}
-
-            {pageCount > 1 && (
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <DetailedDivision division={divisionData} /> {/* Integrated DetailedDivision */}
+      <FilterComponent
+        projects={divisionData.projects}
+        onFilterChange={handleFilterChange}
+        filterStatus={filterStatus}
+        setFilterStatus={setFilterStatus}
+        viewMode={viewMode}
+        onViewModeChange={handleViewModeChange}
+      />
+      <Grid container spacing={3}>
+        {viewMode === 'grid' ? (
+          paginatedProjects.map((project, index) => (
+            <Grid component="div" item key={project.id} xs={12} sm={6} md={4} lg={3}>
               <Box
-                mt={{ xs: 2, sm: 3, md: 4 }}
-                display="flex"
-                justifyContent="center"
-                sx={{
-                  px: { xs: 1, sm: 0 },
-                }}
+                ref={(el: HTMLDivElement | null) => (cardRefs.current[index] = el)}
+                sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <PaginationControls
-                  page={page}
-                  count={pageCount}
-                  onChange={handlePageChange}
+                <ProjectCardComponent
+                  project={project}
+                  onClick={handleProjectClick}
+                  cardRef={{ current: cardRefs.current[index] }}
                 />
               </Box>
-            )}
-          </>
+            </Grid>
+          ))
+        ) : (
+          <Grid component="div" item xs={12}>
+            <ListViewComponent projects={paginatedProjects} onClick={handleProjectClick} />
+          </Grid>
         )}
-      </Container>
-    </Box>
+      </Grid>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Pagination
+          count={Math.ceil(filteredProjects.length / projectsPerPage)}
+          page={page}
+          onChange={handlePageChange}
+          color="primary"
+        />
+      </Box>
+    </Container>
   );
 };
 
-export default ProjectFindAll;
+export default ProjectsFindAll;

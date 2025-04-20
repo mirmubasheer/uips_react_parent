@@ -282,7 +282,6 @@ const ClientLogo = styled("img")(() => ({
   },
 }));
 
-
 const ClientSliderWrapper = styled(Box)(() => ({
   position: "relative",
   overflow: "hidden",
@@ -428,25 +427,6 @@ const DetailedDivision: React.FC<DetailedDivisionProps> = ({ division }) => {
             </Typography>
           </Box>
         </Grid>
-
-        {/* <Grid item xs={12} md={6}>
-          <ImageWrapper>
-            <CardMedia
-              component="img"
-              image={`/images/${division.img}.jpg`}
-              alt={division.name}
-              sx={{
-                height: { xs: 150, sm: 200, md: 300 },
-                width: "100%",
-                objectFit: "cover",
-                transition: "transform 0.3s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
-              }}
-            />
-          </ImageWrapper>
-        </Grid> */}
 
         {division.name.toLowerCase() !== "it division" && (
           <Grid item xs={12}>

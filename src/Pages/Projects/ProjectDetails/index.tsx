@@ -246,12 +246,196 @@
 
 // export default ProjectDetailsWrapper;
 
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import HeaderAll from "../../../components/HeaderAll/HeaderAll";
-import ProjectDetails from "./ProjectDetails";
-import { projectbanner } from "../../../assets";
+// import React, { useEffect, useState } from "react";
+// import { useParams, useNavigate, useLocation } from "react-router-dom";
+// import { Box, Typography } from "@mui/material";
+// import HeaderAll from "../../../components/HeaderAll/HeaderAll";
+// import ProjectDetails from "./ProjectDetails";
+// import { projectbanner } from "../../../assets";
+
+// // Map division slugs to banner images
+// const divisionBannerMap: Record<string, string> = {
+//   civil: projectbanner.civilBanner,
+//   shutdowns: projectbanner.shutdownsBanner,
+//   instrumentation: projectbanner.instrumentationBanner,
+//   power: projectbanner.powerBanner,
+//   electrical: projectbanner.electricalbanner,
+//   it: projectbanner.itBanner,
+//   mechanical: projectbanner.mechanicalBanner,
+// };
+
+// // List of all divisions (for fallback search)
+// const divisions = [
+//   "civil",
+//   "electrical",
+//   "Shutdowns",
+//   "instrumentation",
+//   "power",
+//   "it",
+//   "mechanical",
+// ];
+
+// // Define Project type
+// interface Project {
+//   id: number;
+//   slug: string;
+//   projectname: string;
+//   client: string;
+//   location: string;
+//   status: string;
+//   images: any[];
+//   description: string;
+//   monthyear: string;
+//   duration: string;
+//   povalue: string;
+//   totalmanhour: string;
+//   division: string;
+// }
+
+// interface Division {
+//   name: string;
+//   description: string;
+//   clients: string[];
+//   img: string;
+//   projects: Project[];
+// }
+
+// const ProjectDetailsWrapper: React.FC = () => {
+//   const { id, division } = useParams<{ id: string; division?: string }>();
+//   const navigate = useNavigate();
+//   const location = useLocation();
+//   const [project, setProject] = useState<Project | null>(null);
+//   const [divisionSlug, setDivisionSlug] = useState<string | undefined>(division);
+
+//   // Get division from router state as fallback
+//   const divisionFromState = location.state?.fromDivision as string | undefined;
+
+//   useEffect(() => {
+//     if (!id) {
+//       setProject(null);
+//       return;
+//     }
+
+//     const projectId = Number(id);
+//     if (!Number.isFinite(projectId)) {
+//       setProject(null);
+//       return;
+//     }
+
+//     const loadProject = async () => {
+//       // Try division from URL first
+//       if (division) {
+//         try {
+//           const module = await import(`../../../assets/data/${division}.ts`);
+//           const divisionData = module.default as Division;
+//           const selectedProject = divisionData.projects.find((p) => p.id === projectId);
+//           if (selectedProject) {
+//             setProject(selectedProject);
+//             setDivisionSlug(division);
+//             return;
+//           }
+//         } catch (error) {
+//           console.error(`Failed to load ${division}.ts:`, error);
+//         }
+//       }
+
+//       // Try divisionFromState (if available)
+//       if (divisionFromState) {
+//         try {
+//           const module = await import(`../../../assets/data/${divisionFromState}.ts`);
+//           const divisionData = module.default as Division;
+//           const selectedProject = divisionData.projects.find((p) => p.id === projectId);
+//           if (selectedProject) {
+//             setProject(selectedProject);
+//             setDivisionSlug(divisionFromState);
+//             return;
+//           }
+//         } catch (error) {
+//           console.error(`Failed to load ${divisionFromState}.ts:`, error);
+//         }
+//       }
+
+//       // Fallback: Search all divisions
+//       for (const divSlug of divisions) {
+//         try {
+//           const module = await import(`../../../assets/data/${divSlug}.ts`);
+//           const divisionData = module.default as Division;
+//           const selectedProject = divisionData.projects.find((p) => p.id === projectId);
+//           if (selectedProject) {
+//             setProject(selectedProject);
+//             setDivisionSlug(divSlug);
+//             return;
+//           }
+//         } catch (error) {
+//           console.error(`Failed to load ${divSlug}.ts:`, error);
+//         }
+//       }
+
+//       setProject(null); // Project not found
+//     };
+
+//     loadProject();
+//   }, [id, division, divisionFromState]);
+
+//   if (!id || !project) {
+//     return (
+//       <Box
+//         sx={{
+//           minHeight: "100vh",
+//           background: "linear-gradient(to bottom, #0F1A33, #1E2A44)",
+//           color: "white",
+//           display: "flex",
+//           justifyContent: "center",
+//           alignItems: "center",
+//         }}
+//       >
+//         <Typography variant="h5">{!id ? "No project ID provided" : "Project not found"}</Typography>
+//       </Box>
+//     );
+//   }
+
+//   // Determine banner image based on division
+//   const bannerImage = divisionSlug
+//     ? divisionBannerMap[divisionSlug.toLowerCase()] || projectbanner.defaultBanner
+//     : projectbanner.defaultBanner;
+
+//   // Capitalize division for breadcrumb label
+//   const breadcrumbLabel = divisionSlug
+//     ? divisionSlug.charAt(0).toUpperCase() + divisionSlug.slice(1)
+//     : "Projects";
+
+//   // Set up breadcrumb items
+//   const breadcrumbItems = [
+//     { label: "Home", href: "/" },
+//     { label: breadcrumbLabel, href: divisionSlug ? `/${divisionSlug}` : "/projects" },
+//     { label: project.projectname, href: divisionSlug ? `/${divisionSlug}/project/${project.id}` : `/project/${project.id}` },
+//   ];
+
+//   return (
+//     <Box sx={{ overflow: "hidden", backgroundColor: "transparent" }}>
+//       <HeaderAll
+//         imageSrc={bannerImage}
+//         title={project.projectname}
+//         breadcrumbItems={breadcrumbItems}
+//       />
+//       <ProjectDetails project={project} divisionSlug={divisionSlug} />
+//     </Box>
+//   );
+// };
+
+// export default ProjectDetailsWrapper;
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { Box, Typography } from '@mui/material';
+import HeaderAll from '../../../components/HeaderAll/HeaderAll';
+import ProjectDetails from './ProjectDetails';
+import { projectbanner } from '../../../assets';
+import { Project } from '../../../types/projet'; // Import unified Project type
 
 // Map division slugs to banner images
 const divisionBannerMap: Record<string, string> = {
@@ -266,31 +450,14 @@ const divisionBannerMap: Record<string, string> = {
 
 // List of all divisions (for fallback search)
 const divisions = [
-  "civil",
-  "electrical",
-  "Shutdowns",
-  "instrumentation",
-  "power",
-  "it",
-  "mechanical",
+  'civil',
+  'electrical',
+  'Shutdowns',
+  'instrumentation',
+  'power',
+  // 'it',
+  'mechanical',
 ];
-
-// Define Project type
-interface Project {
-  id: number;
-  slug: string;
-  projectname: string;
-  client: string;
-  location: string;
-  status: string;
-  images: any[];
-  description: string;
-  monthyear: string;
-  duration: string;
-  povalue: string;
-  totalmanhour: string;
-  division: string;
-}
 
 interface Division {
   name: string;
@@ -381,15 +548,15 @@ const ProjectDetailsWrapper: React.FC = () => {
     return (
       <Box
         sx={{
-          minHeight: "100vh",
-          background: "linear-gradient(to bottom, #0F1A33, #1E2A44)",
-          color: "white",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          minHeight: '100vh',
+          background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <Typography variant="h5">{!id ? "No project ID provided" : "Project not found"}</Typography>
+        <Typography variant="h5">{!id ? 'No project ID provided' : 'Project not found'}</Typography>
       </Box>
     );
   }
@@ -402,17 +569,20 @@ const ProjectDetailsWrapper: React.FC = () => {
   // Capitalize division for breadcrumb label
   const breadcrumbLabel = divisionSlug
     ? divisionSlug.charAt(0).toUpperCase() + divisionSlug.slice(1)
-    : "Projects";
+    : 'Projects';
 
   // Set up breadcrumb items
   const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: breadcrumbLabel, href: divisionSlug ? `/${divisionSlug}` : "/projects" },
-    { label: project.projectname, href: divisionSlug ? `/${divisionSlug}/project/${project.id}` : `/project/${project.id}` },
+    { label: 'Home', href: '/' },
+    { label: breadcrumbLabel, href: divisionSlug ? `/${divisionSlug}` : '/projects' },
+    {
+      label: project.projectname,
+      href: divisionSlug ? `/${divisionSlug}/project/${project.id}` : `/project/${project.id}`,
+    },
   ];
 
   return (
-    <Box sx={{ overflow: "hidden", backgroundColor: "transparent" }}>
+    <Box sx={{ overflow: 'hidden', backgroundColor: 'transparent' }}>
       <HeaderAll
         imageSrc={bannerImage}
         title={project.projectname}

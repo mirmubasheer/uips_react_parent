@@ -86,31 +86,97 @@
 
 // export default ProjectDetails;
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Box, Container, Button, Grid } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ProjectImageSlider from "./Components/ProjectImageSlider";
-import ProjectInfo from "./Components/ProjectInfo";
-import EnquiryForm from "./Components/EnquiryForm";
-import RelatedProjectsSlider from "./Components/RelatedProjectsSlider";
+// import React from "react";
+// import { useNavigate } from "react-router-dom";
+// import { Box, Container, Button, Grid } from "@mui/material";
+// import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+// import ProjectImageSlider from "./Components/ProjectImageSlider";
+// import ProjectInfo from "./Components/ProjectInfo";
+// import EnquiryForm from "./Components/EnquiryForm";
+// import RelatedProjectsSlider from "./Components/RelatedProjectsSlider";
 
-// Define Project type
-interface Project {
-  id: number;
-  slug: string;
-  projectname: string;
-  client: string;
-  location: string;
-  status: string;
-  images: any[];
-  description: string;
-  monthyear: string;
-  duration: string;
-  povalue: string;
-  totalmanhour: string;
-  division: string;
-}
+// // Define Project type
+// interface Project {
+//   id: number;
+//   slug: string;
+//   projectname: string;
+//   client: string;
+//   location: string;
+//   status: string;
+//   images: any[];
+//   description: string;
+//   monthyear: string;
+//   duration: string;
+//   povalue: string;
+//   totalmanhour: string;
+//   division: string;
+// }
+
+// interface ProjectDetailsProps {
+//   project: Project;
+//   divisionSlug?: string;
+// }
+
+// const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }) => {
+//   const navigate = useNavigate();
+
+//   return (
+//     <Box sx={{ background: "linear-gradient(to bottom, #0F1A33, #1E2A44)", color: "white" }}>
+//       <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
+//         <Button
+//           startIcon={<ArrowBackIcon />}
+//           onClick={() =>
+//             navigate(divisionSlug ? `/${divisionSlug}` : "/projects")
+//           }
+//           sx={{ mb: 2, color: "white", "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" } }}
+//         >
+//           Back to Projects
+//         </Button>
+
+//         {/* Image Slider with fallback */}
+//         <ProjectImageSlider
+//           images={project.images && project.images.length > 0 ? project.images : []}
+//         />
+
+//         {/* Project Info and Enquiry Form */}
+//         <Grid container spacing={4} sx={{ mb: 6 }}>
+//           <Grid item xs={12} md={8}>
+//             <ProjectInfo project={project} />
+//           </Grid>
+//           <Grid item xs={12} md={4}>
+//             <Box
+//               sx={{
+//                 position: { xs: "static", md: "sticky" },
+//                 top: { md: 80 },
+//                 height: "fit-content",
+//               }}
+//             >
+//               <EnquiryForm />
+//             </Box>
+//           </Grid>
+//         </Grid>
+
+//         {/* Related Projects Slider */}
+//         <RelatedProjectsSlider division={project.division} currentProjectId={project.id} />
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default ProjectDetails;
+
+
+
+
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box, Container, Button, Grid } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ProjectImageSlider from './Components/ProjectImageSlider';
+import ProjectInfo from './Components/ProjectInfo';
+import EnquiryForm from './Components/EnquiryForm';
+import RelatedProjectsSlider from './Components/RelatedProjectsSlider';
+import { Project } from '../../../types/projet'; // Import unified Project type
 
 interface ProjectDetailsProps {
   project: Project;
@@ -121,14 +187,12 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ background: "linear-gradient(to bottom, #0F1A33, #1E2A44)", color: "white" }}>
+    <Box sx={{ background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)', color: 'white' }}>
       <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Button
           startIcon={<ArrowBackIcon />}
-          onClick={() =>
-            navigate(divisionSlug ? `/${divisionSlug}` : "/projects")
-          }
-          sx={{ mb: 2, color: "white", "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.1)" } }}
+          onClick={() => navigate(divisionSlug ? `/${divisionSlug}` : '/projects')}
+          sx={{ mb: 2, color: 'white', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
         >
           Back to Projects
         </Button>
@@ -140,15 +204,15 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
 
         {/* Project Info and Enquiry Form */}
         <Grid container spacing={4} sx={{ mb: 6 }}>
-          <Grid item xs={12} md={8}>
+          <Grid component="div" item xs={12} md={8}>
             <ProjectInfo project={project} />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid component="div" item xs={12} md={4}>
             <Box
               sx={{
-                position: { xs: "static", md: "sticky" },
+                position: { xs: 'static', md: 'sticky' },
                 top: { md: 80 },
-                height: "fit-content",
+                height: 'fit-content',
               }}
             >
               <EnquiryForm />

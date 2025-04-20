@@ -43,7 +43,7 @@ const divisions = [
   'shutdowns',
   'instrumentation',
   'power',
-  'it',
+  // 'it',
   'mechanical',
 ];
 
