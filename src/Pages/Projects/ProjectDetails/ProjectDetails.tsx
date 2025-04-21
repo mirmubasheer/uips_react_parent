@@ -176,7 +176,7 @@ import ProjectImageSlider from './Components/ProjectImageSlider';
 import ProjectInfo from './Components/ProjectInfo';
 import EnquiryForm from './Components/EnquiryForm';
 import RelatedProjectsSlider from './Components/RelatedProjectsSlider';
-import { Project } from '../../../types/projet'; // Import unified Project type
+import { Project } from '../../../types/projet';
 
 interface ProjectDetailsProps {
   project: Project;
@@ -187,7 +187,15 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)', color: 'white' }}>
+    <Box
+      sx={{
+        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+        color: 'white',
+        width: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box',
+      }}
+    >
       <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
         <Button
           startIcon={<ArrowBackIcon />}
@@ -197,13 +205,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
           Back to Projects
         </Button>
 
-        {/* Image Slider with fallback */}
         <ProjectImageSlider
           images={project.images && project.images.length > 0 ? project.images : []}
         />
 
-        {/* Project Info and Enquiry Form */}
-        <Grid container spacing={4} sx={{ mb: 6 }}>
+        <Grid container spacing={4} sx={{ mb: 6, width: '100%', maxWidth: '100%' }}>
           <Grid component="div" item xs={12} md={8}>
             <ProjectInfo project={project} />
           </Grid>
@@ -213,6 +219,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
                 position: { xs: 'static', md: 'sticky' },
                 top: { md: 80 },
                 height: 'fit-content',
+                width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
               }}
             >
               <EnquiryForm />
@@ -220,11 +229,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
           </Grid>
         </Grid>
 
-        {/* Related Projects Slider */}
         <RelatedProjectsSlider division={project.division} currentProjectId={project.id} />
       </Container>
     </Box>
   );
 };
 
-export default ProjectDetails;
+export default React.memo(ProjectDetails);

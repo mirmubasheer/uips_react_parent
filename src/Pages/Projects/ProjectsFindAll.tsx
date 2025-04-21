@@ -1322,16 +1322,15 @@
 
 // export default ProjectFindAll;
 
-
-
-import React, { useEffect, useState, useRef } from 'react';
-import { Box, Container, Grid, Pagination } from '@mui/material';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
+import { Box, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import FilterComponent from './Components/FilterComponent';
 import ListViewComponent from './Components/ListViewComponent';
-import ProjectCardComponent from './Components/ProjectCard'; // Corrected path
-import DetailedDivision from './Components/DetailedDivision'; // Added import
-import { Project } from '../../types/projet'; // Fixed typo (projet → project)
+import ProjectCardComponent from './Components/ProjectCard';
+import DetailedDivision from './Components/DetailedDivision';
+import PaginationControls from '../../components/Pagination/PaginationControls';
+import { Project } from '../../types/project';
 
 interface Division {
   name: string;
@@ -1345,6 +1344,10 @@ interface ProjectsFindAllProps {
   division?: string;
 }
 
+const MemoizedProjectCard = React.memo(ProjectCardComponent);
+const MemoizedListView = React.memo(ListViewComponent);
+const MemoizedPaginationControls = React.memo(PaginationControls);
+
 const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
   const navigate = useNavigate();
   const [divisionData, setDivisionData] = useState<Division | null>(null);
@@ -1356,12 +1359,18 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
   const projectsPerPage = 6;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const dataModules = useMemo(
+    () => import.meta.glob('../../assets/data/*.ts', { eager: true }),
+    []
+  );
+
   useEffect(() => {
     const loadData = async () => {
       try {
-        const module = await import(`../../assets/data/${division || 'all'}.ts`);
-        const data = module.default as Division;
-        const projects = data.projects.map((proj: any) => ({
+        const modulePath = `../../assets/data/${division || 'all'}.ts`;
+        const module = dataModules[modulePath]?.default as Division;
+        if (!module) throw new Error(`Data not found for ${division || 'all'}`);
+        const projects = module.projects.map((proj: any) => ({
           id: proj.id,
           slug: proj.slug,
           projectname: proj.projectname,
@@ -1378,20 +1387,23 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
           division: proj.division || division || 'all',
         }));
         setDivisionData({
-          name: data.name || division || 'All',
-          description: data.description || 'No description available.',
-          clients: data.clients || [],
-          img: data.img || 'default-division.jpg',
+          name: module.name || division || 'All',
+          description: module.description || 'No description available.',
+          clients: module.clients || [],
+          img: module.img || 'default-division.jpg',
           projects,
         });
         setFilteredProjects(projects);
-        updatePaginatedProjects(projects, page);
       } catch (error) {
         console.error(`Failed to load data for ${division}:`, error);
       }
     };
     loadData();
-  }, [division]);
+  }, [division, dataModules]);
+
+  useEffect(() => {
+    updatePaginatedProjects(filteredProjects, page);
+  }, [page, filteredProjects]);
 
   const updatePaginatedProjects = (projects: Project[], currentPage: number) => {
     const startIndex = (currentPage - 1) * projectsPerPage;
@@ -1402,7 +1414,6 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
   const handleFilterChange = (newFilteredProjects: Project[]) => {
     setFilteredProjects(newFilteredProjects);
     setPage(1);
-    updatePaginatedProjects(newFilteredProjects, 1);
   };
 
   const handleViewModeChange = (newViewMode: 'grid' | 'list' | null) => {
@@ -1413,7 +1424,6 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
 
   const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
-    updatePaginatedProjects(filteredProjects, value);
   };
 
   const handleProjectClick = (id: number) => {
@@ -1425,13 +1435,44 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
     }
   };
 
+  const memoizedPaginatedProjects = useMemo(() => paginatedProjects, [paginatedProjects]);
+
   if (!divisionData) {
-    return <Box>Loading...</Box>;
+    return (
+      <Box
+        sx={{
+          background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+          minHeight: '100vh',
+          width: '100%',
+          overflowX: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#FFFFFF',
+          px: { xs: 2, sm: 4, md: 8 },
+          py: { xs: 3, sm: 4 },
+          boxSizing: 'border-box',
+        }}
+      >
+        Loading...
+      </Box>
+    );
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <DetailedDivision division={divisionData} /> {/* Integrated DetailedDivision */}
+    <Box
+      sx={{
+        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+        minHeight: '100vh',
+        width: '100%',
+        overflowX: 'hidden',
+        py: { xs: 3, sm: 4, md: 5 },
+        px: { xs: 2, sm: 4, md: 8 },
+        color: '#FFFFFF',
+        boxSizing: 'border-box',
+      }}
+    >
+      <DetailedDivision division={divisionData} sx={{ mb: { xs: 2, sm: 3 } }} />
       <FilterComponent
         projects={divisionData.projects}
         onFilterChange={handleFilterChange}
@@ -1439,16 +1480,27 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
         setFilterStatus={setFilterStatus}
         viewMode={viewMode}
         onViewModeChange={handleViewModeChange}
+        sx={{ mb: { xs: 2, sm: 3 } }}
       />
-      <Grid container spacing={3}>
+      <Grid
+        container
+        spacing={{ xs: 2, sm: 3, md: 4 }}
+        sx={{ mb: 4, width: '100%', maxWidth: '100%' }}
+      >
         {viewMode === 'grid' ? (
-          paginatedProjects.map((project, index) => (
-            <Grid component="div" item key={project.id} xs={12} sm={6} md={4} lg={3}>
+          memoizedPaginatedProjects.map((project, index) => (
+            <Grid item key={project.id} xs={12} sm={6} md={4} lg={3}>
               <Box
                 ref={(el: HTMLDivElement | null) => (cardRefs.current[index] = el)}
-                sx={{ display: 'flex', justifyContent: 'center' }}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  width: '100%',
+                  maxWidth: '100%',
+                  boxSizing: 'border-box',
+                }}
               >
-                <ProjectCardComponent
+                <MemoizedProjectCard
                   project={project}
                   onClick={handleProjectClick}
                   cardRef={{ current: cardRefs.current[index] }}
@@ -1457,20 +1509,27 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
             </Grid>
           ))
         ) : (
-          <Grid component="div" item xs={12}>
-            <ListViewComponent projects={paginatedProjects} onClick={handleProjectClick} />
+          <Grid item xs={12}>
+            <MemoizedListView
+              projects={memoizedPaginatedProjects}
+              onClick={handleProjectClick}
+              sx={{
+                maxHeight: { xs: '70vh', sm: 'auto' },
+                overflowY: { xs: 'auto', sm: 'visible' },
+                width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+              }}
+            />
           </Grid>
         )}
       </Grid>
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-        <Pagination
-          count={Math.ceil(filteredProjects.length / projectsPerPage)}
-          page={page}
-          onChange={handlePageChange}
-          color="primary"
-        />
-      </Box>
-    </Container>
+      <MemoizedPaginationControls
+        page={page}
+        count={Math.ceil(filteredProjects.length / projectsPerPage)}
+        onChange={handlePageChange}
+      />
+    </Box>
   );
 };
 

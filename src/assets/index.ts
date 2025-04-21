@@ -536,7 +536,7 @@ export const projectbanner: ImageObject = {
 // Banner images (fixes TS2339)
 export const BannerImages: ImageObject = {
   civilBanner,
-  electricalBanner,
+  electrical,
   shutdownsBanner,
   instrumentationBanner,
   powerBanner,
