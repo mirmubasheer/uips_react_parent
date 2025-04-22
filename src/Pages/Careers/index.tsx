@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderAll from '../../components/HeaderAll/HeaderAll';
 import { Box } from '@mui/material';
-import { AboutSectionImages } from '../../assets/'; // Adjust path
+import { careersBanners } from '../../assets/'; // Adjust path
 import Careers from './Careers';
 
 
@@ -14,7 +14,7 @@ const CareersWrapper: React.FC = () => {
   return (
     <Box sx={{ overflow: 'hidden', backgroundColor: 'transparent' }}>
       <HeaderAll 
-        imageSrc={AboutSectionImages.AboutB} 
+        imageSrc={careersBanners.careers01} 
         title="Careers" 
         breadcrumbItems={breadcrumbItems} 
       />

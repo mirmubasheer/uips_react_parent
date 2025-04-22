@@ -10,6 +10,7 @@ import hero4 from './images/herosection/IThero.webp';
 // Logos
 import logo from './images/logos/logouips.png';
 import logo01 from './images/logos/logo02.png';
+import logo02 from './images/logos/llooggoo.png';
 
 // Client logos
 import client1 from './images/clientlogos/1.webp';
@@ -430,6 +431,82 @@ import power_5_1 from './images/projects/p1.webp';
 import power_5_2 from './images/projects/p1.webp';
 import power_5_3 from './images/projects/p1.webp';
 
+
+import contactBanner from './images/contact/contactbanner.webp';
+
+import g1 from './images/gallery/groupImages/g1.webp';
+// import g2 from './images/gallery/groupImages/223333.png';
+
+
+
+
+
+// Gallery group images (20 unique images)
+import group1 from './images/gallery/groupImages/IMG_0272.webp';
+import group2 from './images/gallery/groupImages/IMG_0272.webp';
+import group3 from './images/gallery/groupImages/IMG_0272.webp';
+import group4 from './images/gallery/groupImages/IMG_0272.webp';
+import group5 from './images/gallery/groupImages/IMG_0272.webp';
+import group6 from './images/gallery/groupImages/IMG_0272.webp';
+import group7 from './images/gallery/groupImages/IMG_0272.webp';
+import group8 from './images/gallery/groupImages/IMG_0272.webp';
+import group9 from './images/gallery/groupImages/IMG_0272.webp';
+import group10 from './images/gallery/groupImages/IMG_0272.webp';
+import group11 from './images/gallery/groupImages/IMG_0272.webp';
+import group12 from './images/gallery/groupImages/IMG_0272.webp';
+import group13 from './images/gallery/groupImages/IMG_0272.webp';
+import group14 from './images/gallery/groupImages/IMG_0272.webp';
+import group15 from './images/gallery/groupImages/IMG_0272.webp';
+import group16 from './images/gallery/groupImages/IMG_0272.webp';
+import group17 from './images/gallery/groupImages/IMG_0272.webp';
+import group18 from './images/gallery/groupImages/IMG_0272.webp';
+import group19 from './images/gallery/groupImages/IMG_0272.webp';
+import group20 from './images/gallery/groupImages/IMG_0272.webp';
+
+// Gallery solo images (30 unique images)
+import solo1 from './images/gallery/soloImages/IMG_0272.webp';
+import solo2 from './images/gallery/soloImages/IMG_0272.webp';
+import solo3 from './images/gallery/soloImages/IMG_0272.webp';
+import solo4 from './images/gallery/soloImages/IMG_0272.webp';
+import solo5 from './images/gallery/soloImages/IMG_0272.webp';
+import solo6 from './images/gallery/soloImages/IMG_0272.webp';
+import solo7 from './images/gallery/soloImages/IMG_0272.webp';
+import solo8 from './images/gallery/soloImages/IMG_0272.webp';
+import solo9 from './images/gallery/soloImages/IMG_0272.webp';
+import solo10 from './images/gallery/soloImages/IMG_0272.webp';
+import solo11 from './images/gallery/soloImages/IMG_0272.webp';
+import solo12 from './images/gallery/soloImages/IMG_0272.webp';
+import solo13 from './images/gallery/soloImages/IMG_0272.webp';
+import solo14 from './images/gallery/soloImages/IMG_0272.webp';
+import solo15 from './images/gallery/soloImages/IMG_0272.webp';
+import solo16 from './images/gallery/soloImages/IMG_0272.webp';
+import solo17 from './images/gallery/soloImages/IMG_0272.webp';
+import solo18 from './images/gallery/soloImages/IMG_0272.webp';
+import solo19 from './images/gallery/soloImages/IMG_0272.webp';
+import solo20 from './images/gallery/soloImages/IMG_0272.webp';
+import solo21 from './images/gallery/soloImages/IMG_0272.webp';
+import solo22 from './images/gallery/soloImages/IMG_0272.webp';
+import solo23 from './images/gallery/soloImages/IMG_0272.webp';
+import solo24 from './images/gallery/soloImages/IMG_0272.webp';
+import solo25 from './images/gallery/soloImages/IMG_0272.webp';
+import solo26 from './images/gallery/soloImages/IMG_0272.webp';
+import solo27 from './images/gallery/soloImages/IMG_0272.webp';
+import solo28 from './images/gallery/soloImages/IMG_0272.webp';
+import solo29 from './images/gallery/soloImages/IMG_0272.webp';
+import solo30 from './images/gallery/soloImages/IMG_0272.webp';
+
+
+
+
+import careers01 from './images/careers/careersBanner.jpg';
+
+
+import boss from './images/management/boss.webp';
+import shakeel from  './images/management/shakeel.webp';
+import zia from './images/management/zia.webp';
+import mehboob from './images/management/mehboob.webp';
+import husam from './images/management/mehboob.webp';
+
 // Type definitions
 interface ImageObject {
   [key: string]: string;
@@ -453,6 +530,7 @@ export const herosectionimages: ImageObject = {
 export const uipslogo: ImageObject = {
   logo,
   logo01,
+  logo02
 };
 
 export const clientlogos = [
@@ -681,3 +759,85 @@ export const powerProjectImages: ProjectImages = {
   power_4: [power_4_1, power_4_2, power_4_3],
   power_5: [power_5_1, power_5_2, power_5_3],
 };
+
+
+export const  contactB = {
+contactBanner
+}
+
+
+export const galleryGroup ={
+  g1,
+  // g2
+}
+
+
+// Gallery exports
+export const galleryGroupImages: GalleryImage[] = [
+  { src: group1, alt: 'Team Group Photo 1' },
+  { src: group2, alt: 'Team Group Photo 2' },
+  { src: group3, alt: 'Team Group Photo 3' },
+  { src: group4, alt: 'Team Group Photo 4' },
+  { src: group5, alt: 'Team Group Photo 5' },
+  { src: group6, alt: 'Team Group Photo 6' },
+  { src: group7, alt: 'Team Group Photo 7' },
+  { src: group8, alt: 'Team Group Photo 8' },
+  { src: group9, alt: 'Team Group Photo 9' },
+  { src: group10, alt: 'Team Group Photo 10' },
+  { src: group11, alt: 'Team Group Photo 11' },
+  { src: group12, alt: 'Team Group Photo 12' },
+  { src: group13, alt: 'Team Group Photo 13' },
+  { src: group14, alt: 'Team Group Photo 14' },
+  { src: group15, alt: 'Team Group Photo 15' },
+  { src: group16, alt: 'Team Group Photo 16' },
+  { src: group17, alt: 'Team Group Photo 17' },
+  { src: group18, alt: 'Team Group Photo 18' },
+  { src: group19, alt: 'Team Group Photo 19' },
+  { src: group20, alt: 'Team Group Photo 20' },
+];
+
+export const gallerySoloImages: GalleryImage[] = [
+  { src: solo1, alt: 'Team Member 1' },
+  { src: solo2, alt: 'Team Member 2' },
+  { src: solo3, alt: 'Team Member 3' },
+  { src: solo4, alt: 'Team Member 4' },
+  { src: solo5, alt: 'Team Member 5' },
+  { src: solo6, alt: 'Team Member 6' },
+  { src: solo7, alt: 'Team Member 7' },
+  { src: solo8, alt: 'Team Member 8' },
+  { src: solo9, alt: 'Team Member 9' },
+  { src: solo10, alt: 'Team Member 10' },
+  { src: solo11, alt: 'Team Member 11' },
+  { src: solo12, alt: 'Team Member 12' },
+  { src: solo13, alt: 'Team Member 13' },
+  { src: solo14, alt: 'Team Member 14' },
+  { src: solo15, alt: 'Team Member 15' },
+  { src: solo16, alt: 'Team Member 16' },
+  { src: solo17, alt: 'Team Member 17' },
+  { src: solo18, alt: 'Team Member 18' },
+  { src: solo19, alt: 'Team Member 19' },
+  { src: solo20, alt: 'Team Member 20' },
+  { src: solo21, alt: 'Team Member 21' },
+  { src: solo22, alt: 'Team Member 22' },
+  { src: solo23, alt: 'Team Member 23' },
+  { src: solo24, alt: 'Team Member 24' },
+  { src: solo25, alt: 'Team Member 25' },
+  { src: solo26, alt: 'Team Member 26' },
+  { src: solo27, alt: 'Team Member 27' },
+  { src: solo28, alt: 'Team Member 28' },
+  { src: solo29, alt: 'Team Member 29' },
+  { src: solo30, alt: 'Team Member 30' },
+];
+
+
+export const careersBanners ={
+  careers01
+}
+
+export const ourManagement = {
+  boss,
+  shakeel,
+  zia,
+  mehboob,
+  husam
+}

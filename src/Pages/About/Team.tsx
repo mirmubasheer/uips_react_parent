@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -6,6 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { ourManagement } from '../../assets/index'; // Updated to use galleryGroupImages
 
 interface TeamMember {
   image: string;
@@ -15,9 +15,9 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    image: 'https://plus.unsplash.com/premium_vector-1721131162360-08b11ad43827?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    title: "Amjad Ali Wajid",
-    subTitle: "Founder",
+    image: ourManagement.boss, // Assuming g2 is the second image; adjust index as needed
+    title: 'Amjad Ali Wajid',
+    subTitle: 'Founder & CEO',
   },
 ];
 
@@ -28,7 +28,6 @@ const Team: React.FC = () => {
         <Box textAlign="center" mb={5}>
           <Typography
             variant="h4"
-            gutterBottom
             sx={{
               fontWeight: 700,
               color: '#f1f5f9',
@@ -47,7 +46,7 @@ const Team: React.FC = () => {
               },
             }}
           >
-          Our Industrial Visionary
+            Our Industrial Visionary
           </Typography>
         </Box>
 
@@ -82,7 +81,9 @@ const Team: React.FC = () => {
               About Amjad Ali Wajid
             </Typography>
             <Typography variant="body1" sx={{ color: '#cbd5e1' }}>
-              Amjad Ali Wajid, the founder of UIPS, leads with vision to deliver top-quality utilities and industrial power solutions across Saudi Arabia.
+              Amjad Ali Wajid, the founder of UIPS, leads with vision to deliver
+              top-quality utilities and industrial power solutions across Saudi
+              Arabia.
             </Typography>
           </Box>
         </Box>
@@ -108,11 +109,15 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      tabIndex={0}
     >
       <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
         <img
           src={member.image}
           alt={member.title}
+          loading="lazy"
           style={{
             width: '100%',
             height: '400px',
@@ -127,16 +132,24 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
             left: 0,
             right: 0,
             height: '100%',
-            background: 'linear-gradient(to top, rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.4))',
+            background:
+              'linear-gradient(to top, rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.4))',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            transform: isHovered ? 'translateY(0)' : 'translateY(100%)',
+            transform: isHovered ? 'translateY(0)' : 'translateY(80%)', // Slightly visible when not hovered
             transition: 'transform 0.3s ease',
             borderRadius: '12px',
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 2 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              p: 2,
+            }}
+          >
             <Box>
               <Typography variant="h6" sx={{ color: '#e2e8f0', fontWeight: 600 }}>
                 {member.title}
@@ -153,6 +166,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 p: 1,
                 '&:hover': { backgroundColor: '#1e3a8a' },
               }}
+              aria-label="Contact Phone"
             />
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, p: 2 }}>
@@ -162,6 +176,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 '&:hover': { color: '#3b82f6' },
                 transition: 'color 0.2s',
               }}
+              aria-label="Facebook Profile"
             />
             <InstagramIcon
               sx={{
@@ -169,6 +184,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 '&:hover': { color: '#3b82f6' },
                 transition: 'color 0.2s',
               }}
+              aria-label="Instagram Profile"
             />
             <TwitterIcon
               sx={{
@@ -176,6 +192,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 '&:hover': { color: '#3b82f6' },
                 transition: 'color 0.2s',
               }}
+              aria-label="Twitter Profile"
             />
             <LinkedInIcon
               sx={{
@@ -183,6 +200,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
                 '&:hover': { color: '#3b82f6' },
                 transition: 'color 0.2s',
               }}
+              aria-label="LinkedIn Profile"
             />
           </Box>
         </Box>

@@ -1,12 +1,11 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Box, Container, Typography, Modal, IconButton } from '@mui/material';
 import Slider from 'react-slick';
-import Masonry from 'react-masonry-css';
 import gsap from 'gsap';
 import CloseIcon from '@mui/icons-material/Close';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { galleryGroupImages, gallerySoloImages } from '../../assets/index'; // Adjust path as needed
 
 // Define interfaces for images
 interface GalleryImage {
@@ -14,43 +13,14 @@ interface GalleryImage {
   alt: string;
 }
 
-// Group pictures for slider
-const groupPictures: GalleryImage[] = [
-  {
-    src: 'https://images.unsplash.com/photo-1516321310766-61b7b7b93a47',
-    alt: 'Team Group Photo 1',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c',
-    alt: 'Team Group Photo 2',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1557426277-33e0a4b0d73e',
-    alt: 'Team Group Photo 3',
-  },
-];
-
-// Team pictures for collage
-const teamPictures: GalleryImage[] = [
-  { src: 'https://randomuser.me/api/portraits/men/1.jpg', alt: 'Team Member 1' },
-  { src: 'https://randomuser.me/api/portraits/women/2.jpg', alt: 'Team Member 2' },
-  { src: 'https://randomuser.me/api/portraits/women/3.jpg', alt: 'Team Member 3' },
-  { src: 'https://randomuser.me/api/portraits/men/4.jpg', alt: 'Team Member 4' },
-  { src: 'https://randomuser.me/api/portraits/women/5.jpg', alt: 'Team Member 5' },
-  { src: 'https://randomuser.me/api/portraits/men/6.jpg', alt: 'Team Member 6' },
-  { src: 'https://randomuser.me/api/portraits/women/7.jpg', alt: 'Team Member 7' },
-  { src: 'https://randomuser.me/api/portraits/men/8.jpg', alt: 'Team Member 8' },
-];
-
 const Gallery: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
-  const masonryRef = useRef<HTMLDivElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   // GSAP animations
   useEffect(() => {
-    // Slider animation
     if (sliderRef.current) {
       gsap.fromTo(
         sliderRef.current.querySelectorAll('.slick-slide img'),
@@ -65,10 +35,9 @@ const Gallery: React.FC = () => {
       );
     }
 
-    // Masonry animation
-    if (masonryRef.current) {
+    if (gridRef.current) {
       gsap.fromTo(
-        masonryRef.current.children,
+        gridRef.current.children,
         { opacity: 0, y: 20 },
         {
           opacity: 1,
@@ -82,7 +51,6 @@ const Gallery: React.FC = () => {
     }
   }, []);
 
-  // Modal animation
   useEffect(() => {
     if (modalRef.current && selectedImage) {
       gsap.fromTo(
@@ -116,35 +84,26 @@ const Gallery: React.FC = () => {
     }
   };
 
-  // Slider settings
   const sliderSettings = {
-    dots: true,
+    dots: true, // Keep dots
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: true,
-    centerMode: true,
-    centerPadding: '0px',
+    arrows: true, // Keep arrows
+    centerMode: false, // No centering
+    variableWidth: false, // Consistent width
+    adaptiveHeight: false, // Fixed height
     responsive: [
       {
         breakpoint: 600,
         settings: {
-          arrows: false,
-          centerPadding: '20px',
+          arrows: false, // Hide arrows on small screens
+          dots: true,
         },
       },
     ],
-  };
-
-  // Masonry breakpoints
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
+    lazyLoad: 'ondemand' as const, // Enable lazy loading
   };
 
   return (
@@ -183,8 +142,23 @@ const Gallery: React.FC = () => {
           <Box
             ref={sliderRef}
             sx={{
+              overflow: 'hidden', // Strictly clip overflow
+              maxWidth: '100%', // Ensure slider fits container
+              '& .slick-slider': {
+                overflow: 'hidden', // Additional overflow clipping
+              },
               '& .slick-slide': {
-                px: 2,
+                px: 0, // No padding
+                width: '100% !important', // Full width slides
+                opacity: 0, // Hide non-active slides
+                transition: 'opacity 0.3s ease', // Smooth opacity transition
+              },
+              '& .slick-slide.slick-active': {
+                opacity: 1, // Only active slide visible
+              },
+              '& .slick-track': {
+                display: 'flex',
+                alignItems: 'center',
               },
               '& .slick-prev, & .slick-next': {
                 color: '#60a5fa',
@@ -202,7 +176,7 @@ const Gallery: React.FC = () => {
             }}
           >
             <Slider {...sliderSettings}>
-              {groupPictures.map((image, index) => (
+              {galleryGroupImages.map((image, index) => (
                 <Box
                   key={index}
                   sx={{
@@ -220,6 +194,7 @@ const Gallery: React.FC = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
+                    loading="lazy"
                     style={{
                       width: '100%',
                       height: '400px',
@@ -233,7 +208,7 @@ const Gallery: React.FC = () => {
           </Box>
         </Box>
 
-        {/* Team Pictures Collage */}
+        {/* Team Pictures Collage (Grid View) */}
         <Box textAlign="center">
           <Typography
             variant="h4"
@@ -258,23 +233,21 @@ const Gallery: React.FC = () => {
           >
             Our Team
           </Typography>
-          <Masonry
-            breakpointCols={breakpointColumnsObj}
+          <Box
+            ref={gridRef}
             sx={{
-              display: 'flex',
-              ml: -2,
-              width: 'auto',
-              '& > div': {
-                pl: 2,
-                backgroundClip: 'padding-box',
-                '& > div': {
-                  mb: 2,
-                },
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: 'repeat(1, 1fr)',
+                sm: 'repeat(2, 1fr)',
+                md: 'repeat(3, 1fr)',
+                lg: 'repeat(4, 1fr)',
               },
+              gap: 2,
+              width: '100%',
             }}
-            ref={masonryRef}
           >
-            {teamPictures.map((image, index) => (
+            {gallerySoloImages.map((image, index) => (
               <Box
                 key={index}
                 sx={{
@@ -292,10 +265,10 @@ const Gallery: React.FC = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
+                  loading="lazy"
                   style={{
                     width: '100%',
-                    height: 'auto',
-                    aspectRatio: index % 3 === 0 ? '4/3' : index % 2 === 0 ? '3/4' : '1/1',
+                    height: '200px',
                     objectFit: 'cover',
                     borderRadius: '8px',
                     display: 'block',
@@ -303,7 +276,7 @@ const Gallery: React.FC = () => {
                 />
               </Box>
             ))}
-          </Masonry>
+          </Box>
         </Box>
       </Container>
 

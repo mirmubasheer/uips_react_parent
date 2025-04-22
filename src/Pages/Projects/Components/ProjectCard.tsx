@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Card,
@@ -20,7 +19,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useNavigate } from 'react-router-dom';
-import { Project } from '../../../types/project'; // Import unified Project type
+import { Project } from '../../../types/project';
 
 interface ProjectCardProps {
   project: Project;
@@ -29,11 +28,11 @@ interface ProjectCardProps {
 }
 
 const CARD_HEIGHT = 440;
+const CARD_WIDTH = 345;
 
 const ProjectCard = styled(Card)(({ theme }) => ({
   height: CARD_HEIGHT,
-  width: '100%',
-  maxWidth: 345,
+  width: CARD_WIDTH,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -49,22 +48,25 @@ const ProjectCard = styled(Card)(({ theme }) => ({
     boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
     background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
   },
+  margin: '0 auto', // Center the card
 }));
 
 const StyledCardMedia = styled(CardMedia)({
   height: 180,
+  width: '100%',
+  objectFit: 'cover', // Ensure images scale consistently
   position: 'relative',
 });
 
-const StyledCardContent = styled(CardContent)(() => ({
+const StyledCardContent = styled(CardContent)({
   flexGrow: 1,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
-  paddingBottom: '16px',
-  overflow: 'hidden',
+  padding: '16px',
   color: 'white',
-}));
+  overflow: 'hidden',
+});
 
 const ProjectCardComponent: React.FC<ProjectCardProps> = ({ project, onClick, cardRef }) => {
   const navigate = useNavigate();
@@ -185,7 +187,7 @@ const ProjectCardComponent: React.FC<ProjectCardProps> = ({ project, onClick, ca
                 sx={{ color: '#E1306C' }}
               >
                 <InstagramIcon />
-            </IconButton>
+              </IconButton>
             </Tooltip>
           </Box>
         </Popover>

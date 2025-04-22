@@ -8,6 +8,7 @@ import ProjectDetailsWrapper from '../Pages/Projects/ProjectDetails'
 import Gallery from "../Pages/Gallery";
 import CareersWrapper from "../Pages/Careers";
 import AllProjectsByClient from "../Pages/Projects/AllProjects/AllProjectsByClient";
+import ContactWrapper from "../Pages/Contact";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
           path: "/career",
           element: <CareersWrapper />,
         },
+
+        {
+          path: "/contact",
+          element: <ContactWrapper />,
+        },
+
 
         //projects/:id
         // {

@@ -1344,6 +1344,8 @@ interface ProjectsFindAllProps {
   division?: string;
 }
 
+const CARD_WIDTH = 345; // Match ProjectCard width
+
 const MemoizedProjectCard = React.memo(ProjectCardComponent);
 const MemoizedListView = React.memo(ListViewComponent);
 const MemoizedPaginationControls = React.memo(PaginationControls);
@@ -1485,18 +1487,33 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
       <Grid
         container
         spacing={{ xs: 2, sm: 3, md: 4 }}
-        sx={{ mb: 4, width: '100%', maxWidth: '100%' }}
+        sx={{
+          mb: 4,
+          width: '100%',
+          maxWidth: '100%',
+          justifyContent: 'center', // Center the grid items
+        }}
       >
         {viewMode === 'grid' ? (
           memoizedPaginatedProjects.map((project, index) => (
-            <Grid item key={project.id} xs={12} sm={6} md={4} lg={3}>
+            <Grid
+              item
+              key={project.id}
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              sx={{
+                display: 'flex',
+                justifyContent: 'center', // Center the card within the grid item
+              }}
+            >
               <Box
-                ref={(el: HTMLDivElement | null) => (cardRefs.current[index] = el)}
                 sx={{
+                  width: '100%',
+                  maxWidth: CARD_WIDTH, // Match the card width
                   display: 'flex',
                   justifyContent: 'center',
-                  width: '100%',
-                  maxWidth: '100%',
                   boxSizing: 'border-box',
                 }}
               >

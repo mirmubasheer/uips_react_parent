@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderAll from '../../components/HeaderAll/HeaderAll';
 
 import { Box } from '@mui/material';
-import { AboutSectionImages } from '../../assets';
+import { galleryGroup } from '../../assets';
 import Gallery from './Gallery';
 
 
@@ -16,7 +16,7 @@ const GalleryWrapper: React.FC = () => {
   return (
     <Box sx={{ overflow: 'hidden', backgroundColor: 'transparent' }}>
       <HeaderAll 
-        imageSrc={AboutSectionImages.AboutB} 
+        imageSrc={galleryGroup.g1} 
         title="Gallery" 
         breadcrumbItems={breadcrumbItems} 
       />

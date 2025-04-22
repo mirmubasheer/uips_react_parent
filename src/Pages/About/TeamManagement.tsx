@@ -1,58 +1,7 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Grid } from '@mui/material';
 import gsap from 'gsap';
-
-
-interface TeamMember {
-  name: string;
-  designation: string;
-  image: string;
-}
-
-// Team member data
-const teamMembers: TeamMember[] = [
-  {
-    name: 'John Doe',
-    designation: 'CEO',
-    image: 'https://randomuser.me/api/portraits/men/1.jpg',
-  },
-  {
-    name: 'Jane Smith',
-    designation: 'CTO',
-    image: 'https://randomuser.me/api/portraits/women/2.jpg',
-  },
-  {
-    name: 'Emily Johnson',
-    designation: 'COO',
-    image: 'https://randomuser.me/api/portraits/women/3.jpg',
-  },
-  {
-    name: 'Michael Brown',
-    designation: 'CFO',
-    image: 'https://randomuser.me/api/portraits/men/4.jpg',
-  },
-  {
-    name: 'Sarah Davis',
-    designation: 'Head of Marketing',
-    image: 'https://randomuser.me/api/portraits/women/5.jpg',
-  },
-  {
-    name: 'David Wilson',
-    designation: 'Head of Sales',
-    image: 'https://randomuser.me/api/portraits/men/6.jpg',
-  },
-  {
-    name: 'Laura Martinez',
-    designation: 'HR Manager',
-    image: 'https://randomuser.me/api/portraits/women/7.jpg',
-  },
-  {
-    name: 'James Taylor',
-    designation: 'Lead Developer',
-    image: 'https://randomuser.me/api/portraits/men/8.jpg',
-  },
-];
+import { management } from '../../assets/data/management'; // Import from local management.ts
 
 const TeamManagement: React.FC = () => {
   const teamRef = useRef<HTMLDivElement | null>(null);
@@ -74,6 +23,9 @@ const TeamManagement: React.FC = () => {
       );
     }
   }, []);
+
+  // Array of management keys (m1 to m8)
+  const teamKeys = ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8'];
 
   return (
     <Box
@@ -108,86 +60,95 @@ const TeamManagement: React.FC = () => {
         Management
       </Typography>
       <Grid container spacing={4} ref={teamRef} justifyContent="center">
-        {teamMembers.map((member, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Box
-              sx={{
-                bgcolor: '#1e293b',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                '&:hover': {
-                  transform: { md: 'translateY(-8px)' },
-                  boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.3)' },
-                },
-                border: '1px solid',
-                borderColor: '#475569',
-                width: '100%',
-                maxWidth: { xs: '300px', md: '260px' },
-                mx: 'auto',
-                minHeight: { xs: '340px', md: '360px' },
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
+        {teamKeys.map((key, index) =>
+          management[key] ? (
+            <Grid item xs={12} sm={6} md={3} key={index}>
               <Box
                 sx={{
-                  width: '100%',
-                  height: { xs: '180px', md: '200px' },
+                  bgcolor: '#1e293b',
+                  borderRadius: '12px',
                   overflow: 'hidden',
-                  position: 'relative',
+                  transition: 'box-shadow 0.3s', // Only shadow changes on hover
+                  '&:hover': {
+                    boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.3)' }, // Shadow effect only
+                  },
+                  border: '1px solid',
+                  borderColor: '#475569',
+                  width: '260px', // Fixed width
+                  height: '360px', // Fixed height
+                  mx: 'auto',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
                 <Box
-                  component="img"
-                  src={member.image}
-                  alt={member.name}
                   sx={{
                     width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transition: 'transform 0.3s',
-                    '&:hover': {
-                      transform: { md: 'scale(1.05)' },
-                    },
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  p: { xs: 2, md: 3 },
-                  flexGrow: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  textAlign: 'center',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: '#f1f5f9',
-                    fontWeight: 'medium',
-                    fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
-                    mb: 1,
+                    height: '200px', // Fixed image height
+                    overflow: 'hidden',
+                    position: 'relative',
+                    display: 'flex', // Center the image
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    bgcolor: '#000', // Optional: background for empty space
                   }}
                 >
-                  {member.name}
-                </Typography>
-                <Typography
-                  variant="body2"
+                  <Box
+                    component="img"
+                    src={management[key].image}
+                    alt={management[key].name}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover', // Full image fits without cropping
+                    }}
+                  />
+                </Box>
+                <Box
                   sx={{
-                    color: '#94a3b8',
-                    fontStyle: 'italic',
-                    fontSize: { xs: '0.75rem', md: '0.875rem' },
+                    p: 2,
+                    height: '160px', // Fixed text area height (total height - image height)
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    overflow: 'hidden', // Handles long content
                   }}
                 >
-                  {member.designation}
-                </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: '#f1f5f9',
+                      fontWeight: 'medium',
+                      fontSize: '1.25rem',
+                      mb: 1,
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'wrap', // Prevents name from wrapping
+                    }}
+                  >
+                    {management[key].name}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#94a3b8',
+                      fontStyle: 'italic',
+                      fontSize: '0.875rem',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2, // Limits to 2 lines
+                      WebkitBoxOrient: 'vertical', // Truncates long designations
+                    }}
+                  >
+                    {management[key].designation}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-        ))}
+            </Grid>
+          ) : null
+        )}
       </Grid>
     </Box>
   );

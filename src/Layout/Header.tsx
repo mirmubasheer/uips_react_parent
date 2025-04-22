@@ -100,10 +100,10 @@ const Header = () => {
           {/* Logo on the left with no gap */}
           <Box
             component="img"
-            src={uipslogo.logo01}
+            src={uipslogo.logo02}
             alt="UIP Logo"
             sx={{
-              height: { xs: 40, md: 50 },
+              height: { xs: 40, md: 60 },
               width: "auto",
               filter: isScrolled ? "invert(0)" : "invert(2)",
               transition: "filter 0.3s ease",
@@ -318,7 +318,7 @@ const Header = () => {
                   mb: 2,
                 }}
               >
-                <img src={uipslogo.logo01} alt="Logo" style={{ height: '30px' }} />
+                <img src={uipslogo.logo02} alt="Logo" style={{ height: '48px' }} />
                 <IconButton
                   onClick={handleDetailsDrawerToggle}
                   sx={{
