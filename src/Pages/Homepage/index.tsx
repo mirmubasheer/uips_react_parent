@@ -9,6 +9,7 @@ import Motive from "./Motive";
 import Testimonial from "./Testimonial";
 import Upcoming from "./Upcoming";
 import GetInTouch from "./GetInTouch";
+import WhatWeDo from "./WhatWeDo";
 
 const HomePage = () => {
   return (
@@ -41,6 +42,10 @@ const HomePage = () => {
         <Projects />
       </Box>
 
+      <Box sx={{ position: "relative" }}>
+        <WhatWeDo />
+      </Box>
+
           {/* Projects Section */}
       <Box sx={{ position: "relative" }}>
         <Testimonial />
@@ -49,6 +54,7 @@ const HomePage = () => {
       <Box sx={{ position: "relative" }}>
         <Upcoming />
       </Box>
+      
 
       <Box sx={{ position: "relative" }}>
         <GetInTouch />

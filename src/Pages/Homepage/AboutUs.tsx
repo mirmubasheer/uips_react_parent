@@ -45,15 +45,18 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
         sx={{
           minHeight: "100vh",
           width: "100%",
+          maxWidth: "100%", // Prevent overflow
+          boxSizing: "border-box", // Include padding in width
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           background: generateBackgroundColor(index, total),
-          padding: { xs: "20px", md: "40px" },
+          padding: { xs: "10px 10px 5px", md: "40px" }, // Reduced bottom padding for mobile
           scrollSnapAlign: "start",
           opacity: inView ? 1 : 0,
           transition: shouldReduceMotion ? "none" : "opacity 0.5s ease",
+          overflowX: "hidden", // Prevent horizontal scroll
         }}
       >
         {inView && (
@@ -66,18 +69,19 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-              maxWidth: "1000px",
+              maxWidth: isMobile ? "90vw" : "1000px", // Responsive maxWidth
               textAlign: isMobile ? "center" : "left",
             }}
           >
-            <Box sx={{ flex: 1, pr: isMobile ? 0 : 4, mb: isMobile ? 3 : 0 }}>
+            <Box sx={{ flex: 1, pr: isMobile ? 0 : 4, mb: isMobile ? 2 : 0 }}>
               <Typography
                 variant="h4"
                 sx={{
                   fontWeight: "bold",
                   color: "#A5B4FC",
-                  fontSize: { xs: "24px", md: "32px" },
+                  fontSize: { xs: "20px", md: "32px" }, // Smaller font for mobile
                   textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)",
+                  wordBreak: "break-word", // Prevent text overflow
                 }}
               >
                 {section.title}
@@ -89,8 +93,9 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
                   sx={{
                     mt: 2,
                     color: "#D1D5DB",
-                    fontSize: { xs: "14px", md: "20px" },
+                    fontSize: { xs: "12px", md: "20px" }, // Smaller font for mobile
                     lineHeight: 1.6,
+                    wordBreak: "break-word", // Prevent text overflow
                   }}
                 >
                   {paragraph}
@@ -100,11 +105,13 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
             <Box
               sx={{
                 flex: 1,
-                width: isMobile ? "100%" : "400px",
-                height: isMobile ? "250px" : "300px",
+                width: isMobile ? "80%" : "400px", // Reduced image width for mobile
+                maxWidth: "100%", // Prevent image overflow
+                height: isMobile ? "200px" : "300px", // Slightly smaller height for mobile
                 display: "flex",
                 justifyContent: "center",
                 boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
+                margin: isMobile ? "0 auto" : "0", // Center image in mobile
               }}
             >
               <img
@@ -154,12 +161,13 @@ const AboutUs: React.FC = () => {
       sx={{
         minHeight: "100vh",
         width: "100%",
+        maxWidth: "100%", // Prevent overflow
         background: "#0F172A",
         display: "flex",
         flexDirection: "column",
         scrollSnapType: isMobile ? "y mandatory" : "y proximity",
         overflowY: "auto",
-        overflowX: "hidden",
+        overflowX: "hidden", // Prevent horizontal scroll
         scrollbarWidth: "none",
         "&::-webkit-scrollbar": {
           display: "none",

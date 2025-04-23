@@ -6,6 +6,7 @@ import { AboutSectionImages } from '../../assets/'; // Adjust path
 import Team from './Team';
 // import GroupTeam from './GroupTeam';
 import TeamManagement from './TeamManagement';
+import AboutCompany from './AboutCompany';
 
 const AboutUsPage: React.FC = () => {
   const breadcrumbItems = [
@@ -20,6 +21,7 @@ const AboutUsPage: React.FC = () => {
         title="About Us" 
         breadcrumbItems={breadcrumbItems} 
       />
+      <AboutCompany/>
       <Brief />
       <Team />
       <TeamManagement/>

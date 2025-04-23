@@ -108,27 +108,27 @@ import civil_6_3 from './images/projects/p1.webp';
 import civil_7_1 from './images/projects/p1.webp';
 import civil_7_2 from './images/projects/p1.webp';
 import civil_7_3 from './images/projects/p1.webp';
-import civil_8_1 from './images/projects/p1.webp';
-import civil_8_2 from './images/projects/p1.webp';
-import civil_8_3 from './images/projects/p1.webp';
-import civil_9_1 from './images/projects/p1.webp';
-import civil_9_2 from './images/projects/p1.webp';
-import civil_9_3 from './images/projects/p1.webp';
-import civil_10_1 from './images/projects/p1.webp';
-import civil_10_2 from './images/projects/p1.webp';
-import civil_10_3 from './images/projects/p1.webp';
-import civil_11_1 from './images/projects/p1.webp';
-import civil_11_2 from './images/projects/p1.webp';
-import civil_11_3 from './images/projects/p1.webp';
+import civil_8_1 from './images/projects/site/Addar1.webp';
+import civil_8_2 from './images/projects/site/Addar2.webp';
+import civil_8_3 from './images/projects/site/Addar3.webp';
+import civil_9_1 from './images/projects/site/Addar1_1.webp';
+import civil_9_2 from './images/projects/site/Addar1_2.webp';
+import civil_9_3 from './images/projects/site/Addar1_3.webp';
+import civil_10_1 from './images/projects/site/Addar2_1.webp';
+import civil_10_2 from './images/projects/site/Addar2_2.webp';
+import civil_10_3 from './images/projects/site/Addar2_3.webp';
+import civil_11_1 from './images/projects/site/Farabi4.webp';
+import civil_11_2 from './images/projects/site/Farabi2.webp';
+import civil_11_3 from './images/projects/site/Farabi3.webp';
 import civil_12_1 from './images/projects/p1.webp';
 import civil_12_2 from './images/projects/p1.webp';
 import civil_12_3 from './images/projects/p1.webp';
-import civil_13_1 from './images/projects/p1.webp';
-import civil_13_2 from './images/projects/p1.webp';
-import civil_13_3 from './images/projects/p1.webp';
-import civil_14_1 from './images/projects/p1.webp';
-import civil_14_2 from './images/projects/p1.webp';
-import civil_14_3 from './images/projects/p1.webp';
+import civil_13_1 from './images/projects/site/Polo1.webp';
+import civil_13_2 from './images/projects/site/Polo2.webp';
+import civil_13_3 from './images/projects/site/Polo3.webp';
+import civil_14_1 from './images/projects/site/Polo1_1.webp';
+import civil_14_2 from './images/projects/site/Polo1_2.webp';
+import civil_14_3 from './images/projects/site/Polo1_3.webp';
 import civil_15_1 from './images/projects/p1.webp';
 import civil_15_2 from './images/projects/p1.webp';
 import civil_15_3 from './images/projects/p1.webp';
@@ -313,9 +313,9 @@ import mechanical_6_3 from './images/projects/p1.webp';
 import mechanical_7_1 from './images/projects/p1.webp';
 import mechanical_7_2 from './images/projects/p1.webp';
 import mechanical_7_3 from './images/projects/p1.webp';
-import mechanical_8_1 from './images/projects/p1.webp';
-import mechanical_8_2 from './images/projects/p1.webp';
-import mechanical_8_3 from './images/projects/p1.webp';
+import mechanical_8_1 from './images/projects/site/Farabi1_1.webp';
+import mechanical_8_2 from './images/projects/site/Farabi1_2.webp';
+import mechanical_8_3 from './images/projects/site/Farabi1_3.webp';
 import mechanical_9_1 from './images/projects/p1.webp';
 import mechanical_9_2 from './images/projects/p1.webp';
 import mechanical_9_3 from './images/projects/p1.webp';
@@ -505,7 +505,13 @@ import boss from './images/management/boss.webp';
 import shakeel from  './images/management/shakeel.webp';
 import zia from './images/management/zia.webp';
 import mehboob from './images/management/mehboob.webp';
-import husam from './images/management/mehboob.webp';
+import husam from './images/management/husam.jpg';
+
+
+
+import w1 from './images/aboutus/whatwedo.webp';
+import q1 from './images/aboutus/quality.webp';
+
 
 // Type definitions
 interface ImageObject {
@@ -840,4 +846,9 @@ export const ourManagement = {
   zia,
   mehboob,
   husam
+}
+
+export const wq = {
+  w1,
+  q1
 }

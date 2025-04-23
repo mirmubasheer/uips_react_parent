@@ -515,36 +515,28 @@ const Testimonial: React.FC = () => {
 
   const testimonials = [
     {
-      clientImageSrc: 'https://via.placeholder.com/60',
-      clientName: 'Alexan Micelito',
-      clientRole: 'Senior Manager',
-      testimonial:
-        "Home is where love resides, memories are created, and dreams are nurtured. I've found my sanctuary in this beautiful property.",
+      clientImageSrc: '',
+      clientName: 'Syed Danish Hassan',
+      testimonial: 'UIPS provided excellent industrial solutions! Very reliable team.',
       rating: 5,
     },
     {
-      clientImageSrc: 'https://via.placeholder.com/60',
-      clientName: 'Jane Doe',
-      clientRole: 'Marketing Specialist',
-      testimonial:
-        'The service I received was outstanding. The attention to detail made my home-buying experience truly exceptional!',
-      rating: 4,
-    },
-    {
-      clientImageSrc: 'https://via.placeholder.com/60',
-      clientName: 'John Smith',
-      clientRole: 'Entrepreneur',
-      testimonial:
-        'Fantastic property! I am impressed with the professionalism of the team and the quality of the homes.',
+      clientImageSrc: '',
+      clientName: 'Mehboob Khan',
+      testimonial: 'Great work by UIPS! Professional and efficient service.',
       rating: 5,
     },
     {
-      clientImageSrc: 'https://via.placeholder.com/60',
-      clientName: 'Emily Johnson',
-      clientRole: 'Designer',
-      testimonial:
-        'The process was smooth, and the team made sure all my questions were answered. A great experience!',
-      rating: 4,
+      clientImageSrc: '',
+      clientName: 'Massarat Ali',
+      testimonial: 'Amazing experience with UIPS! Top-quality support.',
+      rating: 5,
+    },
+    {
+      clientImageSrc: '',
+      clientName: 'Sedawy Moha',
+      testimonial: 'UIPS is the best! Fast and trustworthy service.',
+      rating: 5,
     },
   ];
 
@@ -643,9 +635,6 @@ const Testimonial: React.FC = () => {
                       <Box>
                         <Typography variant="body1" sx={{ fontWeight: 'bold', fontSize: '0.9rem', color: '#A3BFFA' }}>
                           {testimonial.clientName}
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: '#CBD5E1', fontSize: '0.8rem' }}>
-                          {testimonial.clientRole}
                         </Typography>
                       </Box>
                     </Box>

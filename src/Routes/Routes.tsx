@@ -1,18 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage } from '../Pages/Exports';
+import { HomePage, About, Projects, DivisionDetail, ProjectDetailsWrapper, Gallery, CareersWrapper, AllProjectsByClient, ContactWrapper } from '../Pages/Exports';
 import Layout from '../Layout/Layout';
-import Projects from "../Pages/Projects";
-import About from "../Pages/About";
-import DivisionDetail from "../Pages/Homepage/DivisionDetail";
-import ProjectDetailsWrapper from '../Pages/Projects/ProjectDetails'
-import Gallery from "../Pages/Gallery";
-import CareersWrapper from "../Pages/Careers";
-import AllProjectsByClient from "../Pages/Projects/AllProjects/AllProjectsByClient";
-import ContactWrapper from "../Pages/Contact";
-
 
 const router = createBrowserRouter([
-
     {
       element: <Layout />,
       children: [
@@ -29,22 +19,20 @@ const router = createBrowserRouter([
           element: <Projects />,
         },
         {
-         
           path: "/division/:slug",
           element: <DivisionDetail />,
         },
-
         {
-          path:"/:division",
-           element:<Projects />
+          path: "/:division",
+          element: <Projects />
         },
         {
-          path:"/:division/project/:id",
-           element:<ProjectDetailsWrapper />
+          path: "/:division/project/:id",
+          element: <ProjectDetailsWrapper />
         },
         {
           path: "/all-projects",
-          element: <AllProjectsByClient />, // Add new route
+          element: <AllProjectsByClient />,
         },
         {
           path: "/gallery",
@@ -54,13 +42,10 @@ const router = createBrowserRouter([
           path: "/career",
           element: <CareersWrapper />,
         },
-
         {
           path: "/contact",
           element: <ContactWrapper />,
         },
-
-
         //projects/:id
         // {
         //   path : "/projects/:slug",
@@ -78,7 +63,6 @@ const router = createBrowserRouter([
         //   path : "/gallery/:id",
         //   element : <GalleryDetails />,
         // },
-
         // {
         //   path : "/blog",
         //   element : <Blog />,
@@ -87,14 +71,12 @@ const router = createBrowserRouter([
         //   path:"/blog/:id",
         //   element:<BlogDetails/>
         // },
-
         // {
         //   path : "/contact",
         //   element : <ContactUs />,
         // },
-        ],
+      ],
     },
 ]);
-
 
 export default router;

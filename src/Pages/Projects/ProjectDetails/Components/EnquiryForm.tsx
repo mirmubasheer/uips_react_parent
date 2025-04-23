@@ -1,9 +1,37 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import gsap from "gsap";
+import { ArrowForward } from "@mui/icons-material";
+
+const sharedInputProps = {
+  variant: "filled" as const,
+  fullWidth: true as const,
+  InputProps: {
+    sx: {
+      backgroundColor: "rgba(15, 23, 42, 0.6)",
+      "& .MuiInputBase-input": { color: "#fff" },
+    },
+  },
+  InputLabelProps: {
+    sx: {
+      color: "#94a3b8",
+      "&.Mui-focused": { color: "#64748b" },
+    },
+  },
+};
 
 const EnquiryForm: React.FC = () => {
-  const formRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,13 +45,12 @@ const EnquiryForm: React.FC = () => {
     message: "",
   });
 
-  // GSAP animation for slide-in from right
   useEffect(() => {
     if (formRef.current) {
       gsap.fromTo(
         formRef.current,
         { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
+        { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" }
       );
     }
   }, []);
@@ -66,76 +93,61 @@ const EnquiryForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Form submitted:", formData);
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    }
+    if (!validate()) return;
+    console.log("Form submitted:", formData);
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
     <Box
       ref={formRef}
       sx={{
-        p: { xs: 2, md: 3 },
-        background: "rgba(255, 255, 255, 0.1)",
-        borderRadius: "16px",
-        position: { md: "sticky" },
-        top: { md: "20px" },
-        height: "fit-content",
+        p: { xs: 2, sm: 3 },
+        background: "linear-gradient(135deg, #弁172a 0%, #1e293b 100%)",
+        borderRadius: 3,
         width: "100%",
+        maxWidth: isMobile ? 750 : 450, // Increased maxWidth for mobile view to 750
+        mx: "auto",
+        boxSizing: "border-box",
       }}
     >
       <Typography
-        variant="h6"
+        variant={isMobile ? "h6" : "h5"}
         fontWeight={600}
-        sx={{ mb: 2, color: "white" }}
+        sx={{
+          mb: 2,
+          textAlign: "center",
+          background: "linear-gradient(to right, #94a3b8, #e2e8f0)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }}
       >
         Enquire About This Project
       </Typography>
+
       <Box
         component="form"
         onSubmit={handleSubmit}
-        sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          alignItems: isMobile ? "center" : "flex-start",
+        }}
       >
         <TextField
+          {...sharedInputProps}
           label="Name"
           name="name"
           value={formData.name}
           onChange={handleChange}
           error={!!errors.name}
           helperText={errors.name}
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              backgroundColor: "rgba(15, 23, 42, 0.5)",
-              "& fieldset": { borderColor: "rgba(255, 255, 255, 0.1)" },
-              "&:hover fieldset": { borderColor: "rgba(255, 255, 255, 0.3)" },
-              "&.Mui-focused fieldset": { borderColor: "rgba(255, 255, 255, 0.5)" },
-              "&.Mui-focused": {
-                backgroundColor: "rgba(15, 23, 42, 0.7)",
-              },
-            },
-            "& .MuiInputBase-input": {
-              color: "#ffffff",
-              "&:-webkit-autofill": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.5) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.5) !important",
-              },
-              "&:-webkit-autofill:focus": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.7) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.7) !important",
-              },
-            },
-            "& .MuiInputLabel-root": {
-              color: "rgba(255, 255, 255, 0.7)",
-              "&.Mui-focused": { color: "#ffffff" },
-              "&.Mui-filled": { color: "#ffffff" },
-            },
-          }}
+          sx={{ width: "100%" }}
         />
+
         <TextField
+          {...sharedInputProps}
           label="Email"
           name="email"
           type="email"
@@ -143,111 +155,48 @@ const EnquiryForm: React.FC = () => {
           onChange={handleChange}
           error={!!errors.email}
           helperText={errors.email}
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              backgroundColor: "rgba(15, 23, 42, 0.5)",
-              "& fieldset": { borderColor: "rgba(255, 255, 255, 0.1)" },
-              "&:hover fieldset": { borderColor: "rgba(255, 255, 255, 0.3)" },
-              "&.Mui-focused fieldset": { borderColor: "rgba(255, 255, 255, 0.5)" },
-              "&.Mui-focused": {
-                backgroundColor: "rgba(15, 23, 42, 0.7)",
-              },
-            },
-            "& .MuiInputBase-input": {
-              color: "#ffffff",
-              "&:-webkit-autofill": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.5) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.5) !important",
-              },
-              "&:-webkit-autofill:focus": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.7) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.7) !important",
-              },
-            },
-            "& .MuiInputLabel-root": {
-              color: "rgba(255, 255, 255, 0.7)",
-              "&.Mui-focused": { color: "#ffffff" },
-              "&.Mui-filled": { color: "#ffffff" },
-            },
-          }}
+          sx={{ width: "100%" }}
         />
+
         <TextField
+          {...sharedInputProps}
           label="Phone"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
           error={!!errors.phone}
           helperText={errors.phone}
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              backgroundColor: "rgba(15, 23, 42, 0.5)",
-              "& fieldset": { borderColor: "rgba(255, 255, 255, 0.1)" },
-              "&:hover fieldset": { borderColor: "rgba(255, 255, 255, 0.3)" },
-              "&.Mui-focused fieldset": { borderColor: "rgba(255, 255, 255, 0.5)" },
-              "&.Mui-focused": {
-                backgroundColor: "rgba(15, 23, 42, 0.7)",
-              },
-            },
-            "& .MuiInputBase-input": {
-              color: "#ffffff",
-              "&:-webkit-autofill": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.5) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.5) !important",
-              },
-              "&:-webkit-autofill:focus": {
-                WebkitBoxShadow: "0 0 0 1000px rgba(15, 23, 42, 0.7) inset !important",
-                WebkitTextFillColor: "#ffffff !important",
-                backgroundColor: "rgba(15, 23, 42, 0.7) !important",
-              },
-            },
-            "& .MuiInputLabel-root": {
-              color: "rgba(255, 255, 255, 0.7)",
-              "&.Mui-focused": { color: "#ffffff" },
-              "&.Mui-filled": { color: "#ffffff" },
-            },
-          }}
+          sx={{ width: "100%" }}
         />
+
         <TextField
+          {...sharedInputProps}
           label="Message"
           name="message"
+          multiline
+          rows={isMobile ? 3 : 4}
           value={formData.message}
           onChange={handleChange}
           error={!!errors.message}
           helperText={errors.message}
-          multiline
-          rows={4}
-          fullWidth
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              backgroundColor: "rgba(15, 23, 42, 0.5)",
-              "& fieldset": { borderColor: "rgba(255, 255, 255, 0.1)" },
-              "&:hover fieldset": { borderColor: "rgba(255, 255, 255, 0.3)" },
-              "&.Mui-focused fieldset": { borderColor: "rgba(255, 255, 255, 0.5)" },
-              "&.Mui-focused": {
-                backgroundColor: "rgba(15, 23, 42, 0.7)",
-              },
-            },
-            "& .MuiInputBase-input": {
-              color: "#ffffff",
-            },
-            "& .MuiInputLabel-root": {
-              color: "rgba(255, 255, 255, 0.7)",
-              "&.Mui-focused": { color: "#ffffff" },
-              "&.Mui-filled": { color: "#ffffff" },
-            },
-          }}
+          sx={{ width: "100%" }}
         />
+
         <Button
           type="submit"
           variant="contained"
+          endIcon={<ArrowForward />}
           sx={{
-            backgroundColor: "#3B82F6",
-            "&:hover": { backgroundColor: "#2563EB" },
+            alignSelf: "flex-start",
+            px: 3,
+            py: 1,
+            borderRadius: 2,
+            textTransform: "none",
+            background: "linear-gradient(45deg, #475569 0%, #64748b 100%)",
+            "&:hover": {
+              background: "linear-gradient(45deg, #334155 0%, #475569 100%)",
+            },
+            width: "100%", // Makes the button full width on mobile
           }}
         >
           Submit

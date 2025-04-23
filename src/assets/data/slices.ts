@@ -1,14 +1,14 @@
 const SECTORS = [
     { label: "Maintanence  Division", link: "/civil" },
-    { label: "IT Division", link: "/it" },
+    { label: "IT Division", link: "/" },
     { label: "Substation Construction", link: "/electrical" },
     { label: "Upgrade Projects", link: "/mechanical" },
-    { label: "Plant Construction", link: "/automobile" },
-    { label: "Power House", link: "/healthcare" },
-    { label: "Shutdowns", link: "/education" },
-    { label: "Sale Gas Division", link: "/finance" },
-    { label: "UG Cabling", link: "/retail" },
-    { label: "Port Division", link: "/telecom" },
+    { label: "Plant Construction", link: "/shutdowns" },
+    { label: "Power House", link: "/power" },
+    { label: "Shutdowns", link: "/shutdowns" },
+    { label: "Sale Gas Division", link: "/mechanical" },
+    { label: "UG Cabling", link: "/electrical" },
+    { label: "Port Division", link: "/civil" },
   ];
 
   export default SECTORS;

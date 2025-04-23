@@ -262,34 +262,35 @@ const Header = () => {
               </Button>
             )}
 
-            <IconButton
-              edge="end"
-              aria-label="menu"
-              onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
-              sx={{
-                color: '#000000',
-                '&:hover': {
-                  color: '#1C276C',
-                  transition: 'all 0.3s ease',
-                },
-              }}
-            >
-              <div
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                }}
-              >
-                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-                <div style={{ width: isHovered ? '25px' : '18px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-              </div>
-            </IconButton>
+<IconButton
+  edge="end"
+  aria-label="menu"
+  onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
+  sx={{
+    color: '#000000',
+    '&:hover': {
+      color: '#1C276C',
+      transition: 'all 0.3s ease',
+    },
+    mr: { xs: 2, md: 1 }, // Move left on mobile by reducing margin-right
+  }}
+>
+  <div
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      cursor: 'pointer',
+    }}
+  >
+    <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+    <div style={{ width: isHovered ? '25px' : '18px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+    <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+  </div>
+</IconButton>
           </Box>
         </Toolbar>
       </AppBar>

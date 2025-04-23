@@ -287,11 +287,8 @@ const DivisionCard: React.FC<{
                 opacity: 0.9,
                 fontSize: '1rem',
                 lineHeight: 1.6,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                display: '-webkit-box',
-                WebkitLineClamp: 3,
-                WebkitBoxOrient: 'vertical',
+                // Removed line clamping styles
+                whiteSpace: 'pre-line', // optional if your text contains \n
               }}
             >
               {division.description}

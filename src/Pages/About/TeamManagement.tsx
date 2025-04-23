@@ -34,6 +34,7 @@ const TeamManagement: React.FC = () => {
         px: { xs: 2, sm: 3, md: 4 },
         background: 'linear-gradient(180deg, #334155 0%, #475569 100%)',
         textAlign: 'center',
+        boxSizing: 'border-box',
       }}
     >
       <Typography
@@ -68,14 +69,14 @@ const TeamManagement: React.FC = () => {
                   bgcolor: '#1e293b',
                   borderRadius: '12px',
                   overflow: 'hidden',
-                  transition: 'box-shadow 0.3s', // Only shadow changes on hover
+                  transition: 'box-shadow 0.3s',
                   '&:hover': {
-                    boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.3)' }, // Shadow effect only
+                    boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.3)' },
                   },
                   border: '1px solid',
                   borderColor: '#475569',
-                  width: '260px', // Fixed width
-                  height: '360px', // Fixed height
+                  width: '260px',
+                  height: '360px',
                   mx: 'auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -83,14 +84,16 @@ const TeamManagement: React.FC = () => {
               >
                 <Box
                   sx={{
-                    width: '100%',
-                    height: '200px', // Fixed image height
+                    width: { xs: '160px', sm: '180px' }, // Responsive circle size
+                    height: { xs: '160px', sm: '180px' },
+                    borderRadius: '50%', // Circular shape
                     overflow: 'hidden',
-                    position: 'relative',
-                    display: 'flex', // Center the image
+                    mx: 'auto', // Center horizontally
+                    mt: 2, // Space from top
+                    display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    bgcolor: '#000', // Optional: background for empty space
+                    bgcolor: '#000', // Fallback for empty space
                   }}
                 >
                   <Box
@@ -100,19 +103,19 @@ const TeamManagement: React.FC = () => {
                     sx={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover', // Full image fits without cropping
+                      objectFit: 'cover',
                     }}
                   />
                 </Box>
                 <Box
                   sx={{
                     p: 2,
-                    height: '160px', // Fixed text area height (total height - image height)
+                    height: { xs: '180px', sm: '160px' }, // Adjust text area height
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     textAlign: 'center',
-                    overflow: 'hidden', // Handles long content
+                    overflow: 'hidden',
                   }}
                 >
                   <Typography
@@ -120,11 +123,11 @@ const TeamManagement: React.FC = () => {
                     sx={{
                       color: '#f1f5f9',
                       fontWeight: 'medium',
-                      fontSize: '1.25rem',
+                      fontSize: { xs: '1.1rem', sm: '1.25rem' }, // Responsive font
                       mb: 1,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
-                      whiteSpace: 'wrap', // Prevents name from wrapping
+                      whiteSpace: 'wrap',
                     }}
                   >
                     {management[key].name}
@@ -134,12 +137,12 @@ const TeamManagement: React.FC = () => {
                     sx={{
                       color: '#94a3b8',
                       fontStyle: 'italic',
-                      fontSize: '0.875rem',
+                      fontSize: { xs: '0.8rem', sm: '0.875rem' }, // Responsive font
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
                       display: '-webkit-box',
-                      WebkitLineClamp: 2, // Limits to 2 lines
-                      WebkitBoxOrient: 'vertical', // Truncates long designations
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
                     }}
                   >
                     {management[key].designation}
