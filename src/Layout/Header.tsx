@@ -18,6 +18,8 @@ const tabLabels = [
   { label: "Gallery", route: "/gallery" },
   { label: "Careers", route: "/career" },
   { label: "Contact", route: "/contact" },
+  { label: "Certificates", route: "/certificates" },
+
 ];
 
 // Dropdown menu items for Major Division with updated slugs

@@ -139,11 +139,17 @@ const CareerForm: React.FC = () => {
       ref={formRef}
       sx={{
         p: { xs: 2, md: 4 },
-        bgcolor: '#1e293b',
+        background: 'linear-gradient(145deg, #0c1c3c 0%, #1e2a5c 100%)',
 
+   
+        boxShadow: { md: '0 8px 20px rgba(0, 0, 0, 0.4)' }, // Enhanced hover shadow
         borderRadius: 3,
         maxWidth: 600,
         mx: "auto",
+        '&:hover': {
+          
+          boxShadow: { md: '0 8px 20px rgba(0, 0, 0, 0.8)' },
+        },
       }}
     >
       <Typography

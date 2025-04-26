@@ -7,3 +7,4 @@ export { default as Gallery } from '../Gallery';
 export { default as CareersWrapper } from '../Careers';
 export { default as AllProjectsByClient } from '../Projects/AllProjects/AllProjectsByClient';
 export { default as ContactWrapper } from '../Contact';
+export { default as CertificateWrapper } from '../Certifications';

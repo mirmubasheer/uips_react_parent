@@ -24,7 +24,8 @@ const JobCard: React.FC<JobCardProps> = ({ job, onApplyClick }) => {
       sx={{
         p: { xs: 2.5, sm: 3, md: 3.5 }, // Increased padding slightly
         borderRadius: '12px',
-        bgcolor: '#1e293b',
+        background: 'linear-gradient(145deg, #0c1c3c 0%, #1e2a5c 100%)',
+
         height: { xs: '260px', md: '280px' }, // Fixed height for equal size (increased from 200/220px)
         display: 'flex', // Use flexbox to control layout
         flexDirection: 'column', // Stack content vertically

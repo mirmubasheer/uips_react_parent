@@ -27,8 +27,8 @@ export const management: Management = {
     image: assetManagement.mehboob,
   },
   m4: {
-    name: 'Hussam',
-    designation: 'Hr',
+    name: 'Hussam Abdullah Banajah',
+    designation: 'Accounts Manager',
     image: assetManagement.husam,
   }
 };

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage, About, Projects, DivisionDetail, ProjectDetailsWrapper, Gallery, CareersWrapper, AllProjectsByClient, ContactWrapper } from '../Pages/Exports';
+import { HomePage, About, Projects, DivisionDetail, ProjectDetailsWrapper, Gallery, CareersWrapper, AllProjectsByClient, ContactWrapper, CertificateWrapper } from '../Pages/Exports';
 import Layout from '../Layout/Layout';
 
 const router = createBrowserRouter([
@@ -45,6 +45,10 @@ const router = createBrowserRouter([
         {
           path: "/contact",
           element: <ContactWrapper />,
+        },
+        {
+          path: "/certificates",
+          element: <CertificateWrapper />,
         },
         //projects/:id
         // {

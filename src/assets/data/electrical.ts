@@ -83,7 +83,7 @@ const electricalData: ElectricalDivision = {
       projectname: "TMS UPGRADE (6510190103)",
       slug: "tms-upgrade-6510190103",
       description:
-        "A comprehensive upgrade of the Turbine Monitoring System (TMS) across multiple locations, integrating advanced diagnostics to optimize turbine performance and longevity.",
+        "Project Details Utilities & Industrial Power Services TMS Upgrade Upgrade of Field instruments & DCS Up gradation of TMS system in the following Bulk Plants: Dhahran Duba Turaif Sulail Hofuf Jizan  Tabuk Hasa Najran and various other Bulk Plants",
       monthyear: "JUL-06",
       duration: "12 MONTHS",
       client: "BEMCO - ARAMCO",
