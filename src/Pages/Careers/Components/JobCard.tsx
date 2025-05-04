@@ -23,19 +23,21 @@ const JobCard: React.FC<JobCardProps> = ({ job, onApplyClick }) => {
     <Box
       sx={{
         p: { xs: 2.5, sm: 3, md: 3.5 }, // Increased padding slightly
-        borderRadius: '12px',
-        background: 'linear-gradient(145deg, #0c1c3c 0%, #1e2a5c 100%)',
-
+        transition: 'transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease',
+        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
+        border: '1px solid rgba(59, 130, 246, 0.2)',
+        background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+        borderRadius:'10px',
         height: { xs: '260px', md: '280px' }, // Fixed height for equal size (increased from 200/220px)
         display: 'flex', // Use flexbox to control layout
         flexDirection: 'column', // Stack content vertically
         justifyContent: 'space-between', // Space out content, pin button to bottom
-        transition: { md: 'transform 0.3s, box-shadow 0.3s' },
+       
         '&:hover': {
           transform: { md: 'translateY(-5px)' },
           boxShadow: { md: '0 8px 20px rgba(0, 0, 0, 0.3)' }, // Enhanced hover shadow
         },
-        border: '1px solid rgba(59, 130, 246, 0.2)',
+        
       }}
     >
       <Box>

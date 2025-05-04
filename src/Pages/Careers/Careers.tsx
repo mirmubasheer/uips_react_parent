@@ -36,7 +36,7 @@ const Careers: React.FC = () => {
     <Box
       sx={{
         py: { xs: 6, md: 8 },
-        background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)', 
+        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
 
         position: 'relative',
         overflow: 'hidden',

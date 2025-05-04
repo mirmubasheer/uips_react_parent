@@ -475,69 +475,42 @@ import Slider from 'react-slick';
 import StarIcon from '@mui/icons-material/Star';
 import { testimonialpics } from '../../assets';
 
-// Import slick carousel styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// Define the bounce animation using MUI's keyframes
+// Bounce animation
 const bounceAnimation = keyframes`
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 `;
 
-// Star rating component
 interface StarRatingProps {
   rating: number;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-      {[...Array(5)].map((_, index) => (
-        <StarIcon
-          key={index}
-          sx={{
-            color: index < rating ? '#3B82F6' : '#4B5EAA',
-          }}
-        />
-      ))}
-    </Box>
-  );
-};
+const StarRating: React.FC<StarRatingProps> = ({ rating }) => (
+  <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+    {[...Array(5)].map((_, index) => (
+      <StarIcon
+        key={index}
+        sx={{
+          color: index < rating ? '#3B82F6' : '#4B5EAA',
+          fontSize: { xs: '18px', sm: '20px', md: '24px' },
+        }}
+      />
+    ))}
+  </Box>
+);
 
 const Testimonial: React.FC = () => {
   const largeImageSrc = testimonialpics.testimonial01;
   const smallImageSrc = testimonialpics.testimonial02;
 
   const testimonials = [
-    {
-      clientImageSrc: '',
-      clientName: 'Syed Danish Hassan',
-      testimonial: 'UIPS provided excellent industrial solutions! Very reliable team.',
-      rating: 5,
-    },
-    {
-      clientImageSrc: '',
-      clientName: 'Mehboob Khan',
-      testimonial: 'Great work by UIPS! Professional and efficient service.',
-      rating: 5,
-    },
-    {
-      clientImageSrc: '',
-      clientName: 'Massarat Ali',
-      testimonial: 'Amazing experience with UIPS! Top-quality support.',
-      rating: 5,
-    },
-    {
-      clientImageSrc: '',
-      clientName: 'Sedawy Moha',
-      testimonial: 'UIPS is the best! Fast and trustworthy service.',
-      rating: 5,
-    },
+    { clientImageSrc: '', clientName: 'Syed Danish Hassan', testimonial: 'UIPS provided excellent industrial solutions! Very reliable team.', rating: 5 },
+    { clientImageSrc: '', clientName: 'Mehboob Khan', testimonial: 'Great work by UIPS! Professional and efficient service.', rating: 5 },
+    { clientImageSrc: '', clientName: 'Massarat Ali', testimonial: 'Amazing experience with UIPS! Top-quality support.', rating: 5 },
+    { clientImageSrc: '', clientName: 'Sedawy Moha', testimonial: 'UIPS is the best! Fast and trustworthy service.', rating: 5 },
   ];
 
   const sliderSettings = {
@@ -552,13 +525,8 @@ const Testimonial: React.FC = () => {
       <Box
         sx={{
           bottom: '-40px',
-          '& li.slick-active button:before': {
-            color: '#3B82F6',
-          },
-          '& li button:before': {
-            color: '#A5B4FC',
-            fontSize: '12px',
-          },
+          '& li.slick-active button:before': { color: '#3B82F6' },
+          '& li button:before': { color: '#A5B4FC', fontSize: '12px' },
         }}
       >
         {dots}
@@ -570,7 +538,7 @@ const Testimonial: React.FC = () => {
     <Box
       sx={{
         px: { xs: 2, sm: 4, md: 6, lg: 8 },
-        py: 4,
+        py: { xs: 4, sm: 6, md: 8 },
         bgcolor: 'transparent',
         background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
         color: '#A3BFFA',
@@ -578,21 +546,38 @@ const Testimonial: React.FC = () => {
     >
       <Container>
         <Grid container spacing={4} alignItems="center">
-          {/* Left side - Testimonial slider */}
+          {/* Left - Testimonial slider */}
           <Grid item xs={12} md={6}>
-            <Typography variant="h4" sx={{ mb: 2, mt: 20, color: '#A3BFFA' }}>
+            <Typography
+              variant="h4"
+              sx={{
+                mb: 2,
+                mt: { xs: 4, md: 20 },
+                color: '#A3BFFA',
+                fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' },
+                textAlign: { xs: 'center', md: 'left' },
+              }}
+            >
               What Our Clients Say
             </Typography>
 
-            <Box sx={{ overflow: 'hidden', height: '400px', textAlign: 'center', mt: 6, width: '700px' }}>
+            <Box
+              sx={{
+                overflow: 'hidden',
+                height: { xs: 'auto', md: '400px' },
+                textAlign: 'center',
+                mt: { xs: 4, md: 6 },
+                width: { xs: '100%', md: '700px' },
+              }}
+            >
               <Slider {...sliderSettings}>
                 {testimonials.map((testimonial, index) => (
                   <Box key={index} sx={{ px: 2, position: 'relative', overflow: 'hidden' }}>
-                    {/* Large decorative quote behind the text */}
+                    {/* Decorative quote */}
                     <Typography
                       variant="h2"
                       sx={{
-                        fontSize: '4rem',
+                        fontSize: { xs: '3rem', md: '4rem' },
                         fontWeight: 'bold',
                         color: 'rgba(59, 130, 246, 0.1)',
                         position: 'absolute',
@@ -604,10 +589,11 @@ const Testimonial: React.FC = () => {
                       ”
                     </Typography>
 
+                    {/* Testimonial text */}
                     <Typography
                       sx={{
-                        width: '550px',
-                        fontSize: '0.5rem',
+                        maxWidth: { xs: '100%', sm: '90%', md: '550px' },
+                        fontSize: { xs: '0.9rem', sm: '1rem' },
                         mb: 2,
                         zIndex: 1,
                         whiteSpace: 'normal',
@@ -617,26 +603,35 @@ const Testimonial: React.FC = () => {
                         WebkitBoxOrient: 'vertical',
                         WebkitLineClamp: 3,
                         color: '#A3BFFA',
+                        mx: 'auto',
                       }}
                     >
                       {testimonial.testimonial}
                     </Typography>
 
-                    {/* Star rating */}
                     <StarRating rating={testimonial.rating} />
 
-                    {/* Client details */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
                       <Avatar
                         src={testimonial.clientImageSrc}
                         alt={testimonial.clientName}
-                        sx={{ width: 50, height: 50, mr: 2, border: '2px solid #60A5FA' }}
+                        sx={{
+                          width: { xs: 40, sm: 50 },
+                          height: { xs: 40, sm: 50 },
+                          mr: 2,
+                          border: '2px solid #60A5FA',
+                        }}
                       />
-                      <Box>
-                        <Typography variant="body1" sx={{ fontWeight: 'bold', fontSize: '0.9rem', color: '#A3BFFA' }}>
-                          {testimonial.clientName}
-                        </Typography>
-                      </Box>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: 'bold',
+                          fontSize: { xs: '0.9rem', sm: '1rem' },
+                          color: '#A3BFFA',
+                        }}
+                      >
+                        {testimonial.clientName}
+                      </Typography>
                     </Box>
                   </Box>
                 ))}
@@ -644,10 +639,10 @@ const Testimonial: React.FC = () => {
             </Box>
           </Grid>
 
-          {/* Right side - Images */}
+          {/* Right - Images */}
           <Grid item xs={12} md={5}>
-            <Box sx={{ position: 'relative' }}>
-              {/* Large image with polygon and shine effect */}
+            <Box sx={{ position: 'relative', textAlign: { xs: 'center', md: 'right' } }}>
+              {/* Large image */}
               <Box
                 sx={{
                   mb: 6,
@@ -655,6 +650,8 @@ const Testimonial: React.FC = () => {
                   overflow: 'hidden',
                   borderRadius: '20px 0 20px 20px',
                   clipPath: 'polygon(0 0, 90% 0, 100% 10%, 100% 100%, 0 100%)',
+                  mx: { xs: 'auto', md: 0 },
+                  width: { xs: '100%', sm: '80%', md: '90%' },
                   '&:hover .shine': {
                     transform: 'translateX(100%)',
                   },
@@ -665,8 +662,8 @@ const Testimonial: React.FC = () => {
                   src={largeImageSrc}
                   alt="Property"
                   sx={{
-                    width: '90%',
-                    height: '350px',
+                    width: '100%',
+                    height: { xs: '250px', sm: '300px', md: '350px' },
                     display: 'block',
                     borderRadius: '10px',
                   }}
@@ -688,13 +685,13 @@ const Testimonial: React.FC = () => {
                 />
               </Box>
 
-              {/* Small image with polygon and shine effect */}
+              {/* Small image */}
               <Box
                 sx={{
-                  width: '50%',
+                  width: { xs: '60%', sm: '50%' },
                   position: 'absolute',
-                  bottom: -50,
-                  right: -30,
+                  bottom: { xs: -30, sm: -40, md: -50 },
+                  right: { xs: '20%', md: -30 },
                   borderRadius: '10px',
                   animation: `${bounceAnimation} 2s infinite`,
                   overflow: 'hidden',
@@ -710,7 +707,7 @@ const Testimonial: React.FC = () => {
                   alt="Interior"
                   sx={{
                     width: '100%',
-                    height: '200px',
+                    height: { xs: '150px', sm: '180px', md: '200px' },
                     display: 'block',
                     borderRadius: '10px',
                   }}

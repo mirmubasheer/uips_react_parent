@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import HeaderAll from '../../components/HeaderAll/HeaderAll';
-import { contactB } from '../../assets';
+import { certification } from '../../assets';
 import Certification from './certification';
 
 const useImagePreload = (imageSrc: string) => {
@@ -18,10 +18,10 @@ const useImagePreload = (imageSrc: string) => {
 };
 
 const CertificateWrapper: React.FC = () => {
-  const isBannerLoaded = useImagePreload(contactB.contactBanner);
+  const isBannerLoaded = useImagePreload(certification.bannercert);
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Certificates', href: '/certificates' },
   ];
 
   return (
@@ -35,8 +35,8 @@ const CertificateWrapper: React.FC = () => {
     >
       {isBannerLoaded ? (
         <HeaderAll
-          imageSrc={contactB.contactBanner}
-          title="Contact Us"
+          imageSrc={certification.bannercert}
+          title="Certificates"
           breadcrumbItems={breadcrumbItems}
           loading="lazy"
         />

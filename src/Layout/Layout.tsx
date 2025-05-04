@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import ScrollToTopButton from './ScrollToTopButton';
 import Footer from '../Pages/Footer/Footer';
 import Header from './Header';
+import SocialIcons from './SocialIcons';
 
 const Layout = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const Layout = () => {
     <Box className="layout-container">
       <Box>
         <Header />
+        <SocialIcons/>
         <ScrollToTopButton />
       </Box>
       <Box className="content-container">

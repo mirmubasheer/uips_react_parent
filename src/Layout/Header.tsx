@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import BrochureDownloadModal from "../components/BrochureModal/BrochureDownloadModal";
 
 // Tab labels
 const tabLabels = [
@@ -19,7 +20,6 @@ const tabLabels = [
   { label: "Careers", route: "/career" },
   { label: "Contact", route: "/contact" },
   { label: "Certificates", route: "/certificates" },
-
 ];
 
 // Dropdown menu items for Major Division with updated slugs
@@ -41,6 +41,7 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -64,6 +65,14 @@ const Header = () => {
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   useEffect(() => {
@@ -243,6 +252,7 @@ const Header = () => {
             {!isMobile && (
               <Button
                 variant="contained"
+                onClick={handleModalOpen}
                 sx={{
                   display: { xs: "none", md: "block" },
                   background: "linear-gradient(90deg, #25358d, #1a2467)",
@@ -264,38 +274,41 @@ const Header = () => {
               </Button>
             )}
 
-<IconButton
-  edge="end"
-  aria-label="menu"
-  onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
-  sx={{
-    color: '#000000',
-    '&:hover': {
-      color: '#1C276C',
-      transition: 'all 0.3s ease',
-    },
-    mr: { xs: 2, md: 1 }, // Move left on mobile by reducing margin-right
-  }}
->
-  <div
-    onMouseEnter={() => setIsHovered(true)}
-    onMouseLeave={() => setIsHovered(false)}
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      cursor: 'pointer',
-    }}
-  >
-    <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-    <div style={{ width: isHovered ? '25px' : '18px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-    <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
-  </div>
-</IconButton>
+            <IconButton
+              edge="end"
+              aria-label="menu"
+              onClick={isMobile ? handleDrawerToggle : handleDetailsDrawerToggle}
+              sx={{
+                color: '#000000',
+                '&:hover': {
+                  color: '#1C276C',
+                  transition: 'all 0.3s ease',
+                },
+                mr: { xs: 2, md: 1 }, // Move left on mobile by reducing margin-right
+              }}
+            >
+              <div
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                }}
+              >
+                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+                <div style={{ width: isHovered ? '25px' : '18px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+                <div style={{ width: '25px', height: '2px', backgroundColor: isScrolled ? '#000000' : '#FFFFFF', margin: '3px 0', transition: 'width 0.3s ease-in-out' }} />
+              </div>
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
+
+      {/* Brochure Download Modal */}
+      <BrochureDownloadModal open={modalOpen} onClose={handleModalClose} />
 
       <Drawer
         anchor="right"
@@ -311,65 +324,65 @@ const Header = () => {
           },
         }}
       >
-      <Box sx={{ width: 270, p: 2, display: 'flex', flexDirection: 'column', height: '100%', overflow: "hidden" }}>
-              {/* Logo and Close Button */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  mb: 2,
-                }}
-              >
-                <img src={uipslogo.logo02} alt="Logo" style={{ height: '48px' }} />
-                <IconButton
-                  onClick={handleDetailsDrawerToggle}
-                  sx={{
-                    color: '#1C276C',
-                    '&:hover': {
-                      color: '#000000',
-                    },
-                  }}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </Box>
+        <Box sx={{ width: 270, p: 2, display: 'flex', flexDirection: 'column', height: '100%', overflow: "hidden" }}>
+          {/* Logo and Close Button */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 2,
+            }}
+          >
+            <img src={uipslogo.logo02} alt="Logo" style={{ height: '48px' }} />
+            <IconButton
+              onClick={handleDetailsDrawerToggle}
+              sx={{
+                color: '#1C276C',
+                '&:hover': {
+                  color: '#000000',
+                },
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
 
-              <Box sx={{ marginBottom: '20px' }} />
+          <Box sx={{ marginBottom: '20px' }} />
 
-              <Typography variant="h5" sx={{ color: '#1C276C', fontWeight: '550' }}>
-                Get In Touch
-              </Typography>
+          <Typography variant="h5" sx={{ color: '#1C276C', fontWeight: '550' }}>
+            Get In Touch
+          </Typography>
 
-              <Divider sx={{ borderColor: '#1C276C', my: 2 }} />
+          <Divider sx={{ borderColor: '#1C276C', my: 2 }} />
 
-              {/* Contact Details */}
-              <List sx={{ flexGrow: 1 }}>
-                <ListItem>
-                  <FaPhone style={{ marginRight: '10px', color: '#1C276C', fontSize: '1.2rem' }} />
-                  <ListItemText
-                    primary={
-                      <Typography variant="caption">
-                        <a href="tel:+919549546568" color="inherit" style={{ color: '#1C276C', textDecoration: 'none' }}>
-                          +966 13 896 8061
-                        </a>
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <ListItem>
-                  <FaEnvelope style={{ marginRight: '10px', color: '#1C276C', fontSize: '1.2rem' }} />
-                  <ListItemText
-                    primary={
-                      <Typography variant="caption">
-                        <a href="mailto:info@dprprop.com" color="inherit" style={{ color: '#1C276C', textDecoration: 'none' }}>
-                          info@uips-sa.com
-                        </a>
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <ListItem>
+          {/* Contact Details */}
+          <List sx={{ flexGrow: 1 }}>
+            <ListItem>
+              <FaPhone style={{ marginRight: '10px', color: '#1C276C', fontSize: '1.2rem' }} />
+              <ListItemText
+                primary={
+                  <Typography variant="caption">
+                    <a href="tel:+919549546568" color="inherit" style={{ color: '#1C276C', textDecoration: 'none' }}>
+                      +966 13 896 8061
+                    </a>
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem>
+              <FaEnvelope style={{ marginRight: '10px', color: '#1C276C', fontSize: '1.2rem' }} />
+              <ListItemText
+                primary={
+                  <Typography variant="caption">
+                    <a href="mailto:info@dprprop.com" color="inherit" style={{ color: '#1C276C', textDecoration: 'none' }}>
+                      info@uips-sa.com
+                    </a>
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem>
               <Stack direction="column" alignItems="left" spacing={1}>
                 <FaMapMarkerAlt style={{ color: "#1C276C", fontSize: "1.3rem" }} />
                 <ListItemText
@@ -383,21 +396,21 @@ const Header = () => {
                 />
               </Stack>
             </ListItem>
-              </List>
+          </List>
 
-              <Divider sx={{ borderColor: '#1C276C', my: 2 }} />
+          <Divider sx={{ borderColor: '#1C276C', my: 2 }} />
 
-              {/* Google Maps iframe */}
-              <Box sx={{ height: '200px', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.182815150521!2d50.20350387419608!3d26.28817288665294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e83e5bd4727f%3A0x1d4e32577a32381e!2sUtilities%20%26%20Industrial%20Power%20Services%20(UIPS)%20%40%205th%20Floor%205D.!5e0!3m2!1sen!2ssa!4v1742466963682!5m2!1sen!2ssa"
-                  style={{ width: '100%', height: '100%', border: '0' }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </Box>
-            </Box>
+          {/* Google Maps iframe */}
+          <Box sx={{ height: '200px', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.182815150521!2d50.20350387419608!3d26.28817288665294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e83e5bd4727f%3A0x1d4e32577a32381e!2sUtilities%20%26%20Industrial%20Power%20Services%20(UIPS)%20%40%205th%20Floor%205D.!5e0!3m2!1sen!2ssa!4v1742466963682!5m2!1sen!2ssa"
+              style={{ width: '100%', height: '100%', border: '0' }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </Box>
+        </Box>
       </Drawer>
 
       <Drawer
@@ -464,6 +477,7 @@ const Header = () => {
           <Divider />
           <Button
             variant="contained"
+            onClick={handleModalOpen}
             sx={{
               marginTop: '20px',
               background: "linear-gradient(90deg, #25358d, #1a2467)",
@@ -473,7 +487,6 @@ const Header = () => {
                 background: "linear-gradient(90deg, #0088cc, #00bcd4)",
               },
             }}
-            onClick={() => window.open('/brochure.pdf', '_blank')}
           >
             DOWNLOAD BROCHURE
           </Button>

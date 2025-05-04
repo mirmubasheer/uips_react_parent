@@ -130,7 +130,6 @@
 
 // export default DivisionPage;
 
-
 import React, { useEffect, useRef, memo, useState, useDeferredValue } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, Grid, Box, Skeleton } from '@mui/material';
@@ -154,7 +153,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
-  height: '420px',
+  minHeight: '420px', // Use minHeight to allow content to expand
   border: '1px solid rgba(59, 130, 246, 0.2)',
   '&:hover': {
     transform: 'scale(1.05)',
@@ -162,8 +161,8 @@ const StyledCard = styled(Card)(({ theme }) => ({
     backgroundColor: '#25335A',
   },
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '320px',
-    height: '400px',
+    maxWidth: '90%', // Take up most of the screen width on mobile
+    minHeight: 'auto', // Let height adjust to content
   },
 }));
 
@@ -174,6 +173,9 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   padding: theme.spacing(2.5),
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(2),
+  },
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -184,7 +186,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
   color: '#A5B4FC',
   marginBottom: theme.spacing(6),
   [theme.breakpoints.down('sm')]: {
-    fontSize: '3rem',
+    fontSize: '2rem !important', // Smaller title on mobile
   },
 }));
 
@@ -201,7 +203,7 @@ const preloadImages = (images: string[], count: number) => {
 
 // Skeleton Loader for Cards
 const CardSkeleton = () => (
-  <Grid item xs={12} sm={6} md={4}>
+  <Grid item xs={12}>
     <StyledCard>
       <Skeleton variant="rectangular" height={200} sx={{ bgcolor: '#2D3E66' }} />
       <StyledCardContent>
@@ -287,8 +289,7 @@ const DivisionCard: React.FC<{
                 opacity: 0.9,
                 fontSize: '1rem',
                 lineHeight: 1.6,
-                // Removed line clamping styles
-                whiteSpace: 'pre-line', // optional if your text contains \n
+                whiteSpace: 'pre-line',
               }}
             >
               {division.description}

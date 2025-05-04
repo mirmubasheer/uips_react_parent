@@ -51,7 +51,7 @@ import About01 from './images/aboutus/Aboutus1.webp';
 import About02 from './images/aboutus/about1.webp';
 import About03 from './images/aboutus/about2.webp';
 import About04 from './images/aboutus/about3.webp';
-import AboutB from './images/aboutus/aboutban.webp';
+import AboutB from './images/aboutus/aboutBb.webp';
 import ab00 from './images/aboutus/ab2003.webp';
 import ab01 from './images/aboutus/ab01.webp';
 import ab02 from './images/aboutus/ab02.webp';
@@ -65,11 +65,11 @@ import plant from './images/division/plant.webp';
 import electrical from './images/division/electrical.webp';
 
 // Testimonial images
-import testimonial01 from './images/testimonial/testimonial.jpg';
-import testimonial02 from './images/testimonial/testimonial1.jpg';
+import testimonial01 from './images/testimonial/testimonial.webp';
+import testimonial02 from './images/testimonial/testimonial1.webp';
 
 // Footer banner
-import fbanner1 from './images/footer/footer_banner.webp';
+import fbanner1 from './images/footer/footerbb.webp';
 
 // Project images
 import p1 from './images/projects/dummy.webp';
@@ -87,12 +87,12 @@ import mechanicalBanner from './images/projects/mechanicalengg.webp';
 import bannerp from './images/projects/dummy.webp';
 
 // Civil project images (placeholders)
-import civil_1_1 from './images/projects/dummy.webp';
-import civil_1_2 from './images/projects/dummy.webp';
-import civil_1_3 from './images/projects/dummy.webp';
-import civil_2_1 from './images/projects/dummy.webp';
-import civil_2_2 from './images/projects/dummy.webp';
-import civil_2_3 from './images/projects/dummy.webp';
+import civil_1_1 from './images/projects/site/satorp1.webp';
+import civil_1_2 from './images/projects/site/satorp1.webp';
+import civil_1_3 from './images/projects/site/satorp1.webp';
+import civil_2_1 from './images/projects/site/olayan.webp';
+import civil_2_2 from './images/projects/site/olayan.webp';
+import civil_2_3 from './images/projects/site/olayan.webp';
 import civil_3_1 from './images/projects/dummy.webp';
 import civil_3_2 from './images/projects/dummy.webp';
 import civil_3_3 from './images/projects/dummy.webp';
@@ -149,18 +149,18 @@ import electrical_1_3 from './images/projects/dummy.webp';
 import electrical_2_1 from './images/projects/dummy.webp';
 import electrical_2_2 from './images/projects/dummy.webp';
 import electrical_2_3 from './images/projects/dummy.webp';
-import electrical_3_1 from './images/projects/dummy.webp';
-import electrical_3_2 from './images/projects/dummy.webp';
-import electrical_3_3 from './images/projects/dummy.webp';
+import electrical_3_1 from './images/projects/site/tms.webp';
+import electrical_3_2 from './images/projects/site/tms.webp';
+import electrical_3_3 from './images/projects/site/tms.webp';
 import electrical_4_1 from './images/projects/dummy.webp';
 import electrical_4_2 from './images/projects/dummy.webp';
 import electrical_4_3 from './images/projects/dummy.webp';
 import electrical_5_1 from './images/projects/dummy.webp';
 import electrical_5_2 from './images/projects/dummy.webp';
 import electrical_5_3 from './images/projects/dummy.webp';
-import electrical_6_1 from './images/projects/dummy.webp';
-import electrical_6_2 from './images/projects/dummy.webp';
-import electrical_6_3 from './images/projects/dummy.webp';
+import electrical_6_1 from './images/projects/site/satorp1.webp';
+import electrical_6_2 from './images/projects/site/satorp1.webp';
+import electrical_6_3 from './images/projects/site/satorp1.webp';
 import electrical_7_1 from './images/projects/dummy.webp';
 import electrical_7_2 from './images/projects/dummy.webp';
 import electrical_7_3 from './images/projects/dummy.webp';
@@ -401,9 +401,9 @@ import instrumentation_21_3 from './images/projects/dummy.webp';
 import instrumentation_22_1 from './images/projects/dummy.webp';
 import instrumentation_22_2 from './images/projects/dummy.webp';
 import instrumentation_22_3 from './images/projects/dummy.webp';
-import instrumentation_23_1 from './images/projects/dummy.webp';
-import instrumentation_23_2 from './images/projects/dummy.webp';
-import instrumentation_23_3 from './images/projects/dummy.webp';
+import instrumentation_23_1 from './images/projects/site/olayan.webp';
+import instrumentation_23_2 from './images/projects/site/olayan.webp';
+import instrumentation_23_3 from './images/projects/site/olayan.webp';
 import instrumentation_24_1 from './images/projects/dummy.webp';
 import instrumentation_24_2 from './images/projects/dummy.webp';
 import instrumentation_24_3 from './images/projects/dummy.webp';
@@ -418,9 +418,9 @@ import instrumentation_26_3 from './images/projects/dummy.webp';
 import power_1_1 from './images/projects/dummy.webp';
 import power_1_2 from './images/projects/dummy.webp';
 import power_1_3 from './images/projects/dummy.webp';
-import power_2_1 from './images/projects/dummy.webp';
-import power_2_2 from './images/projects/dummy.webp';
-import power_2_3 from './images/projects/dummy.webp';
+import power_2_1 from './images/projects/site/sabic.webp';
+import power_2_2 from './images/projects/site/sabic.webp';
+import power_2_3 from './images/projects/site/sabic.webp';
 import power_3_1 from './images/projects/dummy.webp';
 import power_3_2 from './images/projects/dummy.webp';
 import power_3_3 from './images/projects/dummy.webp';
@@ -432,48 +432,48 @@ import power_5_2 from './images/projects/dummy.webp';
 import power_5_3 from './images/projects/dummy.webp';
 
 
-import contactBanner from './images/contact/contactbanner.webp';
+import contactBanner from './images/contact/contactb.webp';
 
 import g1 from './images/gallery/groupImages/g1.webp';
 // import g2 from './images/gallery/groupImages/223333.png';
 
 
 // Gallery group images (20 unique images)
-import group1 from './images/gallery/groupImages/IMG_0272.webp';
-import group2 from './images/gallery/groupImages/IMG_0272.webp';
-import group3 from './images/gallery/groupImages/IMG_0272.webp';
-import group4 from './images/gallery/groupImages/IMG_0272.webp';
-import group5 from './images/gallery/groupImages/IMG_0272.webp';
-import group6 from './images/gallery/groupImages/IMG_0272.webp';
-import group7 from './images/gallery/groupImages/IMG_0272.webp';
-import group8 from './images/gallery/groupImages/IMG_0272.webp';
-import group9 from './images/gallery/groupImages/IMG_0272.webp';
-import group10 from './images/gallery/groupImages/IMG_0272.webp';
-import group11 from './images/gallery/groupImages/IMG_0272.webp';
-import group12 from './images/gallery/groupImages/IMG_0272.webp';
-import group13 from './images/gallery/groupImages/IMG_0272.webp';
-import group14 from './images/gallery/groupImages/IMG_0272.webp';
-import group15 from './images/gallery/groupImages/IMG_0272.webp';
-import group16 from './images/gallery/groupImages/IMG_0272.webp';
-import group17 from './images/gallery/groupImages/IMG_0272.webp';
-import group18 from './images/gallery/groupImages/IMG_0272.webp';
-import group19 from './images/gallery/groupImages/IMG_0272.webp';
+import group1 from './images/gallery/groupImages/1 (1).webp';
+import group2 from './images/gallery/groupImages/1 (2).webp';
+import group3 from './images/gallery/groupImages/1 (3).webp';
+import group4 from './images/gallery/groupImages/1 (4).webp';
+import group5 from './images/gallery/groupImages/1 (5).webp';
+import group6 from './images/gallery/groupImages/1 (6).webp';
+import group7 from './images/gallery/groupImages/1 (7).webp';
+import group8 from './images/gallery/groupImages/1 (8).webp';
+import group9 from './images/gallery/groupImages/1 (9).webp';
+import group10 from './images/gallery/groupImages/1 (10).webp';
+import group11 from './images/gallery/groupImages/1 (11).webp';
+import group12 from './images/gallery/groupImages/1 (12).webp';
+import group13 from './images/gallery/groupImages/1 (13).webp';
+import group14 from './images/gallery/groupImages/1 (14).webp';
+import group15 from './images/gallery/groupImages/1 (15).webp';
+import group16 from './images/gallery/groupImages/1 (16).webp';
+import group17 from './images/gallery/groupImages/1 (17).webp';
+import group18 from './images/gallery/groupImages/1 (18).webp';
+import group19 from './images/gallery/groupImages/1 (19).webp';
 import group20 from './images/gallery/groupImages/IMG_0272.webp';
 
 // Gallery solo images (30 unique images)
-import solo1 from './images/gallery/soloImages/IMG_0272.webp';
-import solo2 from './images/gallery/soloImages/IMG_0272.webp';
-import solo3 from './images/gallery/soloImages/IMG_0272.webp';
-import solo4 from './images/gallery/soloImages/IMG_0272.webp';
-import solo5 from './images/gallery/soloImages/IMG_0272.webp';
-import solo6 from './images/gallery/soloImages/IMG_0272.webp';
-import solo7 from './images/gallery/soloImages/IMG_0272.webp';
-import solo8 from './images/gallery/soloImages/IMG_0272.webp';
-import solo9 from './images/gallery/soloImages/IMG_0272.webp';
-import solo10 from './images/gallery/soloImages/IMG_0272.webp';
-import solo11 from './images/gallery/soloImages/IMG_0272.webp';
-import solo12 from './images/gallery/soloImages/IMG_0272.webp';
-import solo13 from './images/gallery/soloImages/IMG_0272.webp';
+import solo1 from './images/gallery/soloImages/1 (1).webp';
+import solo2 from './images/gallery/soloImages/1 (2).webp';
+import solo3 from './images/gallery/soloImages/1 (3).webp';
+import solo4 from './images/gallery/soloImages/1 (4).webp';
+import solo5 from './images/gallery/soloImages/1 (5).webp';
+import solo6 from './images/gallery/soloImages/1 (6).webp';
+import solo7 from './images/gallery/soloImages/1 (7).webp';
+import solo8 from './images/gallery/soloImages/1 (8).webp';
+import solo9 from './images/gallery/soloImages/1 (9).webp';
+import solo10 from './images/gallery/soloImages/1 (10).webp';
+import solo11 from './images/gallery/soloImages/1 (11).webp';
+import solo12 from './images/gallery/soloImages/1 (12).webp';
+import solo13 from './images/gallery/soloImages/1 (12).webp';
 import solo14 from './images/gallery/soloImages/IMG_0272.webp';
 import solo15 from './images/gallery/soloImages/IMG_0272.webp';
 import solo16 from './images/gallery/soloImages/IMG_0272.webp';
@@ -495,10 +495,10 @@ import solo30 from './images/gallery/soloImages/IMG_0272.webp';
 
 
 
-import careers01 from './images/careers/careersBanner.jpg';
+import careers01 from './images/careers/careersBanner.webp';
 
 
-import boss from './images/management/boss.webp';
+import boss from './images/management/boss-.jpg';
 import shakeel from  './images/management/shakeel.webp';
 import zia from './images/management/zia.webp';
 import mehboob from './images/management/mehboob.webp';
@@ -508,6 +508,11 @@ import husam from './images/management/husam.jpg';
 
 import w1 from './images/aboutus/whatwedo.webp';
 import q1 from './images/aboutus/quality.webp';
+
+
+import bannercert from './images/certificates/bannercert.webp';
+import cer1 from './images/certificates/cert.webp';
+import cer2 from './images/certificates/certi.webp';
 
 
 // Type definitions
@@ -848,4 +853,10 @@ export const ourManagement = {
 export const wq = {
   w1,
   q1
+}
+
+export const certification = {
+  bannercert,
+  cer1,
+  cer2
 }

@@ -7,15 +7,15 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import CloseIcon from '@mui/icons-material/Close';
 import CertificateCard from '../Certifications/Components/CertificateCard';
+import CertDetails from '../Certifications/Components/CertDetails';
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Styled components
 const CertificatesContainer = styled(Box)(({ theme }) => ({
-  padding: '100px 20px',
-  background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)', 
-  minHeight: '100vh',
+  padding: { xs: '40px 10px', sm: '60px 15px', md: '80px 20px' },
+  background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)', // Dark navy blue gradient
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -26,7 +26,7 @@ const CertificatesContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   overflow: 'hidden',
   [theme.breakpoints.down('sm')]: {
-    padding: '60px 10px',
+    padding: '30px 8px',
   },
 }));
 
@@ -35,13 +35,13 @@ const ModalContent = styled(Box)(({ theme }) => ({
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  background: 'linear-gradient(145deg, #0c1c3c 0%, #1e2a5c 100%)', 
+  background: 'linear-gradient(145deg, #0c1c3c 0%, #1e2a5c 100%)',
   borderRadius: '16px',
   boxShadow: '0 12px 40px rgba(0, 0, 0, 0.5)',
-  padding: '24px',
+  padding: { xs: '16px', sm: '20px', md: '24px' },
   maxWidth: '90vw',
   maxHeight: '90vh',
-  overflow: 'hidden', // Remove scrollbar
+  overflow: 'hidden',
   userSelect: 'none',
   WebkitUserSelect: 'none',
   MozUserSelect: 'none',
@@ -49,27 +49,24 @@ const ModalContent = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '16px',
+  gap: { xs: '12px', sm: '16px' },
   [theme.breakpoints.down('sm')]: {
-    padding: '16px',
     maxWidth: '95vw',
-    gap: '12px',
+    padding: '12px',
+    gap: '10px',
   },
 }));
 
 const ModalImage = styled('img')({
   maxWidth: '100%',
-  maxHeight: '60vh', // Reduced to fit within modal
+  maxHeight: { xs: '50vh', sm: '55vh', md: '60vh' },
   objectFit: 'contain',
   pointerEvents: 'none',
   borderRadius: '12px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-  [theme => theme.breakpoints.down('sm')]: {
-    maxHeight: '50vh',
-  },
 });
 
-const Certificates: React.FC = () => {
+const Certification: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const modalImageRef = useRef<HTMLImageElement>(null);
@@ -167,138 +164,142 @@ const Certificates: React.FC = () => {
   };
 
   return (
-    <CertificatesContainer ref={containerRef}>
-      <Typography
-        variant="h4"
-        sx={{
-          color: '#ffffff',
-          fontWeight: 700,
-          mb: 8,
-          textAlign: 'center',
-          textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
-          fontSize: { xs: '1.0rem', sm: '2.5rem', md: '3rem' },
-          letterSpacing: '0.5px',
-        }}
-      >
-        Our Certifications
-      </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: { xs: '10px', sm: '20px', md: '30px' },
-          px: { xs: 1, sm: 2 },
-        }}
-      >
-        {certificates.map((cert, index) => (
-          <CertificateCard
-            key={index}
-            ref={(el) => (cardsRef.current[index] = el!)}
-            cert={cert}
-            onClick={() => handleOpen(cert)}
-          />
-        ))}
-      </Box>
-      {/* Overlay to deter screenshots */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: 'transparent',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="certificate-modal"
-        sx={{ userSelect: 'none' }}
-      >
-        <ModalContent>
-          <IconButton
-            onClick={handleClose}
-            sx={{ position: 'absolute', top: 12, right: 12, color: '#ffffff' }}
-          >
-            <CloseIcon />
-          </IconButton>
-          {selectedCert && (
-            <>
-              <Typography
-                id="certificate-modal"
-                variant="h4"
-                sx={{
-                  mb: 2,
-                  fontWeight: 600,
-                  color: '#ffffff',
-                  textAlign: 'center',
-                  fontSize: { xs: '1.5rem', sm: '2rem' },
-                }}
-              >
-                {selectedCert.title}
-              </Typography>
-              <ModalImage
-                ref={modalImageRef}
-                src={selectedCert.image}
-                alt={selectedCert.title}
-              />
-              <Box sx={{ mt: 2, display: 'flex', gap: 1.5 }}>
-                <IconButton
-                  onClick={handleZoomIn}
+    <>
+      <CertDetails />
+      <CertificatesContainer ref={containerRef}>
+        <Typography
+          variant="h4"
+          sx={{
+            color: '#ffffff',
+            fontWeight: 700,
+            mb: { xs: 4, sm: 6, md: 8 },
+            textAlign: 'center',
+            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
+            fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+            letterSpacing: '0.5px',
+            marginTop:'50px'
+          }}
+        >
+          Our Certifications
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: { xs: '8px', sm: '15px', md: '20px' },
+            px: { xs: 1, sm: 2 },
+          }}
+        >
+          {certificates.map((cert, index) => (
+            <CertificateCard
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el!)}
+              cert={cert}
+              onClick={() => handleOpen(cert)}
+            />
+          ))}
+        </Box>
+        {/* Overlay to deter screenshots */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'transparent',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        />
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="certificate-modal"
+          sx={{ userSelect: 'none' }}
+        >
+          <ModalContent>
+            <IconButton
+              onClick={handleClose}
+              sx={{ position: 'absolute', top: 12, right: 12, color: '#ffffff' }}
+            >
+              <CloseIcon />
+            </IconButton>
+            {selectedCert && (
+              <>
+                <Typography
+                  id="certificate-modal"
+                  variant="h4"
                   sx={{
+                    mb: 2,
+                    fontWeight: 600,
                     color: '#ffffff',
-                    bgcolor: 'rgba(12, 28, 60, 0.8)',
-                    '&:hover': { bgcolor: 'rgba(12, 28, 60, 1)' },
+                    textAlign: 'center',
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' },
                   }}
                 >
-                  <ZoomInIcon />
-                </IconButton>
-                <IconButton
-                  onClick={handleZoomOut}
+                  {selectedCert.title}
+                </Typography>
+                <ModalImage
+                  ref={modalImageRef}
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                />
+                <Box sx={{ mt: 2, display: 'flex', gap: 1.5 }}>
+                  <IconButton
+                    onClick={handleZoomIn}
+                    sx={{
+                      color: '#ffffff',
+                      bgcolor: 'rgba(12, 28, 60, 0.8)',
+                      '&:hover': { bgcolor: 'rgba(12, 28, 60, 1)' },
+                    }}
+                  >
+                    <ZoomInIcon />
+                  </IconButton>
+                  <IconButton
+                    onClick={handleZoomOut}
+                    sx={{
+                      color: '#ffffff',
+                      bgcolor: 'rgba(12, 28, 60, 0.8)',
+                      '&:hover': { bgcolor: 'rgba(12, 28, 60, 1)' },
+                    }}
+                  >
+                    <ZoomOutIcon />
+                  </IconButton>
+                </Box>
+                <Typography
+                  variant="body1"
                   sx={{
-                    color: '#ffffff',
-                    bgcolor: 'rgba(12, 28, 60, 0.8)',
-                    '&:hover': { bgcolor: 'rgba(12, 28, 60, 1)' },
+                    mt: 2,
+                    color: '#a3bffa',
+                    textAlign: 'center',
+                    fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' },
+                    lineHeight: '1.6',
                   }}
                 >
-                  <ZoomOutIcon />
-                </IconButton>
-              </Box>
-              <Typography
-                variant="body1"
-                sx={{
-                  mt: 2,
-                  color: '#a3bffa',
-                  textAlign: 'center',
-                  fontSize: { xs: '0.9rem', sm: '1rem' },
-                  lineHeight: '1.6',
-                }}
-              >
-                {selectedCert.description}
-              </Typography>
-            </>
-          )}
-          {/* Overlay to deter screenshots in modal */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'transparent',
-              pointerEvents: 'none',
-              zIndex: 1,
-            }}
-          />
-        </ModalContent>
-      </Modal>
-    </CertificatesContainer>
+                  {selectedCert.description}
+                </Typography>
+              </>
+            )}
+            {/* Overlay to deter screenshots in modal */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'transparent',
+                pointerEvents: 'none',
+                zIndex: 1,
+              }}
+            />
+          </ModalContent>
+        </Modal>
+      </CertificatesContainer>
+    </>
   );
 };
 
-export default Certificates;
+export default Certification;

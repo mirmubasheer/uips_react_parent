@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, memo } from 'react';
 import { Box, Container, Typography, Modal, IconButton } from '@mui/material';
 import Slider from 'react-slick';
 import gsap from 'gsap';
@@ -85,32 +85,34 @@ const Gallery: React.FC = () => {
   };
 
   const sliderSettings = {
-    dots: true, // Keep dots
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true, // Keep arrows
-    centerMode: false, // No centering
-    variableWidth: false, // Consistent width
-    adaptiveHeight: false, // Fixed height
+    arrows: true,
+    centerMode: false,
+    variableWidth: false,
+    adaptiveHeight: false,
+    autoplay: true,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 600,
         settings: {
-          arrows: false, // Hide arrows on small screens
+          arrows: false,
           dots: true,
         },
       },
     ],
-    lazyLoad: 'ondemand' as const, // Enable lazy loading
+    lazyLoad: 'ondemand' as const,
   };
 
   return (
     <Box
       sx={{
         py: 8,
-        background: 'linear-gradient(180deg, #334155 0%, #475569 100%)',
+        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
       }}
     >
       <Container maxWidth="lg">
@@ -142,19 +144,19 @@ const Gallery: React.FC = () => {
           <Box
             ref={sliderRef}
             sx={{
-              overflow: 'hidden', // Strictly clip overflow
-              maxWidth: '100%', // Ensure slider fits container
+              overflow: 'hidden',
+              maxWidth: '100%',
               '& .slick-slider': {
-                overflow: 'hidden', // Additional overflow clipping
+                overflow: 'hidden',
               },
               '& .slick-slide': {
-                px: 0, // No padding
-                width: '100% !important', // Full width slides
-                opacity: 0, // Hide non-active slides
-                transition: 'opacity 0.3s ease', // Smooth opacity transition
+                px: 0,
+                width: '100% !important',
+                opacity: 0,
+                transition: 'opacity 0.3s ease',
               },
               '& .slick-slide.slick-active': {
-                opacity: 1, // Only active slide visible
+                opacity: 1,
               },
               '& .slick-track': {
                 display: 'flex',
@@ -198,7 +200,7 @@ const Gallery: React.FC = () => {
                     style={{
                       width: '100%',
                       height: '400px',
-                      objectFit: 'cover',
+                      objectFit: 'contain',
                       borderRadius: '12px',
                     }}
                   />
@@ -337,4 +339,4 @@ const Gallery: React.FC = () => {
   );
 };
 
-export default Gallery;
+export default memo(Gallery);

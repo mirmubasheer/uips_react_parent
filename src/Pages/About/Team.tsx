@@ -122,7 +122,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
             width: '100%',
             height: '400px',
             borderRadius: '12px',
-            objectFit: 'cover',
+            objectFit: 'contain',
           }}
         />
         <Box
