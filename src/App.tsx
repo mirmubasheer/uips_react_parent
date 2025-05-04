@@ -60,6 +60,93 @@
 
 // export default App;
 
+
+
+// import { Box, ThemeProvider } from "@mui/material";
+// import Preloader from "./components/Preloader";
+// import { ToastContainer } from "react-toastify";
+// import { useEffect, useState } from "react";
+// import { RouterProvider } from "react-router-dom";
+// import { QueryClient, QueryClientProvider } from "react-query";
+// import { theme } from "./Theme/theme";
+// import router from "./Routes/Routes";
+// import slides from "./assets/data/slides"; // ✅ Ensure slides are imported
+
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       refetchOnWindowFocus: false,
+//     },
+//   },
+// });
+
+// const App: React.FC = () => {
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     const MIN_LOAD_TIME = 1500; // ✅ Minimum preloader time (1.5s)
+//     const startTime = Date.now(); // ✅ Track when loading starts
+
+//     const preloadImages = async () => {
+//       if (!slides || slides.length === 0) {
+//         setTimeout(() => setIsLoading(false), MIN_LOAD_TIME);
+//         return;
+//       }
+
+//       const imagePromises = slides.map((slide) => {
+//         return new Promise<void>((resolve) => {
+//           const img = new Image();
+//           img.src = slide.image;
+//           img.onload = () => resolve();
+//           img.onerror = () => resolve();
+//         });
+//       });
+
+//       await Promise.all(imagePromises); // ✅ Wait for all images to load
+      
+//       // ✅ Ensure preloader stays for at least MIN_LOAD_TIME
+//       const elapsedTime = Date.now() - startTime;
+//       const remainingTime = Math.max(0, MIN_LOAD_TIME - elapsedTime);
+//       setTimeout(() => setIsLoading(false), remainingTime);
+//     };
+
+//     preloadImages();
+//   }, []);
+
+//   return (
+//     <QueryClientProvider client={queryClient}>
+//       <ThemeProvider theme={theme}>
+//         <Box className="App">
+//           {isLoading ? (
+//             <Preloader />
+//           ) : (
+//             <>
+//               <RouterProvider router={router} />
+//               <ToastContainer
+//                 position="top-right"
+//                 autoClose={5000}
+//                 hideProgressBar={false}
+//                 newestOnTop={false}
+//                 closeOnClick
+//                 rtl={false}
+//                 pauseOnFocusLoss
+//                 draggable
+//                 pauseOnHover
+//               />
+//             </>
+//           )}
+//         </Box>
+//       </ThemeProvider>
+//     </QueryClientProvider>
+//   );
+// };
+
+// export default App;
+
+
+
+
+
 import { Box, ThemeProvider } from "@mui/material";
 import Preloader from "./components/Preloader";
 import { ToastContainer } from "react-toastify";
@@ -68,7 +155,8 @@ import { RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { theme } from "./Theme/theme";
 import router from "./Routes/Routes";
-import slides from "./assets/data/slides"; // ✅ Ensure slides are imported
+import slides from "./assets/data/slides";
+import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -82,8 +170,8 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const MIN_LOAD_TIME = 1500; // ✅ Minimum preloader time (1.5s)
-    const startTime = Date.now(); // ✅ Track when loading starts
+    const MIN_LOAD_TIME = 1500;
+    const startTime = Date.now();
 
     const preloadImages = async () => {
       if (!slides || slides.length === 0) {
@@ -100,9 +188,8 @@ const App: React.FC = () => {
         });
       });
 
-      await Promise.all(imagePromises); // ✅ Wait for all images to load
-      
-      // ✅ Ensure preloader stays for at least MIN_LOAD_TIME
+      await Promise.all(imagePromises);
+
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, MIN_LOAD_TIME - elapsedTime);
       setTimeout(() => setIsLoading(false), remainingTime);
@@ -114,30 +201,31 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Box className="App">
-          {isLoading ? (
-            <Preloader />
-          ) : (
-            <>
-              <RouterProvider router={router} />
-              <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
-            </>
-          )}
-        </Box>
+        <HelmetProvider>
+          <Box className="App">
+            {isLoading ? (
+              <Preloader />
+            ) : (
+              <>
+                <RouterProvider router={router} />
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                />
+              </>
+            )}
+          </Box>
+        </HelmetProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
 };
 
 export default App;
-
