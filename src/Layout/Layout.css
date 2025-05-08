@@ -1,0 +1,43 @@
+.layout-container {
+    height: 100vh;
+  }
+  
+  
+  .header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    color: white;
+    background-color: transparent;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  
+  .header-scrolled {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #000000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .header-transparent {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .content-container {
+    margin-top: 0px;
+    background-color: #f5f5f5;
+    color: #000000;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  button {
+    font-family: 'Gilroy', 'Poppins', sans-serif;
+  }
+  
