@@ -403,7 +403,7 @@ const slideStyles = {
   alignItems: "center",
   justifyContent: "flex-start",
   textAlign: { xs: "center", md: "left" },
-  px: { xs: "3%", sm: "4%", md: "6%" },
+  px: { xs: "3%", sm: "4%", md: "3%" },
   position: "relative",
   pt: { xs: "80px", sm: "100px", md: "20px" },
 } as const;

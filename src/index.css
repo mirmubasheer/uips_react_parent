@@ -50,28 +50,28 @@ body, html, #root {
 @font-face {
   font-family: 'Kanit';
   src: url('./assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
-  font-weight: 300; /* Light */
+  font-weight: 400; /* Light */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
   src: url('./assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
-  font-weight: 400; /* Regular */
+  font-weight: 500; /* Regular */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
   src: url('./assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
-  font-weight: 400; /* Italic */
+  font-weight: 600; /* Italic */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
   src: url('./assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
-  font-weight: 500; /* Medium */
+  font-weight: 700; /* Medium */
   font-style: normal;
 }
 

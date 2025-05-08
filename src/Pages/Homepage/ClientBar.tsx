@@ -122,7 +122,7 @@ import { clientlogos } from "../../assets";
 const containerStyles = {
   width: "100%",
   background: "linear-gradient(90deg, #6B7280 0%, #9CA3AF 100%)",
-  padding: { xs: "20px 10px", sm: "30px 20px", md: "40px 30px" },
+  padding: { xs: "20px 10px", sm: "30px 20px", md: "40px 0px" },
   position: "relative",
   "&:before": {
     content: '""',
