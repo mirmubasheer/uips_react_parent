@@ -14,126 +14,126 @@ body, html, #root {
 /* Kanit Font Faces */
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Thin.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Thin.ttf') format('truetype');
   font-weight: 100; /* Thin */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-ThinItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-ThinItalic.ttf') format('truetype');
   font-weight: 100; /* Thin */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-ExtraLight.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-ExtraLight.ttf') format('truetype');
   font-weight: 200; /* ExtraLight */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-ExtraLightItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-ExtraLightItalic.ttf') format('truetype');
   font-weight: 200; /* ExtraLight */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Light.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Light.ttf') format('truetype');
   font-weight: 300; /* Light */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-LightItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-LightItalic.ttf') format('truetype');
   font-weight: 300; /* Light */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Regular.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Regular.ttf') format('truetype');
   font-weight: 400; /* Regular */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Italic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Italic.ttf') format('truetype');
   font-weight: 400; /* Italic */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Medium.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Medium.ttf') format('truetype');
   font-weight: 500; /* Medium */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-MediumItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-MediumItalic.ttf') format('truetype');
   font-weight: 500; /* Medium */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-SemiBold.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-SemiBold.ttf') format('truetype');
   font-weight: 600; /* SemiBold */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-SemiBoldItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-SemiBoldItalic.ttf') format('truetype');
   font-weight: 600; /* SemiBold */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Bold.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Bold.ttf') format('truetype');
   font-weight: 700; /* Bold */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-BoldItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-BoldItalic.ttf') format('truetype');
   font-weight: 700; /* Bold */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-ExtraBold.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-ExtraBold.ttf') format('truetype');
   font-weight: 800; /* ExtraBold */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-ExtraBoldItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-ExtraBoldItalic.ttf') format('truetype');
   font-weight: 800; /* ExtraBold */
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-Black.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-Black.ttf') format('truetype');
   font-weight: 900; /* Black */
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Kanit';
-  src: url('./assets/fonts/Kanit-BlackItalic.ttf') format('truetype');
+  src: url('./assets/fonts/Kanit/Kanit-BlackItalic.ttf') format('truetype');
   font-weight: 900; /* Black */
   font-style: italic;
 }
