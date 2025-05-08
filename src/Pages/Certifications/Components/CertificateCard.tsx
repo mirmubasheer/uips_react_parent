@@ -205,5 +205,4 @@ const CertificateCard = forwardRef<HTMLDivElement, CertificateCardProps>(({ cert
     </>
   );
 });
-
 export default CertificateCard;
