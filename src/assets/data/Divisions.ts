@@ -1,5 +1,3 @@
-// src/data/Divisions.ts
-
 export interface Division {
   title: string;
   description: string;
@@ -13,10 +11,10 @@ export interface Division {
 export const divisions: Division[] = [
   {
     title: 'Civil',
-    description: 'UIPS is involved in Construction of Industrial Buildings, Plants, Commercial & Residential Complex which include Site Development, Infrastructure and Utilities.',
+    description: 'UIPS Saudi Arabia excels in civil construction for industrial and commercial projects, delivering precise site development and infrastructure.',
     image: 'civil',
     detailedDescription:
-      'Our Civil division specializes in delivering high-quality infrastructure and industrial projects, including roads, bridges, and buildings, with a focus on sustainability and precision.',
+      'UIPS Saudi Arabia specializes in civil construction of industrial buildings, plants, commercial, and residential complexes, including site development, infrastructure, and utilities. Our Civil Division delivers high-quality roads, bridges, and buildings with a focus on sustainability, precision, and compliance with Saudi Arabia’s industry standards. We provide end-to-end project management, structural engineering, and environmental assessments to ensure durable, efficient infrastructure solutions for clients across the Kingdom.',
     whatWeDo:
       'We design, construct, and maintain civil infrastructure, ensuring durability and compliance with industry standards.',
     expertise:
@@ -25,10 +23,10 @@ export const divisions: Division[] = [
   },
   {
     title: 'IT',
-    description: 'UIPS had launched a separate Fiber Optic & Networking division that caters the caters the need of its clients. Our Expertise has the skills & experience to handle any size.',
+    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking and cybersecurity for reliable business systems.',
     image: 'it',
     detailedDescription:
-      'Our IT division provides cutting-edge networking, cybersecurity, and system integration services to empower businesses with reliable and secure technology.',
+      'UIPS Saudi Arabia’s IT Division, launched to meet client needs, excels in fiber optic and networking solutions, offering cutting-edge cybersecurity and system integration services. Our expertise ensures secure, scalable IT infrastructure for businesses across Saudi Arabia. With skills to handle projects of any size, we implement networks, servers, and protocols that empower organizations with reliable, high-performance technology tailored to the Kingdom’s dynamic market.',
     whatWeDo:
       'We implement and maintain IT infrastructure, including networks, servers, and cybersecurity protocols.',
     expertise:
@@ -37,10 +35,10 @@ export const divisions: Division[] = [
   },
   {
     title: 'Electrical',
-    description: 'UIPS is one of the Leading Electrical Contractor in Saudi Arabia which serves the Industrial, Commercial and Utility sector in the field of Power Generation, Transmission and Distribution.',
+    description: 'UIPS Saudi Arabia, a top electrical contractor, delivers power generation and transmission solutions for industrial and utility sectors.',
     image: 'electrical',
     detailedDescription:
-      'Our Electrical division delivers end-to-end electrical solutions, from power distribution to safety audits, ensuring efficiency and reliability.',
+      'UIPS Saudi Arabia, a leading electrical contractor, serves industrial, commercial, and utility sectors with expertise in power generation, transmission, and distribution. Our Electrical Division provides end-to-end solutions, including installation of transmission lines, safety audits, and control gear setup. We ensure efficient, reliable, and safe electrical systems for clients like ARAMCO and SEC, meeting Saudi Arabia’s rigorous energy standards with precision and innovation.',
     whatWeDo:
       'We install and maintain electrical systems, including transmission lines and distribution networks.',
     expertise:
@@ -49,10 +47,10 @@ export const divisions: Division[] = [
   },
   {
     title: 'Power Solutions',
-    description: 'Design, Construction, Testing & Commissioning of Power House using Generators & Turbines from 1 MW to 30 MW along with all protection & control gears.',
+    description: 'UIPS Saudi Arabia designs and commissions power generation systems from 1 MW to 30 MW for reliable industrial power solutions.',
     image: 'power',
     detailedDescription:
-      'Our Power division focuses on sustainable power generation and distribution, providing solutions for industrial and utility-scale applications.',
+      'UIPS Saudi Arabia’s Power Division focuses on design, construction, testing, and commissioning of power houses using generators and turbines from 1 MW to 30 MW, complete with protection and control gears. We provide sustainable power generation and distribution solutions for industrial and utility-scale applications in Saudi Arabia. Our expertise in turbine commissioning, generator installation, and system integration ensures reliable, efficient energy for clients across the Kingdom.',
     whatWeDo:
       'We design and commission power generation systems, including generators and transmission networks.',
     expertise:
@@ -61,10 +59,10 @@ export const divisions: Division[] = [
   },
   {
     title: 'Plant Shutdowns',
-    description: 'UIPS is specialized in ARAMCO, SABIC, SEC and other basic industrial plant shutdowns in Electrical, Instrumentation and Mechanical divisions.',
+    description: 'UIPS Saudi Arabia specializes in ARAMCO and SABIC plant shutdowns, offering expert electrical and mechanical services.',
     image: 'plant',
     detailedDescription:
-      'Our Plant division supports industrial facilities with mechanical and instrumentation services, ensuring operational efficiency and longevity.',
+      'UIPS Saudi Arabia is a leader in industrial plant shutdowns for ARAMCO, SABIC, SEC, and other facilities, specializing in electrical, instrumentation, and mechanical services. Our Plant Division ensures operational efficiency and longevity through commissioning, maintenance, and overhaul of industrial equipment. With expertise in motor installation, pump commissioning, and piping works, we deliver reliable solutions that meet Saudi Arabia’s stringent industrial standards.',
     whatWeDo:
       'We provide commissioning, maintenance, and overhaul services for industrial plants and equipment.',
     expertise:
@@ -73,10 +71,10 @@ export const divisions: Division[] = [
   },
   {
     title: 'Mechanical',
-    description: 'Supply, Installation, Testing and Commissioning of Motors / Pumps and Other Equipment’s, Process / Utility Piping Works, Steel Structure Works and Industrial HVAC Works.',
+    description: 'UIPS Saudi Arabia’s Mechanical Division delivers precise engineering for petrochemical and energy facilities, ensuring durability and safety.',
     image: 'mechanical',
     detailedDescription:
-      'Our Mechanical division offers expertise in HVAC, piping, and mechanical installations, delivering reliable systems for industrial applications.',
+      'UIPS Saudi Arabia’s Mechanical Division specializes in comprehensive mechanical engineering solutions, including design, fabrication, installation, and maintenance of industrial systems and equipment. We excel in delivering high-precision mechanical services for petrochemical plants, refineries, and energy facilities, ensuring durability, efficiency, and compliance with rigorous safety standards. Our experienced team collaborates with industry leaders to execute complex projects, from piping systems to heavy machinery upgrades, driving operational excellence and reliability in Saudi Arabia’s industrial sector.',
     whatWeDo:
       'We install and maintain mechanical systems, including HVAC and industrial piping, for optimal performance.',
     expertise:

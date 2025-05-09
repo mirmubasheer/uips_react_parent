@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
       { label: 'Certifications', path: '/certificates' },
     ],
     additionalPages: [
-      { label: 'Privacy Policy', path: '/privacy-policy' },
+      { label: 'Privacy Policy', path: '/policy' },
     ],
     helpfulLinks: [
       { label: 'Our Services', path: '/services' },

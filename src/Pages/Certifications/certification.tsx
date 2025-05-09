@@ -8,6 +8,7 @@ import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import CloseIcon from '@mui/icons-material/Close';
 import CertificateCard from '../Certifications/Components/CertificateCard';
 import CertDetails from '../Certifications/Components/CertDetails';
+import { certifictaesall } from '../../assets';
 
 // Register GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Styled components
 const CertificatesContainer = styled(Box)(({ theme }) => ({
   padding: { xs: '40px 10px', sm: '60px 15px', md: '80px 20px' },
-  background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)', // Dark navy blue gradient
+  background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -57,6 +58,12 @@ const ModalContent = styled(Box)(({ theme }) => ({
   },
 }));
 
+const ModalImageContainer = styled(Box)({
+  position: 'relative',
+  maxWidth: '100%',
+  maxHeight: { xs: '50vh', sm: '55vh', md: '60vh' },
+});
+
 const ModalImage = styled('img')({
   maxWidth: '100%',
   maxHeight: { xs: '50vh', sm: '55vh', md: '60vh' },
@@ -64,6 +71,19 @@ const ModalImage = styled('img')({
   pointerEvents: 'none',
   borderRadius: '12px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+});
+
+const Watermark = styled(Typography)({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%) rotate(-45deg)',
+  color: 'rgba(255, 255, 255, 0.3)',
+  fontSize: '3rem',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  pointerEvents: 'none',
+  userSelect: 'none',
 });
 
 const Certification: React.FC = () => {
@@ -74,27 +94,22 @@ const Certification: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<{ title: string; image: string; description: string } | null>(null);
   const zoomLevel = useRef(1);
 
-  // Dummy certificate data with images from Freepik
+  // Certificate data with local .webp image paths
   const certificates = [
     {
       title: 'ISO 9001:2015',
       description: 'Quality Management System Certification',
-      image: 'https://img.freepik.com/free-vector/gradient-award-certificate_23-2148948193.jpg',
+      image: certifictaesall.reg,
     },
     {
       title: 'ISO 27001',
       description: 'Information Security Management Certification',
-      image: 'https://img.freepik.com/free-vector/elegant-certificate-appreciation-template_23-2148459376.jpg',
+      image: certifictaesall.bqc,
     },
     {
       title: 'CMMI Level 5',
       description: 'Capability Maturity Model Integration',
-      image: 'https://img.freepik.com/free-vector/gradient-certificate-template_23-2148948139.jpg',
-    },
-    {
-      title: 'Great Place to Work',
-      description: 'Certified Workplace Excellence',
-      image: 'https://img.freepik.com/free-vector/employee-appreciation-certificate_23-2148544338.jpg',
+      image: certifictaesall.bqc1,
     },
   ];
 
@@ -177,7 +192,7 @@ const Certification: React.FC = () => {
             textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
             fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
             letterSpacing: '0.5px',
-            marginTop:'50px'
+            marginTop: '50px',
           }}
         >
           Our Certifications
@@ -210,7 +225,7 @@ const Certification: React.FC = () => {
             height: '100%',
             background: 'transparent',
             pointerEvents: 'none',
-            zIndex: 1,
+            zIndex: '1',
           }}
         />
         <Modal
@@ -241,11 +256,14 @@ const Certification: React.FC = () => {
                 >
                   {selectedCert.title}
                 </Typography>
-                <ModalImage
-                  ref={modalImageRef}
-                  src={selectedCert.image}
-                  alt={selectedCert.title}
-                />
+                <ModalImageContainer>
+                  <ModalImage
+                    ref={modalImageRef}
+                    src={selectedCert.image}
+                    alt={selectedCert.title}
+                  />
+                  <Watermark>UIPS</Watermark>
+                </ModalImageContainer>
                 <Box sx={{ mt: 2, display: 'flex', gap: 1.5 }}>
                   <IconButton
                     onClick={handleZoomIn}

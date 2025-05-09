@@ -8,3 +8,4 @@ export { default as CareersWrapper } from '../Careers';
 export { default as AllProjectsByClient } from '../Projects/AllProjects/AllProjectsByClient';
 export { default as ContactWrapper } from '../Contact';
 export { default as CertificateWrapper } from '../Certifications';
+export { default as AwardWrapper } from '../policy';

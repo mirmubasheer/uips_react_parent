@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { HomePage, About, Projects, DivisionDetail, ProjectDetailsWrapper, Gallery, CareersWrapper, AllProjectsByClient, ContactWrapper, CertificateWrapper } from '../Pages/Exports';
 import Layout from '../Layout/Layout';
+import AwardWrapper from "../Pages/policy";
 
 const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         {
           path: "/certificates",
           element: <CertificateWrapper />,
+        },  
+        {
+          path: "/policy",
+          element: <AwardWrapper />,
         },
         //projects/:id
         // {

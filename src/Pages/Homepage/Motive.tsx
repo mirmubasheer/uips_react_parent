@@ -156,7 +156,7 @@ const Motive: React.FC = () => {
                     color: '#fff',
                     fontWeight: 300,
                     fontSize: { xs: '1rem', sm: '1.4rem', md: '2rem' },
-                    textTransform: 'uppercase',
+                    // textTransform: 'uppercase',
                     mb: 1,
                     textAlign: { xs: 'center', sm: 'left' },
                   }}

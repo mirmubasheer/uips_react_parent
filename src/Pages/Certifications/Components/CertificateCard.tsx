@@ -170,39 +170,58 @@ const CertificateCard = forwardRef<HTMLDivElement, CertificateCardProps>(({ cert
       </StyledCertificateCard>
 
       <Modal
-        open={open}
-        onClose={handleClose}
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+  open={open}
+  onClose={handleClose}
+  sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+  onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
+>
+  <ModalContainer>
+    <Box sx={{ position: 'relative', display: 'inline-block' }}>
+      {/* Certificate Image */}
+      <ModalImage
+        src={cert.image}
+        alt={cert.title}
+        sx={{ transform: `scale(${zoomLevel})` }}
         onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
+        onDragStart={(e: React.DragEvent) => e.preventDefault()}
+      />
+
+      {/* Watermark Overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%) rotate(-30deg)',
+          color: 'rgba(255, 255, 255, 0.08)',
+          fontSize: { xs: '2.5rem', sm: '4rem', md: '5rem' },
+          fontWeight: 800,
+          whiteSpace: 'nowrap',
+          letterSpacing: '10px',
+          zIndex: 2,
+          pointerEvents: 'none',
+          userSelect: 'none',
+          textShadow: '0 0 4px rgba(0, 0, 0, 0.3)',
+        }}
       >
-        <ModalContainer>
-          <ModalImage
-            src={cert.image}
-            alt={cert.title}
-            sx={{ transform: `scale(${zoomLevel})` }}
-            onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
-            onDragStart={(e: React.DragEvent) => e.preventDefault()}
-          />
-          <ProtectionOverlay />
-          <ZoomControls>
-            <IconButton
-              onClick={handleZoomOut}
-              size="small"
-              sx={{ color: '#ffffff' }}
-            >
-              <ZoomOutIcon />
-            </IconButton>
-            <IconButton
-              onClick={handleZoomIn}
-              size="small"
-              sx={{ color: '#ffffff' }}
-            >
-              <ZoomInIcon />
-            </IconButton>
-          </ZoomControls>
-        </ModalContainer>
-      </Modal>
+        UIPS
+      </Box>
+    </Box>
+
+    <ProtectionOverlay />
+    <ZoomControls>
+      <IconButton onClick={handleZoomOut} size="small" sx={{ color: '#ffffff' }}>
+        <ZoomOutIcon />
+      </IconButton>
+      <IconButton onClick={handleZoomIn} size="small" sx={{ color: '#ffffff' }}>
+        <ZoomInIcon />
+      </IconButton>
+    </ZoomControls>
+  </ModalContainer>
+</Modal>
+
     </>
   );
 });
+
 export default CertificateCard;

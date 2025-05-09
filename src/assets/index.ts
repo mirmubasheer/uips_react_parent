@@ -93,19 +93,19 @@ import civil_1_3 from './images/projects/site/satorp1.webp';
 import civil_2_1 from './images/projects/site/olayan.webp';
 import civil_2_2 from './images/projects/site/olayan.webp';
 import civil_2_3 from './images/projects/site/olayan.webp';
-import civil_3_1 from './images/projects/dummy.webp';
+import civil_3_1 from './images/projects/site/pf.webp';
 import civil_3_2 from './images/projects/dummy.webp';
 import civil_3_3 from './images/projects/dummy.webp';
-import civil_4_1 from './images/projects/dummy.webp';
+import civil_4_1 from './images/projects/site/gearbox.webp';
 import civil_4_2 from './images/projects/dummy.webp';
 import civil_4_3 from './images/projects/dummy.webp';
-import civil_5_1 from './images/projects/dummy.webp';
+import civil_5_1 from './images/projects/site/substation.webp';
 import civil_5_2 from './images/projects/dummy.webp';
 import civil_5_3 from './images/projects/dummy.webp';
-import civil_6_1 from './images/projects/dummy.webp';
+import civil_6_1 from './images/projects/site/motorpump.webp';
 import civil_6_2 from './images/projects/dummy.webp';
 import civil_6_3 from './images/projects/dummy.webp';
-import civil_7_1 from './images/projects/dummy.webp';
+import civil_7_1 from './images/projects/site/structural.webp';
 import civil_7_2 from './images/projects/dummy.webp';
 import civil_7_3 from './images/projects/dummy.webp';
 import civil_8_1 from './images/projects/site/Addar1.webp';
@@ -120,7 +120,7 @@ import civil_10_3 from './images/projects/site/Addar2_3.webp';
 import civil_11_1 from './images/projects/site/Farabi4.webp';
 import civil_11_2 from './images/projects/site/Farabi2.webp';
 import civil_11_3 from './images/projects/site/Farabi3.webp';
-import civil_12_1 from './images/projects/dummy.webp';
+import civil_12_1 from './images/projects/site/lvcable.webp';
 import civil_12_2 from './images/projects/dummy.webp';
 import civil_12_3 from './images/projects/dummy.webp';
 import civil_13_1 from './images/projects/site/Polo1.webp';
@@ -132,13 +132,13 @@ import civil_14_3 from './images/projects/site/Polo1_3.webp';
 import civil_15_1 from './images/projects/site/sdc1.webp';
 import civil_15_2 from './images/projects/site/sdc2.webp';
 import civil_15_3 from './images/projects/site/sdc3.webp';
-import civil_16_1 from './images/projects/dummy.webp';
+import civil_16_1 from './images/projects/site/powerfactor.webp';
 import civil_16_2 from './images/projects/dummy.webp';
 import civil_16_3 from './images/projects/dummy.webp';
-import civil_17_1 from './images/projects/dummy.webp';
+import civil_17_1 from './images/projects/site/wastewater.webp';
 import civil_17_2 from './images/projects/dummy.webp';
 import civil_17_3 from './images/projects/dummy.webp';
-import civil_18_1 from './images/projects/dummy.webp';
+import civil_18_1 from './images/projects/site/gis.webp';
 import civil_18_2 from './images/projects/dummy.webp';
 import civil_18_3 from './images/projects/dummy.webp';
 
@@ -474,23 +474,23 @@ import solo10 from './images/gallery/soloImages/1 (10).webp';
 import solo11 from './images/gallery/soloImages/1 (11).webp';
 import solo12 from './images/gallery/soloImages/1 (12).webp';
 import solo13 from './images/gallery/soloImages/1 (12).webp';
-import solo14 from './images/gallery/soloImages/IMG_0272.webp';
-import solo15 from './images/gallery/soloImages/IMG_0272.webp';
-import solo16 from './images/gallery/soloImages/IMG_0272.webp';
-import solo17 from './images/gallery/soloImages/IMG_0272.webp';
-import solo18 from './images/gallery/soloImages/IMG_0272.webp';
-import solo19 from './images/gallery/soloImages/IMG_0272.webp';
-import solo20 from './images/gallery/soloImages/IMG_0272.webp';
-import solo21 from './images/gallery/soloImages/IMG_0272.webp';
-import solo22 from './images/gallery/soloImages/IMG_0272.webp';
-import solo23 from './images/gallery/soloImages/IMG_0272.webp';
-import solo24 from './images/gallery/soloImages/IMG_0272.webp';
-import solo25 from './images/gallery/soloImages/IMG_0272.webp';
-import solo26 from './images/gallery/soloImages/IMG_0272.webp';
-import solo27 from './images/gallery/soloImages/IMG_0272.webp';
-import solo28 from './images/gallery/soloImages/IMG_0272.webp';
-import solo29 from './images/gallery/soloImages/IMG_0272.webp';
-import solo30 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo14 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo15 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo16 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo17 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo18 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo19 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo20 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo21 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo22 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo23 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo24 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo25 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo26 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo27 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo28 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo29 from './images/gallery/soloImages/IMG_0272.webp';
+// import solo30 from './images/gallery/soloImages/IMG_0272.webp';
 
 
 
@@ -514,6 +514,12 @@ import bannercert from './images/certificates/bannercert.webp';
 import cer1 from './images/certificates/cert.webp';
 import cer2 from './images/certificates/certi.webp';
 
+
+import reg from './images/certificates/certificatesall/reg.webp';
+import bqc from './images/certificates/certificatesall/bqc.webp';
+import bqc1 from './images/certificates/certificatesall/bqc1.webp';
+
+import award from './images/policy/award.webp';
 
 // Type definitions
 interface ImageObject {
@@ -818,23 +824,23 @@ export const gallerySoloImages: GalleryImage[] = [
   { src: solo11, alt: 'Team Member 11' },
   { src: solo12, alt: 'Team Member 12' },
   { src: solo13, alt: 'Team Member 13' },
-  { src: solo14, alt: 'Team Member 14' },
-  { src: solo15, alt: 'Team Member 15' },
-  { src: solo16, alt: 'Team Member 16' },
-  { src: solo17, alt: 'Team Member 17' },
-  { src: solo18, alt: 'Team Member 18' },
-  { src: solo19, alt: 'Team Member 19' },
-  { src: solo20, alt: 'Team Member 20' },
-  { src: solo21, alt: 'Team Member 21' },
-  { src: solo22, alt: 'Team Member 22' },
-  { src: solo23, alt: 'Team Member 23' },
-  { src: solo24, alt: 'Team Member 24' },
-  { src: solo25, alt: 'Team Member 25' },
-  { src: solo26, alt: 'Team Member 26' },
-  { src: solo27, alt: 'Team Member 27' },
-  { src: solo28, alt: 'Team Member 28' },
-  { src: solo29, alt: 'Team Member 29' },
-  { src: solo30, alt: 'Team Member 30' },
+  // { src: solo14, alt: 'Team Member 14' },
+  // { src: solo15, alt: 'Team Member 15' },
+  // { src: solo16, alt: 'Team Member 16' },
+  // { src: solo17, alt: 'Team Member 17' },
+  // { src: solo18, alt: 'Team Member 18' },
+  // { src: solo19, alt: 'Team Member 19' },
+  // { src: solo20, alt: 'Team Member 20' },
+  // { src: solo21, alt: 'Team Member 21' },
+  // { src: solo22, alt: 'Team Member 22' },
+  // { src: solo23, alt: 'Team Member 23' },
+  // { src: solo24, alt: 'Team Member 24' },
+  // { src: solo25, alt: 'Team Member 25' },
+  // { src: solo26, alt: 'Team Member 26' },
+  // { src: solo27, alt: 'Team Member 27' },
+  // { src: solo28, alt: 'Team Member 28' },
+  // { src: solo29, alt: 'Team Member 29' },
+  // { src: solo30, alt: 'Team Member 30' },
 ];
 
 
@@ -859,4 +865,16 @@ export const certification = {
   bannercert,
   cer1,
   cer2
+}
+
+
+export const certifictaesall = {
+  reg,
+  bqc,
+  bqc1
+}
+
+
+export const awardsImg = {
+  award
 }

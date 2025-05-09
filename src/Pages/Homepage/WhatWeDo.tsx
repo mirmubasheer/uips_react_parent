@@ -22,6 +22,9 @@ const FullViewportSection = styled(Grid)(({ theme }) => ({
     flexDirection: 'column',
     padding: theme.spacing(2, 1),
   },
+  '&:first-of-type': {
+    marginBottom: '-20vh', // Pulls the next section closer
+  },
 }));
 
 const ContentBox = styled(Box)(({ theme }) => ({
@@ -87,7 +90,7 @@ const WhatWeDo: React.FC = React.memo(() => {
       variant="body1"
       sx={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#fff' }}
     >
-      We design, supply and provide field services for the Power distribution systems of low and medium voltages. It includes the Switch Gear, transformers, UPS and emergency power supply, DG sets and package substations.
+    At UIPS Co., we specialize in delivering end-to-end Utilities and Industrial Power Solutions tailored to complex industrial needs. Our core services encompass Civil and Steel Structure works, Mechanical Works, Electrical and Instrumentation systems, Piping works, and comprehensive Maintenance services. We support a wide range of sectors including Energy, Oil & Gas, Water, Infrastructure and Manufacturing, ensuring reliable performance, Safety and Operational Excellence across every project.
     </Typography>
   ), []);
 
@@ -103,7 +106,7 @@ const WhatWeDo: React.FC = React.memo(() => {
   return (
     <SectionContainer ref={sectionRef}>
       {/* What We Do Section */}
-      <FullViewportSection container spacing={2}>
+      <FullViewportSection container spacing={0}>
         <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
           <ContentBox ref={whatWeDoContentRef}>
             <Typography variant="h3" component="h2" gutterBottom sx={{ fontWeight: 700, color: '#fff'  }}>
@@ -123,7 +126,7 @@ const WhatWeDo: React.FC = React.memo(() => {
       </FullViewportSection>
 
       {/* Quality Section */}
-      <FullViewportSection container spacing={2}>
+      <FullViewportSection container spacing={0}>
         <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
           <StyledCardMedia
             ref={qualityImageRef}
