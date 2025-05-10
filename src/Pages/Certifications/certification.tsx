@@ -97,18 +97,18 @@ const Certification: React.FC = () => {
   // Certificate data with local .webp image paths
   const certificates = [
     {
-      title: 'ISO 9001:2015',
-      description: 'Quality Management System Certification',
+      title: 'ISO 9001:2015 (Quality Management System)',
+      description: 'Provision of Contracting for Civil, Mech, E&I & FO works and other supporting services',
       image: certifictaesall.reg,
     },
     {
-      title: 'ISO 27001',
-      description: 'Information Security Management Certification',
+      title: 'ISO 14001:2015',
+      description: 'Provision of Contracting for Civil, Mech, E&I & FO works andother supporting services',
       image: certifictaesall.bqc,
     },
     {
-      title: 'CMMI Level 5',
-      description: 'Capability Maturity Model Integration',
+      title: 'ISO 45001:2018',
+      description: 'Provision of Contracting for Civil, Mech, E&I & FO works andother supporting services',
       image: certifictaesall.bqc1,
     },
   ];

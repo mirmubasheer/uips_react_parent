@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import HeaderAll from '../../components/HeaderAll/HeaderAll';
-import { certification } from '../../assets';
+import { policybanners } from '../../assets';
 import Policy from './Policy';
 
 const useImagePreload = (imageSrc: string): boolean => {
@@ -18,7 +18,7 @@ const useImagePreload = (imageSrc: string): boolean => {
 };
 
 const PolicyWrapper: React.FC = () => {
-  const isBannerLoaded = useImagePreload(certification.bannercert);
+  const isBannerLoaded = useImagePreload(policybanners.policybanner);
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Safety & Quality Policy', href: '/policy' },
@@ -35,7 +35,7 @@ const PolicyWrapper: React.FC = () => {
     >
       {isBannerLoaded ? (
         <HeaderAll
-          imageSrc={certification.bannercert}
+          imageSrc={policybanners.policybanner}
           title="Safety & Quality Policy"
           breadcrumbItems={breadcrumbItems}
           loading="lazy"

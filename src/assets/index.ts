@@ -144,8 +144,8 @@ import civil_18_3 from './images/projects/dummy.webp';
 
 // Electrical project images (placeholders)
 import electrical_1_1 from './images/projects/site/bulk.webp';
-import electrical_1_2 from './images/projects/dummy.webp';
-import electrical_1_3 from './images/projects/dummy.webp';
+import electrical_1_2 from './images/projects/site/bulk.webp';
+import electrical_1_3 from './images/projects/site/bulk.webp';
 import electrical_2_1 from './images/projects/site/esdupgrade.webp';
 import electrical_2_2 from './images/projects/dummy.webp';
 import electrical_2_3 from './images/projects/dummy.webp';
@@ -293,7 +293,7 @@ import electrical_49_3 from './images/projects/dummy.webp';
 
 // Mechanical project images (placeholders)
 import mechanical_1_1 from './images/projects/site/sweet.webp';
-import mechanical_1_2 from './images/projects/dummy.webp';
+import mechanical_1_2 from './images/projects/site/sweet.webp';
 import mechanical_1_3 from './images/projects/dummy.webp';
 import mechanical_2_1 from './images/projects/site/gearbox.webp';
 import mechanical_2_2 from './images/projects/dummy.webp';
@@ -330,15 +330,15 @@ import mechanical_12_2 from './images/projects/dummy.webp';
 import mechanical_12_3 from './images/projects/dummy.webp';
 
 // Plant shutdown project images (placeholders)
-import plant_shutdown_1_1 from './images/projects/dummy.webp';
-import plant_shutdown_1_2 from './images/projects/dummy.webp';
-import plant_shutdown_1_3 from './images/projects/dummy.webp';
+import plant_shutdown_1_1 from './images/projects/site/shutdowns-min.webp';
+import plant_shutdown_1_2 from './images/projects/site/shutdowns-min.webp';
+import plant_shutdown_1_3 from './images/projects/site/shutdowns-min.webp';
 
 // Instrumentation project images (placeholders)
-import instrumentation_1_1 from './images/projects/dummy.webp';
-import instrumentation_1_2 from './images/projects/dummy.webp';
-import instrumentation_1_3 from './images/projects/dummy.webp';
-import instrumentation_2_1 from './images/projects/dummy.webp';
+import instrumentation_1_1 from './images/projects/site/instbulk-min.webp';
+import instrumentation_1_2 from './images/projects/site/instbulk-min.webp';
+import instrumentation_1_3 from './images/projects/site/instbulk-min.webp';
+import instrumentation_2_1 from './images/projects/site/calibration-min.webp';
 import instrumentation_2_2 from './images/projects/dummy.webp';
 import instrumentation_2_3 from './images/projects/dummy.webp';
 import instrumentation_3_1 from './images/projects/site/esdupgrade.webp';
@@ -415,9 +415,9 @@ import instrumentation_26_2 from './images/projects/dummy.webp';
 import instrumentation_26_3 from './images/projects/dummy.webp';
 
 // Power project images (placeholders)
-import power_1_1 from './images/projects/dummy.webp';
-import power_1_2 from './images/projects/dummy.webp';
-import power_1_3 from './images/projects/dummy.webp';
+import power_1_1 from './images/projects/site/cdc-min.webp';
+import power_1_2 from './images/projects/site/cdc-min.webp';
+import power_1_3 from './images/projects/site/cdc-min.webp';
 import power_2_1 from './images/projects/site/sabic.webp';
 import power_2_2 from './images/projects/site/sabic.webp';
 import power_2_3 from './images/projects/site/sabic.webp';
@@ -520,6 +520,10 @@ import bqc from './images/certificates/certificatesall/bqc.webp';
 import bqc1 from './images/certificates/certificatesall/bqc1.webp';
 
 import award from './images/policy/award.webp';
+
+
+import policybanner from './images/policy/policybanner-min.webp';
+
 
 // Type definitions
 interface ImageObject {
@@ -877,4 +881,8 @@ export const certifictaesall = {
 
 export const awardsImg = {
   award
+}
+
+export const policybanners = {
+  policybanner
 }
