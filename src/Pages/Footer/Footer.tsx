@@ -162,13 +162,13 @@ const Footer: React.FC = () => {
     additionalPages: [
       { label: 'Privacy Policy', path: '/policy' },
     ],
-    helpfulLinks: [
-      { label: 'Our Services', path: '/services' },
-      { label: 'Disclaimer', path: '/disclaimer' },
-      { label: 'Showcase', path: '/showcase' },
-      { label: 'Privacy Policy', path: '/privacy-policy' },
-      { label: 'Affiliates', path: '/affiliates' },
-    ],
+    // helpfulLinks: [
+    //   { label: 'Our Services', path: '/services' },
+    //   { label: 'Disclaimer', path: '/disclaimer' },
+    //   { label: 'Showcase', path: '/showcase' },
+    //   { label: 'Privacy Policy', path: '/privacy-policy' },
+    //   { label: 'Affiliates', path: '/affiliates' },
+    // ],
     socialLinks: [
       { label: 'Facebook', path: 'https://facebook.com', icon: <FacebookIcon /> },
       { label: 'Twitter', path: 'https://twitter.com', icon: <TwitterIcon /> },
@@ -307,7 +307,7 @@ const Footer: React.FC = () => {
               ))}
             </Box>
           </Grid>
-
+{/* 
           <Grid item xs={12} md={3}>
             <Typography
               variant="h6"
@@ -334,7 +334,7 @@ const Footer: React.FC = () => {
                 </Link>
               ))}
             </Box>
-          </Grid>
+          </Grid> */}
         </Grid>
 
         <Typography
