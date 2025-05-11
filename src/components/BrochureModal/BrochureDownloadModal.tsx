@@ -232,8 +232,6 @@
 
 
 
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Modal, Typography, TextField, Button, IconButton, Alert } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -285,7 +283,7 @@ const SubmitButton = styled(Button)(({ theme }) => ({
   alignSelf: 'center',
   '&.Mui-disabled': {
     background: 'linear-gradient(45deg, #475569 0%, #64748b 100%)',
-    opacity: 0.6,
+    opacity: '0.6',
   },
 }));
 
@@ -335,7 +333,6 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ open, onC
         { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: 'power2.out' }
       );
     }
-    // Reset form when modal opens
     if (open) {
       resetForm();
     }
@@ -406,21 +403,27 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ open, onC
 
       setSuccess('Brochure download will start shortly...');
 
-      // Delay download and further actions by 5 seconds
-      setTimeout(() => {
-        // Trigger brochure download
-        const link = document.createElement('a');
-        link.href = '/brochure.pdf'; // Ensure brochure.pdf is in public/ or adjust path
-        link.download = 'UIPS_Brochure.pdf';
-        link.click();
+      // Verify file accessibility
+      const response = await fetch('/assets/pdf/uips_brochure.pdf');
+      if (!response.ok) {
+        throw new Error('Brochure file not found. Please contact support.');
+      }
 
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = '/assets/pdf/uips_brochure.pdf';
+        link.download = 'UIPS_Brochuree.pdf';
+        link.type = 'application/pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
         resetForm();
-        onClose(); // Close modal after download
-      }, 3000); // 5-second delay
+        onClose();
+      }, 3000);
     } catch (error) {
       setErrors((prev) => ({
         ...prev,
-        submit: error.message || 'Failed to submit form. Please try again.',
+        submit: error.message || 'Failed to download brochure. Please try again.',
       }));
     } finally {
       setIsSubmitting(false);
@@ -432,7 +435,7 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ open, onC
       <ModalContainer ref={modalRef}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <FormTitle>Download Brochure</FormTitle>
-          <IconButton onClick={onClose} sx={{ color: '#94a3b8' }}>
+          <IconButton onClick={onClose} sx={{ color: '#94 SEXa3b8' }}>
             <CloseIcon />
           </IconButton>
         </Box>

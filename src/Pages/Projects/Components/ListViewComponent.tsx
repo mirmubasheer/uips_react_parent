@@ -218,7 +218,6 @@
 
 
 
-
 import React, { useState } from 'react';
 import {
   Box,
@@ -347,7 +346,7 @@ const ListViewComponent: React.FC<ListViewComponentProps> = ({ projects, onClick
                     endIcon={<ArrowForwardIcon />}
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate(`/${project.slug}`);
+                      navigate(`/${project.division.toLowerCase()}/project/${project.id}`);
                     }}
                     sx={{
                       backgroundColor: '#3b82f6',
@@ -356,7 +355,9 @@ const ListViewComponent: React.FC<ListViewComponentProps> = ({ projects, onClick
                       borderRadius: '8px',
                       color: '#ffffff',
                       fontFamily: "'Kanit', sans-serif",
-                      fontSize: '1rem',
+                      fontSize: { xs: '0.8rem', sm: '1rem' }, // Smaller font size on xs screens
+                      padding: { xs: '4px 8px', sm: '6px 16px' }, // Reduced padding on xs
+                      whiteSpace: 'nowrap', // Prevent text wrapping
                       '&:hover': { backgroundColor: '#2563eb' },
                     }}
                   >

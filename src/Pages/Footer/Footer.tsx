@@ -197,7 +197,7 @@ const Footer: React.FC = () => {
               sx={{ mt: 2, mb: 3, fontStyle: 'italic' }}
               ref={(el) => (textRefs.current[1] = el)}
             >
-              Al-Meflah Building, 4th Floor Suite 4B, 7th Cross, King Abdul Aziz Road
+              Al-Meflah Building, 5th Floor Suite 4B, 7th Cross, King Abdul Aziz Road
             </Typography>
             <Typography
               variant="body2"
@@ -228,11 +228,11 @@ const Footer: React.FC = () => {
               sx={{ lineHeight: 1.6 }}
               ref={(el) => (textRefs.current[5] = el)}
             >
-              Monday-Friday: 9am to 5pm
+              Sunday-Thursday: 8am to 5pm
               <br />
               Saturday: 10am to 3pm
               <br />
-              Sunday: Closed
+              Friday: Closed
             </Typography>
             <SocialIconWrapper>
               {linksData.socialLinks.map((social, index) => (

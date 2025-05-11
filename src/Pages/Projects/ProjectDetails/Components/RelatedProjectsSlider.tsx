@@ -192,6 +192,8 @@
 // export default RelatedProjectsSlider;
 
 
+
+
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
@@ -206,7 +208,7 @@ interface Project {
   client: string;
   location: string;
   status: string;
-  images: any[]; // Updated to any[] to match ProjectCardComponent
+  images: any[];
   description: string;
   monthyear: string;
   duration: string;
@@ -252,18 +254,15 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
   useEffect(() => {
     const loadRelatedProjects = async () => {
       try {
-        // Map division name to slug (e.g., "Civil" -> "civil")
         const divisionSlug = divisionNameToSlug[division];
         if (!divisionSlug) {
           setRelatedProjects([]);
           return;
         }
 
-        // Dynamically import the division TypeScript file
         const module = await import(`../../../../assets/data/${divisionSlug}.ts`);
         const divisionData = module.default as Division;
 
-        // Filter projects by division, exclude current project, limit to 15
         const projects = divisionData.projects
           .filter(
             (project) =>
@@ -317,7 +316,6 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
     return null;
   }
 
-  // Handle card click navigation with division slug
   const handleCardClick = (projectId: number) => {
     const divisionSlug = divisionNameToSlug[division];
     if (projectId && projectId !== currentProjectId && divisionSlug) {
@@ -330,7 +328,7 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
       <Typography
         variant="h5"
         fontWeight={600}
-        sx={{ mb: 3, color: "white" }}
+        sx={{ mb: 3, color: "white" }} // Already white
       >
         Related Projects
       </Typography>
@@ -355,7 +353,7 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
                   },
                   margin: "0 8px",
                   cursor: "pointer",
-                  color: "white",
+                  color: "white", // Ensure card text is white
                   [theme.breakpoints.down("sm")]: {
                     maxWidth: "240px",
                   },
@@ -369,9 +367,11 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
                   alt={project.projectname}
                   sx={{ objectFit: "cover" }}
                 />
-                <CardContent>
-                  <Typography variant="h6">{project.projectname}</Typography>
-                  <Typography variant="body2" color="white">
+                <CardContent sx={{ color: "white" }}> {/* Ensure CardContent text is white */}
+                  <Typography variant="h6" sx={{ color: "white" }}>
+                    {project.projectname}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "white" }}>
                     {project.location}
                   </Typography>
                 </CardContent>

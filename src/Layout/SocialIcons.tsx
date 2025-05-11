@@ -142,8 +142,8 @@ const SocialIcons: React.FC = () => {
   const socialLinks: SocialLink[] = [
     { icon: <WhatsAppIcon />, href: 'https://wa.me/966138968061', special: 'whatsapp' },
     { icon: <FacebookIcon />, href: 'https://facebook.com', special: 'facebook' },
-    { icon: <TwitterIcon />, href: 'https://twitter.com', special: 'twitter' },
-    { icon: <InstagramIcon />, href: 'https://instagram.com', special: 'instagram' },
+    { icon: <TwitterIcon />, href: 'https://x.com/uips_ksa', special: 'twitter' },
+    { icon: <InstagramIcon />, href: 'https://www.instagram.com/uips_ksa/', special: 'instagram' },
   ];
 
   const getButtonComponent = (type: SocialLink['special']) => {
