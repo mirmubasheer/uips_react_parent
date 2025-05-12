@@ -1,6 +1,7 @@
 
 // src/assets/index.ts
 
+
 // Hero section images
 import hero1 from './images/herosection/bannerr.webp';
 import hero2 from './images/herosection/02.webp';
@@ -294,40 +295,40 @@ import electrical_49_3 from './images/projects/dummy.webp';
 // Mechanical project images (placeholders)
 import mechanical_1_1 from './images/projects/site/sweet.webp';
 import mechanical_1_2 from './images/projects/site/sweet.webp';
-import mechanical_1_3 from './images/projects/dummy.webp';
+import mechanical_1_3 from './images/projects/site/sweet.webp';
 import mechanical_2_1 from './images/projects/site/gearbox.webp';
-import mechanical_2_2 from './images/projects/dummy.webp';
-import mechanical_2_3 from './images/projects/dummy.webp';
+import mechanical_2_2 from './images/projects/site/gearbox.webp';
+import mechanical_2_3 from './images/projects/site/gearbox.webp';
 import mechanical_3_1 from './images/projects/site/motorpump.webp';
-import mechanical_3_2 from './images/projects/dummy.webp';
-import mechanical_3_3 from './images/projects/dummy.webp';
+import mechanical_3_2 from './images/projects/site/motorpump.webp';
+import mechanical_3_3 from './images/projects/site/motorpump.webp';
 import mechanical_4_1 from './images/projects/site/hopper.webp';
-import mechanical_4_2 from './images/projects/dummy.webp';
-import mechanical_4_3 from './images/projects/dummy.webp';
+import mechanical_4_2 from './images/projects/site/hopper.webp';
+import mechanical_4_3 from './images/projects/site/hopper.webp';
 import mechanical_5_1 from './images/projects/site/powerfactor.webp';
-import mechanical_5_2 from './images/projects/dummy.webp';
-import mechanical_5_3 from './images/projects/dummy.webp';
+import mechanical_5_2 from './images/projects/site/powerfactor.webp';
+import mechanical_5_3 from './images/projects/site/powerfactor.webp';
 import mechanical_6_1 from './images/projects/site/crane.webp';
-import mechanical_6_2 from './images/projects/dummy.webp';
-import mechanical_6_3 from './images/projects/dummy.webp';
+import mechanical_6_2 from './images/projects/site/crane.webp';
+import mechanical_6_3 from './images/projects/site/crane.webp';
 import mechanical_7_1 from './images/projects/site/dredger.webp';
-import mechanical_7_2 from './images/projects/dummy.webp';
-import mechanical_7_3 from './images/projects/dummy.webp';
+import mechanical_7_2 from './images/projects/site/dredger.webp';
+import mechanical_7_3 from './images/projects/site/dredger.webp';
 import mechanical_8_1 from './images/projects/site/Farabi1_1.webp';
 import mechanical_8_2 from './images/projects/site/Farabi1_2.webp';
 import mechanical_8_3 from './images/projects/site/Farabi1_3.webp';
 import mechanical_9_1 from './images/projects/site/ASPHALT.webp';
-import mechanical_9_2 from './images/projects/dummy.webp';
-import mechanical_9_3 from './images/projects/dummy.webp';
+import mechanical_9_2 from './images/projects/site/ASPHALT.webp';
+import mechanical_9_3 from './images/projects/site/ASPHALT.webp';
 import mechanical_10_1 from './images/projects/site/sdc1_1.webp';
 import mechanical_10_2 from './images/projects/site/sdc1_2.webp';
 import mechanical_10_3 from './images/projects/site/sdc1_3.webp';
 import mechanical_11_1 from './images/projects/site/wastewater.webp';
-import mechanical_11_2 from './images/projects/dummy.webp';
-import mechanical_11_3 from './images/projects/dummy.webp';
+import mechanical_11_2 from './images/projects/site/wastewater.webp';
+import mechanical_11_3 from './images/projects/site/wastewater.webp';
 import mechanical_12_1 from './images/projects/site/gis.webp';
-import mechanical_12_2 from './images/projects/dummy.webp';
-import mechanical_12_3 from './images/projects/dummy.webp';
+import mechanical_12_2 from './images/projects/site/gis.webp';
+import mechanical_12_3 from './images/projects/site/gis.webp';
 
 // Plant shutdown project images (placeholders)
 import plant_shutdown_1_1 from './images/projects/site/shutdowns-min.webp';
@@ -492,11 +493,7 @@ import solo13 from './images/gallery/soloImages/1 (12).webp';
 // import solo29 from './images/gallery/soloImages/IMG_0272.webp';
 // import solo30 from './images/gallery/soloImages/IMG_0272.webp';
 
-
-
-
 import careers01 from './images/careers/careersBanner.webp';
-
 
 import boss from './images/management/boss-.jpg';
 import shakeel from  './images/management/shakeel.webp';
@@ -504,16 +501,12 @@ import zia from './images/management/zia.webp';
 import mehboob from './images/management/mehboob.webp';
 import husam from './images/management/husam.jpg';
 
-
-
 import w1 from './images/aboutus/whatwedo.webp';
 import q1 from './images/aboutus/quality.webp';
-
 
 import bannercert from './images/certificates/bannercert.webp';
 import cer1 from './images/certificates/cert.webp';
 import cer2 from './images/certificates/certi.webp';
-
 
 import reg from './images/certificates/certificatesall/reg.webp';
 import bqc from './images/certificates/certificatesall/bqc.webp';
@@ -521,9 +514,7 @@ import bqc1 from './images/certificates/certificatesall/bqc1.webp';
 
 import award from './images/policy/award.webp';
 
-
 import policybanner from './images/policy/policybanner-min.webp';
-
 
 // Type definitions
 interface ImageObject {
