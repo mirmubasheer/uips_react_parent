@@ -23,15 +23,31 @@ export const divisions: Division[] = [
   },
   {
     title: 'IT',
-    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking and cybersecurity for reliable business systems.',
+    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking, cybersecurity, software development, and infrastructure management for reliable business systems.',
     image: 'it',
     detailedDescription:
-      'UIPS Saudi Arabia’s IT Division, launched to meet client needs, excels in fiber optic and networking solutions, offering cutting-edge cybersecurity and system integration services. Our expertise ensures secure, scalable IT infrastructure for businesses across Saudi Arabia. With skills to handle projects of any size, we implement networks, servers, and protocols that empower organizations with reliable, high-performance technology tailored to the Kingdom’s dynamic market.',
+      'UIPS Saudi Arabia’s IT Division, launched to meet client needs, excels in fiber optic and networking solutions, cutting-edge cybersecurity, system integration, custom software development, and comprehensive hardware infrastructure services. Our expertise ensures secure, scalable IT infrastructure for businesses across Saudi Arabia. We offer end-to-end IT solutions, including software services like AI, machine learning, and data analytics, as well as hardware services such as server maintenance, structured cabling, and CCTV systems. With skills to handle projects of any size, we implement networks, servers, and protocols, and provide managed IT services to empower organizations with reliable, high-performance technology tailored to the Kingdom’s dynamic market.',
     whatWeDo:
-      'We implement and maintain IT infrastructure, including networks, servers, and cybersecurity protocols.',
+      'We implement and maintain IT infrastructure, including networks, servers, cybersecurity protocols, custom software, and managed IT services for optimal business performance.',
     expertise:
-      'Fiber optic installations, system monitoring, cybersecurity implementation, and network configuration.',
-    checklist: ['Fiber Optic Installation', 'System Monitoring', 'Cybersecurity Implementation', 'Network Configuration'],
+      'Fiber optic installations, system monitoring, cybersecurity implementation, network configuration, custom software development, AI solutions, server maintenance, and managed IT services.',
+    checklist: [
+      'Fiber Optic Installation',
+      'System Monitoring', // Fixed typo from 'System Monitori'
+      'Cybersecurity Implementation',
+      'Network Configuration',
+      'Custom Software Development',
+      'IT Consulting & Strategy',
+      'Data Analytics & Reporting',
+      'AI & Machine Learning Solutions',
+      'Network Setup & Management (LAN, WAN, Wi-Fi)',
+      'IP Addressing & Configuration',
+      'Server Installation & Maintenance',
+      'Firewall & Cybersecurity Solutions',
+      'Structured Cabling & Rack Setup',
+      'CCTV & Access Control Systems',
+      'IT Outsourcing & Managed Services',
+    ],
   },
   {
     title: 'Electrical',
