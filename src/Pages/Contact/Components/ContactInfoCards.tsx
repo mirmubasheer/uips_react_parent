@@ -41,6 +41,7 @@ const ContactInfoCards: React.FC = () => {
         }}
       >
         {contactInfo.map((info, index) => (
+          
           <Grid
             item
             xs={12}
