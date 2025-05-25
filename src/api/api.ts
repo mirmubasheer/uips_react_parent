@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
-const API_BASE_URL = 'https://uips-parent-backend.onrender.com/api';
+const API_BASE_URL = 'https://api.uips-sa.com/api';
 
 // Interface for form data
 interface HomepageFormData {
