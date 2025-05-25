@@ -1,4 +1,4 @@
-```yaml
+
   name: Build and Deploy Frontend
 
   on:
@@ -49,4 +49,4 @@
               sudo chown -R uipsadmin:uipsadmin /var/www/uips-sa.com
               sudo chmod -R 755 /var/www/uips-sa.com/html
               sudo systemctl reload nginx || { echo "Nginx reload failed"; exit 1; }
-  ```
+  
