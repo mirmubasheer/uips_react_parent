@@ -213,7 +213,7 @@ const Footer: React.FC = () => {
               sx={{ mb: 2 }}
               ref={(el) => (textRefs.current[3] = el)}
             >
-              Phone: +966 13 896 8061
+              Phone: +966 13 346 7677
             </Typography>
             <Typography
               variant="h6"

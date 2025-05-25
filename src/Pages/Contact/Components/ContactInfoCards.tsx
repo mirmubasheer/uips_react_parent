@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: <PhoneIcon sx={{ fontSize: 40, color: '#3B82F6' }} />,
     title: 'Call Us',
-    content: ' + 966 13 8968061',
+    content: ' + 966 13 346 7677',
   },
 ];
 

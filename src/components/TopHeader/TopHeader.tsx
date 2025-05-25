@@ -27,7 +27,7 @@ const TopHeader: React.FC = () => {
     Call Us Today:{" "}
     <strong>
       <Link
-        href="tel:+966138968061"
+        href="tel:+966133467677"
         sx={{ color: "white", textDecoration: "none" }}
       >
         +966 13 8968061
