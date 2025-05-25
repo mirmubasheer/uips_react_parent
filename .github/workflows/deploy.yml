@@ -1,52 +1,52 @@
+```yaml
+    name: Build and Deploy Frontend
 
-  name: Build and Deploy Frontend
+    on:
+      push:
+        branches:
+          - master
 
-  on:
-    push:
-      branches:
-        - master
+    jobs:
+      build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
 
-  jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+          - name: Set up Node.js
+            uses: actions/setup-node@v4
+            with:
+              node-version: '20'
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: '20'
+          - name: Install Yarn
+            run: npm install -g yarn
 
-        - name: Install Yarn
-          run: npm install -g yarn
+          - name: Install dependencies
+            run: yarn install
 
-        - name: Install dependencies
-          run: yarn install
+          - name: Build project
+            run: yarn build
 
-        - name: Build project
-          run: yarn build
+          - name: Deploy to server
+            uses: appleboy/scp-action@v0.1.4
+            with:
+              host: ${{ secrets.SERVER_IP }}
+              username: ${{ secrets.SERVER_USER }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              source: "dist/*"
+              target: ${{ secrets.SERVER_DESTINATION }}
+              strip_components: 1
+              overwrite: true
+              timeout: 600s
 
-        - name: Deploy to server
-          uses: appleboy/scp-action@v0.1.4
-          with:
-            host: ${{ secrets.SERVER_IP }}
-            username: ${{ secrets.SERVER_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            source: "dist/*"
-            target: ${{ secrets.SERVER_DESTINATION }}
-            strip_components: 1
-            overwrite: true
-            timeout: 600s
-
-        - name: Reload Nginx
-          uses: appleboy/ssh-action@v1.0.3
-          with:
-            host: ${{ secrets.SERVER_IP }}
-            username: ${{ secrets.SERVER_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            script: |
-              sudo chown -R uipsadmin:uipsadmin /var/www/uips-sa.com
-              sudo chmod -R 755 /var/www/uips-sa.com/html
-              sudo systemctl reload nginx || { echo "Nginx reload failed"; exit 1; }
-  
+          - name: Reload Nginx
+            uses: appleboy/ssh-action@v1.0.3
+            with:
+              host: ${{ secrets.SERVER_IP }}
+              username: ${{ secrets.SERVER_USER }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              script: |
+                sudo chown -R uipsadmin:uipsadmin /var/www/uips-sa.com
+                sudo chmod -R 755 /var/www/uips-sa.com/html
+                sudo systemctl reload nginx || { echo "Nginx reload failed"; exit 1; }
+    ```
