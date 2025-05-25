@@ -1,6 +1,3 @@
-code .github/workflows/deploy.yml
-  - Add the following content:
-```yaml
 name: Build and Deploy Frontend
 
 on:
@@ -38,3 +35,14 @@ jobs:
           source: "dist/*"
           target: ${{ secrets.SERVER_DESTINATION }}
           strip_components: 1
+
+      - name: Reload Nginx
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo chown -R uipsadmin:uipsadmin /var/www/uips-sa.com
+            sudo chmod -R 755 /var/www/uips-sa.com/html
+            sudo systemctl reload nginx
