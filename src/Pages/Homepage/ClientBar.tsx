@@ -113,7 +113,6 @@
 // export default ClientBar;
 
 
-
 import React, { memo, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { useInView } from "react-intersection-observer";

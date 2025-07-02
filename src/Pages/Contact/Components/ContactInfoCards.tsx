@@ -13,7 +13,7 @@ const contactInfo = [
   {
     icon: <LocationOnIcon sx={{ fontSize: 40, color: '#3B82F6' }} />,
     title: 'Our Address',
-    content: 'Al-Meflah Building, 5th Floor Suite 4B, 7th Cross, King Abdul Aziz Road',
+    content: 'Al-Meflah Building, 5th Floor Suite 4B, 7th Crosss, King Abdul Aziz Road',
   },
   {
     icon: <PhoneIcon sx={{ fontSize: 40, color: '#3B82F6' }} />,
