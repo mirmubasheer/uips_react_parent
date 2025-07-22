@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
-const API_BASE_URL = 'https://api.uips-sa.com/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 // Interface for form data
 interface HomepageFormData {
@@ -16,6 +16,7 @@ interface CareerFormData {
   phone: string;
   message?: string;
   resume: File;
+  role: string;
 }
 
 interface BrochureFormData {
@@ -56,6 +57,7 @@ export class ApiService {
     formData.append('name', data.name);
     formData.append('email', data.email);
     formData.append('phone', data.phone);
+    formData.append('role', data.role);
     if (data.message) formData.append('message', data.message);
     formData.append('resume', data.resume);
 

@@ -22,11 +22,6 @@ const HomePage = () => {
         <ClientBar />
       </Box>
 
-      {/* Motive Section */}
-      <Box sx={{ position: "relative" }}>
-        <Motive />
-      </Box>
-
       {/* About Us Section */}
       <Box sx={{ position: "relative" }}>
         <AboutUs />
@@ -35,6 +30,10 @@ const HomePage = () => {
       {/* Divisions Section */}
       <Box sx={{ position: "relative" }}>
         <Division />
+      </Box>
+          {/* Motive Section */}
+      <Box sx={{ position: "relative" }}>
+        <Motive />
       </Box>
 
       {/* Projects Section */}

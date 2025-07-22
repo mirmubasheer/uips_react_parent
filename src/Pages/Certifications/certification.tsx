@@ -16,7 +16,8 @@ gsap.registerPlugin(ScrollTrigger);
 // Styled components
 const CertificatesContainer = styled(Box)(({ theme }) => ({
   padding: { xs: '40px 10px', sm: '60px 15px', md: '80px 20px' },
-  background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)',
+  // background: 'linear-gradient(135deg, #0c1c3c 0%, #1e2a5c 100%)',
+  background: 'rgba(50, 65, 119, 0.8)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',

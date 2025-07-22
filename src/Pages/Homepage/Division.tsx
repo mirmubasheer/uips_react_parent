@@ -130,7 +130,8 @@
 
 // export default DivisionPage;
 
-import React, { useEffect, useRef, memo, useState, useDeferredValue } from 'react';
+
+import React, { memo, useEffect, useRef, useState, useDeferredValue } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardMedia, Typography, Grid, Box, Skeleton } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -141,8 +142,8 @@ import { divisions, Division } from '../../assets/data/Divisions';
 import { Alldivisions } from '../../assets';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: '#1E2A44',
-  color: '#A3BFFA',
+  background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
+  color: '#1e2a44',
   borderRadius: '16px',
   overflow: 'hidden',
   boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3)',
@@ -150,29 +151,36 @@ const StyledCard = styled(Card)(({ theme }) => ({
   cursor: 'pointer',
   width: '100%',
   maxWidth: '360px',
+  height: '420px',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
-  minHeight: '420px', // Use minHeight to allow content to expand
-  border: '1px solid rgba(59, 130, 246, 0.2)',
+  border: '1px solid rgba(0, 0, 0, 0.1)',
   '&:hover': {
     transform: 'scale(1.05)',
-    boxShadow: '0 10px 30px rgba(59, 130, 246, 0.4)',
-    backgroundColor: '#25335A',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+    background: 'rgba(50, 65, 119, 0.8)',
+    '& .card-title': {
+      color: '#FFFFFF',
+    },
+    '& .card-description': {
+      color: '#FFFFFF',
+    },
   },
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '90%', // Take up most of the screen width on mobile
-    minHeight: 'auto', // Let height adjust to content
+    maxWidth: '320px',
+    minHeight: '360px', // Changed to minHeight to allow expansion for content
   },
 }));
 
 const StyledCardContent = styled(CardContent)(({ theme }) => ({
   flexGrow: 1,
-  color: '#E0E7FF',
+  color: '#1e2a44',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   padding: theme.spacing(2.5),
+  overflow: 'auto', // Added to handle potential content overflow
   [theme.breakpoints.down('sm')]: {
     padding: theme.spacing(2),
   },
@@ -182,15 +190,14 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
   fontSize: '2.5rem !important',
   fontWeight: 400,
   letterSpacing: '0.8px',
-  textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
-  color: '#A5B4FC',
+  textShadow: '0 1px 3px rgba(0, 0, 0, 0.2)',
+  color: '#1e2a44',
   marginBottom: theme.spacing(6),
   [theme.breakpoints.down('sm')]: {
-    fontSize: '2rem !important', // Smaller title on mobile
+    fontSize: '2rem !important',
   },
 }));
 
-// Preload first few images
 const preloadImages = (images: string[], count: number) => {
   images.slice(0, count).forEach((src) => {
     const link = document.createElement('link');
@@ -201,20 +208,18 @@ const preloadImages = (images: string[], count: number) => {
   });
 };
 
-// Skeleton Loader for Cards
 const CardSkeleton = () => (
   <Grid item xs={12}>
     <StyledCard>
-      <Skeleton variant="rectangular" height={200} sx={{ bgcolor: '#2D3E66' }} />
+      <Skeleton variant="rectangular" height={200} sx={{ bgcolor: 'hsl(220, 20%, 90%)' }} />
       <StyledCardContent>
-        <Skeleton variant="text" width="80%" sx={{ mb: 1, bgcolor: '#2D3E66' }} />
-        <Skeleton variant="text" width="60%" sx={{ bgcolor: '#2D3E66' }} />
+        <Skeleton variant="text" width="80%" sx={{ mb: 1, bgcolor: 'hsl(220, 20%, 90%)' }} />
+        <Skeleton variant="text" width="60%" sx={{ bgcolor: 'hsl(220, 20%, 90%)' }} />
       </StyledCardContent>
     </StyledCard>
   </Grid>
 );
 
-// Memoized Card Component
 const DivisionCard: React.FC<{
   division: Division;
   index: number;
@@ -272,10 +277,11 @@ const DivisionCard: React.FC<{
           <StyledCardContent>
             <Typography
               variant="h5"
+              className="card-title"
               sx={{
                 fontWeight: 600,
-                color: '#A3BFFA',
-                fontSize: '1.4rem',
+                color: '#1e2a44',
+                fontSize: { xs: '1.2rem', sm: '1.4rem' },
                 letterSpacing: '0.2px',
                 mb: 1.5,
               }}
@@ -284,10 +290,11 @@ const DivisionCard: React.FC<{
             </Typography>
             <Typography
               variant="body2"
+              className="card-description"
               sx={{
-                color: '#CBD5E1',
+                color: '#1e2a44',
                 opacity: 0.9,
-                fontSize: '1rem',
+                fontSize: { xs: '0.9rem', sm: '1rem' },
                 lineHeight: 1.6,
                 whiteSpace: 'pre-line',
               }}
@@ -311,7 +318,6 @@ const DivisionPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const deferredDivisions = useDeferredValue(divisions);
 
-  // Preload first 3 images and handle data loading
   useEffect(() => {
     try {
       const imageKeys = divisions.slice(0, 3).map((division) => Alldivisions[division.image]);
@@ -322,7 +328,6 @@ const DivisionPage: React.FC = () => {
       setError('Failed to load division images');
       setIsLoading(false);
     }
-
     return () => {
       const links = document.querySelectorAll('link[rel="preload"][as="image"]');
       links.forEach((link) => link.remove());
@@ -338,7 +343,7 @@ const DivisionPage: React.FC = () => {
     <Box
       sx={{
         py: 8,
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+        background: 'linear-gradient(to bottom, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
         minHeight: '100vh',
         position: 'relative',
         zIndex: 4,
@@ -350,7 +355,7 @@ const DivisionPage: React.FC = () => {
         <Typography
           variant="h6"
           align="center"
-          sx={{ color: '#E0E7FF', mt: 4, opacity: 0.8 }}
+          sx={{ color: '#1e2a44', mt: 4, opacity: 0.8 }}
         >
           {error}
         </Typography>

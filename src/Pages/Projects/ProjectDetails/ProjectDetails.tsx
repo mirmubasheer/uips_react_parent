@@ -189,7 +189,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
   return (
     <Box
       sx={{
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+       background: 'linear-gradient(to bottom, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
         color: 'white',
         width: '100%',
         overflowX: 'hidden',
@@ -200,7 +200,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, divisionSlug }
         <Button
           startIcon={<ArrowBackIcon />}
           onClick={() => navigate(divisionSlug ? `/${divisionSlug}` : '/projects')}
-          sx={{ mb: 2, color: 'white', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
+          sx={{ mb: 2, color: 'white',backgroundColor: '#324177', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' } }}
         >
           Back to Projects
         </Button>

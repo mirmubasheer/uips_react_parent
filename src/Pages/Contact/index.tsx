@@ -27,7 +27,7 @@ const ContactWrapper: React.FC = () => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+       background: 'rgba(50, 65, 119, 0.2)',
         width: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box',

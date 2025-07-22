@@ -59,7 +59,8 @@ const ContactInfoCards: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center', // Center content vertically
                 p: { xs: 2, sm: 3 },
-                backgroundColor: '#1E2A44',
+                // backgroundColor: '#1E2A44',
+                background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
                 borderRadius: 2,
                 textAlign: 'center',
                 transition: 'transform 0.3s',

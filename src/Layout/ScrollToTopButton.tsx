@@ -42,7 +42,7 @@ const ScrollToTopButton: React.FC = () => {
         justifyContent: 'center',
         bgcolor: 'white',
         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-        border: '2px solid #30779d',
+        border: '2px solid #324177',
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(-10px)' : 'translateY(50px)',
         transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -54,14 +54,14 @@ const ScrollToTopButton: React.FC = () => {
         size={isSmallScreen ? 38 : 50}
         thickness={3}
         sx={{
-          color: '#30779d',
+          color: '#324177',
           position: 'absolute',
         }}
       />
       <IconButton
         onClick={scrollToTop}
         sx={{
-          color: '#30779d',
+          color: '#324177',
           bgcolor: 'white',
           borderRadius: '50%',
           zIndex: 2,

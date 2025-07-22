@@ -32,7 +32,7 @@ const TeamManagement: React.FC = () => {
       sx={{
         py: 8,
         px: { xs: 2, sm: 3, md: 4 },
-        background: 'linear-gradient(180deg, #334155 0%, #475569 100%)',
+        background: 'rgba(50, 65, 119, 0.5)',
         textAlign: 'center',
         boxSizing: 'border-box',
       }}
@@ -41,7 +41,7 @@ const TeamManagement: React.FC = () => {
         variant="h4"
         sx={{
           mb: 6,
-          color: '#f1f5f9',
+           color: '#1e2a44',
           position: 'relative',
           display: 'inline-block',
           fontWeight: 'bold',
@@ -66,15 +66,15 @@ const TeamManagement: React.FC = () => {
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Box
                 sx={{
-                  bgcolor: '#1e293b',
+                  // bgcolor: '#1e293b',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   transition: 'box-shadow 0.3s',
                   '&:hover': {
-                    boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.3)' },
+                    boxShadow: { md: '0 8px 24px rgba(0, 0, 0, 0.8)' },
                   },
-                  border: '1px solid',
-                  borderColor: '#475569',
+                  // border: '2px solid',
+                  borderColor: "#324177",
                   width: '260px',
                   height: '360px',
                   mx: 'auto',
@@ -121,7 +121,7 @@ const TeamManagement: React.FC = () => {
                   <Typography
                     variant="h6"
                     sx={{
-                      color: '#f1f5f9',
+                       color: '#1e2a44',
                       fontWeight: 'medium',
                       fontSize: { xs: '1.1rem', sm: '1.25rem' }, // Responsive font
                       mb: 1,
@@ -135,7 +135,7 @@ const TeamManagement: React.FC = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      color: '#94a3b8',
+                       color: '#1e2a44',
                       fontStyle: 'italic',
                       fontSize: { xs: '0.8rem', sm: '0.875rem' }, // Responsive font
                       overflow: 'hidden',

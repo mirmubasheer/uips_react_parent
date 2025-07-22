@@ -112,7 +112,7 @@ const Gallery: React.FC = () => {
     <Box
       sx={{
         py: 8,
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+        background: 'rgba(50, 65, 119, 0.2)',
       }}
     >
       <Container maxWidth="lg">
@@ -122,7 +122,8 @@ const Gallery: React.FC = () => {
             variant="h4"
             sx={{
               mb: 4,
-              color: '#f1f5f9',
+              // color: '#f1f5f9',
+               color: '#1e2a44',
               fontWeight: 'bold',
               position: 'relative',
               display: 'inline-block',
@@ -216,7 +217,9 @@ const Gallery: React.FC = () => {
             variant="h4"
             sx={{
               mb: 4,
-              color: '#f1f5f9',
+              // color: '#f1f5f9',
+               color: '#1e2a44',
+
               fontWeight: 'bold',
               position: 'relative',
               display: 'inline-block',
@@ -299,7 +302,7 @@ const Gallery: React.FC = () => {
             position: 'relative',
             maxWidth: '90vw',
             maxHeight: '90vh',
-            bgcolor: 'rgba(15, 23, 42, 0.9)',
+            bgcolor: 'rgba(50, 65, 119, 0.6)',
             borderRadius: '12px',
             p: 2,
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',

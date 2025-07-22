@@ -290,6 +290,8 @@
 // };
 
 // export default Upcoming;
+
+
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
@@ -332,18 +334,6 @@ const divisions = [
   "mechanical",
 ];
 
-const generateBackgroundColor = (index: number, total: number) => {
-  const baseHue = 220; // Blue hue
-  const saturation = 70; // Strong saturation for richness
-  const lightnessStart = 15; // Dark base
-  const lightnessEnd = 35; // Lighter end
-  const lightness =
-    total === 1
-      ? lightnessStart
-      : lightnessStart + (index / (total - 1)) * (lightnessEnd - lightnessStart);
-  return `linear-gradient(135deg, hsl(${baseHue}, ${saturation}%, ${lightnessStart}%) 0%, hsl(${baseHue}, ${saturation}%, ${lightness}%) 100%)`;
-};
-
 const Upcoming: React.FC = () => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
@@ -360,7 +350,7 @@ const Upcoming: React.FC = () => {
         try {
           const module = await import(`../../assets/data/${divisionSlug}.ts`);
           const divisionData = module.default as Division;
-          const project = divisionData.projects.find((p) => p.id === 1); // Pick id: 1 for now
+          const project = divisionData.projects.find((p) => p.id === 1);
           if (project) {
             loadedProjects.push(project);
           }
@@ -414,9 +404,12 @@ const Upcoming: React.FC = () => {
         justifyContent="center"
         alignItems="center"
         minHeight="100vh"
-        sx={{ background: generateBackgroundColor(0, 2), padding: { xs: 2, md: 2 } }}
+        sx={{
+          background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', // Updated background
+          padding: { xs: 2, md: 2 },
+        }}
       >
-        <Typography variant="h6" sx={{ color: "#dbeafe" }}>
+        <Typography variant="h6" sx={{ color: "#1e2a44" }}> {/* Updated text color */}
           No projects available
         </Typography>
       </Box>
@@ -429,8 +422,8 @@ const Upcoming: React.FC = () => {
   ) || project.division.toLowerCase();
   const projectImage =
     project.images.length > 0
-      ? project.images[project.images.length - 1] // Last image
-      : "https://via.placeholder.com/300x180"; // Fallback
+      ? project.images[project.images.length - 1]
+      : "https://via.placeholder.com/300x180";
 
   return (
     <Box
@@ -439,7 +432,7 @@ const Upcoming: React.FC = () => {
       alignItems="center"
       minHeight="100vh"
       sx={{
-        background: generateBackgroundColor(0, 2),
+        background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', // Updated background
         padding: { xs: 2, md: 2 },
       }}
     >
@@ -449,14 +442,12 @@ const Upcoming: React.FC = () => {
         sx={{ perspective: 1000, maxWidth: "100%" }}
       >
         <Typography
-          variant="h4"
+          variant="h3"
           sx={{
             textAlign: "center",
             fontWeight: 600,
-            background: "linear-gradient(to right, #94a3b8, #e2e8f0)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            mb: 2,
+            color: '#1e2a44', // Updated text color
+            mb: 10,
           }}
         >
           Our Recent Projects
@@ -481,8 +472,8 @@ const Upcoming: React.FC = () => {
               flexDirection: { xs: "column", sm: "row" },
               alignItems: "center",
               borderRadius: 3,
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
-              background: generateBackgroundColor(1, 2),
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5)",
+              background: 'rgba(50, 65, 119, 0.8)', // Updated to use #324177
               overflow: "hidden",
               border: "1px solid rgba(255, 255, 255, 0.1)",
               padding: { xs: "2%", sm: "5%", md: "1%" },
@@ -501,7 +492,7 @@ const Upcoming: React.FC = () => {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: "linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3))",
+                  background: "linear-gradient(to bottom, rgba(50, 65, 119, 0.1), rgba(50, 65, 119, 0.3))", // Updated to complement #324177
                 },
               }}
             >
@@ -523,16 +514,14 @@ const Upcoming: React.FC = () => {
                 width: { xs: "100%", sm: "60%" },
                 textAlign: "left",
                 padding: { xs: 2, sm: 3 },
-                color: "#ffffff",
+                color: "white", // Updated text color
               }}
             >
               <Typography
                 variant="h6"
                 sx={{
                   fontWeight: 600,
-                  background: "linear-gradient(to right, #ffffff, #dbeafe)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  color: 'white', // Updated text color
                 }}
               >
                 {project.projectname}
@@ -541,7 +530,7 @@ const Upcoming: React.FC = () => {
                 variant="body2"
                 mt={1}
                 sx={{
-                  color: "#dbeafe",
+                  color: "white", // Updated text color
                   opacity: 0.9,
                   lineHeight: 1.6,
                 }}
@@ -557,16 +546,17 @@ const Upcoming: React.FC = () => {
                 }
                 sx={{
                   mt: 2,
-                  background: "linear-gradient(45deg, #3b82f6 0%, #60a5fa 100%)",
-                  color: "white",
+                  background: '#324177', // Updated to use #324177
+                  color: "#ffffff",
                   padding: "8px 20px",
                   borderRadius: 2,
-                  boxShadow: "0 4px 15px rgba(59, 130, 246, 0.3)",
+                  boxShadow: "0 4px 15px rgba(50, 65, 119, 0.3)", // Updated to complement #324177
                   transition: "all 0.3s ease",
                   "&:hover": {
+                    color:"white",
                     transform: "translateY(-2px)",
-                    boxShadow: "0 6px 20px rgba(59, 130, 246, 0.5)",
-                    background: "linear-gradient(45deg, #2563eb 0%, #3b82f6 100%)",
+                    boxShadow: "0 6px 20px rgba(50, 65, 119, 0.5)",
+                    background: '#25305a', // Darker shade of #324177 for hover
                   },
                 }}
                 endIcon={<ArrowForward />}

@@ -494,7 +494,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => (
       <StarIcon
         key={index}
         sx={{
-          color: index < rating ? '#3B82F6' : '#4B5EAA',
+          color: index < rating ? '#FFD700' : 'white',
           fontSize: { xs: '18px', sm: '20px', md: '24px' },
         }}
       />
@@ -540,7 +540,7 @@ const Testimonial: React.FC = () => {
         px: { xs: 2, sm: 4, md: 6, lg: 8 },
         py: { xs: 4, sm: 6, md: 8 },
         bgcolor: 'transparent',
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+       background: 'rgba(50, 65, 119, 0.8)',
         color: '#A3BFFA',
       }}
     >
@@ -553,7 +553,7 @@ const Testimonial: React.FC = () => {
               sx={{
                 mb: 2,
                 mt: { xs: 4, md: 20 },
-                color: '#A3BFFA',
+                color: 'white',
                 fontSize: { xs: '1.8rem', sm: '2rem', md: '2.5rem' },
                 textAlign: { xs: 'center', md: 'left' },
               }}
@@ -602,7 +602,7 @@ const Testimonial: React.FC = () => {
                         display: '-webkit-box',
                         WebkitBoxOrient: 'vertical',
                         WebkitLineClamp: 3,
-                        color: '#A3BFFA',
+                        color: 'white',
                         mx: 'auto',
                       }}
                     >
@@ -619,7 +619,7 @@ const Testimonial: React.FC = () => {
                           width: { xs: 40, sm: 50 },
                           height: { xs: 40, sm: 50 },
                           mr: 2,
-                          border: '2px solid #60A5FA',
+                          border: '2px solid #324177',
                         }}
                       />
                       <Typography
@@ -627,7 +627,7 @@ const Testimonial: React.FC = () => {
                         sx={{
                           fontWeight: 'bold',
                           fontSize: { xs: '0.9rem', sm: '1rem' },
-                          color: '#A3BFFA',
+                          color: 'white',
                         }}
                       >
                         {testimonial.clientName}
@@ -678,7 +678,7 @@ const Testimonial: React.FC = () => {
                     width: '100%',
                     height: '100%',
                     background:
-                      'linear-gradient(120deg, rgba(59, 130, 246, 0) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(59, 130, 246, 0) 100%)',
+                      'linear-gradient(120deg,  rgba(59, 130, 246, 0.4) 0%,  rgba(59, 130, 246, 0.4) 50%,  rgba(59, 130, 246, 0.4) 100%)',
                     transform: 'translateX(-100%)',
                     transition: 'transform 0.6s ease',
                   }}
@@ -722,7 +722,7 @@ const Testimonial: React.FC = () => {
                     width: '100%',
                     height: '100%',
                     background:
-                      'linear-gradient(120deg, rgba(59, 130, 246, 0) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(59, 130, 246, 0) 100%)',
+                      'linear-gradient(120deg, rgba(59, 130, 246, 0) 0%,  rgba(59, 130, 246, 0.4) 50%, rgba(59, 130, 246, 0) 100%)',
                     transform: 'translateX(-100%)',
                     transition: 'transform 0.6s ease',
                   }}

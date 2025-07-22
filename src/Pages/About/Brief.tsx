@@ -107,7 +107,8 @@ const Brief: React.FC = () => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%)',
+        // background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1e293b 100%)',
+        background: 'rgba(50, 65, 119, 0.4)',
         py: { xs: 6, md: 10 },
         overflow: 'hidden',
       }}
@@ -170,7 +171,9 @@ const Brief: React.FC = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 700,
-                  color: '#f1f5f9',
+                  // color: '#f1f5f9',
+                   color: '#1e2a44',
+
                   position: 'relative',
                   display: 'inline-block',
                   '&::after': {
@@ -191,9 +194,9 @@ const Brief: React.FC = () => {
                 variant="body1"
                 sx={{
                   mt: 2,
-                  fontSize: { xs: '1rem', md: '1.1rem' },
-                  lineHeight: 1.8,
-                  color: '#cbd5e1',
+                  fontSize: { xs: '1rem', md: '1.2rem' },
+                  lineHeight: 1.9,
+                   color: '#1e2a44',
                 }}
               >
                 {section.content}

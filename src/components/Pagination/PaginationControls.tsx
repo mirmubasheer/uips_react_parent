@@ -43,16 +43,16 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({ page, count, on
         count={count}
         page={page}
         onChange={onChange}
-        color="primary"
+        // color="primary"
         shape="rounded"
         siblingCount={1}
         boundaryCount={1}
         sx={{
           '& .MuiPaginationItem-root': {
             fontSize: { xs: '0.9rem', sm: '1rem' },
-            color: '#FFFFFF',
+            color: 'black',
             '&.Mui-selected': {
-              bgcolor: '#3B82F6',
+              bgcolor: '#324177',
               color: '#FFFFFF',
             },
           },

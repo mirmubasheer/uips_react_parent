@@ -20,7 +20,8 @@ const SocialContainer = styled(Box)(({ theme }: { theme: Theme }) => ({
 }));
 
 const MainButton = styled(IconButton)(({ theme }: { theme: Theme }) => ({
-  background: 'linear-gradient(135deg, #30779d 0%, #1e4b66 100%)',
+  // background: 'linear-gradient(135deg, #30779d 0%, #1e4b66 100%)',
+  background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
   color: 'white',
   width: theme.spacing(7), // Increased radius
   height: theme.spacing(7), // Increased radius
@@ -28,7 +29,8 @@ const MainButton = styled(IconButton)(({ theme }: { theme: Theme }) => ({
   border: '2px solid #ffffff',
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
-    background: 'linear-gradient(135deg, #1e4b66 0%, #30779d 100%)',
+    // background: 'linear-gradient(135deg, #1e4b66 0%, #30779d 100%)',
+        background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
     transform: 'scale(1.1)',
     boxShadow: '0px 6px 20px rgba(48, 119, 157, 0.6)',
   },

@@ -22,8 +22,8 @@ export const divisions: Division[] = [
     checklist: ['Site Development', 'Building Construction', 'Infrastructure Design', 'Utility Installation'],
   },
   {
-    title: 'IT',
-    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking, cybersecurity, software development, and infrastructure management for reliable business systems.',
+    title: 'Information Technology',
+    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking, cybersecurity, software development, and infrastructure management for business systems.',
     image: 'it',
     detailedDescription:
       'UIPS Saudi Arabia’s IT Division, launched to meet client needs, excels in fiber optic and networking solutions, cutting-edge cybersecurity, system integration, custom software development, and comprehensive hardware infrastructure services. Our expertise ensures secure, scalable IT infrastructure for businesses across Saudi Arabia. We offer end-to-end IT solutions, including software services like AI, machine learning, and data analytics, as well as hardware services such as server maintenance, structured cabling, and CCTV systems. With skills to handle projects of any size, we implement networks, servers, and protocols, and provide managed IT services to empower organizations with reliable, high-performance technology tailored to the Kingdom’s dynamic market.',

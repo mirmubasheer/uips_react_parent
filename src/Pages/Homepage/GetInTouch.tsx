@@ -474,6 +474,8 @@
 
 
 
+
+
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import {
@@ -608,20 +610,18 @@ const GetInTouch: React.FC = () => {
       alignItems="center"
       minHeight="100vh"
       sx={{
-        background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+        background: 'rgba(50, 65, 119, 0.8)', // Updated background to #324177 with opacity
         p: 2,
       }}
     >
       <Box ref={containerRef} width={{ xs: "100%", sm: 600, md: 800 }} sx={{ maxWidth: "100%" }}>
         <Typography
-          variant={isMobile ? "h5" : "h4"}
+          variant={isMobile ? "h5" : "h3"}
           sx={{
             textAlign: "center",
             fontWeight: 600,
             mb: 3,
-            background: "linear-gradient(to right, #94a3b8, #e2e8f0)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: 'white', // Updated text color
           }}
         >
           Get In Touch
@@ -635,7 +635,7 @@ const GetInTouch: React.FC = () => {
             boxShadow: "0 6px 24px rgba(0, 0, 0, 0.3)",
             overflow: "hidden",
             border: "1px solid rgba(255, 255, 255, 0.05)",
-            background: "linear-gradient(45deg, #1e293b 0%, #334155 100%)",
+            background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', // Updated form background
           }}
         >
           <Box
@@ -651,8 +651,6 @@ const GetInTouch: React.FC = () => {
               gap: 2,
             }}
           >
-     
-
             {["Name", "Email", "Phone Number"].map((label, index) => (
               <TextField
                 key={label}
@@ -666,11 +664,17 @@ const GetInTouch: React.FC = () => {
                 helperText={errors[label.toLowerCase().replace(" number", "")]}
                 InputProps={{
                   sx: {
-                    backgroundColor: "rgba(15, 23, 42, 0.6)",
-                    color: "#fff",
+                    backgroundColor: "rgba(50, 65, 119, 0.1)", // Complements #324177
+                    color: "#1e2a44", // Updated text color
                   },
                 }}
-                InputLabelProps={{ sx: { color: "#94a3b8" } }}
+                InputLabelProps={{ sx: { color: "#1e2a44" } }} // Updated label color
+                sx={{
+                  '& .MuiFilledInput-root': {
+                    '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' }, // Complements #324177
+                    '&:after': { borderBottomColor: '#324177' }, // Uses #324177
+                  },
+                }}
               />
             ))}
 
@@ -687,20 +691,26 @@ const GetInTouch: React.FC = () => {
               helperText={errors.message}
               InputProps={{
                 sx: {
-                  backgroundColor: "rgba(15, 23, 42, 0.6)",
-                  color: "#fff",
+                  backgroundColor: "rgba(50, 65, 119, 0.1)", // Complements #324177
+                  color: "#1e2a44", // Updated text color
                 },
               }}
-              InputLabelProps={{ sx: { color: "#94a3b8" } }}
+              InputLabelProps={{ sx: { color: "#1e2a44" } }} // Updated label color
+              sx={{
+                '& .MuiFilledInput-root': {
+                  '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' },
+                  '&:after': { borderBottomColor: '#324177' },
+                },
+              }}
             />
 
-{errors.submit && (
-              <Alert severity="error" sx={{ mb: 2 }}>
+            {errors.submit && (
+              <Alert severity="error" sx={{ mb: 2, color: '#1e2a44' }}> {/* Updated text color */}
                 {errors.submit}
               </Alert>
             )}
             {success && (
-              <Alert severity="success" sx={{ mb: 2 }}>
+              <Alert severity="success" sx={{ mb: 2, color: '#1e2a44' }}> {/* Updated text color */}
                 {success}
               </Alert>
             )}
@@ -715,9 +725,12 @@ const GetInTouch: React.FC = () => {
                 py: 1,
                 borderRadius: 2,
                 textTransform: "none",
-                background: "linear-gradient(45deg, #475569 0%, #64748b 100%)",
+                background: '#324177', // Uses #324177
+                color: "#ffffff",
+                boxShadow: "0 4px 15px rgba(50, 65, 119, 0.3)", // Complements #324177
                 "&:hover": {
-                  background: "linear-gradient(45deg, #334155 0%, #475569 100%)",
+                  background: 'white', // Darker shade of #324177
+                  boxShadow: "0 6px 20px rgba(50, 65, 119, 0.8)",
                 },
               }}
             >
@@ -742,7 +755,7 @@ const GetInTouch: React.FC = () => {
                 sx={{
                   position: "absolute",
                   inset: 0,
-                  background: "rgba(0,0,0,0.3)",
+                  background: "linear-gradient(to bottom, rgba(50, 65, 119, 0.1), rgba(50, 65, 119, 0.3))", // Complements #324177
                 }}
               />
             </Box>

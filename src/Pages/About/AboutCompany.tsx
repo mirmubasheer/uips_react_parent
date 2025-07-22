@@ -44,7 +44,10 @@ const AboutCompany: React.FC = () => {
       sx={{
         minHeight: "100vh",
         width: "100%",
-        background: "#0A1B4A", // Darker blue shade
+        // background: "#0A1B4A",
+        // background: "'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))'",
+        background: 'rgba(50, 65, 119, 0.2)',
+
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -68,7 +71,7 @@ const AboutCompany: React.FC = () => {
         <Typography
           variant="h3"
           sx={{
-            color: "#FFFFFF",
+            color: '#1e2a44',
             fontWeight: "bold",
             textAlign: "center",
             fontSize: { xs: "24px", sm: "28px", md: "40px" }, // Responsive font size
@@ -87,6 +90,7 @@ const AboutCompany: React.FC = () => {
             transform: "translateX(-50%)",
             width: { xs: "40px", sm: "50px", md: "60px" }, // Responsive underline width
             height: "4px",
+            // background: "linear-gradient(90deg, #3B82F6, #60A5FA)",
             background: "linear-gradient(90deg, #3B82F6, #60A5FA)",
             borderRadius: "2px",
           }}
@@ -101,7 +105,7 @@ const AboutCompany: React.FC = () => {
           width: { xs: "95%", sm: "90%", md: "900px" }, // Responsive width
           maxWidth: "900px",
           mx: "auto", // Center horizontally
-          background: "#1A2B6A", // Slightly lighter dark blue for contrast
+          background: "#324177", // Slightly lighter dark blue for contrast
           borderRadius: "15px 15px 0 0",
           padding: { xs: "15px 10px", sm: "20px 15px", md: "25px" }, // Responsive padding
           textAlign: "center",
@@ -115,7 +119,7 @@ const AboutCompany: React.FC = () => {
             transform: "translateX(-50%)",
             borderLeft: { xs: "25px solid transparent", sm: "30px solid transparent", md: "40px solid transparent" }, // Responsive V-shape
             borderRight: { xs: "25px solid transparent", sm: "30px solid transparent", md: "40px solid transparent" },
-            borderTop: { xs: "25px solid #1A2B6A", sm: "30px solid #1A2B6A", md: "40px solid #1A2B6A" },
+            borderTop: { xs: "25px solid #324177", sm: "30px solid #324177", md: "40px solid #324177" },
             zIndex: 1,
           },
         }}

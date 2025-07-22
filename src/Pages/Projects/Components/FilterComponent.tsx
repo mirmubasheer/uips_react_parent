@@ -497,6 +497,271 @@
 
 
 
+
+// import React, { useState, useEffect } from 'react';
+// import {
+//   Box,
+//   TextField,
+//   MenuItem,
+//   Button,
+//   IconButton,
+//   InputAdornment,
+//   Menu,
+//   ToggleButton,
+//   ToggleButtonGroup,
+// } from '@mui/material';
+// import { styled } from '@mui/material/styles';
+// import SortIcon from '@mui/icons-material/Sort';
+// import ViewListIcon from '@mui/icons-material/ViewList';
+// import ViewModuleIcon from '@mui/icons-material/ViewModule';
+// import { Project } from '../../../types/project';
+
+// interface FilterComponentProps {
+//   projects: Project[];
+//   onFilterChange: (filteredProjects: Project[]) => void;
+//   filterStatus: 'ALL' | 'COMPLETED' | 'ONGOING';
+//   setFilterStatus: (status: 'ALL' | 'COMPLETED' | 'ONGOING') => void;
+//   viewMode: 'grid' | 'list';
+//   onViewModeChange: (newViewMode: 'grid' | 'list' | null) => void;
+// }
+
+// const FilterBox = styled(Box)(({ theme }) => ({
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+//   padding: '10px',
+//   background: '#324177', // Updated to #324177
+//   borderRadius: '8px',
+//   marginBottom: '20px',
+//   width: '100%',
+//   gap: '16px',
+//   [theme.breakpoints.down('sm')]: {
+//     flexDirection: 'column',
+//     alignItems: 'stretch',
+//     padding: '8px',
+//     gap: '8px',
+//   },
+// }));
+
+// const FilterButton = styled(Button)(({ theme }) => ({
+//   backgroundColor: '#324177', // Updated to #324177
+//   color: '#ffffff',
+//   padding: '6px 12px',
+//   borderRadius: '6px',
+//   textTransform: 'none',
+//   fontFamily: "'Kanit', sans-serif",
+//   fontSize: '0.9rem',
+//   minWidth: '80px',
+//   '&:hover': {
+//     backgroundColor: '#25305a', // Darker shade for hover
+//   },
+//   '&.MuiButton-outlined': {
+//     backgroundColor: 'transparent',
+//     borderColor: '#324177', // Updated to #324177
+//     color: '#ffffff',
+//     '&:hover': {
+//       backgroundColor: 'rgba(50, 65, 119, 0.3)', // Updated to complement #324177
+//     },
+//   },
+// }));
+
+// const CompactTextField = styled(TextField)({
+//   width: '500px',
+//   '& .MuiOutlinedInput-root': {
+//     backgroundColor: '#324177', // Updated to #324177
+//     color: '#ffffff',
+//     height: '40px',
+//     '& fieldset': {
+//       borderColor: 'rgba(50, 65, 119, 0.5)', // Updated to complement #324177
+//     },
+//     '&:hover fieldset': {
+//       borderColor: '#ffffff',
+//     },
+//     '&.Mui-focused fieldset': {
+//       borderColor: '#ffffff',
+//     },
+//     '&.Mui-focused': {
+//       backgroundColor: '#324177', // Updated to #324177
+//     },
+//     '& input': {
+//       color: '#ffffff',
+//     },
+//   },
+//   '& .MuiInputLabel-root': {
+//     color: '#ffffff',
+//     fontSize: '0.9rem',
+//     top: '-4px',
+//   },
+//   '& .MuiInputLabel-shrink': {
+//     top: 0,
+//   },
+// });
+
+// const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
+//   border: '1px solid #ffffff',
+//   borderRadius: '4px',
+//   '& .MuiToggleButton-root': {
+//     color: '#ffffff',
+//     padding: '6px',
+//     '&:hover': {
+//       backgroundColor: 'rgba(50, 65, 119, 0.3)', // Updated to complement #324177
+//     },
+//     '&.Mui-selected': {
+//       backgroundColor: '#324177', // Updated to #324177
+//       color: '#ffffff',
+//       '&:hover': {
+//         backgroundColor: '#25305a', // Darker shade for hover
+//       },
+//     },
+//   },
+// });
+
+// const FilterComponent: React.FC<FilterComponentProps> = ({
+//   projects,
+//   onFilterChange,
+//   filterStatus,
+//   setFilterStatus,
+//   viewMode,
+//   onViewModeChange,
+// }) => {
+//   const [searchQuery, setSearchQuery] = useState('');
+//   const [selectedLocation, setSelectedLocation] = useState<string>('All');
+//   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+//   const uniqueLocations = ['All', ...new Set(projects.map((project) => project.location))];
+
+//   useEffect(() => {
+//     // Apply status filter whenever filterStatus changes
+//     filterProjects(searchQuery, selectedLocation, filterStatus);
+//   }, [filterStatus, projects]);
+
+//   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//     const query = event.target.value.toLowerCase();
+//     setSearchQuery(query);
+//     filterProjects(query, selectedLocation, filterStatus);
+//   };
+
+//   const handleLocationClick = (event: React.MouseEvent<HTMLElement>) => {
+//     setAnchorEl(event.currentTarget);
+//   };
+
+//   const handleLocationClose = () => {
+//     setAnchorEl(null);
+//   };
+
+//   const handleLocationSelect = (location: string) => {
+//     setSelectedLocation(location);
+//     filterProjects(searchQuery, location, filterStatus);
+//     handleLocationClose();
+//   };
+
+//   const filterProjects = (query: string, location: string, status: 'ALL' | 'COMPLETED' | 'ONGOING') => {
+//     let filtered = projects;
+
+//     // Apply status filter
+//     if (status !== 'ALL') {
+//       filtered = filtered.filter((project) => project.status.toUpperCase() === status);
+//     }
+
+//     // Apply search query filter
+//     if (query) {
+//       filtered = filtered.filter(
+//         (project) =>
+//           project.projectname.toLowerCase().includes(query) ||
+//           project.client.toLowerCase().includes(query)
+//       );
+//     }
+
+//     // Apply location filter
+//     if (location !== 'All') {
+//       filtered = filtered.filter((project) => project.location === location);
+//     }
+
+//     onFilterChange(filtered);
+//   };
+
+//   return (
+//     <FilterBox>
+//       {/* Status Buttons */}
+//       <Box sx={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+//         {['ALL', 'COMPLETED', 'ONGOING'].map((status) => (
+//           <FilterButton
+//             key={status}
+//             variant={filterStatus === status ? 'contained' : 'outlined'}
+//             onClick={() => setFilterStatus(status as typeof filterStatus)}
+//             sx={{ visibility: 'visible', opacity: 1 }}
+//           >
+//             {status.charAt(0) + status.slice(1).toLowerCase()}
+//           </FilterButton>
+//         ))}
+//       </Box>
+
+//       {/* Search Bar */}
+//       <CompactTextField
+//         label="Search Project/Client"
+//         variant="outlined"
+//         value={searchQuery}
+//         onChange={handleSearchChange}
+//         InputProps={{
+//           style: { fontSize: '0.9rem' },
+//           endAdornment: (
+//             <InputAdornment position="end">
+//               <IconButton onClick={handleLocationClick} sx={{ padding: '4px' }}>
+//                 <SortIcon sx={{ color: '#ffffff', fontSize: '1.2rem' }} />
+//               </IconButton>
+//             </InputAdornment>
+//           ),
+//         }}
+//       />
+//       <Menu
+//         anchorEl={anchorEl}
+//         open={Boolean(anchorEl)}
+//         onClose={handleLocationClose}
+//         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+//         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+//         PaperProps={{
+//           sx: {
+//             backgroundColor: '#324177', // Updated to #324177
+//             color: '#ffffff',
+//           },
+//         }}
+//       >
+//         {uniqueLocations.map((location) => (
+//           <MenuItem
+//             key={location}
+//             value={location}
+//             onClick={() => handleLocationSelect(location)}
+//             sx={{ fontSize: '0.9rem', color: '#ffffff' }}
+//           >
+//             {location}
+//           </MenuItem>
+//         ))}
+//       </Menu>
+
+//       {/* View Mode Toggle */}
+//       <StyledToggleButtonGroup
+//         value={viewMode}
+//         exclusive
+//         onChange={(e, newViewMode) => onViewModeChange(newViewMode)}
+//         aria-label="view mode"
+//         sx={{ flexShrink: 0 }}
+//       >
+//         <ToggleButton value="grid" aria-label="grid view">
+//           <ViewModuleIcon />
+//         </ToggleButton>
+//         <ToggleButton value="list" aria-label="list view">
+//           <ViewListIcon />
+//         </ToggleButton>
+//       </StyledToggleButtonGroup>
+//     </FilterBox>
+//   );
+// };
+
+// export default FilterComponent;
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -529,91 +794,145 @@ const FilterBox = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '10px',
-  background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  background: '#324177',
   borderRadius: '8px',
   marginBottom: '20px',
   width: '100%',
   gap: '16px',
+  flexWrap: 'wrap',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    alignItems: 'stretch',
+    alignItems: 'center',
     padding: '8px',
-    gap: '8px',
+    gap: '12px',
   },
 }));
 
 const FilterButton = styled(Button)(({ theme }) => ({
-  backgroundColor: '#3b82f6',
+  backgroundColor: '#324177',
   color: '#ffffff',
   padding: '6px 12px',
   borderRadius: '6px',
   textTransform: 'none',
   fontFamily: "'Kanit', sans-serif",
   fontSize: '0.9rem',
-  minWidth: '80px', // Ensure buttons are visible
+  minWidth: '80px',
+  border: '1px solid transparent',
   '&:hover': {
-    backgroundColor: '#2563eb',
+    backgroundColor: '#ffffff',
+    color: '#000000',
+    borderColor: '#000000',
+  },
+  '&.MuiButton-contained': {
+    borderColor: '#ffffff',
   },
   '&.MuiButton-outlined': {
     backgroundColor: 'transparent',
-    borderColor: '#3b82f6',
+    borderColor: '#324177',
     color: '#ffffff',
     '&:hover': {
-      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+      backgroundColor: '#ffffff',
+      color: '#000000',
+      borderColor: '#000000',
     },
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+    minWidth: '70px',
+    padding: '4px 8px',
   },
 }));
 
-const CompactTextField = styled(TextField)({
+const CompactTextField = styled(TextField)(({ theme }) => ({
   width: '500px',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    maxWidth: '300px',
+  },
   '& .MuiOutlinedInput-root': {
-    backgroundColor: '#2D3E66',
-    color: '#f1f5f9',
+    backgroundColor: '#324177',
+    color: '#ffffff',
     height: '40px',
+    [theme.breakpoints.down('sm')]: {
+      height: '36px',
+    },
     '& fieldset': {
-      borderColor: 'rgba(59, 130, 246, 0.5)',
+      borderColor: '#ffffff',
     },
     '&:hover fieldset': {
-      borderColor: '#3b82f6',
+      borderColor: '#ffffff',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#3b82f6',
+      borderColor: '#ffffff',
     },
     '&.Mui-focused': {
-      backgroundColor: '#2D3E66',
+      backgroundColor: '#324177',
     },
     '& input': {
-      color: '#f1f5f9',
+      color: '#ffffff',
     },
   },
   '& .MuiInputLabel-root': {
-    color: '#f1f5f9',
+    color: '#ffffff',
     fontSize: '0.9rem',
     top: '-4px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.8rem',
+    },
+  },
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: '#ffffff',
   },
   '& .MuiInputLabel-shrink': {
     top: 0,
   },
-});
+}));
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)({
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   border: '1px solid #ffffff',
   borderRadius: '4px',
   '& .MuiToggleButton-root': {
     color: '#ffffff',
     padding: '6px',
     '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backgroundColor: 'rgba(50, 65, 119, 0.3)',
     },
     '&.Mui-selected': {
-      backgroundColor: '#3b82f6',
+      backgroundColor: '#324177',
       color: '#ffffff',
       '&:hover': {
-        backgroundColor: '#2563eb',
+        backgroundColor: '#25305a',
+      },
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '4px',
+      '& svg': {
+        fontSize: '1.2rem',
       },
     },
   },
-});
+}));
+
+const StyledMenu = styled(Menu)(({ theme }) => ({
+  '& .MuiPaper-root': {
+    backgroundColor: '#324177',
+    color: '#ffffff',
+    maxHeight: '200px',
+    width: '200px',
+    [theme.breakpoints.down('sm')]: {
+      width: '150px',
+      fontSize: '0.8rem',
+    },
+  },
+}));
+
+const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+  fontSize: '0.9rem',
+  color: '#ffffff',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem',
+  },
+}));
 
 const FilterComponent: React.FC<FilterComponentProps> = ({
   projects,
@@ -688,7 +1007,7 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
             key={status}
             variant={filterStatus === status ? 'contained' : 'outlined'}
             onClick={() => setFilterStatus(status as typeof filterStatus)}
-            sx={{ visibility: 'visible', opacity: 1 }} // Ensure visibility
+            sx={{ visibility: 'visible', opacity: 1 }}
           >
             {status.charAt(0) + status.slice(1).toLowerCase()}
           </FilterButton>
@@ -702,40 +1021,33 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
         value={searchQuery}
         onChange={handleSearchChange}
         InputProps={{
-          style: { fontSize: '0.9rem' },
+          style: { fontSize: '1.1rem' },
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={handleLocationClick} sx={{ padding: '4px' }}>
-                <SortIcon sx={{ color: '#f1f5f9', fontSize: '1.2rem' }} />
+                <SortIcon sx={{ color: '#ffffff', fontSize: '1.2rem' }} />
               </IconButton>
             </InputAdornment>
           ),
         }}
       />
-      <Menu
+      <StyledMenu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleLocationClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        PaperProps={{
-          sx: {
-            backgroundColor: '#2D3E66',
-            color: '#f1f5f9',
-          },
-        }}
       >
         {uniqueLocations.map((location) => (
-          <MenuItem
+          <StyledMenuItem
             key={location}
             value={location}
             onClick={() => handleLocationSelect(location)}
-            sx={{ fontSize: '0.9rem' }}
           >
             {location}
-          </MenuItem>
+          </StyledMenuItem>
         ))}
-      </Menu>
+      </StyledMenu>
 
       {/* View Mode Toggle */}
       <StyledToggleButtonGroup

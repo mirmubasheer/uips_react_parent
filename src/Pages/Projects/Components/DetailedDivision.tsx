@@ -403,14 +403,14 @@ const DetailedDivision: React.FC<DetailedDivisionProps> = ({ division }) => {
     <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
       <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} alignItems="stretch">
         <Grid item xs={12} md={6}>
-          <Box sx={{ color: "#ffffff" }}>
+          <Box sx={{ color: '#1e2a44' }}>
             <Typography
               variant="h4"
               fontWeight={600}
               gutterBottom
               sx={{
                 fontSize: { xs: "1.5rem", sm: "2rem", md: "2.125rem" },
-                color: "#ffffff",
+                color: '#1e2a44',
               }}
             >
               {division.name}
@@ -420,7 +420,7 @@ const DetailedDivision: React.FC<DetailedDivisionProps> = ({ division }) => {
               lineHeight={1.6}
               sx={{
                 fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
-                color: "#ffffff",
+                color: '#1e2a44',
               }}
             >
               {division.description}
@@ -437,7 +437,7 @@ const DetailedDivision: React.FC<DetailedDivisionProps> = ({ division }) => {
                 gutterBottom
                 sx={{
                   fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },
-                  color: "#ffffff",
+                  color: '#1e2a44',
                 }}
               >
                 Our Clients

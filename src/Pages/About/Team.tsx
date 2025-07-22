@@ -23,14 +23,16 @@ const teamMembers: TeamMember[] = [
 
 const Team: React.FC = () => {
   return (
-    <Box sx={{ background: '#0f172a', py: { xs: 4, md: 6 } }}>
+    <Box sx={{  background: 'rgba(50, 65, 119, 0.6)', py: { xs: 4, md: 6 } }}>
       <Container>
         <Box textAlign="center" mb={5}>
           <Typography
             variant="h4"
             sx={{
               fontWeight: 700,
-              color: '#f1f5f9',
+              // color: '#f1f5f9',
+              // color: '#1e2a44',
+               color: '#1e2a44',
               position: 'relative',
               display: 'inline-block',
               '&::after': {
@@ -76,11 +78,11 @@ const Team: React.FC = () => {
             <Typography
               variant="h5"
               gutterBottom
-              sx={{ color: '#e2e8f0', fontWeight: 600 }}
+              sx={{  color: '#1e2a44', fontWeight: 600 }}
             >
               About Amjad Ali Wajid
             </Typography>
-            <Typography variant="body1" sx={{ color: '#cbd5e1' }}>
+            <Typography variant="body1" sx={{  color: '#1e2a44', }}>
               Amjad Ali Wajid, the founder of UIPS, leads with vision to deliver
               top-quality utilities and industrial power solutions across Saudi
               Arabia.
@@ -154,7 +156,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
               <Typography variant="h6" sx={{ color: '#e2e8f0', fontWeight: 600 }}>
                 {member.title}
               </Typography>
-              <Typography variant="subtitle1" sx={{ color: '#94a3b8' }}>
+              <Typography variant="subtitle1" sx={{ color: '#FFFFFF' }}>
                 {member.subTitle}
               </Typography>
             </Box>

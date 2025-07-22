@@ -21,9 +21,11 @@ const MapSection: React.FC = () => {
       <Typography
         variant="h5"
         sx={{
+          mt: '50px',
           mb: { xs: 2, sm: 3 },
           fontWeight: 'bold',
-          color: '#FFFFFF',
+          // color: '#FFFFFF',
+            color: '#1e2a44',
           textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
           fontSize: { xs: '20px', sm: '24px', md: '28px' }, // Responsive font size
         }}
@@ -34,7 +36,9 @@ const MapSection: React.FC = () => {
         sx={{
           width: '100%',
           maxWidth: { xs: '100%', sm: '800px', md: '1000px' }, // Constrain iframe width
-          backgroundColor: '#1E2A44', // Match ContactInfoCards background
+          // backgroundColor: '#1E2A44', // Match ContactInfoCards background
+        background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
+
           borderRadius: '12px',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
           p: { xs: 1.5, sm: 2 }, // Padding for border frame

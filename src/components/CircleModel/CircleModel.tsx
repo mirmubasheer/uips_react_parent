@@ -169,6 +169,11 @@
 // };
 
 // export default CircleModal;
+
+
+
+
+
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
@@ -226,7 +231,7 @@ const CircleModel: React.FC = () => {
           hoverTimeline
             .to(sector.querySelector("path"), {
               scale: 1.08,
-              fill: "rgba(29, 78, 216, 0.9)", // Darker blue on hover
+              fill: "#324177", // Exact #324177 for hover
               duration: hoverDuration,
               ease: "power2.out",
               transformOrigin: "50% 50%",
@@ -238,7 +243,7 @@ const CircleModel: React.FC = () => {
             }, index * (cycleDuration / totalSectors))
             .to(sector.querySelector("path"), {
               scale: 1,
-              fill: "rgba(23, 37, 84, 0.9)", // Darker base blue
+              fill: "#1E2A4B", // Darker shade for base
               duration: hoverDuration,
               ease: "power2.inOut",
               transformOrigin: "50% 50%",
@@ -278,7 +283,7 @@ const CircleModel: React.FC = () => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
         scale: 1.08,
-        fill: "rgba(29, 78, 216, 0.9)", // Darker blue on hover
+        fill: "#324177", // Exact #324177 for hover
         duration: 0.3,
         ease: "power2.out",
         transformOrigin: "50% 50%",
@@ -295,7 +300,7 @@ const CircleModel: React.FC = () => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
         scale: 1,
-        fill: "rgba(23, 37, 84, 0.9)", // Darker base blue
+        fill: "#1E2A4B", // Darker shade for base
         duration: 0.3,
         ease: "power2.inOut",
         transformOrigin: "50% 50%",
@@ -325,15 +330,15 @@ const CircleModel: React.FC = () => {
           cx={centerX}
           cy={centerY}
           r={innerRadius - 15}
-          fill="#1E1B4B" // Darker blue for inner circle
-          stroke="rgba(29, 78, 216, 0.3)" // Darker blue stroke
+          fill="#1E2A4B" // Darker shade
+          stroke="#172037" // Darker shade for stroke
           strokeWidth="2"
         />
         <text
           x={centerX}
           y={centerY + 8}
           textAnchor="middle"
-          fill="#93C5FD" // Slightly lighter blue for contrast
+          fill="#FFF" // Darker shade for UIPS text
           fontSize="32px"
           fontWeight="bold"
           style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)" }}
@@ -380,8 +385,8 @@ const CircleModel: React.FC = () => {
                       A ${outerRadius},${outerRadius} 0 0,1 ${x2},${y2} 
                       L ${xInner2},${yInner2} 
                       A ${innerRadius},${innerRadius} 0 0,0 ${xInner1},${yInner1} Z`}
-                  fill="rgba(23, 37, 84, 1.2)" // Darker blue for sectors
-                  stroke="#1E1B4B" // Darker blue stroke
+                  fill="#1E2A4B" // Darker shade
+                  stroke="#172037" // Darker shade for stroke
                   strokeWidth="2"
                 />
 
@@ -390,8 +395,8 @@ const CircleModel: React.FC = () => {
                   y={textY - 5}
                   textAnchor="middle"
                   fill="#D1D5DB"
-                  fontSize="20px"
-                  fontWeight="regular"
+                  fontSize="21px"
+                  fontWeight="bold"
                   dominantBaseline="middle"
                 >
                   <tspan x={textX} dy="-6">{sector.label.split(" ")[0]}</tspan>

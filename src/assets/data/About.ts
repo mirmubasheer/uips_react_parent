@@ -9,7 +9,7 @@ const aboutData: SectionType[] = [
     title: "About Us",
     image: "About02",
     content: [
-      "Utilities & Industrial Power Services (UIPS) is a 100% Saudi owned company based in Al-Khobar, Saudi Arabia. The company was established in June 2003 to cater Industrial & Building sector.",
+      "Utilities & Industrial Power Services (UIPS) is an Indian-Saudi based company headquartered in Al-Khobar, Saudi Arabia. The company was established in June 2003 to cater Industrial & Building sector.",
     ],
   },
   {

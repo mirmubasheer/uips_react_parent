@@ -55,7 +55,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({ title, description, icon }) =
     <Box
       ref={cardRef}
       sx={{
-        background: "#1A2B6A", // Slightly lighter dark blue for contrast
+        background: "#324177", // Slightly lighter dark blue for contrast
         borderRadius: "15px",
         padding: { xs: "12px", sm: "15px", md: "20px" }, // Responsive padding
         textAlign: "center",

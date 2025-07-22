@@ -251,10 +251,12 @@ interface ListViewComponentProps {
 }
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  background: 'rgba(50, 65, 119, 0.8)',
   transition: 'background 0.4s ease, transform 0.4s ease',
   '&:hover': {
-    background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+    // background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+        background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
+
     transform: 'translateY(-2px)',
   },
 }));
@@ -291,22 +293,22 @@ const ListViewComponent: React.FC<ListViewComponentProps> = ({ projects, onClick
         <TableHead>
           <TableRow>
             <StyledTableCell>
-              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: 'white' }}>
+              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: '#1e2a44' }}>
                 Project Name
               </Typography>
             </StyledTableCell>
             <StyledTableCell>
-              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: 'white' }}>
+              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: '#1e2a44' }}>
                 Location
               </Typography>
             </StyledTableCell>
             <StyledTableCell>
-              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: 'white' }}>
+              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: '#1e2a44' }}>
                 Status
               </Typography>
             </StyledTableCell>
             <StyledTableCell align="center">
-              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: 'white' }}>
+              <Typography variant="h6" fontWeight={600} fontSize="1.2rem" sx={{ color: '#1e2a44' }}>
                 Actions
               </Typography>
             </StyledTableCell>
@@ -349,7 +351,8 @@ const ListViewComponent: React.FC<ListViewComponentProps> = ({ projects, onClick
                       navigate(`/${project.division.toLowerCase()}/project/${project.id}`);
                     }}
                     sx={{
-                      backgroundColor: '#3b82f6',
+                      // backgroundColor: '#3b82f6',
+              backgroundColor: '#324177',
                       textTransform: 'none',
                       fontWeight: 500,
                       borderRadius: '8px',

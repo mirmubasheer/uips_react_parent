@@ -328,7 +328,10 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
       <Typography
         variant="h5"
         fontWeight={600}
-        sx={{ mb: 3, color: "white" }} // Already white
+        sx={{ 
+        mb: 3,
+        color: '#1e2a44',
+       }} 
       >
         Related Projects
       </Typography>
@@ -340,16 +343,16 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
                 sx={{
                   maxWidth: "280px",
                   height: "360px",
-                  background: "linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)",
+                  background:'rgba(50, 65, 119, 0.8)',
                   borderRadius: "12px",
                   overflow: "hidden",
                   transition: "transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease",
                   boxShadow: "0 6px 20px rgba(0, 0, 0, 0.4)",
                   border: "1px solid rgba(59, 130, 246, 0.2)",
                   "&:hover": {
-                    transform: "translateY(-6px)",
+                    transform: "translateY(6px)",
                     boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
-                    background: "linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)",
+                    background: "#324177",
                   },
                   margin: "0 8px",
                   cursor: "pointer",

@@ -24,8 +24,8 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import HeaderAll from '../../components/HeaderAll/HeaderAll';
 
 const DetailContainer = styled(Box)(({ theme }) => ({
-  backgroundColor: '#0f172a',
-  color: '#ffffff',
+  background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', // Updated to light gradient
+  color: '#1e2a44',
   minHeight: '100vh',
   padding: theme.spacing(6),
   width: '100%',
@@ -39,16 +39,17 @@ const DetailContainer = styled(Box)(({ theme }) => ({
 }));
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: '#1e3a8a',
-  color: '#ffffff',
+  background: 'rgba(50, 65, 119, 0.8)', // Updated to #324177 with opacity
+  color: '#1e2a44',
   borderRadius: '12px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  transition: 'transform 0.3s ease',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
     transform: 'translateY(-4px)',
+    boxShadow: '0 6px 24px rgba(50, 65, 119, 0.4)', // Updated to complement #324177
   },
   [theme.breakpoints.down('sm')]: {
     minHeight: 'auto',
@@ -56,7 +57,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 const ChecklistIconCard = styled(Box)(({ theme }) => ({
-  backgroundColor: '#1e3a8a',
+  backgroundColor: '#324177', // Kept #324177 for accent
   color: '#ffffff',
   borderRadius: '50%',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
@@ -77,15 +78,16 @@ const ChecklistItemBox = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: theme.spacing(2),
   padding: theme.spacing(2),
-  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  background: 'rgba(50, 65, 119, 0.8)', // Updated to #324177 with opacity
   borderRadius: '8px',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: '1px solid rgba(50, 65, 119, 0.5)', // Updated to complement #324177
   minHeight: '120px',
   width: '100%',
   boxSizing: 'border-box',
-  transition: 'background-color 0.3s ease',
+  transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    background: '#25305a', // Darker shade of #324177 for hover
+    boxShadow: '0 4px 16px rgba(50, 65, 119, 0.4)', // Updated to complement #324177
   },
   [theme.breakpoints.down('sm')]: {
     minHeight: '100px',
@@ -94,7 +96,7 @@ const ChecklistItemBox = styled(Box)(({ theme }) => ({
 }));
 
 const ChecklistTypography = styled(Typography)(({ theme }) => ({
-  color: '#e2e8f0',
+  color: 'white',
   fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
   lineHeight: 1.4,
   wordBreak: 'break-word',
@@ -115,7 +117,7 @@ const DivisionDetail: React.FC = () => {
         <Typography
           variant="h4"
           align="center"
-          sx={{ color: '#ffffff', fontWeight: 'bold' }}
+          sx={{ color: '#1e2a44', fontWeight: 'bold' }}
         >
           Division Not Found
         </Typography>
@@ -207,7 +209,7 @@ const DivisionDetail: React.FC = () => {
   };
 
   return (
-    <Box sx={{ backgroundColor: '#0f172a', width: '100%', minHeight: '100vh', overflowX: 'hidden' }}>
+    <Box sx={{ background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', width: '100%', minHeight: '100vh', overflowX: 'hidden' }}> {/* Updated background */}
       <HeaderAll
         imageSrc={Alldivisions[division.image]}
         title={division.title}
@@ -221,7 +223,7 @@ const DivisionDetail: React.FC = () => {
               variant="h4"
               gutterBottom
               sx={{
-                color: '#ffffff',
+                color: '#1e2a44',
                 fontWeight: 'bold',
                 fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
                 textAlign: { xs: 'center', md: 'left' },
@@ -232,7 +234,7 @@ const DivisionDetail: React.FC = () => {
             <Typography
               variant="body1"
               sx={{
-                color: '#e2e8f0',
+                color: '#1e2a44',
                 lineHeight: 1.8,
                 fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
                 textAlign: { xs: 'justify', md: 'left' },
@@ -259,7 +261,7 @@ const DivisionDetail: React.FC = () => {
                     variant="h6"
                     gutterBottom
                     sx={{
-                      color: '#ffffff',
+                      color: 'white',
                       fontWeight: 'bold',
                       fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.5rem' },
                     }}
@@ -269,7 +271,7 @@ const DivisionDetail: React.FC = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      color: '#e2e8f0',
+                      color: 'white',
                       fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
                       lineHeight: 1.6,
                     }}
@@ -285,7 +287,7 @@ const DivisionDetail: React.FC = () => {
                     variant="h6"
                     gutterBottom
                     sx={{
-                      color: '#ffffff',
+                      color: 'white',
                       fontWeight: 'bold',
                       fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.5rem' },
                     }}
@@ -295,7 +297,7 @@ const DivisionDetail: React.FC = () => {
                   <Typography
                     variant="body2"
                     sx={{
-                      color: '#e2e8f0',
+                      color: 'white',
                       fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
                       lineHeight: 1.6,
                     }}
@@ -313,7 +315,7 @@ const DivisionDetail: React.FC = () => {
               variant="h5"
               gutterBottom
               sx={{
-                color: '#ffffff',
+                color: '#1e2a44',
                 fontWeight: 'bold',
                 fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' },
                 mt: { xs: 2, sm: 3, md: 4 },

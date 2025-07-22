@@ -1,3 +1,4 @@
+
 // import React, { useState } from 'react';
 // import {
 //   Box,
@@ -6,24 +7,25 @@
 //   Button,
 //   useTheme,
 //   useMediaQuery,
+//   Alert,
 // } from '@mui/material';
 // import { ArrowForward } from '@mui/icons-material';
-// import gsap from 'gsap';
+// import { ApiService } from '../../../api/api';
 
 // const sharedInputProps = {
 //   variant: 'filled' as const,
 //   fullWidth: true as const,
 //   InputProps: {
 //     sx: {
-//       backgroundColor: 'rgba(15, 23, 42, 0.6)',
+//       backgroundColor: 'rgba(50, 65, 119, 0.2)',
 //       '& .MuiInputBase-input': { color: '#fff' },
 //       '&:focus-within': { backgroundColor: 'rgba(15, 23, 42, 0.7)' },
 //     },
 //   },
 //   InputLabelProps: {
 //     sx: {
-//       color: '#94a3b8',
-//       '&.Mui-focused': { color: '#64748b' },
+//       color: '#fff',
+//       '&.Mui-focused': { color: '#fff' },
 //     },
 //   },
 // };
@@ -35,19 +37,78 @@
 //   const [formData, setFormData] = useState({
 //     name: '',
 //     email: '',
+//     phone: '',
 //     message: '',
 //   });
+//   const [errors, setErrors] = useState({
+//     name: '',
+//     email: '',
+//     phone: '',
+//     message: '',
+//     submit: '',
+//   });
+//   const [success, setSuccess] = useState('');
 
 //   const handleChange = (
 //     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 //   ) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//     const { name, value } = e.target;
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//     setErrors((prev) => ({ ...prev, [name]: '', submit: '' }));
+//     setSuccess('');
 //   };
 
-//   const handleSubmit = (e: React.FormEvent) => {
+//   const validate = () => {
+//     let isValid = true;
+//     const newErrors = { name: '', email: '', phone: '', message: '', submit: '' };
+
+//     if (!formData.name.trim()) {
+//       newErrors.name = 'Name is required';
+//       isValid = false;
+//     }
+//     if (!formData.email.trim()) {
+//       newErrors.email = 'Email is required';
+//       isValid = false;
+//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+//       newErrors.email = 'Invalid email format';
+//       isValid = false;
+//     }
+//     if (!formData.phone.trim()) {
+//       newErrors.phone = 'Phone is required';
+//       isValid = false;
+//     } else if (!/^\+?\d{10,15}$/.test(formData.phone.replace(/\s/g, ''))) {
+//       newErrors.phone = 'Invalid phone number';
+//       isValid = false;
+//     }
+
+//     setErrors(newErrors);
+//     return isValid;
+//   };
+
+//   const handleSubmit = async (e: React.FormEvent) => {
 //     e.preventDefault();
-//     console.log('Form submitted:', formData);
-//     setFormData({ name: '', email: '', message: '' });
+//     if (!validate()) {
+//       setErrors((prev) => ({ ...prev, submit: 'Please fill out all fields correctly.' }));
+//       return;
+//     }
+
+//     try {
+//       await ApiService.submitContactForm({
+//         name: formData.name,
+//         email: formData.email,
+//         phone: formData.phone,
+//         message: formData.message,
+//       });
+
+//       setSuccess('Message sent successfully!');
+//       setFormData({ name: '', email: '', phone: '', message: '' });
+//       setErrors({ name: '', email: '', phone: '', message: '', submit: '' });
+//     } catch (error) {
+//       setErrors((prev) => ({
+//         ...prev,
+//         submit: error.message || 'Failed to send message. Please try again.',
+//       }));
+//     }
 //   };
 
 //   return (
@@ -67,7 +128,6 @@
 //         boxSizing: 'border-box',
 //       }}
 //     >
-//       {/* Left Text Section */}
 //       <Box
 //         sx={{
 //           flex: { xs: 'unset', md: '0 0 40%' },
@@ -84,8 +144,8 @@
 //           sx={{
 //             mb: 2,
 //             fontWeight: 'bold',
-//             color: '#FFFFFF',
-//             fontSize: { xs: '22px', sm: '24px', md: '28px' },
+//             color: '#1e2a44',
+//             fontSize: { xs: '22px', sm: '24px', md: '38px' },
 //           }}
 //         >
 //           Get in Touch
@@ -94,8 +154,8 @@
 //           variant="body1"
 //           sx={{
 //             mb: 2,
-//             color: '#FFFFFF',
-//             fontSize: { xs: '14px', sm: '15px', md: '16px' },
+//             color: '#1e2a44',
+//             fontSize: { xs: '14px', sm: '15px', md: '25px' },
 //           }}
 //         >
 //           We’d love to hear from you! Whether you have a question, need a quote,
@@ -103,7 +163,6 @@
 //         </Typography>
 //       </Box>
 
-//       {/* Right Form Section */}
 //       <Box
 //         component="form"
 //         onSubmit={handleSubmit}
@@ -111,19 +170,21 @@
 //           flex: { xs: 'unset', md: '0 0 50%' },
 //           display: 'flex',
 //           flexDirection: 'column',
-//           gap: 3,
-//           background: 'linear-gradient(45deg, #1e293b 0%, #334155 100%)',
+//           gap: 2,
+//           background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', 
 //           borderRadius: 3,
-//           p: { xs: 3, sm: 4 },
+//           p: { xs: 2, sm: 3 },
 //           width: '100%',
-//           maxWidth: { xs: '100%', sm: '500px', md: '600px' },
+//           maxWidth: { xs: '100%', sm: '450px', md: '550px' },
 //           mx: 'auto',
 //         }}
 //       >
 //         <Typography
 //           variant="body2"
 //           sx={{
-//             color: '#e2e8f0',
+//             // color: '#e2e8f0',
+//             color: '#1e2a44',
+
 //             mb: 2,
 //             fontSize: { xs: '12px', sm: '13px', md: '20px' },
 //           }}
@@ -137,6 +198,8 @@
 //           name="name"
 //           value={formData.name}
 //           onChange={handleChange}
+//           error={!!errors.name}
+//           helperText={errors.name}
 //           required
 //         />
 
@@ -147,6 +210,20 @@
 //           type="email"
 //           value={formData.email}
 //           onChange={handleChange}
+//           error={!!errors.email}
+//           helperText={errors.email}
+//           required
+//         />
+
+//         <TextField
+//           {...sharedInputProps}
+//           label="Phone"
+//           name="phone"
+//           type="tel"
+//           value={formData.phone}
+//           onChange={handleChange}
+//           error={!!errors.phone}
+//           helperText={errors.phone}
 //           required
 //         />
 
@@ -156,10 +233,22 @@
 //           name="message"
 //           value={formData.message}
 //           onChange={handleChange}
-//           required
+//           error={!!errors.message}
+//           helperText={errors.message}
 //           multiline
-//           rows={isMobile ? 4 : 6}
+//           rows={isMobile ? 3 : 4}
 //         />
+
+//         {errors.submit && (
+//           <Alert severity="error" sx={{ mb: 1 }}>
+//             {errors.submit}
+//           </Alert>
+//         )}
+//         {success && (
+//           <Alert severity="success" sx={{ mb: 1 }}>
+//             {success}
+//           </Alert>
+//         )}
 
 //         <Button
 //           type="submit"
@@ -185,7 +274,11 @@
 //   );
 // };
 
-// export default React.memo(ContactFormSection);\
+// export default React.memo(ContactFormSection);
+
+
+
+
 import React, { useState } from 'react';
 import {
   Box,
@@ -204,15 +297,19 @@ const sharedInputProps = {
   fullWidth: true as const,
   InputProps: {
     sx: {
-      backgroundColor: 'rgba(15, 23, 42, 0.6)',
-      '& .MuiInputBase-input': { color: '#fff' },
-      '&:focus-within': { backgroundColor: 'rgba(15, 23, 42, 0.7)' },
+      backgroundColor: "rgba(50, 65, 119, 0.1)", // Complements #324177
+      color: "#1e2a44", // Updated text color
     },
   },
   InputLabelProps: {
     sx: {
-      color: '#94a3b8',
-      '&.Mui-focused': { color: '#64748b' },
+      color: "#1e2a44", // Updated label color
+    },
+  },
+  sx: {
+    '& .MuiFilledInput-root': {
+      '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' }, // Complements #324177
+      '&:after': { borderBottomColor: '#324177' }, // Uses #324177
     },
   },
 };
@@ -227,6 +324,7 @@ const ContactFormSection: React.FC = () => {
     phone: '',
     message: '',
   });
+
   const [errors, setErrors] = useState({
     name: '',
     email: '',
@@ -234,6 +332,7 @@ const ContactFormSection: React.FC = () => {
     message: '',
     submit: '',
   });
+
   const [success, setSuccess] = useState('');
 
   const handleChange = (
@@ -275,22 +374,19 @@ const ContactFormSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) {
-      setErrors((prev) => ({ ...prev, submit: 'Please fill out all fields correctly.' }));
+      setErrors((prev) => ({
+        ...prev,
+        submit: 'Please fill out all fields correctly.',
+      }));
       return;
     }
 
     try {
-      await ApiService.submitContactForm({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-      });
-
+      await ApiService.submitContactForm(formData);
       setSuccess('Message sent successfully!');
       setFormData({ name: '', email: '', phone: '', message: '' });
       setErrors({ name: '', email: '', phone: '', message: '', submit: '' });
-    } catch (error) {
+    } catch (error: any) {
       setErrors((prev) => ({
         ...prev,
         submit: error.message || 'Failed to send message. Please try again.',
@@ -331,8 +427,8 @@ const ContactFormSection: React.FC = () => {
           sx={{
             mb: 2,
             fontWeight: 'bold',
-            color: '#FFFFFF',
-            fontSize: { xs: '22px', sm: '24px', md: '28px' },
+            color: '#1e2a44',
+            fontSize: { xs: '22px', sm: '24px', md: '38px' },
           }}
         >
           Get in Touch
@@ -341,8 +437,8 @@ const ContactFormSection: React.FC = () => {
           variant="body1"
           sx={{
             mb: 2,
-            color: '#FFFFFF',
-            fontSize: { xs: '14px', sm: '15px', md: '16px' },
+            color: '#1e2a44',
+            fontSize: { xs: '14px', sm: '15px', md: '25px' },
           }}
         >
           We’d love to hear from you! Whether you have a question, need a quote,
@@ -358,7 +454,7 @@ const ContactFormSection: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
-          background: 'linear-gradient(45deg, #1e293b 0%, #334155 100%)',
+          background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
           borderRadius: 3,
           p: { xs: 2, sm: 3 },
           width: '100%',
@@ -369,7 +465,7 @@ const ContactFormSection: React.FC = () => {
         <Typography
           variant="body2"
           sx={{
-            color: '#e2e8f0',
+            color: '#1e2a44',
             mb: 2,
             fontSize: { xs: '12px', sm: '13px', md: '20px' },
           }}
@@ -440,17 +536,19 @@ const ContactFormSection: React.FC = () => {
           variant="contained"
           endIcon={<ArrowForward />}
           sx={{
-            alignSelf: 'flex-start',
-            px: 3,
-            py: 1.5,
-            borderRadius: 2,
-            textTransform: 'none',
-            background: 'linear-gradient(45deg, #475569 0%, #64748b 100%)',
-            color: '#e2e8f0',
-            '&:hover': {
-              background: 'linear-gradient(45deg, #334155 0%, #475569 100%)',
-            },
-          }}
+                alignSelf: "flex-start",
+                px: 3,
+                py: 1,
+                borderRadius: 2,
+                textTransform: "none",
+                background: '#324177', // Uses #324177
+                color: "#ffffff",
+                boxShadow: "0 4px 15px rgba(50, 65, 119, 0.3)", // Complements #324177
+                "&:hover": {
+                  background: 'white', // Darker shade of #324177
+                  boxShadow: "0 6px 20px rgba(50, 65, 119, 0.8)",
+                },
+              }}
         >
           Send Message
         </Button>

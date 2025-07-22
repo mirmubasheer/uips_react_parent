@@ -4,7 +4,7 @@ const slides = [
   {
     id: 1,
     image: herosectionimages.hero1,
-    title: "ENGINEERING & INDUSTRIAL EXCEL",
+    title: "ENGINEERING & INDUSTRIAL EXCELLENCE",
     subtitle: "Leading EPC Solutions for Industrial Growth",
     description: "UIPS delivers turnkey engineering, procurement, and construction (EPC) services, empowering industrial sectors with reliable and scalable solutions.",
     buttonText: "Discover More",

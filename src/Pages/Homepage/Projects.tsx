@@ -361,17 +361,20 @@ const divisions = [
 const ProjectCard = styled(Card)(({ theme }) => ({
   maxWidth: '320px',
   height: '450px',
-  background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  // background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  background: 'white',
+
   borderRadius: '12px',
   overflow: 'hidden',
   transition: 'transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease',
-  boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
-  border: '1px solid rgba(59, 130, 246, 0.2)',
+  boxShadow: '0 6px 20px rgba(50, 65, 119, 0.8)',
+  border: '1px solid rgba(50, 65, 119, 0.8)',
   position: 'relative', // For absolute button positioning
   '&:hover': {
     transform: 'translateY(-6px)',
-    boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
-    background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+    boxShadow: '0 10px 30px rgba(50, 65, 119, 0.8)',
+    // background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+    // background: 'transparent',
   },
   margin: '0 8px',
   [theme.breakpoints.down('sm')]: {
@@ -381,7 +384,7 @@ const ProjectCard = styled(Card)(({ theme }) => ({
 
 const ProjectsContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4),
-  background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+  background: 'rgba(50, 65, 119, 0.8)',
   position: 'relative',
   zIndex: 5, // Match HomePage zIndex
   '&:before': {
@@ -399,16 +402,18 @@ const ProjectsContainer = styled(Box)(({ theme }) => ({
 const SeeAllButton = styled(Button)(({ theme }) => ({
   display: 'block',
   margin: '20px auto 0',
-  background: 'linear-gradient(90deg, #3B82F6, #60A5FA)',
-  color: '#fff',
+  background: "#324177",
+  color: "#FFF",
   borderRadius: '20px',
   textTransform: 'none',
   fontSize: '1rem',
   padding: '10px 30px',
   boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)',
   '&:hover': {
-    background: 'linear-gradient(90deg, #60A5FA, #93C5FD)',
-    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.5)',
+    
+    // background: 'linear-gradient(90deg, #60A5FA, #93C5FD)',
+    background: 'white',
+    // boxShadow: '0 4px 12px rgba(59, 130, 246, 0.5)',
   },
 }));
 
@@ -493,7 +498,7 @@ const ProjectCardComponent: React.FC<{
               variant="h6"
               component="div"
               sx={{
-                color: '#E0E7FF',
+                color: "#1e2a44",
                 fontWeight: 500,
                 fontFamily: '"Roboto", Arial, sans-serif',
                 letterSpacing: '0.3px',
@@ -523,17 +528,18 @@ const ProjectCardComponent: React.FC<{
                 size="small"
                 onClick={() => handleCardClick(project.id, divisionSlug)}
                 sx={{
-                  background: 'linear-gradient(90deg, #3B82F6, #60A5FA)',
+                  background: "#324177",
                   color: '#fff',
                   borderRadius: '20px',
                   textTransform: 'none',
                   fontSize: '0.85rem',
                   padding: '6px 20px',
-                  boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)',
+                  boxShadow: '0 2px 8px rgba(50, 65, 119, 0.8)',
                   minWidth: '140px',
                   '&:hover': {
-                    background: 'linear-gradient(90deg, #60A5FA, #93C5FD)',
-                    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.5)',
+                    background: 'transparent',
+                    // background: 'linear-gradient(90deg, #60A5FA, #93C5FD)',
+                    boxShadow: '0 4px 12px rgba(50, 65, 119, 0.8)',
                   },
                 }}
                 endIcon={
@@ -666,7 +672,7 @@ const Projects: React.FC = () => {
           textAlign: 'center',
           mb: 4,
           fontWeight: 300,
-          color: '#A3BFFA',
+          color: "white",
           textShadow: '0 1px 3px rgba(0, 0, 0, 0.4)',
         }}
       >
@@ -704,6 +710,7 @@ const Projects: React.FC = () => {
         )}
       </Box>
       <SeeAllButton onClick={() => navigate('/all-projects')}>
+        
         See All Projects
       </SeeAllButton>
     </ProjectsContainer>

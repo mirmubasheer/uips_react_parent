@@ -269,9 +269,6 @@
 
 // export default CareerForm;
 
-
-
-
 import React, { useState, useRef, useEffect } from "react";
 import {
   Box,
@@ -286,24 +283,28 @@ import gsap from "gsap";
 import { ArrowForward } from "@mui/icons-material";
 import { ApiService } from '../../../api/api';
 
+interface CareerFormProps {
+  selectedRole: string;
+}
+
 const sharedInputProps = {
   variant: "filled" as const,
   fullWidth: true as const,
   InputProps: {
     sx: {
-      backgroundColor: "rgba(15, 23, 42, 0.6)",
-      "& .MuiInputBase-input": { color: "#fff" },
+      backgroundColor: "#f1f5f9",
+      "& .MuiInputBase-input": { color: "#1e2a44" },
     },
   },
   InputLabelProps: {
     sx: {
-      color: "#94a3b8",
-      "&.Mui-focused": { color: "#64748b" },
+      color: "#475569",
+      "&.Mui-focused": { color: "#475569" },
     },
   },
 };
 
-const CareerForm: React.FC = () => {
+const CareerForm: React.FC<CareerFormProps> = ({ selectedRole }) => {
   const formRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const theme = useTheme();
@@ -314,6 +315,7 @@ const CareerForm: React.FC = () => {
     email: "",
     phone: "",
     resume: null as File | null,
+    role: selectedRole,
   });
   const [errors, setErrors] = useState({
     name: "",
@@ -324,6 +326,10 @@ const CareerForm: React.FC = () => {
   });
   const [success, setSuccess] = useState("");
   const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    setFormData((prev) => ({ ...prev, role: selectedRole }));
+  }, [selectedRole]);
 
   useEffect(() => {
     if (formRef.current) {
@@ -418,10 +424,11 @@ const CareerForm: React.FC = () => {
         email: formData.email,
         phone: formData.phone,
         resume: formData.resume!,
+        role: formData.role,
       });
 
       setSuccess("Application submitted successfully!");
-      setFormData({ name: "", email: "", phone: "", resume: null });
+      setFormData({ name: "", email: "", phone: "", resume: null, role: selectedRole });
       setErrors({ name: "", email: "", phone: "", resume: "", submit: "" });
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
@@ -437,31 +444,42 @@ const CareerForm: React.FC = () => {
       ref={formRef}
       sx={{
         p: { xs: 2, md: 4 },
-        boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
-        border: '1px solid rgba(59, 130, 246, 0.2)',
-        background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
-        borderRadius:'10px',
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+        border: '1px solid #cbd5e1',
+        background: '#ffffff',
+        borderRadius: '10px',
         maxWidth: 600,
         mx: "auto",
         '&:hover': {
-          boxShadow: { md: '0 8px 20px rgba(0, 0, 0, 0.8)' },
+          boxShadow: { md: '0 6px 16px rgba(0, 0, 0, 0.15)' },
         },
       }}
     >
       <Typography
         variant={isMobile ? "h6" : "h5"}
         sx={{
-          color: "#e2e8f0",
+          color: "#1e2a44",
           fontWeight: "bold",
           mb: 3,
           textAlign: "center",
+          fontFamily: '"Kanit", sans-serif',
         }}
       >
         Apply for a Position
       </Typography>
-
-   
-
+      {selectedRole && (
+        <Typography
+          variant="body2"
+          sx={{
+            color: "#475569",
+            mb: 2,
+            textAlign: "center",
+            fontFamily: '"Roboto", sans-serif',
+          }}
+        >
+          Applying for: {selectedRole}
+        </Typography>
+      )}
       <Box component="form" onSubmit={handleSubmit} noValidate sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <TextField
           {...sharedInputProps}
@@ -471,8 +489,10 @@ const CareerForm: React.FC = () => {
           onChange={handleChange}
           error={!!errors.name}
           helperText={errors.name}
+          sx={{
+            '& .MuiFormHelperText-root': { color: '#dc2626' },
+          }}
         />
-
         <TextField
           {...sharedInputProps}
           label="Email Address"
@@ -482,8 +502,10 @@ const CareerForm: React.FC = () => {
           onChange={handleChange}
           error={!!errors.email}
           helperText={errors.email}
+          sx={{
+            '& .MuiFormHelperText-root': { color: '#dc2626' },
+          }}
         />
-
         <TextField
           {...sharedInputProps}
           label="Phone Number"
@@ -492,10 +514,12 @@ const CareerForm: React.FC = () => {
           onChange={handleChange}
           error={!!errors.phone}
           helperText={errors.phone}
+          sx={{
+            '& .MuiFormHelperText-root': { color: '#dc2626' },
+          }}
         />
-
         <Box sx={{ mt: 1 }}>
-          <Typography variant="body2" sx={{ color: "#94a3b8", mb: 1 }}>
+          <Typography variant="body2" sx={{ color: "#475569", mb: 1 }}>
             Resume (PDF or Word, max 5MB)
           </Typography>
           <Box
@@ -505,9 +529,9 @@ const CareerForm: React.FC = () => {
             onClick={handleClick}
             sx={{
               minHeight: 150,
-              backgroundColor: "rgba(15, 23, 42, 0.6)",
-              border: "2px dashed rgba(255,255,255,0.1)",
-              borderColor: isDragging ? "#64748b" : "rgba(255,255,255,0.1)",
+              backgroundColor: "#f1f5f9",
+              border: "2px dashed #cbd5e1",
+              borderColor: isDragging ? "#94a3b8" : "#cbd5e1",
               borderRadius: 2,
               display: "flex",
               alignItems: "center",
@@ -516,10 +540,10 @@ const CareerForm: React.FC = () => {
               p: 2,
               cursor: "pointer",
               transition: "border-color 0.3s",
-              "&:hover": { borderColor: "#64748b" },
+              "&:hover": { borderColor: "#94a3b8" },
             }}
           >
-            <Typography variant="body2" sx={{ color: "#e2e8f0", px: 2 }}>
+            <Typography variant="body2" sx={{ color: "#475569", px: 2 }}>
               Drag & drop your resume here, or click to select
             </Typography>
             <input
@@ -531,26 +555,26 @@ const CareerForm: React.FC = () => {
             />
           </Box>
           {formData.resume && (
-            <Typography variant="caption" sx={{ color: "#e2e8f0", mt: 1 }}>
+            <Typography variant="caption" sx={{ color: "#475569", mt: 1 }}>
               Selected: {formData.resume.name}
             </Typography>
           )}
           {errors.resume && (
-            <Typography variant="caption" sx={{ color: "#f87171", mt: 0.5 }}>
+            <Typography variant="caption" sx={{ color: "#dc2626", mt: 0.5 }}>
               {errors.resume}
             </Typography>
           )}
         </Box>
         {errors.submit && (
-        <Alert severity="error" sx={{ mb: 2 }}>
-          {errors.submit}
-        </Alert>
-      )}
-      {success && (
-        <Alert severity="success" sx={{ mb: 2 }}>
-          {success}
-        </Alert>
-      )}
+          <Alert severity="error" sx={{ mb: 2, color: '#dc2626' }}>
+            {errors.submit}
+          </Alert>
+        )}
+        {success && (
+          <Alert severity="success" sx={{ mb: 2, color: '#2563eb' }}>
+            {success}
+          </Alert>
+        )}
         <Button
           type="submit"
           variant="contained"
@@ -559,11 +583,16 @@ const CareerForm: React.FC = () => {
             alignSelf: "flex-start",
             px: 3,
             py: 1,
-            borderRadius: 2,
+            borderRadius: 6,
             textTransform: "none",
-            background: "linear-gradient(45deg, #475569 0%, #64748b 100%)",
+            background: '#324177',
+            color: '#ffffff',
+            fontFamily: '"Roboto", sans-serif',
+            transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
             "&:hover": {
-              background: "linear-gradient(45deg, #334155 0%, #475569 100%)",
+              background: "white",
+              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+              color: 'black',
             },
           }}
         >

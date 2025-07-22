@@ -247,7 +247,8 @@ const ModalContainer = styled(Box)(({ theme }) => ({
   transform: 'translate(-50%, -50%)',
   width: '90%',
   maxWidth: '400px',
-  background: 'linear-gradient(45deg, #1e293b 0%, #334155 100%)',
+  // background: 'linear-gradient(45deg, #1e293b 0%, #334155 100%)',
+  background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
   borderRadius: '12px',
   boxShadow: '0 6px 24px rgba(0, 0, 0, 0.3)',
   border: '1px solid rgba(255, 255, 255, 0.05)',
@@ -262,22 +263,36 @@ const ModalContainer = styled(Box)(({ theme }) => ({
 const FormTitle = styled(Typography)({
   fontSize: '1.8rem',
   fontWeight: 600,
-  background: 'linear-gradient(to right, #94a3b8, #e2e8f0)',
+  background:'#1e2a44',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   textAlign: 'center',
   marginBottom: '16px',
 });
-
+        //  sx={{
+        //         alignSelf: "flex-start",
+        //         px: 3,
+        //         py: 1,
+        //         borderRadius: 2,
+        //         textTransform: "none",
+        //         background: '#324177', // Uses #324177
+        //         color: "#ffffff",
+        //         boxShadow: "0 4px 15px rgba(50, 65, 119, 0.3)", // Complements #324177
+        //         "&:hover": {
+        //           background: 'white', // Darker shade of #324177
+        //           boxShadow: "0 6px 20px rgba(50, 65, 119, 0.8)",
+        //         },
+        //       }}
 const SubmitButton = styled(Button)(({ theme }) => ({
-  background: 'linear-gradient(45deg, #475569 0%, #64748b 100%)',
+   background: '#324177', // Uses #324177
   color: '#fff',
   fontWeight: 'bold',
   borderRadius: '8px',
   padding: '12px 32px',
   textTransform: 'none',
   '&:hover': {
-    background: 'linear-gradient(45deg, #334155 0%, #475569 100%)',
+    background: 'white',
+    boxShadow: "0 6px 20px rgba(50, 65, 119, 0.8)",
   },
   fontSize: '1rem',
   alignSelf: 'center',
@@ -292,13 +307,19 @@ const sharedInputProps = {
   fullWidth: true as const,
   InputProps: {
     sx: {
-      backgroundColor: 'rgba(15, 23, 42, 0.6)',
-      color: '#fff',
+      backgroundColor: "rgba(50, 65, 119, 0.1)", // Complements #324177
+      color: "#1e2a44", // Updated text color
     },
   },
   InputLabelProps: {
     sx: {
-      color: '#94a3b8',
+      color: "#1e2a44", // Updated label color
+    },
+  },
+  sx: {
+    '& .MuiFilledInput-root': {
+      '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' }, // Complements #324177
+      '&:after': { borderBottomColor: '#324177' }, // Uses #324177
     },
   },
 };
@@ -443,7 +464,8 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ open, onC
         <Typography
           variant="body2"
           sx={{
-            color: '#CBD5E1',
+            // color: '#CBD5E1',
+            color: '#1e2a44',
             textAlign: 'center',
             mb: 2,
             fontSize: '0.9rem',

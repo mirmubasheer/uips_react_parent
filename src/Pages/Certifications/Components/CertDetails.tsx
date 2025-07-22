@@ -44,7 +44,9 @@ const CertDetails: React.FC = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'linear-gradient(135deg, hsl(220, 70%, 15%) 0%, hsl(220, 70%, 35%) 100%)',
+        // background: 'linear-gradient(135deg, hsl(220, 70%, 15%) 0%, hsl(220, 70%, 35%) 100%)',
+        background: 'rgba(50, 65, 119, 0.2)',
+
         padding: { xs: '10px 10px 5px', md: '40px' },
         scrollSnapAlign: 'start',
         opacity: inView ? 1 : 0,
@@ -71,7 +73,8 @@ const CertDetails: React.FC = () => {
               variant="h4"
               sx={{
                 fontWeight: 'bold',
-                color: '#A5B4FC',
+                // color: '#A5B4FC',
+                color: '#1e2a44',
                 fontSize: { xs: '20px', md: '32px' },
                 textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
                 wordBreak: 'break-word',
@@ -83,7 +86,8 @@ const CertDetails: React.FC = () => {
               variant="body1"
               sx={{
                 mt: 2,
-                color: '#D1D5DB',
+                // color: '#D1D5DB',
+                color: '#1e2a44',
                 fontSize: { xs: '12px', md: '20px' },
                 lineHeight: 1.6,
                 wordBreak: 'break-word',

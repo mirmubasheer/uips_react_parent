@@ -422,7 +422,7 @@ const backgroundStyles = {
 const overlayStyles = {
   position: "absolute",
   inset: 0,
-  background: "linear-gradient(45deg, rgba(0, 10, 30, 0.8) 0%, rgba(37, 53, 141, 0.3) 100%)",
+  background: "linear-gradient(45deg, rgba(0, 10, 30, 0.9) 0%, rgba(1, 1, 1, 0.0) 100%)",
   zIndex: -1,
   opacity: 0.85,
 } as const;

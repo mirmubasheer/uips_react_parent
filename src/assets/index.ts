@@ -3,7 +3,7 @@
 
 
 // Hero section images
-import hero1 from './images/herosection/bannerr.webp';
+import hero1 from './images/herosection/01.webp';
 import hero2 from './images/herosection/02.webp';
 import hero3 from './images/herosection/03.webp';
 import hero4 from './images/herosection/IThero.webp';

@@ -116,7 +116,7 @@ const Header = () => {
             sx={{
               height: { xs: 40, md: 60 },
               width: "auto",
-              filter: isScrolled ? "invert(0)" : "invert(2)",
+              filter: isScrolled ? "none" : "brightness(0) invert(1)", // Ensures white when not scrolled, original color when scrolled
               transition: "filter 0.3s ease",
               flexShrink: 0,
               ml: { xs: 0, md: 0 }, // Remove left margin
@@ -263,7 +263,8 @@ const Header = () => {
                   fontSize: { md: "0.7rem", lg: "0.8rem" },
                   fontWeight: "bold",
                   "&:hover": {
-                    background: "linear-gradient(90deg, #0088cc, #00bcd4)",
+                  background: "transparent",
+                    // background: "linear-gradient(90deg, #0088cc, #00bcd4)",
                     boxShadow: "0px 5px 12px rgba(37, 53, 141, 0.7)",
                   },
                   whiteSpace: 'nowrap',
@@ -475,21 +476,22 @@ const Header = () => {
             ))}
           </List>
           <Divider />
-          <Button
-            variant="contained"
-            onClick={handleModalOpen}
-            sx={{
-              marginTop: '20px',
-              background: "linear-gradient(90deg, #25358d, #1a2467)",
-              borderRadius: "20px",
-              boxShadow: "0px 4px 12px rgba(37, 53, 141, 0.6)",
-              "&:hover": {
-                background: "linear-gradient(90deg, #0088cc, #00bcd4)",
-              },
-            }}
-          >
-            DOWNLOAD BROCHURE
-          </Button>
+     <Button
+        variant="contained"
+        onClick={handleModalOpen}
+        sx={{
+          marginTop: '20px',
+          background: "#324177",
+          borderRadius: "20px",
+          boxShadow: "0px 4px 12px rgba(50, 65, 119, 0.8)", // Updated to use #324177
+          "&:hover": {
+            background: "#40518f",
+            boxShadow: "0px 4px 12px rgba(50, 65, 119, 0.8)", // Same shadow color on hover
+          },
+        }}
+      >
+        DOWNLOAD BROCHURE
+      </Button>
         </Box>
       </Drawer>
     </Box>

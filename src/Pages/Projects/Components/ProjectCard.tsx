@@ -41,20 +41,20 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   transition: 'transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease',
   boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)',
   border: '1px solid rgba(59, 130, 246, 0.2)',
-  background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  background: 'white',
   cursor: 'pointer',
   '&:hover': {
     transform: 'translateY(-6px)',
     boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
-    background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+    background: 'rgba(50, 65, 119, 0.8)',
   },
-  margin: '0 auto', // Center the card
+  margin: '0 auto',
 }));
 
 const StyledCardMedia = styled(CardMedia)({
   height: 180,
   width: '100%',
-  objectFit: 'cover', // Ensure images scale consistently
+  objectFit: 'cover',
   position: 'relative',
 });
 
@@ -64,7 +64,6 @@ const StyledCardContent = styled(CardContent)({
   flexDirection: 'column',
   justifyContent: 'space-between',
   padding: '16px',
-  color: 'white',
   overflow: 'hidden',
 });
 
@@ -86,16 +85,36 @@ const ProjectCardComponent: React.FC<ProjectCardProps> = ({ project, onClick, ca
   const cardImage = project.images[0] || project.image || 'path/to/fallback-image.jpg';
 
   return (
-    <ProjectCard ref={cardRef}>
+    <ProjectCard ref={cardRef} onClick={() => onClick(project.id)}>
       <Box position="relative">
         <StyledCardMedia component="img" image={cardImage} alt={project.projectname} />
       </Box>
 
       <StyledCardContent>
-        <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: 'white' }}>
+        <Typography
+          variant="subtitle1"
+          fontWeight={600}
+          gutterBottom
+          sx={{
+            color: 'black',
+            '.MuiCard-root:hover &': {
+              color: 'white',
+            },
+          }}
+        >
           {project.projectname}
         </Typography>
-        <Typography variant="body2" color="text.secondary" gutterBottom sx={{ color: 'white' }}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          gutterBottom
+          sx={{
+            color: 'black',
+            '.MuiCard-root:hover &': {
+              color: 'white',
+            },
+          }}
+        >
           {project.location}
         </Typography>
 
@@ -109,12 +128,12 @@ const ProjectCardComponent: React.FC<ProjectCardProps> = ({ project, onClick, ca
               navigate(`/${project.division.toLowerCase()}/project/${project.id}`);
             }}
             sx={{
-              backgroundColor: '#3b82f6',
+              backgroundColor: '#324177',
               textTransform: 'none',
               fontWeight: 500,
               borderRadius: '8px',
               '&:hover': {
-                backgroundColor: '#2563eb',
+                backgroundColor: 'white',
               },
             }}
           >
@@ -125,7 +144,15 @@ const ProjectCardComponent: React.FC<ProjectCardProps> = ({ project, onClick, ca
         <Stack direction="row" spacing={1} mt={2} justifyContent="flex-end">
           <Tooltip title="Share project">
             <IconButton onClick={handleShareClick}>
-              <ShareIcon fontSize="small" sx={{ color: 'white' }} />
+              <ShareIcon
+                fontSize="small"
+                sx={{
+                  color: 'black',
+                  '.MuiCard-root:hover &': {
+                    color: 'white',
+                  },
+                }}
+              />
             </IconButton>
           </Tooltip>
         </Stack>

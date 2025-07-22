@@ -1464,7 +1464,7 @@ const ProjectsFindAll: React.FC<ProjectsFindAllProps> = ({ division }) => {
   return (
     <Box
       sx={{
-        background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+        background: 'linear-gradient(to bottom, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
         minHeight: '100vh',
         width: '100%',
         overflowX: 'hidden',

@@ -13,23 +13,23 @@ const motivesData = [
   {
     title: 'Mission',
     description: 'Our mission is to develop a beautiful planet and give the best to human beings. We have built a worldwide rappo with the leading companies in same field and has further enhanced our business by developing contacts in worldwide.',
-    icon: <CheckCircleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
+    icon: <CheckCircleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#1e2a44' }} />,
   },
   {
     title: 'Our Beliefs',
     description: 'Achieve and maintain a leadership position in each of our fields of expertise. We believe patience is the key of success and nothing can failure if you work hard definitely success will be the aspiration. Respect for individuals people are our greatest assets',
-    icon: <VpnKeyIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
+    icon: <VpnKeyIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#1e2a44' }} />,
   },
   {
     title: 'Commitments',
     description: 'We conduct business with respect and care for the environment in which we operate. We are committed to providing high-quality products and services that meet stakeholders’ expectations while ensuring that our operations are safe and reliable.',
-    icon: <ChatBubbleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#fff' }} />,
+    icon: <ChatBubbleOutlineIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#1e2a44' }} />,
   },
 ];
 
 const MotiveContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
-  background: 'linear-gradient(135deg, #0a0f2d 0%, #1a2467 100%)',
+  background: 'linear-gradient(135deg, #ffffff 0%, #f5f6fa 100%)', // Slight white gradient
   position: 'relative',
   minHeight: '50vh',
   display: 'flex',
@@ -46,10 +46,10 @@ const SlideWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   height: 'auto',
-  width: '95%', // Increased width to give more room on mobile
+  width: '95%',
   maxWidth: '1100px',
   padding: theme.spacing(2),
-  background: 'linear-gradient(135deg, #0a0f2d 0%, #1a2467 100%)',
+  background: 'linear-gradient(135deg, #ffffff 0%, #f5f6fa 100%)', // Slight white gradient
   borderRadius: '20px',
   margin: '0 auto',
   transition: 'transform 0.3s ease',
@@ -146,17 +146,16 @@ const Motive: React.FC = () => {
                   flex: 1,
                   pr: { xs: 0, sm: 3 },
                   mb: { xs: 2, sm: 0 },
-                  maxWidth: { xs: '90%', sm: '100%' }, // Restrict width on mobile to prevent overflow
-                  mx: 'auto', // Center the text box on mobile
+                  maxWidth: { xs: '90%', sm: '100%' },
+                  mx: 'auto',
                 }}
               >
                 <Typography
                   variant="h5"
                   sx={{
-                    color: '#fff',
+                    color: '#1e2a44', // Dark blue text
                     fontWeight: 300,
                     fontSize: { xs: '1rem', sm: '1.4rem', md: '2rem' },
-                    // textTransform: 'uppercase',
                     mb: 1,
                     textAlign: { xs: 'center', sm: 'left' },
                   }}
@@ -166,16 +165,16 @@ const Motive: React.FC = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    fontSize: { xs: '0.8rem', sm: '0.95rem', md: '1.1rem' }, // Slightly smaller on mobile
+                    color: '#1e2a44', // Dark blue text
+                    fontSize: { xs: '0.8rem', sm: '0.95rem', md: '1.1rem' },
                     lineHeight: 1.6,
                     maxWidth: '100%',
                     wordBreak: 'break-word',
                     whiteSpace: 'normal',
                     overflowWrap: 'break-word',
                     textAlign: { xs: 'center', sm: 'left' },
-                    overflow: 'hidden', // Ensure no overflow
-                    textOverflow: 'ellipsis', // Add ellipsis if text still overflows
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
                   }}
                 >
                   {motive.description}

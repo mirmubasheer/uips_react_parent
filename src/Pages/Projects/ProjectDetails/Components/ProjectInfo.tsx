@@ -58,57 +58,57 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ project }) => {
         <Typography
           variant="h3"
           fontWeight={700}
-          sx={{ color: "white", mb: 2 }}
+          sx={{color: '#1e2a44', mb: 2 }}
         >
           {project.projectname}
         </Typography>
         <Typography
           variant="body1"
-          sx={{ mb: 4, lineHeight: 1.8, color: "white" }}
+          sx={{ mb: 4, lineHeight: 1.8, color: '#1e2a44', }}
         >
           {project.description}
         </Typography>
         <Typography
           variant="h6"
           fontWeight={600}
-          sx={{ mb: 2, textAlign: "left", color: "white" }}
+          sx={{ mb: 2, textAlign: "left", color: '#1e2a44', }}
         >
           Project Details
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <PersonIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Client:</strong> {project.client}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <LocationOnIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Location:</strong> {project.location}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <CalendarTodayIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Month/Year:</strong> {project.monthyear}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <TimelapseIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Duration:</strong> {project.duration}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <AttachMoneyIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>PO Value:</strong>  {formatNumber(project.povalue, 2)}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <EngineeringIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Total Man-Hours:</strong>{" "}
               {formatNumber(project.totalmanhour, 0)}
             </Typography>
@@ -119,7 +119,7 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ project }) => {
             ) : (
               <AccessTimeIcon sx={{ color: "#3B82F6", fontSize: "2.2rem" }} />
             )}
-            <Typography variant="body1" sx={{ color: "white" }}>
+            <Typography variant="body1" sx={{ color: '#1e2a44', }}>
               <strong>Status:</strong>{" "}
               <span
                 style={{
