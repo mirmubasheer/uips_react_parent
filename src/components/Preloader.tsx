@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
+import { preloaderimage } from '../assets';
 
 // Updated animation with faster and smoother flipping effect
 const flipAnimation = keyframes`
@@ -29,7 +30,7 @@ const Preloader: React.FC = () => {
       bgcolor="#e0e0e0"
     >
       <AnimatedLogo
-        src="/assets/images/preloader/uips_logo.png" /* Replace with actual path to logo.png */
+        src={preloaderimage.preloaderimg} /* Replace with actual path to logo.png */
         alt="Logo"
         delay={0} /* Single image, no incremental delay needed */
       />

@@ -1,6 +1,6 @@
 
 // src/assets/index.ts
-
+import preloaderimg from './images/preloader/uips_logo.png'
 
 // Hero section images
 import hero1 from './images/herosection/01.webp';
@@ -527,6 +527,12 @@ interface ProjectImages {
 
 type ClientLogos = Array<string>
 
+
+
+
+export const preloaderimage = {
+  preloaderimg
+};
 // Hero section images
 export const herosectionimages: ImageObject = {
   hero1,
