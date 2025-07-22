@@ -29,7 +29,7 @@ const Preloader: React.FC = () => {
       bgcolor="#e0e0e0"
     >
       <AnimatedLogo
-        src="/src/assets/images/preloader/uips_logo.png" /* Replace with actual path to logo.png */
+        src="/assets/images/preloader/uips_logo.pg" /* Replace with actual path to logo.png */
         alt="Logo"
         delay={0} /* Single image, no incremental delay needed */
       />
