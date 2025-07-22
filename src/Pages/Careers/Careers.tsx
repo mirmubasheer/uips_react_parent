@@ -5,12 +5,16 @@ import gsap from 'gsap';
 import JobCard from './Components/JobCard';
 import ListViewJobCard from './Components/ListViewJobCard';
 import CareerForm from './Components/CareerForm';
+import PaginationControls from '../../components/Pagination/PaginationControls';
 import { jobs, Job } from '../../assets/data/jobs';
+
+const JOBS_PER_PAGE = 7;
 
 const Careers: React.FC = () => {
   const jobsRef = useRef<HTMLDivElement | null>(null);
   const [view, setView] = useState<'list' | 'grid'>('list');
   const [selectedRole, setSelectedRole] = useState<string>('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (jobsRef.current) {
@@ -26,7 +30,7 @@ const Careers: React.FC = () => {
         }
       );
     }
-  }, [view]);
+  }, [view, page]);
 
   const handleApplyClick = (role: string) => {
     setSelectedRole(role);
@@ -35,6 +39,16 @@ const Careers: React.FC = () => {
       headingElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+    if (jobsRef.current) {
+      jobsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const paginatedJobs = jobs.slice((page - 1) * JOBS_PER_PAGE, page * JOBS_PER_PAGE);
+  const pageCount = Math.ceil(jobs.length / JOBS_PER_PAGE);
 
   return (
     <Box
@@ -93,7 +107,10 @@ const Careers: React.FC = () => {
             </Typography>
             <Stack direction="row" spacing={1} sx={{ justifyContent: { xs: 'center', md: 'flex-end' } }}>
               <IconButton
-                onClick={() => setView('grid')}
+                onClick={() => {
+                  setView('grid');
+                  setPage(1); // Reset to first page when switching to grid view
+                }}
                 sx={{
                   bgcolor: view === 'grid' ? '#324177' : 'transparent',
                   color: view === 'grid' ? '#f1f5f9' : '#1e2a44',
@@ -108,7 +125,10 @@ const Careers: React.FC = () => {
                 <ViewModule />
               </IconButton>
               <IconButton
-                onClick={() => setView('list')}
+                onClick={() => {
+                  setView('list');
+                  setPage(1); // Reset to first page when switching to list view
+                }}
                 sx={{
                   bgcolor: view === 'list' ? '#324177' : 'transparent',
                   color: view === 'list' ? '#f1f5f9' : '#1e2a44',
@@ -140,10 +160,17 @@ const Careers: React.FC = () => {
               ))}
             </Grid>
           ) : (
-            <Box ref={jobsRef} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {jobs.map((job: Job) => (
-                <ListViewJobCard key={job.id} job={job} onApplyClick={() => handleApplyClick(job.role)} />
-              ))}
+            <Box>
+              <Box ref={jobsRef} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {paginatedJobs.map((job: Job) => (
+                  <ListViewJobCard key={job.id} job={job} onApplyClick={() => handleApplyClick(job.role)} />
+                ))}
+              </Box>
+              <PaginationControls
+                page={page}
+                count={pageCount}
+                onChange={handlePageChange}
+              />
             </Box>
           )}
         </Box>
