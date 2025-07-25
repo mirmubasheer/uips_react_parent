@@ -288,6 +288,7 @@ import {
   useTheme,
   useMediaQuery,
   Alert,
+  Card,
 } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 import { ApiService } from '../../../api/api';
@@ -303,6 +304,7 @@ const sharedInputProps = {
   },
   InputLabelProps: {
     sx: {
+      fontSize: { xs: "0.9rem", sm: "1rem" },
       color: "#1e2a44", // Updated label color
     },
   },
@@ -445,21 +447,28 @@ const ContactFormSection: React.FC = () => {
           or want to discuss a project, our team is here to help.
         </Typography>
       </Box>
-
+      <Card
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            borderRadius: 3,
+            boxShadow: "0 6px 24px rgba(0, 0, 0, 0.3)",
+            overflow: "hidden",
+            border: "1px solid rgba(255, 255, 255, 0.05)",
+            background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))', // Updated form background
+          }}
+        >
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
-          flex: { xs: 'unset', md: '0 0 50%' },
+          flex: 1,
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
-          background: 'linear-gradient(135deg, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))',
           borderRadius: 3,
           p: { xs: 2, sm: 3 },
-          width: '100%',
-          maxWidth: { xs: '100%', sm: '450px', md: '550px' },
-          mx: 'auto',
+          
         }}
       >
         <Typography
@@ -553,6 +562,7 @@ const ContactFormSection: React.FC = () => {
           Send Message
         </Button>
       </Box>
+      </Card>
     </Box>
   );
 };

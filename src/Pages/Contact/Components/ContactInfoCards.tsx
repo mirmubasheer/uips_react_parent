@@ -41,7 +41,6 @@ const ContactInfoCards: React.FC = () => {
         }}
       >
         {contactInfo.map((info, index) => (
-          
           <Grid
             item
             xs={12}
@@ -59,7 +58,6 @@ const ContactInfoCards: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'center', // Center content vertically
                 p: { xs: 2, sm: 3 },
-                // backgroundColor: '#1E2A44',
                 background: 'linear-gradient(160deg, #324177 0%, #2D3E66 100%)',
                 borderRadius: 2,
                 textAlign: 'center',
@@ -68,9 +66,8 @@ const ContactInfoCards: React.FC = () => {
                   transform: 'scale(1.05)',
                   backgroundColor: '#2A3A55',
                 },
-                width: '100%',
-                maxWidth: { xs: '250px', sm: '280px', md: '300px' }, // Responsive width
-                minHeight: { xs: '250px', sm: '280px', md: '300px' }, // Equal height to width for square
+                width: { xs: '250px', sm: '280px', md: '300px' }, // Equal width on xs
+                height: { xs: '250px', sm: '280px', md: '300px' }, // Equal height to width on xs
                 boxSizing: 'border-box',
               }}
             >
