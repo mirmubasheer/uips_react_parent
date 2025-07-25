@@ -616,13 +616,14 @@ const GetInTouch: React.FC = () => {
     >
       <Box ref={containerRef} width={{ xs: "100%", sm: 600, md: 800 }} sx={{ maxWidth: "100%" }}>
         <Typography
-          variant={isMobile ? "h5" : "h3"}
-          sx={{
-            textAlign: "center",
-            fontWeight: 600,
-            mb: 3,
-            color: 'white', // Updated text color
-          }}
+          variant="h3"
+            sx={{
+              textAlign: "center",
+              fontWeight: 600,
+              color: 'white',
+              mb: 5,
+              fontSize: { xs: "2.5rem", sm: "3rem" }, // Increased font size for xs screens
+            }}
         >
           Get In Touch
         </Typography>
@@ -668,12 +669,17 @@ const GetInTouch: React.FC = () => {
                     color: "#1e2a44", // Updated text color
                   },
                 }}
-                InputLabelProps={{ sx: { color: "#1e2a44" } }} // Updated label color
-                sx={{
-                  '& .MuiFilledInput-root': {
-                    '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' }, // Complements #324177
-                    '&:after': { borderBottomColor: '#324177' }, // Uses #324177
-                  },
+                InputLabelProps={{
+                    sx: {
+                      color: "#1e2a44",
+                      fontSize: { xs: "0.9rem", sm: "1rem" }, // Reduced font size for xs screens
+                    },
+                  }}
+                  sx={{
+                    '& .MuiFilledInput-root': {
+                      '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' },
+                      '&:after': { borderBottomColor: '#324177' },
+                    },
                 }}
               />
             ))}
@@ -695,12 +701,17 @@ const GetInTouch: React.FC = () => {
                   color: "#1e2a44", // Updated text color
                 },
               }}
-              InputLabelProps={{ sx: { color: "#1e2a44" } }} // Updated label color
-              sx={{
-                '& .MuiFilledInput-root': {
-                  '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' },
-                  '&:after': { borderBottomColor: '#324177' },
-                },
+              InputLabelProps={{
+                  sx: {
+                    color: "#1e2a44",
+                    fontSize: { xs: "0.9rem", sm: "1rem" }, // Reduced font size for xs screens
+                  },
+                }}
+                sx={{
+                  '& .MuiFilledInput-root': {
+                    '&:before': { borderBottomColor: 'rgba(50, 65, 119, 0.3)' },
+                    '&:after': { borderBottomColor: '#324177' },
+                  },
               }}
             />
 

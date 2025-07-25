@@ -316,6 +316,7 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
                   pb: 1,
                   mb: 2,
                   display: "inline-block",
+                  
                 }}
               >
                 {section.title}
@@ -330,7 +331,7 @@ const AboutSection: React.FC<{ section: SectionType; index: number; total: numbe
                     fontSize: { xs: "12px", md: "20px" },
                     lineHeight: 1.6,
                     wordBreak: "break-word",
-                    textAlign: "left", // Ensure content starts from left
+                    textAlign: { xs: 'justify', sm: 'justify', md:'justify' },
                   }}
                 >
                   {paragraph}

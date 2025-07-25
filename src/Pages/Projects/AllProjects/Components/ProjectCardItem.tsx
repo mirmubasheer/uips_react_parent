@@ -28,9 +28,10 @@ interface ProjectCardItemProps {
 }
 
 const ProjectCard = styled(Card)(({ theme }) => ({
+ 
   width: '80%', // 80% width
   height: 'auto', // Dynamic height
-  background: 'linear-gradient(160deg, #1E2A44 0%, #2D3E66 100%)',
+  background: 'rgba(50, 65, 119, 0.1)',
   borderRadius: '12px', // Polished look
   overflow: 'hidden',
   transition: 'transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease',
@@ -38,8 +39,8 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   border: 'none', // Clean look
   '&:hover': {
     transform: 'translateY(-6px)',
-    boxShadow: '0 12px 36px rgba(59, 130, 246, 0.4)', // Enhanced hover shadow
-    background: 'linear-gradient(160deg, #2D3E66 0%, #3B82F6 100%)',
+    boxShadow: '0 12px 36px rgba(50, 65, 119, 0.9)', // Enhanced hover shadow
+    background: '#324177',
   },
   margin: 'auto', // Center horizontally
   boxSizing: 'border-box',
@@ -65,29 +66,37 @@ const ProjectCardMedia = styled(CardMedia)(({ theme }) => ({
 }));
 
 const ProjectTitle = styled(Typography)(({ theme }) => ({
-  color: '#E0E7FF',
+  color: '#1e2a44',
   fontWeight: 500,
   fontFamily: '"Roboto", Arial, sans-serif',
   letterSpacing: '0.3px',
   fontSize: '1.2rem',
   marginBottom: 0,
+  transition: 'color 0.3s ease',
   [theme.breakpoints.down('sm')]: {
     fontSize: '1rem',
+  },
+  '.MuiCard-root:hover &': {
+    color: '#ffffff',
   },
 }));
 
 const ProjectDivision = styled(Typography)(({ theme }) => ({
-  color: '#A5B4FC',
+  color: '#1e2a44',
   marginBottom: theme.spacing(1),
+  transition: 'color 0.3s ease',
   [theme.breakpoints.down('sm')]: {
     fontSize: '0.85rem',
+  },
+  '.MuiCard-root:hover &': {
+    color: '#ffffff',
   },
 }));
 
 const BlinkingArrow = styled(motion.div)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  color: '#3B82F6', // Blue arrow
+   color: '#1e2a44', // Blue arrow
   fontSize: '2rem',
   animation: 'heartbeat 1.5s infinite',
   '@keyframes heartbeat': {

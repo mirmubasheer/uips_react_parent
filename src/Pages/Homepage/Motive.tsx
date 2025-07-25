@@ -172,9 +172,10 @@ const Motive: React.FC = () => {
                     wordBreak: 'break-word',
                     whiteSpace: 'normal',
                     overflowWrap: 'break-word',
-                    textAlign: { xs: 'center', sm: 'left' },
+                    textAlign: { xs: 'justify', sm: 'justify', md:'justify' },
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
+                    
                   }}
                 >
                   {motive.description}

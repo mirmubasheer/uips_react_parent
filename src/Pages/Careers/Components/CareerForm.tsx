@@ -298,6 +298,7 @@ const sharedInputProps = {
   },
   InputLabelProps: {
     sx: {
+      fontSize: { xs: "0.9rem", sm: "1rem" },
       color: "#475569",
       "&.Mui-focused": { color: "#475569" },
     },

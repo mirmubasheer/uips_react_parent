@@ -197,6 +197,7 @@ const Brief: React.FC = () => {
                   fontSize: { xs: '1rem', md: '1.2rem' },
                   lineHeight: 1.9,
                    color: '#1e2a44',
+                     textAlign: { xs: 'justify', sm: 'justify', md:'justify' },
                 }}
               >
                 {section.content}

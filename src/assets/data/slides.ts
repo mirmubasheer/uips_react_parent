@@ -4,7 +4,7 @@ const slides = [
   {
     id: 1,
     image: herosectionimages.hero1,
-    title: "ENGINEERING & INDUSTRIAL EXCELLENCE",
+    title: "EPC Excellence",
     subtitle: "Leading EPC Solutions for Industrial Growth",
     description: "UIPS delivers turnkey engineering, procurement, and construction (EPC) services, empowering industrial sectors with reliable and scalable solutions.",
     buttonText: "Discover More",
@@ -28,15 +28,15 @@ const slides = [
     buttonText: "Learn More",
     route: "/electrical",
   },
-  {
-    id: 4,
-    image: herosectionimages.hero4,
-    title: "IT & DIGITAL TRANSFORMATION",
-    subtitle: "Smart Technology for Smarter Operations",
-    description: "Our IT division offers AI tools, cloud solutions, networking, and cybersecurity services designed to digitally empower businesses and industries.",
-    buttonText: "Get in Touch",
-    route: "/contact",
-  },
+{
+  id: 4,
+  image: herosectionimages.hero4,
+  title: "IT & DIGITAL TRANSFORMATION",
+  subtitle: "Smart Technology for Smarter Operations",
+  description: "We specialize in software development, web and mobile apps, alongside AI tools, cloud solutions, networking, and cybersecurity to digitally empower businesses.",
+  buttonText: "Get in Touch",
+  route: "/contact",
+},
 ];
 
 export default slides;

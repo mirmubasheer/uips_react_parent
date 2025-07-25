@@ -29,7 +29,7 @@ const divisionItems = [
   { label: "Instrumentation", route: "/instrumentation" },
   { label: "Power", route: "/power" },
   { label: "Electrical Division", route: "/electrical" },
-  { label: "IT Division", route: "/it" },
+  { label: "IT Division", route: "/division/u-tech-it-solutions" },
   { label: "Mechanical Division", route: "/mechanical" },
 ];
 
@@ -112,7 +112,7 @@ const Header = () => {
           <Box
             component="img"
             src={uipslogo.logo02}
-            alt="UIP Logo"
+            alt="UIPS Logo"
             sx={{
               height: { xs: 40, md: 60 },
               width: "auto",
@@ -202,7 +202,7 @@ const Header = () => {
                             fontFamily: "'Kanit', sans-serif",
                             '&:hover': {
                               backgroundColor: '#f5f5f5',
-                              color: '#00bcd4',
+                              color: '#324177',
                             },
                           }}
                         >
@@ -219,7 +219,7 @@ const Header = () => {
                       color: isScrolled ? "#000" : "#fff",
                       fontWeight: 300,
                       transition: "color 0.3s ease",
-                      "&:hover": { color: "#00bcd4" },
+                      "&:hover": { color: "#324177" },
                       px: { md: 0.5, lg: 0.75 },
                     }}
                   >
@@ -389,7 +389,7 @@ const Header = () => {
                 <ListItemText
                   primary={
                     <Typography variant="caption" textAlign="center">
-                      Al-Meflah Building, 5th Floor Suit 4B <br />
+                      Al-Meflah Building, 5th Floor Suit 5D <br />
                       7th Cross, King Abdul Aziz Road <br />
                       Al Khobar, Kingdom Of Saudi Arabia
                     </Typography>

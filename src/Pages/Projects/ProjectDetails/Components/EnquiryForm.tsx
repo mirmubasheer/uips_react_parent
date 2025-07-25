@@ -236,10 +236,12 @@ const sharedInputProps = {
 },
   InputLabelProps: {
     sx: {
+    fontSize: { xs: "0.9rem", sm: "1rem" },
       color: "black",
       "&.Mui-focused": { color: "black" },
     },
   },
+  
 };
 
 const EnquiryForm: React.FC = () => {
@@ -360,6 +362,7 @@ const EnquiryForm: React.FC = () => {
           background: '#1e2a44',
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
+          fontSize: { xs: "1.2rem", sm: "1.5rem" },
         }}
       >
         Enquire About This Project
@@ -401,7 +404,9 @@ const EnquiryForm: React.FC = () => {
           width: { xs: '100%', sm: '100%' }, // Full width on mobile
           maxWidth: { xs: '90vw', sm: '100%' }, // Wider on mobile
           color: '#1e2a44',
+          
         }}
+
       />
 
       <TextField

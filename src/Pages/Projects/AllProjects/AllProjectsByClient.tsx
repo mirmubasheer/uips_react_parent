@@ -78,7 +78,7 @@ const clientNames = [
 // Styled components
 const AllProjectsContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4, 2),
-  background: 'linear-gradient(to bottom, #0F1A33, #1E2A44)',
+  background: 'rgba(50, 65, 119, 0.2)',
   minHeight: '100vh',
   position: 'relative',
   '&:before': {
@@ -233,7 +233,7 @@ const AllProjectsByClient: React.FC<AllProjectsByClientProps> = ({ division }) =
           textAlign: 'center',
           mb: 4,
           fontWeight: 300,
-          color: '#A3BFFA',
+          color: '#1e2a44',
           textShadow: '0 1px 3px rgba(0, 0, 0, 0.4)',
           marginTop: '50px',
         }}

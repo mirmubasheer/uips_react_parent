@@ -91,7 +91,7 @@ const WhatWeDo: React.FC = React.memo(() => {
         fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' },
         lineHeight: 1.8,
         color: '#1e2a44',
-        textAlign: { xs: 'center', sm: 'justify', md:'justify' },
+        textAlign: { xs: 'justify', sm: 'justify', md:'justify' },
       }}
     >
       At UIPS Co., we specialize in delivering end-to-end Utilities and Industrial Power Solutions tailored to complex industrial needs. Our core services encompass Civil and Steel Structure works, Mechanical Works, Electrical and Instrumentation systems, Piping works, and comprehensive Maintenance services. We support a wide range of sectors including Energy, Oil & Gas, Water, Infrastructure and Manufacturing, ensuring reliable performance, Safety and Operational Excellence across every project.
@@ -105,7 +105,7 @@ const WhatWeDo: React.FC = React.memo(() => {
         fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' },
         lineHeight: 1.8,
         color: '#1e2a44',
-        textAlign: { xs: 'center', sm: 'justify',  md:'justify' },
+        textAlign: { xs: 'justify', sm: 'justify',  md:'justify' },
       }}
     >
       UIPS considers satisfying client requirements and achieving the prime project objectives as an essential quality issue. We operate a total quality management system, fully supported by the management and staff.

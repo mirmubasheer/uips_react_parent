@@ -173,7 +173,6 @@
 
 
 
-
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
@@ -231,7 +230,7 @@ const CircleModel: React.FC = () => {
           hoverTimeline
             .to(sector.querySelector("path"), {
               scale: 1.08,
-              fill: "#324177", // Exact #324177 for hover
+              fill: "#324177",
               duration: hoverDuration,
               ease: "power2.out",
               transformOrigin: "50% 50%",
@@ -243,7 +242,7 @@ const CircleModel: React.FC = () => {
             }, index * (cycleDuration / totalSectors))
             .to(sector.querySelector("path"), {
               scale: 1,
-              fill: "#1E2A4B", // Darker shade for base
+              fill: "#1E2A4B",
               duration: hoverDuration,
               ease: "power2.inOut",
               transformOrigin: "50% 50%",
@@ -276,14 +275,20 @@ const CircleModel: React.FC = () => {
       transformOrigin: "50% 50%",
     });
 
-    setTimeout(() => navigate(link), 300);
+      setTimeout(() => {
+      if (link.startsWith("http")) {
+        window.open(link, '_blank', 'noopener,noreferrer'); // Open external URL in new tab
+      } else {
+        navigate(link); // Use react-router-dom for internal routes
+      }
+    }, 300);
   };
 
   const handleMouseEnter = (index: number) => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
         scale: 1.08,
-        fill: "#324177", // Exact #324177 for hover
+        fill: "#324177",
         duration: 0.3,
         ease: "power2.out",
         transformOrigin: "50% 50%",
@@ -300,7 +305,7 @@ const CircleModel: React.FC = () => {
     if (sectorRefs.current[index]) {
       gsap.to(sectorRefs.current[index]?.querySelector("path"), {
         scale: 1,
-        fill: "#1E2A4B", // Darker shade for base
+        fill: "#1E2A4B",
         duration: 0.3,
         ease: "power2.inOut",
         transformOrigin: "50% 50%",
@@ -330,15 +335,15 @@ const CircleModel: React.FC = () => {
           cx={centerX}
           cy={centerY}
           r={innerRadius - 15}
-          fill="#1E2A4B" // Darker shade
-          stroke="#172037" // Darker shade for stroke
+          fill="#1E2A4B"
+          stroke="#172037"
           strokeWidth="2"
         />
         <text
           x={centerX}
           y={centerY + 8}
           textAnchor="middle"
-          fill="#FFF" // Darker shade for UIPS text
+          fill="#FFF"
           fontSize="32px"
           fontWeight="bold"
           style={{ textShadow: "0 1px 3px rgba(0, 0, 0, 0.5)" }}
@@ -385,8 +390,8 @@ const CircleModel: React.FC = () => {
                       A ${outerRadius},${outerRadius} 0 0,1 ${x2},${y2} 
                       L ${xInner2},${yInner2} 
                       A ${innerRadius},${innerRadius} 0 0,0 ${xInner1},${yInner1} Z`}
-                  fill="#1E2A4B" // Darker shade
-                  stroke="#172037" // Darker shade for stroke
+                  fill="#1E2A4B"
+                  stroke="#172037"
                   strokeWidth="2"
                 />
 

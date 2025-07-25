@@ -197,7 +197,7 @@ const Footer: React.FC = () => {
               sx={{ mt: 2, mb: 3, fontStyle: 'italic' }}
               ref={(el) => (textRefs.current[1] = el)}
             >
-              Al-Meflah Building, 5th Floor Suite 4B, 7th Cross, King Abdul Aziz Road
+              Al-Meflah Building, 5th Floor Suite 5D, 7th Cross, King Abdul Aziz Road
             </Typography>
             <Typography
               variant="body2"

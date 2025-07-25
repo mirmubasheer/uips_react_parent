@@ -75,7 +75,7 @@ const ClientTab = styled(Box)(({ theme }) => ({
   justifyContent: 'center',
   width: '140px',
   height: '90px',
-  background: '#1E293B',
+  background: 'rgba(50, 65, 119, 0.1)',
   borderRadius: '12px',
   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
@@ -124,7 +124,7 @@ const ClientTab = styled(Box)(({ theme }) => ({
 }));
 
 const ClientLabel = styled(Typography)(({ theme }) => ({
-  color: '#E0E7FF',
+  color: '#324177',
   fontSize: '0.85rem',
   fontWeight: 500,
   textAlign: 'center',
@@ -164,7 +164,8 @@ const ClientTabs: React.FC<ClientTabsProps> = ({ clients, selectedClient, onSele
         flexWrap: 'wrap',
         justifyContent: 'center',
         gap: theme => theme.spacing(2),
-        background: 'linear-gradient(180deg, #1E293B 0%, #111827 100%)',
+        // background: 'linear-gradient(180deg, #1E293B 0%, #111827 100%)',
+        background: `linear-gradient(to bottom, hsl(220, 20%, 90%) 0%, hsl(220, 20%, 95%))`,
         padding: theme => theme.spacing(3),
         borderRadius: '16px',
         boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',

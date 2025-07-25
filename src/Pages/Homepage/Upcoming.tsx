@@ -292,6 +292,15 @@
 // export default Upcoming;
 
 
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
@@ -441,17 +450,18 @@ const Upcoming: React.FC = () => {
         height={{ xs: 400, sm: 450 }}
         sx={{ perspective: 1000, maxWidth: "100%" }}
       >
-        <Typography
-          variant="h3"
-          sx={{
-            textAlign: "center",
-            fontWeight: 600,
-            color: '#1e2a44', // Updated text color
-            mb: 10,
-          }}
-        >
-          Our Recent Projects
-        </Typography>
+       <Typography
+        variant="h3"
+        sx={{
+          textAlign: "center",
+          fontWeight: 600,
+          color: '#1e2a44',
+          mb: 5,
+          fontSize: { xs: "2.0rem", sm: "2.8rem" }, // Increased font size for xs screens
+        }}
+      >
+        Our Recent Projects
+      </Typography>
         <Box
           ref={cardRef}
           sx={{
@@ -463,21 +473,21 @@ const Upcoming: React.FC = () => {
           }}
         >
           <Card
-            sx={{
-              width: { xs: "100%", sm: "50%", md: "100%" },
-              height: { xs: "100%", sm: "50%", md: "80%" },
-              position: "absolute",
-              backfaceVisibility: "hidden",
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              alignItems: "center",
-              borderRadius: 3,
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5)",
-              background: 'rgba(50, 65, 119, 0.8)', // Updated to use #324177
-              overflow: "hidden",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              padding: { xs: "2%", sm: "5%", md: "1%" },
-            }}
+          sx={{
+            width: { xs: "95%", sm: "50%", md: "100%" }, // Reduced width for xs (small screens)
+            height: { xs: "100%", sm: "50%", md: "80%" },
+            position: "absolute",
+            backfaceVisibility: "hidden",
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            borderRadius: 3,
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5)",
+            background: 'rgba(50, 65, 119, 0.8)',
+            overflow: "hidden",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            padding: { xs: "2%", sm: "5%", md: "1%" },
+          }}
           >
             {/* Left Side - Image */}
             <Box

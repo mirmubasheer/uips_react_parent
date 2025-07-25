@@ -7,7 +7,6 @@ export interface Division {
   expertise: string;
   checklist: string[];
 }
-
 export const divisions: Division[] = [
   {
     title: 'Civil',
@@ -22,25 +21,26 @@ export const divisions: Division[] = [
     checklist: ['Site Development', 'Building Construction', 'Infrastructure Design', 'Utility Installation'],
   },
   {
-    title: 'Information Technology',
-    description: 'UIPS Saudi Arabia provides advanced IT solutions, specializing in fiber optic networking, cybersecurity, software development, and infrastructure management for business systems.',
+    title: 'U-Tech IT Solutions',
+    description: 'U-Tech IT Solutions, a UIPS subsidiary, specializes in custom software development, mobile apps, and IT services including networking and cybersecurity for businesses.',
     image: 'it',
     detailedDescription:
-      'UIPS Saudi Arabia’s IT Division, launched to meet client needs, excels in fiber optic and networking solutions, cutting-edge cybersecurity, system integration, custom software development, and comprehensive hardware infrastructure services. Our expertise ensures secure, scalable IT infrastructure for businesses across Saudi Arabia. We offer end-to-end IT solutions, including software services like AI, machine learning, and data analytics, as well as hardware services such as server maintenance, structured cabling, and CCTV systems. With skills to handle projects of any size, we implement networks, servers, and protocols, and provide managed IT services to empower organizations with reliable, high-performance technology tailored to the Kingdom’s dynamic market.',
-    whatWeDo:
-      'We implement and maintain IT infrastructure, including networks, servers, cybersecurity protocols, custom software, and managed IT services for optimal business performance.',
-    expertise:
-      'Fiber optic installations, system monitoring, cybersecurity implementation, network configuration, custom software development, AI solutions, server maintenance, and managed IT services.',
+      'U-Tech IT Solutions, a subsidiary of UIPS Saudi Arabia based in Al-Khobar, is a leading provider of digital transformation solutions. We specialize in custom software development, mobile and web applications, and enterprise IT systems. Our comprehensive services extend to fiber optic networking, cybersecurity, system integration, AI, data analytics, server maintenance, and CCTV systems — all aligned with ARAMCO, SABIC, and SEC standards.',
+      whatWeDo:
+        'We deliver custom software, mobile and web applications, and build secure IT infrastructure including networks, servers, and cybersecurity. Our managed services ensure reliability, security, and business continuity.',
+      expertise:
+      'Our expertise spans custom software development, mobile and web app engineering, system integration, network design and implementation, cybersecurity strategies, cloud infrastructure, server management, and managed IT services ', 
     checklist: [
-      'Fiber Optic Installation',
-      'System Monitoring', // Fixed typo from 'System Monitori'
-      'Cybersecurity Implementation',
-      'Network Configuration',
       'Custom Software Development',
+      'Mobile & Web Application Development',
       'IT Consulting & Strategy',
-      'Data Analytics & Reporting',
       'AI & Machine Learning Solutions',
+      'Data Analytics & Reporting',
+      'System Monitoring',
+      'Cybersecurity Implementation',
+      'Fiber Optic Installation',
       'Network Setup & Management (LAN, WAN, Wi-Fi)',
+      'Network Configuration',
       'IP Addressing & Configuration',
       'Server Installation & Maintenance',
       'Firewall & Cybersecurity Solutions',

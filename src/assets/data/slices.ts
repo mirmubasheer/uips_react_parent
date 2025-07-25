@@ -1,6 +1,6 @@
 const SECTORS = [
     { label: "Maintanence  Division", link: "/civil" },
-    { label: "IT Division", link: "/" },
+    { label: "IT Division", link: "https://utech.sa.com" },
     { label: "Substation Construction", link: "/electrical" },
     { label: "Upgrade Projects", link: "/mechanical" },
     { label: "Plant Construction", link: "/shutdowns" },

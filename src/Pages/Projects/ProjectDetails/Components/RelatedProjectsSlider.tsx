@@ -331,6 +331,7 @@ const RelatedProjectsSlider: React.FC<RelatedProjectsSliderProps> = ({
         sx={{ 
         mb: 3,
         color: '#1e2a44',
+        fontSize: { xs: "1.2rem", sm: "1.8rem" },
        }} 
       >
         Related Projects

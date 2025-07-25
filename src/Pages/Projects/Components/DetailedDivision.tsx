@@ -421,6 +421,7 @@ const DetailedDivision: React.FC<DetailedDivisionProps> = ({ division }) => {
               sx={{
                 fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
                 color: '#1e2a44',
+                textAlign: { xs: 'justify', sm: 'justify', md:'justify' },
               }}
             >
               {division.description}

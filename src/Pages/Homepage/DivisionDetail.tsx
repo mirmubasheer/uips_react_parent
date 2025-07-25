@@ -237,11 +237,30 @@ const DivisionDetail: React.FC = () => {
                 color: '#1e2a44',
                 lineHeight: 1.8,
                 fontSize: { xs: '0.875rem', sm: '1rem', md: '1.125rem' },
-                textAlign: { xs: 'justify', md: 'left' },
+                textAlign: { xs: 'justify', md: 'justify' },
               }}
             >
               {division.detailedDescription}
             </Typography>
+            {division.title === 'U-Tech IT Solutions' && (
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#324177',
+                  lineHeight: 1.8,
+                  fontSize: { xs: '0.875rem', sm: '1rem', md: '1.5rem' },
+                  textAlign: { xs: 'justify', md: 'left' },
+                  textDecoration: 'underline',
+                  mt: 1,
+                }}
+                component="a"
+                href="https://utech.sa.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit U-Tech IT Solutions
+              </Typography>
+            )}
           </Grid>
 
           {/* What We Do and Our Expertise - Custom Width */}
